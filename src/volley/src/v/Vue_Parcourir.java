@@ -9,16 +9,27 @@ import c.Controleur;
  */
 public class Vue_Parcourir extends JFileChooser
 {
+	private static final long serialVersionUID = 1L;
 	private Controleur c;
 	
 	/**
-	 * 
-	 * @param _c Le constructeur.
+	 * Crée le JFileChooser.
+	 * @param _c Le contrôleur.
 	 * @author Nathanaël Jourdane
 	 */
 	public Vue_Parcourir(Controleur _c)
 	{
+		super ();
 		this.c = _c;
 	}
 	
+	/**
+	 * Getter du contrôleur.
+	 * @return Le contrôleur.
+	 * @author Nathanaël Jourdane
+	 */
+	public Controleur getC()
+	{
+		return this.c;
+	}
 }

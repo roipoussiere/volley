@@ -12,7 +12,7 @@ public class AL_Parcourir implements ActionListener
 	private Vue_Lecture vl;
 
 	/**
-	 * Constructeur de l'ActionListener
+	 * Constructeur de l'ActionListener.
 	 * @param _vl Vue de lecture d'une stratégie.
 	 * @author Nathanaël Jourdane
 	 */
@@ -22,7 +22,7 @@ public class AL_Parcourir implements ActionListener
 	}
 
 	/**
-	 * Annuler la lecture d'une vue.
+	 * Ouvre une fenêtre invitant l'utilisateur à choisir un fichier de stratégie.
 	 * @param _ae Evenement de clic sur le bouton Parcourir.
 	 * @author Nathanaël Jourdane
 	 */
