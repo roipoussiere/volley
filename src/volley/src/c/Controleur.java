@@ -163,19 +163,35 @@ public class Controleur
 	 */
 	public void vl_lireStrategie()
 	{
-		if (this.vt == null)
+		System.out.println("Silence, ça tourne !");
+	}
+		
+	/**
+	 * Affiche la fenetre de terrain si l'utilisateur est sous l'onglet Lecture ou Edition.<br/>.
+	 * Masque la fenetre dans le cas contraire.<br/>
+	 * Ne fait rien si la fenetre est déjà ouverte.
+	 * @param _onglet L'indice de l'onglet ouvert.
+	 * @author Nathanaël Jourdane
+	 */
+	public void afficherTerrain(int _onglet)
+	{
+		// Si le terrain n'est pas ouvert et qu'on est en Edition ou Lecture
+		if (this.vt == null && (_onglet == 2 || _onglet == 3))
 		{
-			System.out.println("Lecture d'une stratégie...");
+			System.out.println("Affichage du terrain.");
 			this.vt = new Vue_Terrain(this);
 			this.centrerFen();
 			this.vt.setVisible (true);				
 		}
-		else
+		// Si le terrain est ouvert et qu'on est ni en Edition, ni en Lecture
+		else if (this.vt != null && (_onglet != 2 && _onglet != 3))
 		{
-			System.out.println("La fenetre de terrain est déjà ouverte");
+			System.out.println("Fermeture du terrain.");
+			this.vt.setVisible (false);	
+			this.vt = null;
+			this.centrerFen();
 		}
 	}
-	
 	/**
 	 * Ouvre une fenetre invitant à l'utilisateur à sélectionner un fichier de stratégie.
 	 * @return Une chaine contenant le chemin du fichier suivi de son nom.

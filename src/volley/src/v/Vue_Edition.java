@@ -23,9 +23,8 @@ public class Vue_Edition extends JPanel
 	{
 		super ();
 		this.c = _c;
-
 	}
-			
+	
 	/**
 	 * Getter du contrôleur.
 	 * @return Le contrôleur.

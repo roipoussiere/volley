@@ -36,7 +36,8 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		this.setResizable(false);
 		
 		
-		this.jtp = new JTabbedPane(SwingConstants.TOP);
+		this.jtp = new JTabbedPane();
+		this.jtp.addChangeListener(new CL_Fenetre(this));
 		 
 		this.vf = new Vue_Fichier(this.c); // Onglet Fichier
 		this.jtp.addTab("Fichier", this.vf);
@@ -50,7 +51,7 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		this.vl = new Vue_Lecture(this.c); // Onglet Lecture
 		this.jtp.addTab("Lecture", this.vl);
 		
-		this.add(this.jtp); // Ajout des onglets dans le JPanel
+		this.add(this.jtp); // Ajout des onglets dans la fenetre
 	}
 
 	/**
@@ -64,6 +65,10 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		System.out.println("affichage de l'onglet lecture : " + _aff);
 	}
 	
+	public int getOngletOuvert()
+	{
+		return this.jtp.getSelectedIndex();
+	}
 	/**
 	 * Getter du contrôleur.
 	 * @return Le contrôleur.
