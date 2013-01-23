@@ -4,10 +4,6 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.*;
 
-import v.Vue_Edition;
-import v.Vue_Fichier;
-import v.Vue_Joueurs;
-import v.Vue_Lecture;
 import v.Vue_Fenetre;
 import v.Vue_Parcourir;
 import v.Vue_Terrain;
@@ -18,17 +14,13 @@ import v.Vue_Terrain;
  */
 public class Controleur
 {
-	private Vue_Fenetre vfe;
+	private Vue_Fenetre vf;
 	private Vue_Parcourir vp;
 	private Vue_Terrain vt;
-
-	private Vue_Fichier vfi;
-	private Vue_Joueurs vj;
-	private Vue_Edition ve;
-	private Vue_Lecture vl;
 	
 	private String nomFichier;
 	private String cheminFichier;
+	private boolean demiTerrain;
 	
 	/**
 	 * Constructeur du contôleur qui initialise les vues et les arguments.
@@ -38,14 +30,9 @@ public class Controleur
 	{
 		this.nomFichier = null;
 		this.cheminFichier = null;
-		this.vfe = null;
+		this.vf = null;
 		this.vp = null;
 		this.vt = null;
-
-		this.vfi = null;
-		this.vj = null;
-		this.ve = null;
-		this.vl = null;
 	}
 
 	/**
@@ -54,11 +41,11 @@ public class Controleur
 	 */
 	public void demarrer ()
 	{
-		if (this.vfe == null)
+		if (this.vf == null)
 		{
-			this.vfe = new Vue_Fenetre(this);
+			this.vf = new Vue_Fenetre(this);
 			this.centrerFen();
-			this.vfe.setVisible (true);
+			this.vf.setVisible (true);
 			this.majOnglets();
 		}
 	}
@@ -84,77 +71,7 @@ public class Controleur
 	{
 		this.nomFichier = _nom;
 	}
-	
-	/**
-	 * Getter de Vue_Fenetre.
-	 * @return La fenêtre principale du programme
-	 * @author Nathanaël Jourdane
-	 */
-	public Vue_Fenetre getVFE()
-	{
-		return this.vfe;
-	}
-	
-	/**
-	 * Getter de Vue_Parcourir.
-	 * @return La fenetre permetant de sélectionner un fichier de stratégie.
-	 * @author Nathanaël Jourdane
-	 */
-	public Vue_Parcourir getVP()
-	{
-		return this.vp;
-	}
-	
-	/**
-	 * Getter de Vue_Terrain.
-	 * @return La fenetre représentant le terrain de volley.
-	 * @author Nathanaël Jourdane
-	 */
-	public Vue_Terrain getVT()
-	{
-		return this.vt;
-	}
-	
-	/**
-	 * Getter de Vue_Fichier.
-	 * @return La vue de l'onglet Fichier
-	 * @author Nathanaël Jourdane
-	 */
-	public Vue_Fichier getVFI()
-	{
-		return this.vfi;
-	}
-	
-	/**
-	 * Getter de Vue_Joueurs.
-	 * @return La vue de l'onglet Joueurs
-	 * @author Nathanaël Jourdane
-	 */
-	public Vue_Joueurs getVJ()
-	{
-		return this.vj;
-	}
-	
-	/**
-	 * Getter de Vue_Edition.
-	 * @return La vue de l'onglet Edition
-	 * @author Nathanaël Jourdane
-	 */
-	public Vue_Edition getVE()
-	{
-		return this.ve;
-	}
-	
-	/**
-	 * Getter de Vue_Lecture.
-	 * @return La vue de l'onglet Lecture
-	 * @author Nathanaël Jourdane
-	 */
-	public Vue_Lecture getVL()
-	{
-		return this.vl;
-	}
-		
+			
 	// *** Méthodes de Vue_Lecture ***
 	
 	/**
@@ -169,6 +86,7 @@ public class Controleur
 	/**
 	 * Affiche la fenetre de terrain si l'utilisateur est sous l'onglet Lecture ou Edition.<br/>.
 	 * Masque la fenetre dans le cas contraire.<br/>
+	 * La taille de la fenetre est adapté au mode demi-terrain ou terrain complet.
 	 * Ne fait rien si la fenetre est déjà ouverte.
 	 * @param _onglet L'indice de l'onglet ouvert.
 	 * @author Nathanaël Jourdane
@@ -179,16 +97,16 @@ public class Controleur
 		if (this.vt == null && (_onglet == 2 || _onglet == 3))
 		{
 			System.out.println("Affichage du terrain.");
-			this.vt = new Vue_Terrain(this);
+			this.vt = new Vue_Terrain(this, this.vf.getVJ().demiT());
 			this.centrerFen();
-			this.vt.setVisible (true);				
+			this.vt.setVisible (true);
 		}
 		// Si le terrain est ouvert et qu'on est ni en Edition, ni en Lecture
 		else if (this.vt != null && (_onglet != 2 && _onglet != 3))
 		{
 			System.out.println("Fermeture du terrain.");
 			this.vt.setVisible (false);	
-			this.vt = null;
+			this.vt = null; // La vue Terrain n'existe plus.
 			this.centrerFen();
 		}
 	}
@@ -246,9 +164,9 @@ public class Controleur
 	public void majOnglets()
 	{
 		if (this.nomFichier == null)
-			this.vfe.affLecture(false);
+			this.vf.affLecture(false);
 		else
-			this.vfe.affLecture(true);
+			this.vf.affLecture(true);
 	}
 	
 	/**
@@ -260,7 +178,7 @@ public class Controleur
 		// Les dimentions de l'écran
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		
-		if (this.vfe == null) // Si on la fenetre principale n'est pas ouverte
+		if (this.vf == null) // Si on la fenetre principale n'est pas ouverte
 		{
 			System.out.println("Aucune fenetre à centrer.");
 		}
@@ -268,12 +186,12 @@ public class Controleur
 		{
 			if (this.vt == null) // Si la fenetre de terrain n'est pas ouverte
 			{
-				this.vfe.setLocation((screen.width - this.vfe.getSize().width)/2,(screen.height - this.vfe.getSize().height)/2);
+				this.vf.setLocation((screen.width - this.vf.getSize().width)/2,(screen.height - this.vf.getSize().height)/2);
 				System.out.println("1 fenêtre centrée");
 			}
 			else
 			{
-				this.vfe.setLocation(screen.width/2 - this.vfe.getSize().width - 5,(screen.height - this.vfe.getSize().height)/2); 
+				this.vf.setLocation(screen.width/2 - this.vf.getSize().width - 5,(screen.height - this.vf.getSize().height)/2); 
 				this.vt.setLocation(screen.width/2 ,(screen.height - this.vt.getSize().height)/2); 
 				System.out.println("2 fenêtres centrées");
 			}
@@ -286,7 +204,7 @@ public class Controleur
 	 */
 	public void arreter ()
 	{
-		int option = JOptionPane.showConfirmDialog(this.vfe, "Voulez-vous Quitter ?");
+		int option = JOptionPane.showConfirmDialog(this.vf, "Voulez-vous Quitter ?");
 		if (option == JOptionPane.OK_OPTION)
 		{
 			System.out.println("Fermeture du programme.");			

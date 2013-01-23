@@ -21,14 +21,18 @@ public class Vue_Terrain extends JFrame implements WindowListener
 	 * @param _c Le contrôleur.
 	 * @author Nathanaël Jourdane
 	 */
-	public Vue_Terrain(Controleur _c)
+	public Vue_Terrain(Controleur _c, boolean demiT)
 	{
 		super ("Terrain");
 		this.c = _c;
 
 		this.addWindowListener(this); // On abonne la fenêtre à elle-même.
 		this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-		this.setSize(396, 720);
+		
+		if (demiT)
+			this.setSize(396, 396);			
+		else
+			this.setSize(396, 720);
 		// 1 terrain : zone 11*11 cases ...
 		// 2 terrains : zone de 11*20 cases de 36px*36px chacune = zone de 396*720
 

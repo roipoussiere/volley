@@ -65,10 +65,54 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		System.out.println("affichage de l'onglet lecture : " + _aff);
 	}
 	
+	/**
+	 * getter de Vue_Fichier
+	 * @return La vue de l'onglet Fichier
+	 * @author Nathanaël Jourdane
+	 */
+	public Vue_Fichier getVF()
+	{
+		return this.vf;
+	}
+	
+	/**
+	 * getter de Vue_Joueurs
+	 * @return La vue de l'onglet Joueur
+	 * @author Nathanaël Jourdane
+	 */
+	public Vue_Joueurs getVJ()
+	{
+		return this.vj;
+	}
+	
+	/**
+	 * getter de Vue_Edition
+	 * @return La vue de l'onglet Edition
+	 * @author Nathanaël Jourdane
+	 */
+	public Vue_Edition getVE()
+	{
+		return this.ve;
+	}
+	
+	/**
+	 * getter de Vue_Lecture
+	 * @return La vue de l'onglet Lecture
+	 * @author Nathanaël Jourdane
+	 */
+	public Vue_Lecture getVL()
+	{
+		return this.vl;
+	}
+	/**
+	 * Getter de l'onglet ouvert
+	 * @return L'id de l'onglet actuellement ouvert, de 0 à 4.
+	 */
 	public int getOngletOuvert()
 	{
 		return this.jtp.getSelectedIndex();
 	}
+	
 	/**
 	 * Getter du contrôleur.
 	 * @return Le contrôleur.

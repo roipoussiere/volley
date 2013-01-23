@@ -1,6 +1,7 @@
 package v;
 
 import javax.swing.*;
+
 import c.Controleur;
 
 /**
@@ -12,6 +13,9 @@ public class Vue_Joueurs extends JPanel
 	private Controleur c;
 	
 	// Composants de la fenêtre
+	private JRadioButton jrbTC; // terrain complet
+	private JRadioButton jrbDT; // demi-terrain
+	private ButtonGroup bgTerrain;
 	
 	/**
 	 * Création du JFrame et de tous ses composants.
@@ -23,9 +27,23 @@ public class Vue_Joueurs extends JPanel
 		super ();
 		this.c = _c;
 		
+		this.bgTerrain = new ButtonGroup();
+		
+		this.jrbDT = new JRadioButton("Demi terrain", true);
+		this.bgTerrain.add(this.jrbDT);
+		this.add(this.jrbDT);
+		
+		this.jrbTC = new JRadioButton("Terrain complet", false);
+		this.bgTerrain.add(this.jrbTC);
+		this.add(this.jrbTC);
 		
 	}
-		
+	
+	public boolean demiT()
+	{
+		return this.jrbDT.isSelected();
+	}
+	
 	/**
 	 * Getter du contrôleur.
 	 * @return Le contrôleur.

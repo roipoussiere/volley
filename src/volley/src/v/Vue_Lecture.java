@@ -15,7 +15,7 @@ public class Vue_Lecture extends JPanel
 	
 	// Composants de la fenêtre
 	private JButton jbLecture;
-	
+
 	/**
 	 * Création du JFrame et de tous ses composants.
 	 * @param _c Constrôleur.
@@ -25,13 +25,13 @@ public class Vue_Lecture extends JPanel
 	{
 		super ();
 		this.c = _c;
-
-		this.setPreferredSize(new Dimension(385, 240)); // Affectation de la taille du contenu de l'onglet
 		
+		this.setPreferredSize(new Dimension(385, 240)); // Affectation de la taille du contenu de l'onglet
+						
 		this.jbLecture = new JButton ("Lecture");
 		this.jbLecture.addActionListener(new AL_Lecture(this));
-		this.add (this.jbLecture);
-	}
+		this.add(this.jbLecture);
+}
 	
 	/**
 	 * Getter du contrôleur.
