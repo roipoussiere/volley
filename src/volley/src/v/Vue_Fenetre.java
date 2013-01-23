@@ -50,11 +50,20 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		this.vl = new Vue_Lecture(this.c); // Onglet Lecture
 		this.jtp.addTab("Lecture", this.vl);
 		
-		this.c.masquerOnglets();
-
 		this.add(this.jtp); // Ajout des onglets dans le JPanel
 	}
 
+	/**
+	 * Affiche ou masque l'onglet Lecture
+	 * @param _aff false si l'onglet doit être masqué, true sinon
+	 * @author Nathanaël Jourdane
+	 */
+	public void affLecture(boolean _aff)
+	{
+		this.vl.setEnabled(_aff); // ne marche pas
+		System.out.println("affichage de l'onglet lecture : " + _aff);
+	}
+	
 	/**
 	 * Getter du contrôleur.
 	 * @return Le contrôleur.

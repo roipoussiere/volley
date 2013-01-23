@@ -32,7 +32,7 @@ public class Vue_Lecture extends JPanel
 		this.jbLecture.addActionListener(new AL_Lecture(this));
 		this.add (this.jbLecture);
 	}
-		
+	
 	/**
 	 * Getter du contrôleur.
 	 * @return Le contrôleur.

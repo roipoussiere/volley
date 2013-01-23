@@ -2,9 +2,11 @@ package c;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-
 import javax.swing.*;
+
 import v.Vue_Edition;
+import v.Vue_Fichier;
+import v.Vue_Joueurs;
 import v.Vue_Lecture;
 import v.Vue_Fenetre;
 import v.Vue_Parcourir;
@@ -16,11 +18,14 @@ import v.Vue_Terrain;
  */
 public class Controleur
 {
-	private Vue_Fenetre vf;
-	private Vue_Lecture vl;
-	private Vue_Edition ve;
+	private Vue_Fenetre vfe;
 	private Vue_Parcourir vp;
 	private Vue_Terrain vt;
+
+	private Vue_Fichier vfi;
+	private Vue_Joueurs vj;
+	private Vue_Edition ve;
+	private Vue_Lecture vl;
 	
 	private String nomFichier;
 	private String cheminFichier;
@@ -31,13 +36,16 @@ public class Controleur
 	 */
 	public Controleur ()
 	{
-		this.vl = null;
-		this.ve = null;
-		this.vf = null;
-		this.vp = null;
-		this.vt = null;
 		this.nomFichier = null;
 		this.cheminFichier = null;
+		this.vfe = null;
+		this.vp = null;
+		this.vt = null;
+
+		this.vfi = null;
+		this.vj = null;
+		this.ve = null;
+		this.vl = null;
 	}
 
 	/**
@@ -46,11 +54,12 @@ public class Controleur
 	 */
 	public void demarrer ()
 	{
-		if (this.vf == null)
+		if (this.vfe == null)
 		{
-			this.vf = new Vue_Fenetre(this);
+			this.vfe = new Vue_Fenetre(this);
 			this.centrerFen();
-			this.vf.setVisible (true);
+			this.vfe.setVisible (true);
+			this.majOnglets();
 		}
 	}
 	
@@ -59,6 +68,7 @@ public class Controleur
 	/**
 	 * Getter de nom fichier.
 	 * @return Le nom du fichier.
+	 * @author Nathanaël Jourdane
 	 */
 	public String getNomFichier()
 	{
@@ -68,6 +78,7 @@ public class Controleur
 	/**
 	 * Setter de nom du fichier.
 	 * @param _nom Le nom du fichier.
+	 * @author Nathanaël Jourdane
 	 */
 	public void setNomFichier(String _nom)
 	{
@@ -79,41 +90,21 @@ public class Controleur
 	 * @return La fenêtre principale du programme
 	 * @author Nathanaël Jourdane
 	 */
-	public Vue_Fenetre getVF()
+	public Vue_Fenetre getVFE()
 	{
-		return vf;
-	}
-	
-	/**
-	 * Getter de Vue_Lecture.
-	 * @return La vue de l'onglet de lecture d'une statégie.
-	 * @author Nathanaël Jourdane
-	 */
-	public Vue_Lecture getVL()
-	{
-		return vl;
-	}
-	
-	/**
-	 * Getter de Vue_Edition.
-	 * @return La vue de l'onglet d'édition d'une statégie.
-	 * @author Nathanaël Jourdane
-	 */
-	public Vue_Edition getVE()
-	{
-		return ve;
+		return this.vfe;
 	}
 	
 	/**
 	 * Getter de Vue_Parcourir.
-	 * @return La fenetre permetant de sélectionner un fichier de statégie.
+	 * @return La fenetre permetant de sélectionner un fichier de stratégie.
 	 * @author Nathanaël Jourdane
 	 */
 	public Vue_Parcourir getVP()
 	{
-		return vp;
+		return this.vp;
 	}
-
+	
 	/**
 	 * Getter de Vue_Terrain.
 	 * @return La fenetre représentant le terrain de volley.
@@ -121,9 +112,49 @@ public class Controleur
 	 */
 	public Vue_Terrain getVT()
 	{
-		return vt;
+		return this.vt;
 	}
 	
+	/**
+	 * Getter de Vue_Fichier.
+	 * @return La vue de l'onglet Fichier
+	 * @author Nathanaël Jourdane
+	 */
+	public Vue_Fichier getVFI()
+	{
+		return this.vfi;
+	}
+	
+	/**
+	 * Getter de Vue_Joueurs.
+	 * @return La vue de l'onglet Joueurs
+	 * @author Nathanaël Jourdane
+	 */
+	public Vue_Joueurs getVJ()
+	{
+		return this.vj;
+	}
+	
+	/**
+	 * Getter de Vue_Edition.
+	 * @return La vue de l'onglet Edition
+	 * @author Nathanaël Jourdane
+	 */
+	public Vue_Edition getVE()
+	{
+		return this.ve;
+	}
+	
+	/**
+	 * Getter de Vue_Lecture.
+	 * @return La vue de l'onglet Lecture
+	 * @author Nathanaël Jourdane
+	 */
+	public Vue_Lecture getVL()
+	{
+		return this.vl;
+	}
+		
 	// *** Méthodes de Vue_Lecture ***
 	
 	/**
@@ -163,6 +194,8 @@ public class Controleur
 			
 			System.out.println("Le fichier " + this.nomFichier + " a été sélectionné.");
 			System.out.println("Il se trouve dans : " + this.cheminFichier);
+			
+			this.majOnglets(); // On met à jour les onglets pour démasquer l'onglet Lecture.
 		}
 		else // Pas de fichier choisi
 		{
@@ -194,9 +227,12 @@ public class Controleur
 	 * Masque les onglets dont l'utilisateur n'a pas accès.
 	 * @author Nathanaël Jourdane
 	 */
-	public void masquerOnglets()
+	public void majOnglets()
 	{
-//		if (this.vf.)
+		if (this.nomFichier == null)
+			this.vfe.affLecture(false);
+		else
+			this.vfe.affLecture(true);
 	}
 	
 	/**
@@ -208,7 +244,7 @@ public class Controleur
 		// Les dimentions de l'écran
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		
-		if (this.vf == null) // Si on la fenetre principale n'est pas ouverte
+		if (this.vfe == null) // Si on la fenetre principale n'est pas ouverte
 		{
 			System.out.println("Aucune fenetre à centrer.");
 		}
@@ -216,12 +252,12 @@ public class Controleur
 		{
 			if (this.vt == null) // Si la fenetre de terrain n'est pas ouverte
 			{
-				this.vf.setLocation((screen.width - this.vf.getSize().width)/2,(screen.height - this.vf.getSize().height)/2);
+				this.vfe.setLocation((screen.width - this.vfe.getSize().width)/2,(screen.height - this.vfe.getSize().height)/2);
 				System.out.println("1 fenêtre centrée");
 			}
 			else
 			{
-				this.vf.setLocation(screen.width/2 - this.vf.getSize().width - 5,(screen.height - this.vf.getSize().height)/2); 
+				this.vfe.setLocation(screen.width/2 - this.vfe.getSize().width - 5,(screen.height - this.vfe.getSize().height)/2); 
 				this.vt.setLocation(screen.width/2 ,(screen.height - this.vt.getSize().height)/2); 
 				System.out.println("2 fenêtres centrées");
 			}
@@ -234,7 +270,7 @@ public class Controleur
 	 */
 	public void arreter ()
 	{
-		int option = JOptionPane.showConfirmDialog(this.vf, "Voulez-vous Quitter ?");
+		int option = JOptionPane.showConfirmDialog(this.vfe, "Voulez-vous Quitter ?");
 		if (option == JOptionPane.OK_OPTION)
 		{
 			System.out.println("Fermeture du programme.");			
