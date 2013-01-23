@@ -1,0 +1,33 @@
+Onglet Fichier (Julien) :
+Nouveau, ouvrir, enregistrer, enregistrer sous, quitter ...
+
+Onglet Joueurs (Xavier) :
+Par défaut : 1 seule équipe, 6 joueurs
+Onglets équipe 1 et équipe 2
+*6 :
+	label "joueur n : "
+	champ nom du joueur
+	checkbox affiché ou non
+	bouton radio meneur
+checkbox afficher tous les joueurs
+
+Onglet Edition (Florian) :
+boutons temps précédent et suivant + champ (idem lecture)
+1 champ pour chaque joueur pour spécifier son emplacement
+Liste déroulante pour sélectionner attaque ou défense
+
+Onglet lecture (Julien) :
+Onglet inactif tant qu'on a pas sélectionné le fichier
+Affiche le terrain dès l'activation de la vue
+Supprimer boutons radio
+Bouton précédent + suivant avec champ entre les 2
+Masquer boutons pour t(-1) et t(n+1)
+Bouton lecture devient play/pause et est inactif pour l'instant
+champ Nom du fichier devient un label (non modifiable)
+boutons radio terrain complet / demin terrain
+Si demi-terrain : équipe 1 ou 2
+
+Vue Terrain (Nathanaël) :
+Ligne du milieu, contours terrain
+Si en mode edition : quadrillage
+Joueurs (si on a le temps)
