@@ -9,16 +9,16 @@ import java.awt.event.*;
  */
 public class AL_Parcourir implements ActionListener
 {
-	private Vue_Lecture vl;
+	private Vue_Fichier vf;
 
 	/**
 	 * Constructeur de l'ActionListener.
 	 * @param _vl Vue de lecture d'une stratégie.
 	 * @author Nathanaël Jourdane
 	 */
-	public AL_Parcourir(Vue_Lecture _vl)
+	public AL_Parcourir(Vue_Fichier _vf)
 	{
-		this.vl = _vl;
+		this.vf = _vf;
 	}
 
 	/**
@@ -28,6 +28,6 @@ public class AL_Parcourir implements ActionListener
 	 */
 	public void actionPerformed(ActionEvent _ae)
 	{
-		this.vl.getC().vl_parcourir();
+		this.vf.getC().setNomFichier(this.vf.getC().vf_parcourir());
 	}
 }

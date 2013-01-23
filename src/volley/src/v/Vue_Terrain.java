@@ -54,7 +54,7 @@ public class Vue_Terrain extends JFrame implements WindowListener
 	 */
 	public void windowClosing(WindowEvent arg0)
 	{
-		this.getC().fermerVT();
+		this.getC().vt_fermer();
 	}
 	
 	// Ces méthodes sont les autres évenements possibles sur la fenêtre que nous utilisons pas.

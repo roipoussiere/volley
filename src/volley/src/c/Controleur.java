@@ -22,6 +22,8 @@ public class Controleur
 	private Vue_Parcourir vp;
 	private Vue_Terrain vt;
 	
+	private String nomFichier;
+	
 	/**
 	 * Constructeur du contôleur qui initialise les vues.
 	 * @author Nathanaël Jourdane
@@ -33,6 +35,7 @@ public class Controleur
 		this.vf = null;
 		this.vp = null;
 		this.vt = null;
+		this.nomFichier = null;
 	}
 
 	/**
@@ -49,7 +52,25 @@ public class Controleur
 		}
 	}
 	
-	// *** Getters ***
+	// *** Getters & Setters ***
+	
+	/**
+	 * Getter de nom fichier.
+	 * @return Le nom du fichier.
+	 */
+	public String getNomFichier()
+	{
+		return this.nomFichier;
+	}
+		
+	/**
+	 * Setter de nom du fichier.
+	 * @param _nom Le nom du fichier.
+	 */
+	public void setNomFichier(String _nom)
+	{
+		this.nomFichier = _nom;
+	}
 	
 	/**
 	 * Getter de Vue_Fenetre.
@@ -127,7 +148,7 @@ public class Controleur
 	 * @return Une chaine contenant le chemin du fichier suivi de son nom.
 	 * @author Nathanaël Jourdane
 	 */
-	public String vl_parcourir()
+	public String vf_parcourir()
 	{
 		String cheminNomFichier = null;
 		
@@ -151,6 +172,22 @@ public class Controleur
 		return cheminNomFichier;
 	}
 	
+	// *** Méthodes de Vue_Fichier ***
+	
+	public String libelleNomFichier()
+	{
+		String libelle;
+		if (this.nomFichier == null)
+		{
+			libelle = "Sélectionnez un fichier";
+		}
+		else
+		{
+			libelle = this.nomFichier;
+		}
+		return libelle;
+	}
+	
 	// *** Méthodes de Vue_Edition ***
 	
 	// *** Méthodes de Vue_Terrain ***
@@ -159,15 +196,20 @@ public class Controleur
 	 * Ferme correctement la fenetre de terrain.
 	 * @author Nathanaël Jourdane
 	 */
-	public void fermerVT()
+	public void vt_fermer()
 	{
 		System.out.println("Fermeture de la fenetre du terrain.");
 		this.vt.setVisible(false);
 		this.vt = null;
 		centrerFen();
 	}
+		
+	// *** Méthodes de Vue_Fenetre ***
 	
-	// *** Autres méthodes ***
+	public void masquerOnglets()
+	{
+//		if (this.vf.)
+	}
 	
 	/**
 	 * Positionne une ou plusieurs fenetres au centre de l'écran.

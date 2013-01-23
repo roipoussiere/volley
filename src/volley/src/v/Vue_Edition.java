@@ -24,7 +24,6 @@ public class Vue_Edition extends JPanel
 		super ();
 		this.c = _c;
 
-		this.add(new JLabel ("Sélectionner une stratégie :"));
 	}
 			
 	/**

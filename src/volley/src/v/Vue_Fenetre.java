@@ -13,9 +13,10 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	private static final long serialVersionUID = 1L;
 	private Controleur c;
 	private JTabbedPane jtp;
-	private JPanel jpOnglets; // Les onglets à gauche
 	
-	// Les vues lecture et édition sont des JPanels
+	// Les onglets
+	private Vue_Fichier vf;
+	private Vue_Joueurs vj;
 	private Vue_Lecture vl;
 	private Vue_Edition ve;
 
@@ -35,17 +36,23 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		this.setResizable(false);
 		
 		
-		this.jpOnglets = new JPanel(); // Création des JPanels
 		this.jtp = new JTabbedPane(SwingConstants.TOP);
 		 
-		this.vl = new Vue_Lecture(this.c);
-		this.jtp.addTab("Lecture", this.vl);
+		this.vf = new Vue_Fichier(this.c); // Onglet Fichier
+		this.jtp.addTab("Fichier", this.vf);
+
+		this.vj = new Vue_Joueurs(this.c); // Onglet Joueurs
+		this.jtp.addTab("Joueurs", this.vj);
 		 
-		this.ve = new Vue_Edition(this.c);
+		this.ve = new Vue_Edition(this.c); // Onglet Édition
 		this.jtp.addTab("Edition", this.ve);
 		
-		this.jpOnglets.add(this.jtp); // Ajout des onglets dans le JPanel
-		this.add(this.jpOnglets); // Ajout du Jpanel Onglets dans la fenetre
+		this.vl = new Vue_Lecture(this.c); // Onglet Lecture
+		this.jtp.addTab("Lecture", this.vl);
+		
+		this.c.masquerOnglets();
+
+		this.add(this.jtp); // Ajout des onglets dans le JPanel
 	}
 
 	/**
