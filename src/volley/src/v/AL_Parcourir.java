@@ -28,6 +28,7 @@ public class AL_Parcourir implements ActionListener
 	 */
 	public void actionPerformed(ActionEvent _ae)
 	{
-		this.vf.getC().setNomFichier(this.vf.getC().vf_parcourir());
+		this.vf.getC().vf_parcourir();
+		this.vf.majLibelle();
 	}
 }

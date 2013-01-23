@@ -18,7 +18,7 @@ public class Vue_Fichier extends JPanel
 	
 	/**
 	 * Création du JFrame et de tous ses composants.
-	 * @param _c Constrôleur.
+	 * @param _c Contrôleur.
 	 * @author Nathanaël Jourdane
 	 */
 	public Vue_Fichier (Controleur _c)
@@ -26,14 +26,18 @@ public class Vue_Fichier extends JPanel
 		super ();
 		this.c = _c;
 		
-		this.jbNomFichier = new JLabel(this.c.libelleNomFichier());
+		this.jbNomFichier = new JLabel("Sélectionnez un fichier");
 		this.add (this.jbNomFichier);
 		
 		this.jbParcourir = new JButton ("Parcourir");
 		this.jbParcourir.addActionListener(new AL_Parcourir(this));
 		this.add (this.jbParcourir);
 	}
-		
+	
+	public void majLibelle()
+	{
+		this.jbNomFichier.setText(this.c.getNomFichier());
+	}
 	/**
 	 * Getter du contrôleur.
 	 * @return Le contrôleur.

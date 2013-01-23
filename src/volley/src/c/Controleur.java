@@ -23,9 +23,10 @@ public class Controleur
 	private Vue_Terrain vt;
 	
 	private String nomFichier;
+	private String cheminFichier;
 	
 	/**
-	 * Constructeur du contôleur qui initialise les vues.
+	 * Constructeur du contôleur qui initialise les vues et les arguments.
 	 * @author Nathanaël Jourdane
 	 */
 	public Controleur ()
@@ -36,6 +37,7 @@ public class Controleur
 		this.vp = null;
 		this.vt = null;
 		this.nomFichier = null;
+		this.cheminFichier = null;
 	}
 
 	/**
@@ -148,46 +150,28 @@ public class Controleur
 	 * @return Une chaine contenant le chemin du fichier suivi de son nom.
 	 * @author Nathanaël Jourdane
 	 */
-	public String vf_parcourir()
+	public void vf_parcourir()
 	{
-		String cheminNomFichier = null;
-		
 		System.out.println("Sélection d'un fichier...");
 		this.vp = new Vue_Parcourir(this);
 		int retour = this.vp.showOpenDialog(null);
 
 		if(retour == JFileChooser.APPROVE_OPTION) // Si un fichier a été choisi
 		{
-			String nom = this.vp.getSelectedFile().getName(); // Nom du fichier  choisi 
-			String chemin = this.vp.getSelectedFile().getAbsolutePath(); // Chemin absolu du fichier choisi
-			cheminNomFichier = nom + chemin;
+			this.nomFichier = this.vp.getSelectedFile().getName(); // Nom du fichier  choisi 
+			this.cheminFichier = this.vp.getSelectedFile().getAbsolutePath(); // Chemin absolu du fichier choisi
 			
-			System.out.println("Le fichier sélectionné est : " + cheminNomFichier);
+			System.out.println("Le fichier " + this.nomFichier + " a été sélectionné.");
+			System.out.println("Il se trouve dans : " + this.cheminFichier);
 		}
 		else // Pas de fichier choisi
 		{
 			System.out.println("Aucun fichier sélectionné");
 		}
-		
-		return cheminNomFichier;
 	}
 	
 	// *** Méthodes de Vue_Fichier ***
-	
-	public String libelleNomFichier()
-	{
-		String libelle;
-		if (this.nomFichier == null)
-		{
-			libelle = "Sélectionnez un fichier";
-		}
-		else
-		{
-			libelle = this.nomFichier;
-		}
-		return libelle;
-	}
-	
+		
 	// *** Méthodes de Vue_Edition ***
 	
 	// *** Méthodes de Vue_Terrain ***
@@ -206,6 +190,10 @@ public class Controleur
 		
 	// *** Méthodes de Vue_Fenetre ***
 	
+	/**
+	 * Masque les onglets dont l'utilisateur n'a pas accès.
+	 * @author Nathanaël Jourdane
+	 */
 	public void masquerOnglets()
 	{
 //		if (this.vf.)
