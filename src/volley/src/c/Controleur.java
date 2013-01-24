@@ -20,7 +20,6 @@ public class Controleur
 	
 	private String nomFichier;
 	private String cheminFichier;
-	private boolean demiTerrain;
 	
 	/**
 	 * Constructeur du contôleur qui initialise les vues et les arguments.
@@ -93,22 +92,31 @@ public class Controleur
 	 */
 	public void afficherTerrain(int _onglet)
 	{
-		// Si le terrain n'est pas ouvert et qu'on est en Edition ou Lecture
-		if (this.vt == null && (_onglet == 2 || _onglet == 3))
+		// Si on est en mode lecture ou écriture
+		if(_onglet == 2 || _onglet == 3)
 		{
-			System.out.println("Affichage du terrain.");
-			this.vt = new Vue_Terrain(this, this.vf.getVJ().demiT());
-			this.centrerFen();
-			this.vt.setVisible (true);
+			// Si le terrain n'est pas ouvert, on l'ouvre
+			if(this.vt == null)
+			{
+				System.out.println("Affichage du terrain.");
+				// affiche la fenetre du terrain en précisant s'il est en DT et TC
+				this.vt = new Vue_Terrain(this, this.vf.getVJ().demiT());
+				this.vt.quadrillage(_onglet == 3); // trace le quadrillage en fonction du mode lecture ou écriture.
+				this.centrerFen();
+				this.vt.setVisible (true);
+			}
+			// Dans tous les cas, on trace le quadrillage en fonction du mode lecture ou écriture.
+			this.vt.quadrillage(_onglet == 3);
 		}
-		// Si le terrain est ouvert et qu'on est ni en Edition, ni en Lecture
-		else if (this.vt != null && (_onglet != 2 && _onglet != 3))
+		// Si on est ni en Lecture ni en Ecriture et que le terrain est ouvert
+		else if (this.vt != null)
 		{
 			System.out.println("Fermeture du terrain.");
 			this.vt.setVisible (false);	
 			this.vt = null; // La vue Terrain n'existe plus.
 			this.centrerFen();
 		}
+
 	}
 	/**
 	 * Ouvre une fenetre invitant à l'utilisateur à sélectionner un fichier de stratégie.

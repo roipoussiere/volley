@@ -21,7 +21,7 @@ public class Vue_Terrain extends JFrame implements WindowListener
 	 * @param _c Le contrôleur.
 	 * @author Nathanaël Jourdane
 	 */
-	public Vue_Terrain(Controleur _c, boolean demiT)
+	public Vue_Terrain(Controleur _c, boolean _demiT)
 	{
 		super ("Terrain");
 		this.c = _c;
@@ -29,18 +29,24 @@ public class Vue_Terrain extends JFrame implements WindowListener
 		this.addWindowListener(this); // On abonne la fenêtre à elle-même.
 		this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		
-		if (demiT)
-			this.setSize(396, 396);			
+		if (_demiT)
+			this.setSize(550, 550);			
+			// demi-terrain : zone 11*11 cases de 50px chacune = 550*550
 		else
 			this.setSize(396, 720);
-		// 1 terrain : zone 11*11 cases ...
-		// 2 terrains : zone de 11*20 cases de 36px*36px chacune = zone de 396*720
+			// terrain complet : zone de 11*20 cases de 36px*36px chacune = 396*720
+
+		this.setResizable(false);
 
 		Color vert = new Color(0, 100, 0);
 		this.getContentPane().setBackground(vert);
-		this.setResizable(false);
 	}
 
+	public void quadrillage(boolean _lecture)
+	{
+		System.out.println("lecture : " + _lecture);
+	}
+	
 	/**
 	 * Getter du contrôleur.
 	 * @return Le contrôleur.
