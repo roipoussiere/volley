@@ -101,12 +101,13 @@ public class Controleur
 				System.out.println("Affichage du terrain.");
 				// affiche la fenetre du terrain en précisant s'il est en DT et TC
 				this.vt = new Vue_Terrain(this, this.vf.getVJ().demiT());
-				this.vt.quadrillage(_onglet == 3); // trace le quadrillage en fonction du mode lecture ou écriture.
+				this.vt.setQuadri(_onglet == 3);
 				this.centrerFen();
 				this.vt.setVisible (true);
 			}
 			// Dans tous les cas, on trace le quadrillage en fonction du mode lecture ou écriture.
-			this.vt.quadrillage(_onglet == 3);
+			this.vt.setQuadri(_onglet == 3);
+			this.vt.quadriller();
 		}
 		// Si on est ni en Lecture ni en Ecriture et que le terrain est ouvert
 		else if (this.vt != null)
