@@ -12,9 +12,9 @@ public class Vue_Terrain extends JFrame implements WindowListener
 {
 	private static final long serialVersionUID = 1L;
 	private Controleur c;
-	private Vue_Dessin vd;
+	private Vue_DessinLecture vd;
+	private Vue_DessinEdition ve;
 	
-	private boolean quadri;
 	private boolean demiT;
 	private int tCase;
 	
@@ -55,10 +55,18 @@ public class Vue_Terrain extends JFrame implements WindowListener
 	 * Dessine le quadrillage sur terrain, qui varie en fonction du mode demi-terrain/terrain complet et lecture/edition.
 	 * @author Nathanaël Jourdane
 	 */
-	public void quadriller()
+	public void dessiner(boolean _lecture)
 	{
-		vd = new Vue_Dessin(this);
-		this.add(vd);
+		if(_lecture)
+		{
+			vd = new Vue_DessinLecture(this);
+			this.add(vd);			
+		}
+		else
+		{
+			ve = new Vue_DessinEdition(this);
+			this.add(ve);						
+		}
 	}
 		
 	/**
@@ -69,26 +77,6 @@ public class Vue_Terrain extends JFrame implements WindowListener
 	public int getTCase()
 	{
 		return this.tCase;
-	}
-	
-	/**
-	 * Getter du mode de quadrillage.
-	 * @return True si on doit afficher le quadillage, false sinon.
-	 * @author Nathanaël Jourdane
-	 */
-	public boolean getQuadri()
-	{
-		return this.quadri;
-	}
-	
-	/**
-	 * Setter du mode de quadrillage.
-	 * @param True si on doit afficher le quadillage, false sinon.
-	 * @author Nathanaël Jourdane
-	 */
-	public void setQuadri(boolean _quadri)
-	{
-		this.quadri = _quadri;
 	}
 	
 	/**

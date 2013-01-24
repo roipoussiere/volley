@@ -81,7 +81,7 @@ public class Controleur
 	{
 		System.out.println("Silence, ça tourne !");
 	}
-		
+	
 	/**
 	 * Affiche la fenetre de terrain si l'utilisateur est sous l'onglet Lecture ou Edition.<br/>.
 	 * Masque la fenetre dans le cas contraire.<br/>
@@ -101,13 +101,11 @@ public class Controleur
 				System.out.println("Affichage du terrain.");
 				// affiche la fenetre du terrain en précisant s'il est en DT et TC
 				this.vt = new Vue_Terrain(this, this.vf.getVJ().demiT());
-				this.vt.setQuadri(_onglet == 3);
 				this.centrerFen();
 				this.vt.setVisible (true);
 			}
 			// Dans tous les cas, on trace le quadrillage en fonction du mode lecture ou écriture.
-			this.vt.setQuadri(_onglet == 3);
-			this.vt.quadriller();
+			this.vt.dessiner(_onglet == 3);
 		}
 		// Si on est ni en Lecture ni en Ecriture et que le terrain est ouvert
 		else if (this.vt != null)
