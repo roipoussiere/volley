@@ -20,6 +20,7 @@ public class Controleur
 	
 	private String nomFichier;
 	private String cheminFichier;
+	private int styleQ;
 	
 	/**
 	 * Constructeur du contôleur qui initialise les vues et les arguments.
@@ -91,7 +92,7 @@ public class Controleur
 	 * @author Nathanaël Jourdane
 	 */
 	public void afficherTerrain(int _onglet)
-	{
+	{	
 		// Si on est en mode lecture ou écriture
 		if(_onglet == 2 || _onglet == 3)
 		{
@@ -104,8 +105,12 @@ public class Controleur
 				this.centrerFen();
 				this.vt.setVisible (true);
 			}
+			
+			if (_onglet == 3) // si on est en Edition, quadrillage fin
+				this.styleQ = 2;
+
 			// Dans tous les cas, on trace le quadrillage en fonction du mode lecture ou écriture.
-			this.vt.dessiner(_onglet == 3);
+			this.vt.dessiner(this.styleQ);
 		}
 		// Si on est ni en Lecture ni en Ecriture et que le terrain est ouvert
 		else if (this.vt != null)

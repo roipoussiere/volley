@@ -8,15 +8,13 @@ import c.Controleur;
 /**
  * 
  */
+@SuppressWarnings("serial")
 public class Vue_Terrain extends JFrame implements WindowListener
 {
-	private static final long serialVersionUID = 1L;
 	private Controleur c;
-	private Vue_DessinLecture vd;
-	private Vue_DessinEdition ve;
+	private Vue_Dessin vd;
 	
 	private boolean demiT;
-	private int tCase;
 	
 	/**
 	 * Création de la fenêtre représentant le terrain de volley.
@@ -31,21 +29,13 @@ public class Vue_Terrain extends JFrame implements WindowListener
 		
 		this.addWindowListener(this); // On abonne la fenêtre à elle-même.
 		this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-		
-		// Si demi-terrain : zone de 11*11 cases de 50px chacune = 550*550			
-		if (this.demiT)
-		{
-			this.setSize(550, 550);
-			this.tCase = 50;
-		}
-		// Si terrain complet : zone de 11*20 cases de 36px*36px chacune = 396*720
-		else
-		{
-			this.tCase = 36;
-			this.setSize(396, 720);
-		}
-
 		this.setResizable(false);
+		
+				
+		if (this.demiT) // Si demi-terrain : zone de 11*10 cases de 50px chacune = 550*500	
+			this.setSize(557, 528);
+		else // Si terrain complet : zone de 11*20 cases de 36px*36px chacune = 396*720
+			this.setSize(403, 729);
 
 		Color vert = new Color(0, 100, 0);
 		this.setBackground(vert);
@@ -55,28 +45,10 @@ public class Vue_Terrain extends JFrame implements WindowListener
 	 * Dessine le quadrillage sur terrain, qui varie en fonction du mode demi-terrain/terrain complet et lecture/edition.
 	 * @author Nathanaël Jourdane
 	 */
-	public void dessiner(boolean _lecture)
+	public void dessiner(int _styleQ)
 	{
-		if(_lecture)
-		{
-			vd = new Vue_DessinLecture(this);
-			this.add(vd);			
-		}
-		else
-		{
-			ve = new Vue_DessinEdition(this);
-			this.add(ve);						
-		}
-	}
-		
-	/**
-	 * Getter de la taille des cases.
-	 * @return La taille des cases du quadrillage
-	 * @author Nathanaël Jourdane
-	 */
-	public int getTCase()
-	{
-		return this.tCase;
+		vd = new Vue_Dessin(this, _styleQ);
+		this.add(vd);
 	}
 	
 	/**
