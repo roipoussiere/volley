@@ -35,7 +35,7 @@ public class Vue_Terrain extends JFrame implements WindowListener
 		if (this.demiT) // Si demi-terrain : zone de 11*10 cases de 50px chacune = 550*500	
 			this.setSize(557, 528);
 		else // Si terrain complet : zone de 11*20 cases de 36px*36px chacune = 396*720
-			this.setSize(403, 729);
+			this.setSize(403, 743);
 
 		Color vert = new Color(0, 100, 0);
 		this.setBackground(vert);

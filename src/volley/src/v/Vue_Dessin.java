@@ -26,10 +26,10 @@ public class Vue_Dessin extends JPanel
 	{
 		this.styleQ = 2; // carreaux fins (à supprimer)
 		
-		//if (this.vt.getDemi()) // demi terrain
+		if (this.vt.getDemi()) // demi terrain
 			dessinerDT(_g, this.styleQ);
-		/*else // terrain complet
-			dessinerTC(_g, this.styleQ);*/
+		else // terrain complet
+			dessinerTC(_g, this.styleQ);
 	}
 	
 	/**
@@ -62,16 +62,30 @@ public class Vue_Dessin extends JPanel
 	 */
 	public void dessinerTC(Graphics _g, int _styleQ)
 	{
+		int tc = 36;
+		
 		if (_styleQ == 1)
 		{
-			dessinerQLarge(_g, 10, 36);
-			dessinerQLarge(_g, 100, 36);
+			//dessinerQLarge(_g, 10, tc);
+			//dessinerQLarge(_g, 2*tc, tc);
 		}
 		else if(_styleQ == 2)
 		{
-			dessinerQFin(_g, 10, 10);
-			dessinerQFin(_g, 100, 10);
+			dessinerQFin(_g, tc, tc);
+			dessinerQFin(_g, 10*tc, tc);
 		}
+		
+		_g.setColor(this.cBase);
+		// lignes verticales
+		_g.drawLine(tc, tc, tc*10, tc); // limite haut
+		_g.drawLine(tc, tc*7, tc*10, tc*7); // attaque haut
+		_g.drawLine(tc, tc*10, tc*10, tc*10); // ligne de service
+		_g.drawLine(tc, tc*13, tc*10, tc*13); // attaque bas
+		_g.drawLine(tc, tc*19, tc*10, tc*19); // ligne bas
+		
+		//lignes verticales
+		_g.drawLine(tc, tc, tc, tc*19); // ligne gauche
+		_g.drawLine(tc*10, tc, tc*10, tc*19); // ligne droite
 	}
 	
 	/**
@@ -103,10 +117,11 @@ public class Vue_Dessin extends JPanel
 	{
 		_g.setColor(this.cQLarge);
 
-		// ligne horizontale
-		_g.drawLine(_tc, _tc*6, _tc*10, _tc*6);
+		// lignes horizontales
+		_g.drawLine(_tc, _posY + _tc*6, _tc*10, _posY + _tc*6);
+		_g.drawLine(_tc, _posY + _tc*3, _tc*10, _posY + _tc*3);
 		// lignes verticales
-		_g.drawLine(_tc*4, 0, _tc*4, _tc*9);
-		_g.drawLine(_tc*7, 0, _tc*7, _tc*9);
+		_g.drawLine(_tc*4, _posY, _tc*4, _posY + _tc*9);
+		_g.drawLine(_tc*7, _posY, _tc*7, _posY + _tc*9);
 	}
 }
