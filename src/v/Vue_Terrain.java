@@ -35,7 +35,10 @@ public class Vue_Terrain extends JFrame implements WindowListener
 			this.setSize(557, 528);
 		else // Si terrain complet : zone de 11*20 cases de 36px*36px chacune = 396*720
 			this.setSize(403, 743);
-
+		
+		vd = new Vue_Dessin(this);
+	    this.setContentPane(vd);
+	    
 		Color vert = new Color(0, 100, 0);
 		this.setBackground(vert);
 	}
@@ -46,8 +49,8 @@ public class Vue_Terrain extends JFrame implements WindowListener
 	 */
 	public void dessiner(int _styleQ)
 	{
-		vd = new Vue_Dessin(this, _styleQ);
-		this.add(vd);
+		vd.setStyleQ(_styleQ);
+		vd.repaint();
 	}
 	
 	/**

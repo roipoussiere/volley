@@ -13,23 +13,29 @@ public class Vue_Dessin extends JPanel
 	private Color cQLarge; // Couleur du quadrillage large (3 carreaux)
 	private Color cQFin; // Couleur du quadrillage fin (9 carreaux)
 	
-	public Vue_Dessin(Vue_Terrain _vt, int _styleQ)
+	public Vue_Dessin(Vue_Terrain _vt)
 	{
 		this.cBase = new Color(0, 0, 0);
 		this.cQLarge = new Color(0, 80, 0);
 		this.cQFin = new Color(0, 95, 0);
 		this.vt = _vt;
-		this.styleQ = _styleQ;
+		this.styleQ = 0;
 	}
 	
 	public void paintComponent(Graphics _g)
 	{
-		this.styleQ = 2; // carreaux fins (à supprimer)
-		
+		Color vert = new Color(0, 100, 0);
+		_g.setColor(vert);
+		_g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		if (this.vt.getDemi()) // demi terrain
 			dessinerDT(_g, this.styleQ);
 		else // terrain complet
 			dessinerTC(_g, this.styleQ);
+	}
+	
+	public void setStyleQ(int _styleQ)
+	{
+		this.styleQ = _styleQ;
 	}
 	
 	/**

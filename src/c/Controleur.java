@@ -20,7 +20,8 @@ public class Controleur
 	
 	private String nomFichier;
 	private String cheminFichier;
-	private int styleQ;
+	private int styleL; // Style de quadrillage en mode lecture.
+	private int styleE; // Style de quadrillage en mode Edition.
 	
 	/**
 	 * Constructeur du contôleur qui initialise les vues et les arguments.
@@ -33,6 +34,8 @@ public class Controleur
 		this.vf = null;
 		this.vp = null;
 		this.vt = null;
+		this.styleL = 0; // Par défaut sans quadrillage en mode lecture.
+		this.styleE = 2; // Par défaut avec quadrillage fin en mode lecture.
 	}
 
 	/**
@@ -106,11 +109,10 @@ public class Controleur
 				this.vt.setVisible (true);
 			}
 			
-			if (_onglet == 3) // si on est en Edition, quadrillage fin
-				this.styleQ = 2;
-
-			// Dans tous les cas, on trace le quadrillage en fonction du mode lecture ou écriture.
-			this.vt.dessiner(this.styleQ);
+			if (_onglet == 2) // Si on est en Edition, quadrillage d'Edition
+				this.vt.dessiner(this.styleE);
+			else  // Si on est en Lecture, quadrillage de Lecture
+				this.vt.dessiner(this.styleL);
 		}
 		// Si on est ni en Lecture ni en Ecriture et que le terrain est ouvert
 		else if (this.vt != null)
