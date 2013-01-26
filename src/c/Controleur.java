@@ -44,7 +44,7 @@ public class Controleur
 	// *** Getters & Setters ***
 	
 	/**
-	 * Getter de nom fichier.
+	 * Getter du nom du fichier.
 	 * @return Le nom du fichier.
 	 * @author Nathanaël Jourdane
 	 */

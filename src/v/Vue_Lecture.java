@@ -1,6 +1,5 @@
 package v;
 
-import java.awt.*;
 import javax.swing.*;
 
 import c.Controleur;
@@ -14,7 +13,7 @@ public class Vue_Lecture extends JPanel
 	private Controleur c;
 	
 	// Composants de la fenêtre
-	private JButton jbLecture;
+	
 
 	/**
 	 * Création du JFrame et de tous ses composants.
@@ -25,12 +24,6 @@ public class Vue_Lecture extends JPanel
 	{
 		super ();
 		this.c = _c;
-		
-		this.setPreferredSize(new Dimension(385, 240)); // Affectation de la taille du contenu de l'onglet
-						
-		this.jbLecture = new JButton ("Lecture");
-		this.jbLecture.addActionListener(new AL_Lecture(this));
-		this.add(this.jbLecture);
 }
 	
 	/**

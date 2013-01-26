@@ -9,18 +9,44 @@ import c.Controleur;
  * Vue de la fenetre principale du programme.
  * @author Nathanaël Jourdane
  */
+@SuppressWarnings("serial")
 public class Vue_Fenetre extends JFrame implements WindowListener
 {
-	private static final long serialVersionUID = 1L;
 	private Controleur c;
-	private JTabbedPane jtp;
-	
-	// Les onglets
+	private JTabbedPane tp;
 	private Vue_Fichier vf;
 	private Vue_Joueurs vj;
+	
+	// La barre de menus
+	private JMenuBar mb = new JMenuBar();
+
+	// Menu Fichier
+	private JMenu mf = new JMenu("Fichier");
+	private JMenuItem mfo = new JMenuItem("Ouvrir");
+	private JMenuItem mfn = new JMenuItem("Nouveau");
+	private JMenuItem mfe = new JMenuItem("Enregistrer");
+	private JMenuItem mfes = new JMenuItem("Enregistrer sous...");
+	private JMenuItem mfq = new JMenuItem("Quitter");
+
+	// Menu Stratégie
+	private JMenu ms = new JMenu("Stratégie");
+	private JMenuItem msj = new JMenuItem("Joueurs");
+	private JMenuItem mst = new JMenuItem("Terrain");
+
+	// Menu Paramètres
+	private JMenu mp = new JMenu("Paramètres");
+	private JMenuItem mpg = new JMenuItem("Grille");
+	private JMenuItem mpc = new JMenuItem("Couleurs");
+
+	// Menu Aide
+	private JMenu ma = new JMenu("Aide");
+	private JMenuItem mab = new JMenuItem("Besoin d'aide ?");
+	private JMenuItem map = new JMenuItem("À propos de ce programme");
+	
+	// Les onglets
 	private Vue_Lecture vl;
 	private Vue_Edition ve;
-
+	
 	/**
 	 * Création de la fenêtre et de tous ses composants.
 	 * @param _c Le contrôleur.
@@ -36,24 +62,58 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		this.setResizable(false);
 		
-		this.jtp = new JTabbedPane();
-		this.jtp.addChangeListener(new CL_Fenetre(this));
-		 
-		this.vf = new Vue_Fichier(this.c); // Onglet Fichier
-		this.jtp.addTab("Fichier", this.vf);
+		this.tp = new JTabbedPane();
+		this.tp.addChangeListener(new CL_Fenetre(this));
+		
+		// Ajout des Items dans le menu Fichier
+		this.mf.add(mfo);
+		this.mf.add(mfn);
+		this.mf.add(mfe);
+		this.mf.add(mfes);
+		this.mf.add(mfq);
 
-		this.vj = new Vue_Joueurs(this.c); // Onglet Joueurs
-		this.jtp.addTab("Joueurs", this.vj);
-		 
-		this.ve = new Vue_Edition(this.c); // Onglet Édition
-		this.jtp.addTab("Edition", this.ve);
+		// Ajout des Items dans le menu Stratégie
+		this.ms.add(msj);
+		this.ms.add(mst);
 		
-		this.vl = new Vue_Lecture(this.c); // Onglet Lecture
-		this.jtp.addTab("Lecture", this.vl);
+		// Ajout des Items dans le menu Paramètres
+		this.mp.add(mpg);
+		this.mp.add(mpc);
 		
-		this.add(this.jtp); // Ajout des onglets dans la fenetre
+		// Ajout des Items dans le menu Aide
+		this.ma.add(mab);
+		this.ma.add(map);
+		
+		// Ajout des menus dans la barre de menus
+	    this.mb.add(mf);
+	    this.mb.add(ms);
+	    this.mb.add(mp);
+	    this.mb.add(ma);
+		
+		// Ajout de l'onglet Lecture dans la barre des onglets
+		this.vl = new Vue_Lecture(this.c);
+		this.tp.addTab("Lecture", this.vl);
+		
+		// Ajout de l'onglet Édition dans la barre des onglets
+		this.ve = new Vue_Edition(this.c);
+		this.tp.addTab("Edition", this.ve);
+		
+		this.add(this.tp); // Ajout de la barre d'onglets dans la fenêtre
+	    this.setJMenuBar(mb); // Ajout de la barre de menus dans la fenêtre
 	}
 
+	/**
+	 * Active ou désactive un sous menu
+	 * _onglet L'index de l'onglet à masquer.
+	 * _aff True pour activer l'onglet, false pour le désactiver.
+	 * @author Nathanaël Jourdane
+	 */
+	public void activerMenu(int _menu, int _sousMenu, boolean _aff)
+	{
+		JMenu m = (JMenu)this.mb.getComponent(_menu);
+		m.getMenuComponent(_sousMenu).setEnabled(_aff);
+	}
+	
 	// /!\ Cette méthode ne marche pas encore.
 	/**
 	 * Active ou désactive un onglet dont l'utilisateur n'a pas accès.
@@ -61,9 +121,9 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	 * _aff True pour activer l'onglet, false pour le désactiver.
 	 * @author Nathanaël Jourdane
 	 */
-	public void activerOnglets(int _onglet, boolean _aff)
+	public void activerOnglet(int _onglet, boolean _aff)
 	{
-		this.jtp.getComponentAt(_onglet).setVisible(_aff);
+		this.tp.getComponent(_onglet).setVisible(_aff);
 	}
 	
 	/**
@@ -107,11 +167,11 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	}
 	/**
 	 * Getter de l'onglet ouvert.
-	 * @return L'id de l'onglet actuellement ouvert, de 0 à 4.
+	 * @return L'id de l'onglet actuellement ouvert : 0 ou 1.
 	 */
 	public int getOngletOuvert()
 	{
-		return this.jtp.getSelectedIndex();
+		return this.tp.getSelectedIndex();
 	}
 	
 	/**
