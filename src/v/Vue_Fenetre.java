@@ -1,6 +1,7 @@
 package v;
 
 import java.awt.event.*;
+
 import javax.swing.*;
 
 import c.Controleur;
@@ -72,11 +73,11 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		JMenuItem mfe = new JMenuItem("Enregistrer");
 		JMenuItem mfes = new JMenuItem("Enregistrer sous");
 		JMenuItem mfq = new JMenuItem("Quitter");
-
+		
 		// Création des items de Stratégie
 		JMenuItem msj = new JMenuItem("Joueurs");
-		JMenuItem mst = new JMenuItem("Terrain");
-
+		JMenu mst = new JMenu("Terrain");
+				
 		// Création des items de Paramètres
 		JMenuItem mpg = new JMenuItem("Grille");
 		JMenuItem mpc = new JMenuItem("Couleurs");
@@ -85,11 +86,27 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		JMenuItem mab = new JMenuItem("Besoin d'aide ?");
 		JMenuItem map = new JMenuItem("À propos de ce programme");
 		
+		// Création des boutons radio pour sélectionner le mode de terrain,
+		// Avec leur action par défaut récupérée dans les paramètres.
+		ButtonGroup bg = new ButtonGroup();
+		JRadioButtonMenuItem modeDT = new JRadioButtonMenuItem("Demi terrain", this.getC().getP().isDemiT());
+		JRadioButtonMenuItem modeTC = new JRadioButtonMenuItem("Terrain complet", !this.getC().getP().isDemiT());
+		
+		modeDT.addActionListener(new AL_Fenetre(this));
+		modeTC.addActionListener(new AL_Fenetre(this));
+		
+		bg.add(modeDT);
+		bg.add(modeTC);
+		
+		mst.add(modeDT);
+		mst.add(modeTC);
+		
 		// Ajout des items dans le menu Fichier
 		this.mf.add(mfo);
 		this.mf.add(mfn);
 		this.mf.add(mfe);
 		this.mf.add(mfes);
+		this.mf.addSeparator();
 		this.mf.add(mfq);
 
 		// Ajout des items dans le menu Stratégie
@@ -119,7 +136,6 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	    
 	    // Ajout des écouteurs du menu Stratégie
 	    msj.addActionListener(new AL_Fenetre(this));
-	    mst.addActionListener(new AL_Fenetre(this));
 	    
 	    // Ajout des écouteurs du menu Paramètres
 	    mpg.addActionListener(new AL_Fenetre(this));

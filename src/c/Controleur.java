@@ -60,9 +60,9 @@ public class Controleur
 			this.afficherTerrain();
 		
 		if (_onglet == 0) // Si on est en Edition, quadrillage d'Edition
-			this.vt.dessiner(this.p.getStyleQE());
-		else  // Si on est en Lecture, quadrillage de Lecture
 			this.vt.dessiner(this.p.getStyleQL());
+		else  // Si on est en Lecture, quadrillage de Lecture
+			this.vt.dessiner(this.p.getStyleQE());
 	}
 	
 	/**
@@ -121,10 +121,14 @@ public class Controleur
 	
 	/**
 	 * Paramétrage du terrain.
+	 * @param demiT Mode d'affichage du terrain : True pour affichage en demi terrain, false pour affichage en terrain complet.
 	 */
-	public void ms_terrain()
+	public void ms_terrain(boolean _demiT)
 	{
-		System.out.println("Terrain...");
+		System.out.println("Demi terrain : " + _demiT);
+		this.p.setDemiT(_demiT);
+		this.vt_fermer();
+		this.afficherTerrain();
 	}
 	
 	/**

@@ -38,9 +38,10 @@ public class Vue_Terrain extends JFrame implements WindowListener
 		vd = new Vue_Dessin(this);
 	    this.setContentPane(vd);
 	}
-
+	
 	/**
-	 * Dessine le quadrillage sur le terrain, qui varie en fonction du mode demi-terrain/terrain complet et lecture/edition.
+	 * Dessine le quadrillage sur le terrain, qui varie en fonction du mode Lecture ou Edition.
+	 * @param _styleQ Le style de quadrillage du terrain
 	 */
 	public void dessiner(int _styleQ)
 	{
@@ -52,7 +53,7 @@ public class Vue_Terrain extends JFrame implements WindowListener
 	 * Getter du mode de la taille du terrain.
 	 * @return True si c'est une demi-terrain, false sinon.
 	 */
-	public boolean getDemi()
+	public boolean isDemi()
 	{
 		return this.demiT;
 	}
@@ -65,7 +66,7 @@ public class Vue_Terrain extends JFrame implements WindowListener
 	{
 		return this.c;
 	}
-
+	
 	/**
 	 * Action qui suit la fermeture de la fenêtre.
 	 * @param arg0 L'évenement de clic sur le bouton de fermeture de la fenêtre.

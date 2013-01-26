@@ -18,37 +18,40 @@ public class AL_Fenetre implements ActionListener
 		String t = ((JMenuItem)_ae.getSource()).getText();
 		
 		if (t == "Ouvrir")
-			vf.getC().mf_ouvrir();
+			this.vf.getC().mf_ouvrir();
 		
 		else if (t == "Nouveau")
-			vf.getC().mf_nouveau();
+			this.vf.getC().mf_nouveau();
 		
 		else if (t == "Enregistrer")
-			vf.getC().mf_enregistrer();
+			this.vf.getC().mf_enregistrer();
 		
 		else if (t == "Enregistrer sous")
-			vf.getC().mf_enregistrerSous();
+			this.vf.getC().mf_enregistrerSous();
 		
 		else if (t == "Quitter")
-			vf.getC().quitter();
+			this.vf.getC().quitter();
 		
 		else if (t == "Joueurs")
-			vf.getC().ms_joueurs();
+			this.vf.getC().ms_joueurs();
 
-		else if (t == "Terrain")
-			vf.getC().ms_terrain();
+		else if (t == "Demi terrain")
+			this.vf.getC().ms_terrain(true);
+
+		else if (t == "Terrain complet")
+			this.vf.getC().ms_terrain(false);
 
 		else if (t == "Grille")
-			vf.getC().mp_grille();
+			this.vf.getC().mp_grille();
 
 		else if (t == "Couleurs")
-			vf.getC().mp_couleurs();
+			this.vf.getC().mp_couleurs();
 
 		else if (t == "Besoin d'aide ?")
-			vf.getC().ma_aide();
+			this.vf.getC().ma_aide();
 
 		else if (t == "À propos de ce programme")
-			vf.getC().ma_apropos();
+			this.vf.getC().ma_apropos();
 
 		else
 			System.out.println("Erreur : écouteur inconnu.");

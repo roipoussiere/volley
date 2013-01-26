@@ -35,7 +35,7 @@ public class Vue_Dessin extends JPanel
 	{
 		_g.setColor(p.getCFond());
 		_g.fillRect(0, 0, this.getWidth(), this.getHeight());
-		if (this.vt.getDemi()) // demi terrain
+		if (this.vt.isDemi()) // demi terrain
 			dessinerDT(_g);
 		else // terrain complet
 			dessinerTC(_g);
