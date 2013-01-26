@@ -6,9 +6,9 @@ import c.Controleur;
 /**
  * Vue contenant les élements de l'onglet Edition.
  */
+@SuppressWarnings("serial")
 public class Vue_Edition extends JPanel
 {
-	private static final long serialVersionUID = 1L;
 	private Controleur c;
 	
 	// Composants de la fenêtre
@@ -17,7 +17,6 @@ public class Vue_Edition extends JPanel
 	/**
 	 * Création du JFrame et de tous ses composants.
 	 * @param _c Le contrôleur.
-	 * @author Nathanaël Jourdane
 	 */
 	public Vue_Edition (Controleur _c)
 	{
@@ -28,7 +27,6 @@ public class Vue_Edition extends JPanel
 	/**
 	 * Getter du contrôleur.
 	 * @return Le contrôleur.
-	 * @author Nathanaël Jourdane
 	 */
 	public Controleur getC()
 	{

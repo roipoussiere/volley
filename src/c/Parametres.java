@@ -19,7 +19,6 @@ public class Parametres
 	
 	/**
 	 * Affectation des valeurs par défaut
-	 * @author Nathanaël Jourdane
 	 */
 	public Parametres()
 	{
@@ -35,7 +34,6 @@ public class Parametres
 	/**
 	 * Getter du style de quadrillage en mode Lecture.
 	 * @return Le style de quadrillage en mode Lecture.
-	 * @author Nathanaël Jourdane
 	 */
 	public int getStyleQL()
 	{
@@ -45,7 +43,6 @@ public class Parametres
 	/**
 	 * Setter du style de quadrillage en mode Lecture.
 	 * @param styleL Le style de quadrillage en mode Lecture.
-	 * @author Nathanaël Jourdane
 	 */
 	public void setStyleQL(int styleL)
 	{
@@ -55,7 +52,6 @@ public class Parametres
 	/**
 	 * Getter du style de quadrillage en mode Edition.
 	 * @return Le style de quadrillage en mode Edition.
-	 * @author Nathanaël Jourdane
 	 */
 	public int getStyleQE()
 	{
@@ -65,7 +61,6 @@ public class Parametres
 	/**
 	 * Setter du style de quadrillage en mode Edition.
 	 * @param styleE Le style de quadrillage en mode Edition.
-	 * @author Nathanaël Jourdane
 	 */
 	public void setStyleQE(int styleE)
 	{
@@ -75,7 +70,6 @@ public class Parametres
 	/**
 	 * Getter de la couleur de fond du terrain.
 	 * @return La couleur de fond du terrain.
-	 * @author Nathanaël Jourdane
 	 */
 	public Color getCFond()
 	{
@@ -85,7 +79,6 @@ public class Parametres
 	/**
 	 * Setter de la couleur de fond du terrain.
 	 * @param cFond La couleur de fond du terrain.
-	 * @author Nathanaël Jourdane
 	 */
 	public void setCFond(Color cFond)
 	{
@@ -95,7 +88,6 @@ public class Parametres
 	/**
 	 * Getter de la couleur des lignes basiques (limites, filet, ligne d'attaque).
 	 * @return La couleur des lignes basiques (limites, filet, ligne d'attaque).
-	 * @author Nathanaël Jourdane
 	 */
 	public Color getCLignes()
 	{
@@ -104,8 +96,7 @@ public class Parametres
 	
 	/**
 	 * Setter de la couleur des lignes basiques (limites, filet, ligne d'attaque).
-	 * @param cFond La couleur des lignes basiques (limites, filet, ligne d'attaque).
-	 * @author Nathanaël Jourdane
+	 * @param cLignes La couleur des lignes basiques (limites, filet, ligne d'attaque).
 	 */
 	public void setCLignes(Color cLignes)
 	{
@@ -115,7 +106,6 @@ public class Parametres
 	/**
 	 * Getter de la couleur du quadrillage large (terrain découpé en 3*3).
 	 * @return La couleur du quadrillage large (terrain découpé en 3*3).
-	 * @author Nathanaël Jourdane
 	 */
 	public Color getCQLarge()
 	{
@@ -124,8 +114,7 @@ public class Parametres
 	
 	/**
 	 * Setter de la couleur du quadrillage large (terrain découpé en 3*3).
-	 * @param cFond La couleur du quadrillage large (terrain découpé en 3*3).
-	 * @author Nathanaël Jourdane
+	 * @param cQLarge La couleur du quadrillage large (terrain découpé en 3*3).
 	 */
 	public void setCQLarge(Color cQLarge)
 	{
@@ -135,7 +124,6 @@ public class Parametres
 	/**
 	 * Getter de la couleur du quadrillage fin (terrain découpé en 9*9).
 	 * @return La couleur du quadrillage fin (terrain découpé en 9*9).
-	 * @author Nathanaël Jourdane
 	 */
 	public Color getCQFin()
 	{
@@ -144,8 +132,7 @@ public class Parametres
 	
 	/**
 	 * Setter de la couleur du quadrillage fin (terrain découpé en 9*9).
-	 * @param cFond La couleur du quadrillage fin (terrain découpé en 9*9).
-	 * @author Nathanaël Jourdane
+	 * @param cQFin La couleur du quadrillage fin (terrain découpé en 9*9).
 	 */
 	public void setCQFin(Color cQFin)
 	{

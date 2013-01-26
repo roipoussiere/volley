@@ -7,15 +7,14 @@ import c.Controleur;
  * Fenetre de sélection du fichier.
  * @author Nathanaël Jourdane
  */
+@SuppressWarnings("serial")
 public class Vue_Parcourir extends JFileChooser
 {
-	private static final long serialVersionUID = 1L;
 	private Controleur c;
 	
 	/**
 	 * Crée le JFileChooser.
 	 * @param _c Le contrôleur.
-	 * @author Nathanaël Jourdane
 	 */
 	public Vue_Parcourir(Controleur _c)
 	{
@@ -26,7 +25,6 @@ public class Vue_Parcourir extends JFileChooser
 	/**
 	 * Getter du contrôleur.
 	 * @return Le contrôleur.
-	 * @author Nathanaël Jourdane
 	 */
 	public Controleur getC()
 	{

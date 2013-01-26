@@ -11,6 +11,7 @@ import v.Vue_Terrain;
 /**
  * Contrôleur du projet.<br/>
  * Contient le traitement de l'ensemble du programme, notament l'action suivie par le clic de chaque bouton.
+ * @author Nathanaël Jourdane
  */
 public class Controleur
 {
@@ -25,7 +26,6 @@ public class Controleur
 	
 	/**
 	 * Constructeur du contrôleur qui initialise les vues et les arguments et lance la vue principale (Vue_Fenetre).
-	 * @author Nathanaël Jourdane
 	 */
 	public Controleur ()
 	{
@@ -46,7 +46,6 @@ public class Controleur
 	/**
 	 * Getter du nom du fichier.
 	 * @return Le nom du fichier.
-	 * @author Nathanaël Jourdane
 	 */
 	public String getNomFichier()
 	{
@@ -64,7 +63,6 @@ public class Controleur
 	 * Action qui suit le clic sur un onglet.<br/>
 	 * Adapte le quadrillage de la vue Terrain en fonction du mode Lecture ou Edition.<br/>
 	 * @param _onglet L'indice de l'onglet ouvert.
-	 * @author Nathanaël Jourdane
 	 */
 	public void clicOnglet(int _onglet)
 	{
@@ -88,9 +86,8 @@ public class Controleur
 	/**
 	 * Ouvre une fenêtre invitant l'utilisateur à sélectionner un fichier de stratégie.<br/>
 	 * Stoque le chemin et le nom du fichier dans les arguments nomFichier et cheminFichier du contrôleur.
-	 * @author Nathanaël Jourdane
 	 */
-	public void vf_parcourir()
+	public void mf_ouvrir()
 	{
 		System.out.println("Sélection d'un fichier...");
 		this.vp = new Vue_Parcourir(this);
@@ -110,6 +107,78 @@ public class Controleur
 		}
 	}
 	
+	/**
+	 * Crée une nouvelle stratégie.
+	 */
+	public void mf_nouveau()
+	{
+		System.out.println("Nouvelle stratégie...");
+	}
+
+	/**
+	 * Enregistrement de la stratégie.
+	 */
+	public void mf_enregistrer()
+	{
+		System.out.println("Enregistrer...");
+	}
+	
+	/**
+	 * Enregistrement de la stratégie dans un dossier spécifié.
+	 */
+	public void mf_enregistrerSous()
+	{
+		System.out.println("Enregistrer sous...");
+	}
+	
+	/**
+	 * Paramétrage des joueurs.
+	 */
+	public void ms_joueurs()
+	{
+		System.out.println("Joueurs...");
+	}
+	
+	/**
+	 * Paramétrage du terrain.
+	 */
+	public void ms_terrain()
+	{
+		System.out.println("Terrain...");
+	}
+	
+	/**
+	 * Paramétrage de la grille.
+	 */
+	public void mp_grille()
+	{
+		System.out.println("Grille...");
+	}
+	
+	/**
+	 * Paramétrage des couleurs.
+	 */
+	public void mp_couleurs()
+	{
+		System.out.println("Couleurs...");
+	}
+	
+	/**
+	 * Affiche de l'aide pour l'utilisation du programme.
+	 */
+	public void ma_aide()
+	{
+		System.out.println("Aide...");
+	}
+	
+	/**
+	 * Affiche les informations concernant le programme.
+	 */
+	public void ma_apropos()
+	{
+		System.out.println("À propos...");
+	}
+	
 	// *** Méthodes de Vue_Fichier ***
 
 	// *** Méthodes de Vue_Lecture ***
@@ -120,7 +189,6 @@ public class Controleur
 	
 	/**
 	 * Ferme correctement la fenêtre de terrain.
-	 * @author Nathanaël Jourdane
 	 */
 	public void vt_fermer()
 	{
@@ -134,7 +202,6 @@ public class Controleur
 	
 	/**
 	 * Positionne une ou plusieurs fenêtres au centre de l'écran.
-	 * @author Nathanaël Jourdane
 	 */
 	public void centrerFen()
 	{
@@ -163,9 +230,8 @@ public class Controleur
 	
 	/**
 	 * Ferme le programme, avec confirmation.
-	 * @author Nathanaël Jourdane
 	 */
-	public void arreter ()
+	public void quitter ()
 	{
 		int option = JOptionPane.showConfirmDialog(this.vf, "Voulez-vous Quitter ?");
 		if (option == JOptionPane.OK_OPTION)
@@ -180,7 +246,6 @@ public class Controleur
 	/**
 	 * Affiche la fenêtre de terrain.<br/>
 	 * La taille de la fenêtre est adaptée au mode demi-terrain ou terrain complet.
-	 * @author Nathanaël Jourdane
 	 */
 	private void afficherTerrain()
 	{	

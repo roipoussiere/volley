@@ -19,7 +19,6 @@ public class Vue_Terrain extends JFrame implements WindowListener
 	/**
 	 * Création de la fenêtre représentant le terrain de volley.
 	 * @param _c Le contrôleur.
-	 * @author Nathanaël Jourdane
 	 */
 	public Vue_Terrain(Controleur _c, boolean _demiT)
 	{
@@ -42,7 +41,6 @@ public class Vue_Terrain extends JFrame implements WindowListener
 
 	/**
 	 * Dessine le quadrillage sur le terrain, qui varie en fonction du mode demi-terrain/terrain complet et lecture/edition.
-	 * @author Nathanaël Jourdane
 	 */
 	public void dessiner(int _styleQ)
 	{
@@ -53,7 +51,6 @@ public class Vue_Terrain extends JFrame implements WindowListener
 	/**
 	 * Getter du mode de la taille du terrain.
 	 * @return True si c'est une demi-terrain, false sinon.
-	 * @author Nathanaël Jourdane
 	 */
 	public boolean getDemi()
 	{
@@ -63,7 +60,6 @@ public class Vue_Terrain extends JFrame implements WindowListener
 	/**
 	 * Getter du contrôleur.
 	 * @return Le contrôleur.
-	 * @author Nathanaël Jourdane
 	 */
 	public Controleur getC()
 	{
@@ -73,7 +69,6 @@ public class Vue_Terrain extends JFrame implements WindowListener
 	/**
 	 * Action qui suit la fermeture de la fenêtre.
 	 * @param arg0 L'évenement de clic sur le bouton de fermeture de la fenêtre.
-	 * @author Nathanaël Jourdane
 	 */
 	public void windowClosing(WindowEvent arg0)
 	{

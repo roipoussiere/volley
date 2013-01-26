@@ -5,7 +5,7 @@ import javax.swing.event.ChangeListener;
 
 /**
  * Écouteur des onglets.
- * @see c.Controleur#clicOnglet()
+ * @see c.Controleur#clicOnglet(int)
  * @author Nathanaël Jourdane
  */
 public class CL_Fenetre implements ChangeListener
@@ -15,7 +15,6 @@ public class CL_Fenetre implements ChangeListener
 	/**
 	 * Constructeur du ChangeListener.
 	 * @param _vf Vue de la fenêtre.
-	 * @author Nathanaël Jourdane
 	 */
 	public CL_Fenetre(Vue_Fenetre _vf)
 	{
@@ -24,8 +23,7 @@ public class CL_Fenetre implements ChangeListener
 
 	/**
 	 * Ecoute l'action du clic sur un onglet.
-	 * @param _ae Évenement de clic sur le bouton Lecture.
-	 * @author Nathanaël Jourdane
+	 * @param _ce Évenement de clic sur le bouton Lecture.
 	 */
 	public void stateChanged(ChangeEvent _ce)
 	{

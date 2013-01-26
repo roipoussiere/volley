@@ -20,7 +20,6 @@ public class Vue_Dessin extends JPanel
 	/**
 	 * Constructeur de la vue de dessin.
 	 * @param _vt La fenêtre du terrain.
-	 * @author Nathanaël Jourdane
 	 */
 	public Vue_Dessin(Vue_Terrain _vt)
 	{
@@ -31,7 +30,6 @@ public class Vue_Dessin extends JPanel
 	/**
 	 * Méthode qui sera appelée à chaque action sur la fenêtre, qui permet de redessiner l'intégralité de son contenu.
 	 * @param _g : Le composant graphique.
-	 * @author Nathanaël Jourdane
 	 */
 	public void paintComponent(Graphics _g)
 	{
@@ -46,7 +44,6 @@ public class Vue_Dessin extends JPanel
 	/**
 	 * Setter du style de quadrillage (aucun, fin ou large).
 	 * @param _styleQ Le style de quadrillage (aucun, fin ou large).
-	 * @author Nathanaël Jourdane
 	 */
 	public void setStyleQ(int _styleQ)
 	{
@@ -57,7 +54,6 @@ public class Vue_Dessin extends JPanel
 	 * Dessine un demi terrain.
 	 * @param _g Le composant graphique.
 	 * @param _styleQ Style de quadrillage : 0 pour aucun, 1 pour 3 carreaux, 2 pour 9 carreaux.
-	 * @author Nathanaël Jourdane
 	 */
 	private void dessinerDT(Graphics _g)
 	{
@@ -79,7 +75,6 @@ public class Vue_Dessin extends JPanel
 	 * Dessine un terrain complet.
 	 * @param _g Le composant graphique.
 	 * @param _styleQ Style de quadrillage : 0 pour aucun, 1 pour 3 carreaux, 2 pour 9 carreaux.
-	 * @author Nathanaël Jourdane
 	 */
 	private void dessinerTC(Graphics _g)
 	{
@@ -117,7 +112,6 @@ public class Vue_Dessin extends JPanel
 	 * @param _g Le composant graphique.
 	 * @param _posY La position verticale du quadrillage.
 	 * @param _tc La taille d'un carreau, qui déterminera celle du quadrillage.
-	 * @author Nathanaël Jourdane
 	 */
 	private void dessinerQFin(Graphics _g, int _posY, int _tc)
 	{
@@ -135,7 +129,6 @@ public class Vue_Dessin extends JPanel
 	 * @param _g Composant graphique.
 	 * @param _posY La position verticale du quadrillage.
 	 * @param _tc La taille d'un carreau, qui déterminera celle du quadrillage.
-	 * @author Nathanaël Jourdane
 	 */
 	private void dessinerQLarge(Graphics _g, int _posY, int _tc)
 	{

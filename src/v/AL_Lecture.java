@@ -13,7 +13,6 @@ public class AL_Lecture implements ActionListener
 	/**
 	 * Constructeur de l'ActionListener.
 	 * @param _vl Vue de lecture d'une stratégie.
-	 * @author Nathanaël Jourdane
 	 */
 	public AL_Lecture(Vue_Lecture _vl)
 	{
@@ -23,7 +22,6 @@ public class AL_Lecture implements ActionListener
 	/**
 	 * Ecoute l'action du clic sur un bouton.
 	 * @param _ae Evenement de clic sur un bouton.
-	 * @author Nathanaël Jourdane
 	 */
 	public void actionPerformed(ActionEvent _ae)
 	{

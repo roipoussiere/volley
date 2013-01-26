@@ -5,11 +5,11 @@ import javax.swing.*;
 import c.Controleur;
 
 /**
- * Vue contenant les élements de l'onglet Joueur.
+ * Vue de la fenêtre Joueurs.
  */
-public class Vue_Joueurs extends JPanel
+@SuppressWarnings("serial")
+public class Vue_Joueurs extends JFrame
 {
-	private static final long serialVersionUID = 1L;
 	private Controleur c;
 	
 	// Composants de la fenêtre
@@ -20,7 +20,6 @@ public class Vue_Joueurs extends JPanel
 	/**
 	 * Création du JFrame et de tous ses composants.
 	 * @param _c Constrôleur.
-	 * @author Nathanaël Jourdane
 	 */
 	public Vue_Joueurs (Controleur _c)
 	{
@@ -42,7 +41,6 @@ public class Vue_Joueurs extends JPanel
 	/**
 	 * Getter du mode d'affichage : demi terrain ou terrain compet.
 	 * @return True si l'utilisateur a sélectionné le mode demi-terrain, false s'il a séletionné le mode terrain complet.
-	 * @author Nathanaël Jourdane
 	 */
 	public boolean getModeDemiT()
 	{
@@ -52,7 +50,6 @@ public class Vue_Joueurs extends JPanel
 	/**
 	 * Getter du contrôleur.
 	 * @return Le contrôleur.
-	 * @author Nathanaël Jourdane
 	 */
 	public Controleur getC()
 	{

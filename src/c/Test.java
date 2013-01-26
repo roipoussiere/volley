@@ -8,7 +8,6 @@ public class Test
 {
 	/**
 	 * Méthode principale (main) pour lancer l'application.
-	 * @author Nathanaël Jourdane
 	 */
 	public static void main(String[] args)
 	{
