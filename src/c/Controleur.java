@@ -15,42 +15,31 @@ import v.Vue_Terrain;
  */
 public class Controleur
 {
+	// Vues
 	private Vue_Fenetre vf;
 	private Vue_Parcourir vp;
 	private Vue_Terrain vt;
-	
-	private String nomFichier;
-	private String cheminFichier;
-	
+		
 	private Parametres p;
 	
 	/**
-	 * Constructeur du contrôleur qui initialise les vues et les arguments et lance la vue principale (Vue_Fenetre).
+	 * Constructeur du contrôleur qui initialise les vues et les autres arguments et lance la vue principale (Vue_Fenetre).
 	 */
 	public Controleur ()
 	{
-		this.nomFichier = null;
-		this.cheminFichier = null;
+		// Itinitialisation des vues.
 		this.vf = null;
 		this.vp = null;
 		this.vt = null;
 		this.p = new Parametres();
 		
+		// Ouverture de la fenêtre principale.
 		this.vf = new Vue_Fenetre(this);
 		this.centrerFen();
 		this.vf.setVisible (true);
 	}
 	
 	// *** Getters & Setters ***
-	
-	/**
-	 * Getter du nom du fichier.
-	 * @return Le nom du fichier.
-	 */
-	public String getNomFichier()
-	{
-		return this.nomFichier;
-	}
 	
 	public Parametres getP()
 	{
@@ -66,21 +55,14 @@ public class Controleur
 	 */
 	public void clicOnglet(int _onglet)
 	{
-		// Si on clic sur l'Onglet Lecture ou Édition
-		if(_onglet == 2 || _onglet == 3)
-		{
-			// Si le terrain n'est pas ouvert, on l'ouvre
-			if(this.vt == null)
-				this.afficherTerrain();
-			
-			if (_onglet == 2) // Si on est en Edition, quadrillage d'Edition
-				this.vt.dessiner(this.p.getStyleQE());
-			else  // Si on est en Lecture, quadrillage de Lecture
-				this.vt.dessiner(this.p.getStyleQL());
-		}
-		// Si on est ni en Lecture ni en Ecriture et que le terrain est ouvert, on le ferme.
-		else if (this.vt != null)
-			vt_fermer();
+		// Si le terrain n'est pas ouvert, on l'ouvre
+		if(this.vt == null)
+			this.afficherTerrain();
+		
+		if (_onglet == 0) // Si on est en Edition, quadrillage d'Edition
+			this.vt.dessiner(this.p.getStyleQE());
+		else  // Si on est en Lecture, quadrillage de Lecture
+			this.vt.dessiner(this.p.getStyleQL());
 	}
 	
 	/**
@@ -95,11 +77,9 @@ public class Controleur
 
 		if(retour == JFileChooser.APPROVE_OPTION) // Si un fichier a été choisi
 		{
-			this.nomFichier = this.vp.getSelectedFile().getName(); // Nom du fichier  choisi 
-			this.cheminFichier = this.vp.getSelectedFile().getAbsolutePath(); // Chemin absolu du fichier choisi
+			this.p.setCheminFichier(this.vp.getSelectedFile().getAbsolutePath()); // Chemin absolu du fichier choisi
 			
-			System.out.println("Le fichier " + this.nomFichier + " a été sélectionné.");
-			System.out.println("Il se trouve dans : " + this.cheminFichier);			
+			System.out.println("Il fichier sélectionné se trouve dans : " + this.p.getCheminFichier());			
 		}
 		else // Pas de fichier choisi
 		{
@@ -251,7 +231,7 @@ public class Controleur
 	{	
 		System.out.println("Affichage du terrain.");
 		// affiche la fenetre du terrain en précisant s'il est en DT et TC
-		this.vt = new Vue_Terrain(this, this.vf.getVJ().getModeDemiT());
+		this.vt = new Vue_Terrain(this, this.p.isDemiT());
 		this.centrerFen(); // Centrage des fenêtres à l'écran.
 		this.vt.setVisible (true);
 	}

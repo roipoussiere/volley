@@ -8,15 +8,19 @@ import java.awt.Color;
  */
 public class Parametres
 {
-	// Style de quadrillage : 0 : sans quadrillage, 1 : 3 carreaux, 2 : 9 carreaux
+	// Style de quadrillage : 0 : sans quadrillage, 1 : 3 carreaux, 2 : 9 carreaux.
 	private int styleQL; // Style de quadrillage en mode lecture.
 	private int styleQE; // Style de quadrillage en mode Edition.
 	
-	private Color cFond; // Couleur des lignes de base (limites, ligne d'attaque)
-	private Color cLignes; // Couleur des lignes de base (limites, ligne d'attaque)
-	private Color cQLarge; // Couleur du quadrillage large (3 carreaux)
-	private Color cQFin; // Couleur du quadrillage fin (9 carreaux)
+	private Color cFond; // Couleur des lignes de base (limites, ligne d'attaque).
+	private Color cLignes; // Couleur des lignes de base (limites, ligne d'attaque).
+	private Color cQLarge; // Couleur du quadrillage large (3 carreaux).
+	private Color cQFin; // Couleur du quadrillage fin (9 carreaux).
 	
+	// Paramètres divers
+	private String cheminFichier; // Chemin du fichier à lire ou éditer.
+	private boolean demiT; // Mode d'affichage : Demi-terrain (true) ou terrain complet (false).
+
 	/**
 	 * Affectation des valeurs par défaut
 	 */
@@ -29,8 +33,47 @@ public class Parametres
 		cLignes = new Color(0, 0, 0);
 		cQLarge = new Color(0, 80, 0);
 		cQFin = new Color(0, 95, 0);
+		
+		this.cheminFichier = "/home/natha/volley/fichiers_strategie/attaque/testAtt.svb";
+		this.demiT = true;
 	}
 	
+	/**
+	 * Getter du chemin du fichier à lire ou éditer.
+	 * @return Le chemin du fichier à lire ou éditer.
+	 */
+	public String getCheminFichier()
+	{
+		return cheminFichier;
+	}
+	
+	/**
+	 * Setter du chemin du fichier à lire ou éditer.
+	 * @param cheminFichier Le nom du fichier à lire ou éditer.
+	 */
+	public void setCheminFichier(String cheminFichier)
+	{
+		this.cheminFichier = cheminFichier;
+	}
+	
+	/**
+	 * Getter du mode d'affichage du terrain.
+	 * @return Le du mode d'affichage du terrain.
+	 */
+	public boolean isDemiT()
+	{
+		return demiT;
+	}
+	
+	/**
+	 * Setter du mode d'affichage du terrain.
+	 * @param demiT Le mode d'affichage du terrain.
+	 */
+	public void setDemiT(boolean demiT)
+	{
+		this.demiT = demiT;
+	}
+
 	/**
 	 * Getter du style de quadrillage en mode Lecture.
 	 * @return Le style de quadrillage en mode Lecture.
