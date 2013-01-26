@@ -7,6 +7,7 @@ import c.Controleur;
 
 /**
  * Vue de la fenetre principale du programme.
+ * @author Nathanaël Jourdane
  */
 public class Vue_Fenetre extends JFrame implements WindowListener
 {
@@ -35,7 +36,6 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		this.setResizable(false);
 		
-		
 		this.jtp = new JTabbedPane();
 		this.jtp.addChangeListener(new CL_Fenetre(this));
 		 
@@ -54,20 +54,21 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		this.add(this.jtp); // Ajout des onglets dans la fenetre
 	}
 
+	// /!\ Cette méthode ne marche pas encore.
 	/**
-	 * Affiche ou masque l'onglet Lecture
-	 * @param _aff false si l'onglet doit être masqué, true sinon
+	 * Active ou désactive un onglet dont l'utilisateur n'a pas accès.
+	 * _onglet L'index de l'onglet à masquer.
+	 * _aff True pour activer l'onglet, false pour le désactiver.
 	 * @author Nathanaël Jourdane
 	 */
-	public void affLecture(boolean _aff)
+	public void activerOnglets(int _onglet, boolean _aff)
 	{
-		this.vl.setEnabled(_aff); // ne marche pas
-		System.out.println("affichage de l'onglet lecture : " + _aff);
+		this.jtp.getComponentAt(_onglet).setVisible(_aff);
 	}
 	
 	/**
-	 * getter de Vue_Fichier
-	 * @return La vue de l'onglet Fichier
+	 * Getter de Vue_Fichier
+	 * @return La vue de l'onglet Fichier.
 	 * @author Nathanaël Jourdane
 	 */
 	public Vue_Fichier getVF()
@@ -76,8 +77,8 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	}
 	
 	/**
-	 * getter de Vue_Joueurs
-	 * @return La vue de l'onglet Joueur
+	 * Getter de Vue_Joueurs.
+	 * @return La vue de l'onglet Joueur.
 	 * @author Nathanaël Jourdane
 	 */
 	public Vue_Joueurs getVJ()
@@ -86,8 +87,8 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	}
 	
 	/**
-	 * getter de Vue_Edition
-	 * @return La vue de l'onglet Edition
+	 * Getter de Vue_Edition.
+	 * @return La vue de l'onglet Edition.
 	 * @author Nathanaël Jourdane
 	 */
 	public Vue_Edition getVE()
@@ -96,8 +97,8 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	}
 	
 	/**
-	 * getter de Vue_Lecture
-	 * @return La vue de l'onglet Lecture
+	 * Getter de Vue_Lecture.
+	 * @return La vue de l'onglet Lecture.
 	 * @author Nathanaël Jourdane
 	 */
 	public Vue_Lecture getVL()
@@ -105,7 +106,7 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		return this.vl;
 	}
 	/**
-	 * Getter de l'onglet ouvert
+	 * Getter de l'onglet ouvert.
 	 * @return L'id de l'onglet actuellement ouvert, de 0 à 4.
 	 */
 	public int getOngletOuvert()

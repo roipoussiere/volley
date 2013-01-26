@@ -20,8 +20,8 @@ public class Controleur
 	
 	private String nomFichier;
 	private String cheminFichier;
-	private int styleL; // Style de quadrillage en mode lecture.
-	private int styleE; // Style de quadrillage en mode Edition.
+	
+	private Parametres p;
 	
 	/**
 	 * Constructeur du contrôleur qui initialise les vues et les arguments et lance la vue principale (Vue_Fenetre).
@@ -34,13 +34,11 @@ public class Controleur
 		this.vf = null;
 		this.vp = null;
 		this.vt = null;
-		this.styleL = 0; // Par défaut sans quadrillage en mode lecture.
-		this.styleE = 2; // Par défaut avec quadrillage fin en mode lecture.
+		this.p = new Parametres();
 		
 		this.vf = new Vue_Fenetre(this);
 		this.centrerFen();
 		this.vf.setVisible (true);
-		this.majOnglets();
 	}
 	
 	// *** Getters & Setters ***
@@ -54,69 +52,42 @@ public class Controleur
 	{
 		return this.nomFichier;
 	}
+	
+	public Parametres getP()
+	{
+		return this.p;
+	}
+	
+	// *** Méthodes de Vue_Fenetre ***
 		
 	/**
-	 * Setter de nom du fichier.
-	 * @param _nom Le nom du fichier.
-	 * @author Nathanaël Jourdane
-	 */
-	public void setNomFichier(String _nom)
-	{
-		this.nomFichier = _nom;
-	}
-			
-	// *** Méthodes de Vue_Lecture ***
-	
-	/**
-	 * Lecture d'une stratégie.
-	 * @author Nathanaël Jourdane
-	 */
-	public void vl_lireStrategie()
-	{
-		System.out.println("Silence, ça tourne !");
-	}
-	
-	/**
-	 * Affiche la fenetre de terrain si l'utilisateur est sous l'onglet Lecture ou Edition.<br/>.
-	 * Masque la fenetre dans le cas contraire.<br/>
-	 * La taille de la fenetre est adapté au mode demi-terrain ou terrain complet.
-	 * Ne fait rien si la fenetre est déjà ouverte.
+	 * Action qui suit le clic sur un onglet.<br/>
+	 * Adapte le quadrillage de la vue Terrain en fonction du mode Lecture ou Edition.<br/>
 	 * @param _onglet L'indice de l'onglet ouvert.
 	 * @author Nathanaël Jourdane
 	 */
-	public void afficherTerrain(int _onglet)
-	{	
-		// Si on est en mode lecture ou écriture
+	public void clicOnglet(int _onglet)
+	{
+		// Si on clic sur l'Onglet Lecture ou Édition
 		if(_onglet == 2 || _onglet == 3)
 		{
 			// Si le terrain n'est pas ouvert, on l'ouvre
 			if(this.vt == null)
-			{
-				System.out.println("Affichage du terrain.");
-				// affiche la fenetre du terrain en précisant s'il est en DT et TC
-				this.vt = new Vue_Terrain(this, this.vf.getVJ().demiT());
-				this.centrerFen();
-				this.vt.setVisible (true);
-			}
+				this.afficherTerrain();
 			
 			if (_onglet == 2) // Si on est en Edition, quadrillage d'Edition
-				this.vt.dessiner(this.styleE);
+				this.vt.dessiner(this.p.getStyleQE());
 			else  // Si on est en Lecture, quadrillage de Lecture
-				this.vt.dessiner(this.styleL);
+				this.vt.dessiner(this.p.getStyleQL());
 		}
-		// Si on est ni en Lecture ni en Ecriture et que le terrain est ouvert
+		// Si on est ni en Lecture ni en Ecriture et que le terrain est ouvert, on le ferme.
 		else if (this.vt != null)
-		{
-			System.out.println("Fermeture du terrain.");
-			this.vt.setVisible (false);	
-			this.vt = null; // La vue Terrain n'existe plus.
-			this.centrerFen();
-		}
-
+			vt_fermer();
 	}
+	
 	/**
-	 * Ouvre une fenetre invitant à l'utilisateur à sélectionner un fichier de stratégie.
-	 * @return Une chaine contenant le chemin du fichier suivi de son nom.
+	 * Ouvre une fenêtre invitant l'utilisateur à sélectionner un fichier de stratégie.<br/>
+	 * Stoque le chemin et le nom du fichier dans les arguments nomFichier et cheminFichier du contrôleur.
 	 * @author Nathanaël Jourdane
 	 */
 	public void vf_parcourir()
@@ -131,9 +102,7 @@ public class Controleur
 			this.cheminFichier = this.vp.getSelectedFile().getAbsolutePath(); // Chemin absolu du fichier choisi
 			
 			System.out.println("Le fichier " + this.nomFichier + " a été sélectionné.");
-			System.out.println("Il se trouve dans : " + this.cheminFichier);
-			
-			this.majOnglets(); // On met à jour les onglets pour démasquer l'onglet Lecture.
+			System.out.println("Il se trouve dans : " + this.cheminFichier);			
 		}
 		else // Pas de fichier choisi
 		{
@@ -142,13 +111,15 @@ public class Controleur
 	}
 	
 	// *** Méthodes de Vue_Fichier ***
-		
+
+	// *** Méthodes de Vue_Lecture ***
+			
 	// *** Méthodes de Vue_Edition ***
 	
 	// *** Méthodes de Vue_Terrain ***
 	
 	/**
-	 * Ferme correctement la fenetre de terrain.
+	 * Ferme correctement la fenêtre de terrain.
 	 * @author Nathanaël Jourdane
 	 */
 	public void vt_fermer()
@@ -158,23 +129,11 @@ public class Controleur
 		this.vt = null;
 		centrerFen();
 	}
-		
-	// *** Méthodes de Vue_Fenetre ***
+	
+	// *** Autres méthodes ***
 	
 	/**
-	 * Masque les onglets dont l'utilisateur n'a pas accès.
-	 * @author Nathanaël Jourdane
-	 */
-	public void majOnglets()
-	{
-		if (this.nomFichier == null)
-			this.vf.affLecture(false);
-		else
-			this.vf.affLecture(true);
-	}
-	
-	/**
-	 * Positionne une ou plusieurs fenetres au centre de l'écran.
+	 * Positionne une ou plusieurs fenêtres au centre de l'écran.
 	 * @author Nathanaël Jourdane
 	 */
 	public void centrerFen()
@@ -217,5 +176,18 @@ public class Controleur
 	}
 	
 	// *** Méthodes privées ***
-	
+		
+	/**
+	 * Affiche la fenêtre de terrain.<br/>
+	 * La taille de la fenêtre est adaptée au mode demi-terrain ou terrain complet.
+	 * @author Nathanaël Jourdane
+	 */
+	private void afficherTerrain()
+	{	
+		System.out.println("Affichage du terrain.");
+		// affiche la fenetre du terrain en précisant s'il est en DT et TC
+		this.vt = new Vue_Terrain(this, this.vf.getVJ().getModeDemiT());
+		this.centrerFen(); // Centrage des fenêtres à l'écran.
+		this.vt.setVisible (true);
+	}
 }

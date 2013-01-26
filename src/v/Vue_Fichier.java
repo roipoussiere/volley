@@ -5,7 +5,7 @@ import javax.swing.*;
 import c.Controleur;
 
 /**
- * Vue contenant les élements de l'onglet Joueur.
+ * Vue contenant les élements de l'onglet Fichier.
  */
 public class Vue_Fichier extends JPanel
 {
@@ -30,7 +30,7 @@ public class Vue_Fichier extends JPanel
 		this.add (this.jbNomFichier);
 		
 		this.jbParcourir = new JButton ("Parcourir");
-		this.jbParcourir.addActionListener(new AL_Parcourir(this));
+		this.jbParcourir.addActionListener(new AL_Fichier(this));
 		this.add (this.jbParcourir);
 	}
 	

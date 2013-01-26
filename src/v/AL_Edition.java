@@ -3,21 +3,21 @@ package v;
 import java.awt.event.*;
 
 /**
- * ActionListener des boutons de l'onglet Lecture
+ * ActionListener des boutons de l'onglet Edition
  * @author Nathanaël Jourdane
  */
-public class AL_Lecture implements ActionListener
+public class AL_Edition implements ActionListener
 {
-	private Vue_Lecture vl;
+	private Vue_Edition ve;
 
 	/**
 	 * Constructeur de l'ActionListener.
-	 * @param _vl Vue de lecture d'une stratégie.
+	 * @param _vl Vue d'Edition d'une stratégie.
 	 * @author Nathanaël Jourdane
 	 */
-	public AL_Lecture(Vue_Lecture _vl)
+	public AL_Edition(Vue_Edition _ve)
 	{
-		this.vl = _vl;
+		this.ve = _ve;
 	}
 
 	/**

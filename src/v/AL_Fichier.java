@@ -4,21 +4,21 @@ import java.awt.event.*;
 
 /**
  * Ecouteur du bouton Parcourir.
- * @see c.Controleur#vl_parcourir()
+ * @see c.Controleur
  * @author Nathanaël Jourdane
  */
-public class AL_Parcourir implements ActionListener
+public class AL_Fichier implements ActionListener
 {
-	private Vue_Fichier vf;
+	private Vue_Fichier vfi;
 
 	/**
 	 * Constructeur de l'ActionListener.
 	 * @param _vl Vue de lecture d'une stratégie.
 	 * @author Nathanaël Jourdane
 	 */
-	public AL_Parcourir(Vue_Fichier _vf)
+	public AL_Fichier(Vue_Fichier _vfi)
 	{
-		this.vf = _vf;
+		this.vfi = _vfi;
 	}
 
 	/**
@@ -28,7 +28,7 @@ public class AL_Parcourir implements ActionListener
 	 */
 	public void actionPerformed(ActionEvent _ae)
 	{
-		this.vf.getC().vf_parcourir();
-		this.vf.majLibelle();
+		this.vfi.getC().vf_parcourir();
+		this.vfi.majLibelle();
 	}
 }

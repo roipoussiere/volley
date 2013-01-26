@@ -4,8 +4,8 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 /**
- * Ecouteur des onglets
- * @see c.Controleur#
+ * Écouteur des onglets.
+ * @see c.Controleur#clicOnglet()
  * @author Nathanaël Jourdane
  */
 public class CL_Fenetre implements ChangeListener
@@ -14,7 +14,7 @@ public class CL_Fenetre implements ChangeListener
 	
 	/**
 	 * Constructeur du ChangeListener.
-	 * @param _vf Vue de la fenetre
+	 * @param _vf Vue de la fenêtre.
 	 * @author Nathanaël Jourdane
 	 */
 	public CL_Fenetre(Vue_Fenetre _vf)
@@ -23,11 +23,12 @@ public class CL_Fenetre implements ChangeListener
 	}
 
 	/**
-	 * Ouvre éventuellement la fenetre de terrain.
-	 * @param _ae Evenement de clic sur le bouton Lecture.
+	 * Ecoute l'action du clic sur un onglet.
+	 * @param _ae Évenement de clic sur le bouton Lecture.
 	 * @author Nathanaël Jourdane
 	 */
-	public void stateChanged(ChangeEvent _ce) {
-		this.vf.getC().afficherTerrain(this.vf.getOngletOuvert());
+	public void stateChanged(ChangeEvent _ce)
+	{
+		this.vf.getC().clicOnglet(this.vf.getOngletOuvert());
 	}
 }

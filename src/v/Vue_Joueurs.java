@@ -39,7 +39,12 @@ public class Vue_Joueurs extends JPanel
 		
 	}
 	
-	public boolean demiT()
+	/**
+	 * Getter du mode d'affichage : demi terrain ou terrain compet.
+	 * @return True si l'utilisateur a sélectionné le mode demi-terrain, false s'il a séletionné le mode terrain complet.
+	 * @author Nathanaël Jourdane
+	 */
+	public boolean getModeDemiT()
 	{
 		return this.jrbDT.isSelected();
 	}

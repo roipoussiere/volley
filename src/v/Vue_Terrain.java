@@ -1,12 +1,12 @@
 package v;
 
-import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import c.Controleur;
 
 /**
- * 
+ * Vue de la fenêtre représentant le terrain de volley.
+ * @author Nathanaël Jourdane
  */
 @SuppressWarnings("serial")
 public class Vue_Terrain extends JFrame implements WindowListener
@@ -38,13 +38,10 @@ public class Vue_Terrain extends JFrame implements WindowListener
 		
 		vd = new Vue_Dessin(this);
 	    this.setContentPane(vd);
-	    
-		Color vert = new Color(0, 100, 0);
-		this.setBackground(vert);
 	}
 
 	/**
-	 * Dessine le quadrillage sur terrain, qui varie en fonction du mode demi-terrain/terrain complet et lecture/edition.
+	 * Dessine le quadrillage sur le terrain, qui varie en fonction du mode demi-terrain/terrain complet et lecture/edition.
 	 * @author Nathanaël Jourdane
 	 */
 	public void dessiner(int _styleQ)
