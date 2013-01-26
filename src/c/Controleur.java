@@ -24,7 +24,7 @@ public class Controleur
 	private int styleE; // Style de quadrillage en mode Edition.
 	
 	/**
-	 * Constructeur du contôleur qui initialise les vues et les arguments.
+	 * Constructeur du contrôleur qui initialise les vues et les arguments et lance la vue principale (Vue_Fenetre).
 	 * @author Nathanaël Jourdane
 	 */
 	public Controleur ()
@@ -36,21 +36,11 @@ public class Controleur
 		this.vt = null;
 		this.styleL = 0; // Par défaut sans quadrillage en mode lecture.
 		this.styleE = 2; // Par défaut avec quadrillage fin en mode lecture.
-	}
-
-	/**
-	 * Lance la vue principale (Vue_Fenetre). C'est l'unique méthode utilisée par le main.
-	 * @author Nathanaël Jourdane
-	 */
-	public void demarrer ()
-	{
-		if (this.vf == null)
-		{
-			this.vf = new Vue_Fenetre(this);
-			this.centrerFen();
-			this.vf.setVisible (true);
-			this.majOnglets();
-		}
+		
+		this.vf = new Vue_Fenetre(this);
+		this.centrerFen();
+		this.vf.setVisible (true);
+		this.majOnglets();
 	}
 	
 	// *** Getters & Setters ***
