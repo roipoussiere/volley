@@ -19,7 +19,7 @@ public class Controleur
 	private Vue_Fenetre vf;
 	private Vue_Parcourir vp;
 	private Vue_Terrain vt;
-		
+	
 	private Parametres p;
 	
 	/**
@@ -33,10 +33,12 @@ public class Controleur
 		this.vt = null;
 		this.p = new Parametres();
 		
-		// Ouverture de la fenêtre principale.
+		// Ouverture des fenêtres.
 		this.vf = new Vue_Fenetre(this);
+		this.vt = new Vue_Terrain(this);
 		this.centrerFen();
 		this.vf.setVisible (true);
+		this.vt.setVisible (true);
 	}
 	
 	// *** Getters & Setters ***
@@ -47,24 +49,29 @@ public class Controleur
 	}
 	
 	// *** Méthodes de Vue_Fenetre ***
-		
+	
 	/**
 	 * Action qui suit le clic sur un onglet.<br/>
 	 * Adapte le quadrillage de la vue Terrain en fonction du mode Lecture ou Edition.<br/>
 	 * @param _onglet L'indice de l'onglet ouvert.
 	 */
-	public void clicOnglet(int _onglet)
+	public void clicOnglet()
 	{
-		// Si le terrain n'est pas ouvert, on l'ouvre
-		if(this.vt == null)
-			this.afficherTerrain();
-		
-		if (_onglet == 0) // Si on est en Edition, quadrillage d'Edition
-			this.vt.dessiner(this.p.getStyleQL());
-		else  // Si on est en Lecture, quadrillage de Lecture
-			this.vt.dessiner(this.p.getStyleQE());
+		// Fonctionne que si les 2 fenêtres sont ouvertes
+		if(this.vf != null && this.vt != null)
+		{
+			switch(vf.getOngletOuvert())
+			{
+			case 0:
+				this.vt.dessiner(this.p.getStyleQL());
+				break;
+			case 1:
+				this.vt.dessiner(this.p.getStyleQE());
+				break;
+			}
+		}
 	}
-	
+		
 	/**
 	 * Ouvre une fenêtre invitant l'utilisateur à sélectionner un fichier de stratégie.<br/>
 	 * Stoque le chemin et le nom du fichier dans les arguments nomFichier et cheminFichier du contrôleur.
@@ -129,8 +136,8 @@ public class Controleur
 		{
 			System.out.println("Demi terrain : " + _demiT);
 			this.p.setDemiT(_demiT);
-			this.vt_fermer();
-			this.afficherTerrain();			
+			this.vt.setTaille();
+			this.centrerFen();
 		}
 	}
 	
@@ -173,16 +180,19 @@ public class Controleur
 	// *** Méthodes de Vue_Edition ***
 	
 	// *** Méthodes de Vue_Terrain ***
-	
+		
 	/**
 	 * Ferme correctement la fenêtre de terrain.
 	 */
 	public void vt_fermer()
 	{
+		/*
+		 * Pour l'instant on ne fait rien à la fermeture dela fenêtre.
 		System.out.println("Fermeture de la fenetre du terrain.");
 		this.vt.setVisible(false);
 		this.vt = null;
 		centrerFen();
+		*/
 	}
 	
 	// *** Autres méthodes ***
@@ -195,16 +205,11 @@ public class Controleur
 		// Les dimentions de l'écran
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		
-		if (this.vt != null)
-		{
-			this.vt.setLocation(screen.width/2 ,(screen.height - this.vt.getSize().height)/2); 
-			System.out.println("Fenêtre de terrain centrée.");
-		}
-		
 		if (this.vf != null)
 		{
+			this.vt.setLocation(screen.width/2 ,(screen.height - this.vt.getSize().height)/2); 
 			this.vf.setLocation(screen.width/2 - this.vf.getSize().width - 5,(screen.height - this.vf.getSize().height)/2);
-			System.out.println("Fenêtre principale centrée.");
+			System.out.println("Fenêtres centrées.");
 		}
 	}
 	
@@ -219,20 +224,5 @@ public class Controleur
 			System.out.println("Fermeture du programme.");			
 			System.exit(0);
 		}
-	}
-	
-	// *** Méthodes privées ***
-		
-	/**
-	 * Affiche la fenêtre de terrain.<br/>
-	 * La taille de la fenêtre est adaptée au mode demi-terrain ou terrain complet.
-	 */
-	private void afficherTerrain()
-	{	
-		System.out.println("Affichage du terrain.");
-		// affiche la fenetre du terrain en précisant s'il est en DT et TC
-		this.vt = new Vue_Terrain(this, this.p.isDemiT());
-		this.centrerFen(); // Centrage des fenêtres à l'écran.
-		this.vt.setVisible (true);
 	}
 }

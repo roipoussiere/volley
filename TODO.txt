@@ -26,6 +26,7 @@ boutons radio terrain complet / demi terrain
 Si demi-terrain : boutons radio équipe 1 ou 2
 
 Vue Terrain (Nathanaël) :
+Lorsque on est en Edition et qu'on change de mode d'affichage, on perds les quadrillages.
 Ligne du milieu, contours terrain
 Si en mode edition : quadrillage
 Si en mode demi-terrain : format adapté
