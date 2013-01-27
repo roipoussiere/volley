@@ -1,15 +1,12 @@
-Onglet Fichier (Julien) :
-Nouveau, ouvrir, enregistrer, enregistrer sous, quitter ...
-
 Onglet Joueurs (Xavier) :
 Par défaut : 1 seule équipe, 6 joueurs
-Onglets équipe 1 et équipe 2
-*6 :
+OK Onglets équipe 1 et équipe 2
+OK *6 :
 	label "joueur n : "
 	champ nom du joueur
 	checkbox affiché ou non
 	bouton radio meneur
-checkbox afficher tous les joueurs
+OK checkbox afficher tous les joueurs
 
 Onglet Edition (Florian) :
 boutons temps précédent et suivant + champ (idem lecture)
@@ -26,8 +23,7 @@ boutons radio terrain complet / demi terrain
 Si demi-terrain : boutons radio équipe 1 ou 2
 
 Vue Terrain (Nathanaël) :
-Lorsque on est en Edition et qu'on change de mode d'affichage, on perds les quadrillages.
-Ligne du milieu, contours terrain
-Si en mode edition : quadrillage
-Si en mode demi-terrain : format adapté
-Joueurs (si on a le temps)
+OK Lorsque on est en Edition et qu'on change de mode d'affichage, on perds les quadrillages.
+OK Ligne du milieu, contours terrain
+OK Si en mode edition : quadrillage
+OKSi en mode demi-terrain : format adapté

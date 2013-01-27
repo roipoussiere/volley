@@ -62,7 +62,11 @@ public class Vue_Dessin extends JPanel
 		if (this.styleQ == 1)
 			dessinerQLarge(_g, tc, tc);
 		else if(this.styleQ == 2)
+		{
 			dessinerQFin(_g, 0, tc);
+			dessinerQLarge(_g, 0, tc);
+		}
+
 		
 		_g.setColor(this.p.getCLignes());
 		_g.drawLine(tc, tc*9, tc*10, tc*9); // ligne bas
@@ -78,19 +82,22 @@ public class Vue_Dessin extends JPanel
 	 */
 	private void dessinerTC(Graphics _g)
 	{
-		int tc = 36;
+		int tc = 35;
 		
 		if (this.styleQ == 1)
 		{
 			_g.setColor(this.p.getCQLarge());
-			dessinerQLarge(_g, 10, tc);
-			dessinerQLarge(_g, 2*tc, tc);
+			dessinerQLarge(_g, 0, tc);
+			dessinerQLarge(_g, 10*tc, tc);
 		}
 		else if(this.styleQ == 2)
 		{
 			_g.setColor(this.p.getCQFin());
-			dessinerQFin(_g, tc, tc);
+			dessinerQFin(_g, 0, tc);
 			dessinerQFin(_g, 10*tc, tc);
+			dessinerQLarge(_g, tc, tc);
+			dessinerQLarge(_g, 10*tc, tc);
+
 		}
 		
 		_g.setColor(this.p.getCLignes());
@@ -108,20 +115,21 @@ public class Vue_Dessin extends JPanel
 	}
 	
 	/**
-	 * Dessine un quadrillage de 9*9 carreaux.
+	 * Dessine un quadrillage de 11*10 carreaux.
 	 * @param _g Le composant graphique.
 	 * @param _posY La position verticale du quadrillage.
 	 * @param _tc La taille d'un carreau, qui déterminera celle du quadrillage.
 	 */
 	private void dessinerQFin(Graphics _g, int _posY, int _tc)
 	{
-		_g.setColor(this.p.getCQFin());
-		for (int i=2 ; i<10 ; i++) // lignes verticales
-			_g.drawLine(i*_tc, _posY, i*_tc, 9*_tc + _posY);
-		for (int i=1 ; i<9 ; i++) // lignes horizontales
-			_g.drawLine(_tc, _posY + i*_tc, 10*_tc, _posY + i*_tc);
+		int nbX = 11;
+		int nbY = 10;
 		
-		dessinerQLarge(_g, _posY, _tc); // Après avoir dessiné les carreaux fin, on dessine les larges.
+		_g.setColor(this.p.getCQFin());
+		for (int i=0 ; i<nbX+1 ; i++) // lignes verticales
+			_g.drawLine(i*_tc, _posY, i*_tc, nbY*_tc + _posY);
+		for (int i=0 ; i<nbY+1 ; i++) // lignes horizontales
+			_g.drawLine(0, _posY + i*_tc, nbX*_tc, _posY + i*_tc);
 	}
 	
 	/**

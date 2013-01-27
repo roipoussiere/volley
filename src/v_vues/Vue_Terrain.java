@@ -50,11 +50,12 @@ public class Vue_Terrain extends JFrame implements WindowListener
 	{
 		boolean demiT = this.getC().getP().isDemiT();
 		System.out.println("Redimentionnement du terrain. demi-terrin : " + demiT);
+		
 		// Si demi-terrain : zone de 11*10 cases de 50px chacune = 550*500 + bordures de la fenêtre
 		if (demiT)	
 			this.setSize(557, 528);
-		else // Si terrain complet : zone de 11*20 cases de 36px*36px chacune = 396*720
-			this.setSize(403, 743);
+		else // Si terrain complet : zone de 11*20 cases de 35px*35px chacune = 385*700 + bordures de la fenêtre
+			this.setSize(392, 728);
 	}
 		
 	/**

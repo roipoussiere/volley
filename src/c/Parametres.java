@@ -31,8 +31,8 @@ public class Parametres
 		
 		cFond = new Color(0, 100, 0);
 		cLignes = new Color(0, 0, 0);
-		cQLarge = new Color(0, 80, 0);
-		cQFin = new Color(0, 95, 0);
+		cQLarge = new Color(0, 75, 0);
+		cQFin = new Color(0, 90, 0);
 		
 		this.cheminFichier = "/home/natha/volley/fichiers_strategie/attaque/testAtt.svb";
 		this.demiT = true;
