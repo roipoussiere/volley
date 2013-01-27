@@ -51,7 +51,6 @@ public class Controleur
 	/**
 	 * Action qui suit le clic sur un onglet.<br/>
 	 * Adapte le quadrillage de la vue Terrain en fonction du mode Lecture ou Edition.<br/>
-	 * @param _onglet L'indice de l'onglet ouvert.
 	 */
 	public void clicOnglet()
 	{
@@ -112,7 +111,6 @@ public class Controleur
 	
 	/**
 	 * Affectation du mode d'affichage du terrain.
-	 * @param demiT Mode d'affichage du terrain : True pour affichage en demi terrain, false pour affichage en terrain complet.
 	 */
 	public void ms_terrain(boolean _demiT)
 	{

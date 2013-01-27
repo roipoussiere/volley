@@ -12,6 +12,7 @@ import v_ecouteurs.AL_Joueurs;
 
 /**
  * Vue contenant les élements de l'onglet Joueur.
+ * @author Chalut xavier
  */
 public class Vue_Joueurs extends JDialog
 {
@@ -37,8 +38,7 @@ public class Vue_Joueurs extends JDialog
 	
 	/**
 	 * Création du JFrame et de tous ses composants.
-	 * @param _c Constrôleur.
-	 * @author Chalut xavier
+	 * @param _vf La vue de la fenêtre principale.
 	 */
 		public Vue_Joueurs (Vue_Fenetre _vf)
 		{
@@ -474,7 +474,6 @@ public class Vue_Joueurs extends JDialog
 	/**
 	 * Getter checkbox de selection de tous les joueurs de l'equipe 1.
 	 * @return Checkbox.
-	 * @author Chalut Xavier
 	 */
 	public JCheckBox getJcbTse1()
 	{
@@ -484,7 +483,6 @@ public class Vue_Joueurs extends JDialog
 	/**
 	 * Getter checkbox de selection de tous les joueurs de l'equipe 2.
 	 * @return Checkbox.
-	 * @author Chalut Xavier
 	 */
 	public JCheckBox getJcbTse2()
 	{

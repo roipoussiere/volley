@@ -7,7 +7,7 @@ import v_vues.Vue_Fenetre;
 
 /**
  * Écouteur des onglets.
- * @see c.Controleur#clicOnglet(int)
+ * @see c.Controleur#clicOnglet()
  * @author Nathanaël Jourdane
  */
 public class CL_Fenetre implements ChangeListener
