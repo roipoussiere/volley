@@ -3,6 +3,8 @@ package c;
 import java.awt.*;
 import javax.swing.*;
 
+import v_vues.Vue_APropos;
+import v_vues.Vue_Aide;
 import v_vues.Vue_Fenetre;
 import v_vues.Vue_Terrain;
 
@@ -135,17 +137,21 @@ public class Controleur
 	/**
 	 * Affiche de l'aide pour l'utilisation du programme.
 	 */
+	@SuppressWarnings("unused")
 	public void ma_aide()
 	{
 		System.out.println("Comment utiliser ce programme...");
+		Vue_Aide va = new Vue_Aide(this.vf);
 	}
 	
 	/**
 	 * Affiche les informations concernant le programme.
 	 */
+	@SuppressWarnings("unused")
 	public void ma_apropos()
 	{
 		System.out.println("À propos de ce programme...");
+		Vue_APropos vap = new Vue_APropos(this.vf);
 	}
 	
 	// *** Méthodes de Vue_Fichier ***
