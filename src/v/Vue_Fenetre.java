@@ -52,7 +52,7 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		// Ajout de l'onglet Édition dans la barre des onglets
 		this.ve = new Vue_Edition(this.c);
 		this.tp.addTab("Edition", this.ve);
-		
+
 		this.add(this.tp); // Ajout de la barre d'onglets dans la fenêtre
 		
 		initMenu();

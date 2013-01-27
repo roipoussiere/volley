@@ -125,10 +125,13 @@ public class Controleur
 	 */
 	public void ms_terrain(boolean _demiT)
 	{
-		System.out.println("Demi terrain : " + _demiT);
-		this.p.setDemiT(_demiT);
-		this.vt_fermer();
-		this.afficherTerrain();
+		if (this.vt != null)
+		{
+			System.out.println("Demi terrain : " + _demiT);
+			this.p.setDemiT(_demiT);
+			this.vt_fermer();
+			this.afficherTerrain();			
+		}
 	}
 	
 	/**
@@ -192,23 +195,16 @@ public class Controleur
 		// Les dimentions de l'écran
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		
-		if (this.vf == null) // Si on la fenetre principale n'est pas ouverte
+		if (this.vt != null)
 		{
-			System.out.println("Aucune fenetre à centrer.");
+			this.vt.setLocation(screen.width/2 ,(screen.height - this.vt.getSize().height)/2); 
+			System.out.println("Fenêtre de terrain centrée.");
 		}
-		else
+		
+		if (this.vf != null)
 		{
-			if (this.vt == null) // Si la fenetre de terrain n'est pas ouverte
-			{
-				this.vf.setLocation((screen.width - this.vf.getSize().width)/2,(screen.height - this.vf.getSize().height)/2);
-				System.out.println("1 fenêtre centrée");
-			}
-			else
-			{
-				this.vf.setLocation(screen.width/2 - this.vf.getSize().width - 5,(screen.height - this.vf.getSize().height)/2); 
-				this.vt.setLocation(screen.width/2 ,(screen.height - this.vt.getSize().height)/2); 
-				System.out.println("2 fenêtres centrées");
-			}
+			this.vf.setLocation(screen.width/2 - this.vf.getSize().width - 5,(screen.height - this.vf.getSize().height)/2);
+			System.out.println("Fenêtre principale centrée.");
 		}
 	}
 	
