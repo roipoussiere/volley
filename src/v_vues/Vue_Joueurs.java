@@ -1,5 +1,5 @@
 
-package v;
+package v_vues;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -7,8 +7,8 @@ import java.awt.GridLayout;
 
 import javax.swing.*;
 
+import v_ecouteurs.AL_Joueurs;
 
-import c.Controleur;
 
 /**
  * Vue contenant les élements de l'onglet Joueur.
@@ -16,7 +16,8 @@ import c.Controleur;
 public class Vue_Joueurs extends JDialog
 {
 	private static final long serialVersionUID = 1L;
-	private Controleur c;
+	private Vue_Fenetre vf;
+	private AL_Joueurs alJ;
 	
 	// Composants de la fenêtre
 	private JTabbedPane jtpj;	//onglet des equipes 

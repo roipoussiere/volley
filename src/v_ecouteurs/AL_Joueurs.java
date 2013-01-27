@@ -1,7 +1,10 @@
-package v;
+
+package v_ecouteurs;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import v_vues.Vue_Joueurs;
 
 
 
