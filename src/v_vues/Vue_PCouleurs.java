@@ -5,7 +5,8 @@ import javax.swing.*;
 import c.Controleur;
 
 /**
- * Vue contenant les élements de l'onglet Lecture.
+ * Vue contenant les élements de l'onglet Couleurs.
+ * @author Nathanaël Jourdane
  */
 @SuppressWarnings("serial")
 public class Vue_PCouleurs extends JPanel
@@ -17,7 +18,7 @@ public class Vue_PCouleurs extends JPanel
 
 	/**
 	 * Création du JFrame et de tous ses composants.
-	 * @param _c Constrôleur.
+	 * @param _c Contrôleur.
 	 */
 	public Vue_PCouleurs (Controleur _c)
 	{

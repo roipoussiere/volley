@@ -4,7 +4,6 @@ import java.awt.*;
 import javax.swing.*;
 
 import v_vues.Vue_Fenetre;
-import v_vues.Vue_Parcourir;
 import v_vues.Vue_Terrain;
 
 /**
@@ -16,7 +15,6 @@ public class Controleur
 {
 	// Vues
 	private Vue_Fenetre vf;
-	private Vue_Parcourir vp;
 	private Vue_Terrain vt;
 	
 	private Parametres p;
@@ -28,7 +26,6 @@ public class Controleur
 	{
 		// Itinitialisation des vues.
 		this.vf = null;
-		this.vp = null;
 		this.vt = null;
 		this.p = new Parametres();
 		
@@ -70,27 +67,11 @@ public class Controleur
 			}
 		}
 	}
-		
-	/**
-	 * Ouvre une fenêtre invitant l'utilisateur à sélectionner un fichier de stratégie.<br/>
-	 * Stoque le chemin et le nom du fichier dans les arguments nomFichier et cheminFichier du contrôleur.
-	 */
+	
 	public void mf_ouvrir()
 	{
-		System.out.println("Sélection d'un fichier...");
-		this.vp = new Vue_Parcourir(this);
-		int retour = this.vp.showOpenDialog(null);
-
-		if(retour == JFileChooser.APPROVE_OPTION) // Si un fichier a été choisi
-		{
-			this.p.setCheminFichier(this.vp.getSelectedFile().getAbsolutePath()); // Chemin absolu du fichier choisi
-			
-			System.out.println("Il fichier sélectionné se trouve dans : " + this.p.getCheminFichier());			
-		}
-		else // Pas de fichier choisi
-		{
-			System.out.println("Aucun fichier sélectionné");
-		}
+		System.out.println("Ouverture d'un fichier de stratégie...");
+		this.parcourir();
 	}
 	
 	/**
@@ -106,7 +87,7 @@ public class Controleur
 	 */
 	public void mf_enregistrer()
 	{
-		System.out.println("Enregistrer...");
+		System.out.println("Enregistrement de cette stratégie...");
 	}
 	
 	/**
@@ -114,7 +95,8 @@ public class Controleur
 	 */
 	public void mf_enregistrerSous()
 	{
-		System.out.println("Enregistrer sous...");
+		System.out.println("Enregistrement de cette stratégie sous...");
+		this.parcourir();
 	}
 	
 	/**
@@ -122,7 +104,7 @@ public class Controleur
 	 */
 	public void ms_joueurs()
 	{
-		System.out.println("Joueurs...");
+		System.out.println("Affectation des joueurs...");
 		this.vf.vueJoueurs();
 	}
 	
@@ -146,7 +128,7 @@ public class Controleur
 	 */
 	public void mp_param()
 	{
-		System.out.println("Paramètres...");
+		System.out.println("Paramètres du programme...");
 		this.vf.vueParams();
 	}
 		
@@ -155,7 +137,7 @@ public class Controleur
 	 */
 	public void ma_aide()
 	{
-		System.out.println("Aide...");
+		System.out.println("Comment utiliser ce programme...");
 	}
 	
 	/**
@@ -163,7 +145,7 @@ public class Controleur
 	 */
 	public void ma_apropos()
 	{
-		System.out.println("À propos...");
+		System.out.println("À propos de ce programme...");
 	}
 	
 	// *** Méthodes de Vue_Fichier ***
@@ -177,9 +159,30 @@ public class Controleur
 	// *** Autres méthodes ***
 	
 	/**
+	 * Ouvre une fenêtre invitant l'utilisateur à sélectionner un fichier de stratégie.<br/>
+	 * Stoque le chemin et le nom du fichier dans les arguments nomFichier et cheminFichier du contrôleur.
+	 */
+	private void parcourir()
+	{
+		JFileChooser fc = new JFileChooser();
+		int retour = fc.showOpenDialog(null);
+
+		if(retour == JFileChooser.APPROVE_OPTION) // Si un fichier a été choisi
+		{
+			this.p.setCheminFichier(fc.getSelectedFile().getAbsolutePath()); // Chemin absolu du fichier choisi
+			
+			System.out.println("Il fichier sélectionné se trouve dans : " + this.p.getCheminFichier());			
+		}
+		else // Pas de fichier choisi
+		{
+			System.out.println("Aucun fichier sélectionné");
+		}
+	}
+	
+	/**
 	 * Positionne une ou plusieurs fenêtres au centre de l'écran.
 	 */
-	public void centrerFen()
+	private void centrerFen()
 	{
 		// Les dimentions de l'écran
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();

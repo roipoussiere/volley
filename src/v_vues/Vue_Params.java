@@ -4,6 +4,7 @@ import javax.swing.*;
 
 /**
  * Vue de la fenêtre des Paramètres.
+ * @author Nathanaël Jourdane
  */
 @SuppressWarnings("serial")
 public class Vue_Params extends JDialog

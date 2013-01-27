@@ -62,6 +62,10 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	    this.setJMenuBar(mb); // Ajout de la barre de menus dans la fenêtre
 	}
 	
+	/**
+	 * Ititialisation de la barre de menu.<br/>
+	 * Cette méthode vise à alléger le constructeur.
+	 */
 	private void initMenu()
 	{
 		// Création des menus
@@ -139,14 +143,15 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	}
 	
 	/**
-	 * Active ou désactive un sous menu
-	 * _onglet L'index de l'onglet à masquer.
-	 * _aff True pour activer l'onglet, false pour le désactiver.
+	 * Active ou désactive un item dans la barre de menu.
+	 * _menu Le menu contenant l'item à masquer.
+	 * _item L'item à masquer.
+	 * _aff État de l'item : true pour l'activer, false pour le désactiver.
 	 */
-	public void activerMenu(int _menu, int _sousMenu, boolean _aff)
+	public void activerMenu(int _menu, int _item, boolean _aff)
 	{
 		JMenu m = (JMenu)this.mb.getComponent(_menu);
-		m.getMenuComponent(_sousMenu).setEnabled(_aff);
+		m.getMenuComponent(_item).setEnabled(_aff);
 	}
 	
 	// /!\ Cette méthode ne marche pas encore.
@@ -161,7 +166,7 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	}
 	
 	/**
-	 * 
+	 * Crée la vue Joueurs.
 	 */
 	public void vueJoueurs()
 	{
@@ -169,8 +174,7 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	}
 
 	/**
-	 * Getter de Vue_Joueurs.
-	 * @return La vue de l'onglet Joueur.
+	 * Crée la vue Paramères.
 	 */
 	public void vueParams()
 	{
