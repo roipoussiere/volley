@@ -146,6 +146,7 @@ public class Controleur
 	public void mp_grille()
 	{
 		System.out.println("Grille...");
+		this.vf.vuePGrille();
 	}
 	
 	/**
@@ -154,6 +155,7 @@ public class Controleur
 	public void mp_couleurs()
 	{
 		System.out.println("Couleurs...");
+		this.vf.vuePCouleurs();
 	}
 	
 	/**
@@ -180,20 +182,6 @@ public class Controleur
 	
 	// *** Méthodes de Vue_Terrain ***
 		
-	/**
-	 * Ferme correctement la fenêtre de terrain.
-	 */
-	public void vt_fermer()
-	{
-		/*
-		 * Pour l'instant on ne fait rien à la fermeture dela fenêtre.
-		System.out.println("Fermeture de la fenetre du terrain.");
-		this.vt.setVisible(false);
-		this.vt = null;
-		centrerFen();
-		*/
-	}
-	
 	// *** Autres méthodes ***
 	
 	/**

@@ -20,6 +20,8 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	private Vue_Lecture vl;
 	private Vue_Edition ve;
 	private Vue_Joueurs vj;
+	private Vue_PGrille vpg;
+	private Vue_PCouleurs vpc;
 	
 	// La barre de menus
 	private JMenuBar mb = new JMenuBar();
@@ -176,6 +178,20 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		this.vj = new Vue_Joueurs(this);
 	}
 	
+	/**
+	 * 
+	 */
+	public void vuePGrille()
+	{
+		this.vpg = new Vue_PGrille(this);
+	}	
+	/**
+	 * 
+	 */
+	public void vuePCouleurs()
+	{
+		this.vpc = new Vue_PCouleurs(this);
+	}
 	/**
 	 * Getter de Vue_Joueurs.
 	 * @return La vue de l'onglet Joueur.
