@@ -48,7 +48,7 @@ public class Vue_Joueurs extends JDialog
 		this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
-		this.setVisible(true);
+		
 		
 		
 		this.jtpj = new JTabbedPane();
@@ -57,7 +57,7 @@ public class Vue_Joueurs extends JDialog
 		JPanel panel1;
 		JPanel panBas;
 	
-		// Gestion des composants du l'onglet "Equipe 1" 
+		// Gestion des composants de l'onglet "Equipe 1" 
 		
 		JPanel panelE1;
 		panelE1 = new JPanel();
@@ -169,7 +169,7 @@ public class Vue_Joueurs extends JDialog
 
 		
 		
-		// Gestion des composants du l'onglet "Equipe 2" 
+		// Gestion des composants de l'onglet "Equipe 2" 
 		
 		JPanel panelE2;
 		panelE2 = new JPanel();
@@ -283,6 +283,7 @@ public class Vue_Joueurs extends JDialog
 		
 		this.add(this.jtpj); // Ajout des onglets dans la fenetre
 		
+		this.setVisible(true);
 		
 		// Abonnnement au listener
 		alJ = new AL_Joueurs(this); //Ecouteur de fenetre
