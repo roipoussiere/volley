@@ -1,9 +1,7 @@
 package c;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import java.awt.*;
 import javax.swing.*;
-
 import v.Vue_Fenetre;
 import v.Vue_Parcourir;
 import v.Vue_Terrain;
@@ -124,6 +122,7 @@ public class Controleur
 	public void ms_joueurs()
 	{
 		System.out.println("Joueurs...");
+		this.vf.vueJoueurs();
 	}
 	
 	/**

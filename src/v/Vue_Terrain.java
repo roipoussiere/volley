@@ -43,6 +43,9 @@ public class Vue_Terrain extends JFrame implements WindowListener
 		vd.repaint();
 	}
 	
+	/**
+	 * 
+	 */
 	public void setTaille()
 	{
 		boolean demiT = this.getC().getP().isDemiT();
@@ -53,7 +56,7 @@ public class Vue_Terrain extends JFrame implements WindowListener
 		else // Si terrain complet : zone de 11*20 cases de 36px*36px chacune = 396*720
 			this.setSize(403, 743);
 	}
-	
+		
 	/**
 	 * Getter du contrôleur.
 	 * @return Le contrôleur.

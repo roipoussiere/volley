@@ -2,58 +2,38 @@ package v;
 
 import javax.swing.*;
 
-import c.Controleur;
-
 /**
  * Vue de la fenêtre Joueurs.
  */
 @SuppressWarnings("serial")
-public class Vue_Joueurs extends JFrame
+public class Vue_Joueurs extends JDialog
 {
-	private Controleur c;
+	private Vue_Fenetre vf;
 	
 	// Composants de la fenêtre
-	private JRadioButton jrbTC; // terrain complet
-	private JRadioButton jrbDT; // demi-terrain
-	private ButtonGroup bgTerrain;
 	
 	/**
 	 * Création du JFrame et de tous ses composants.
 	 * @param _c Constrôleur.
 	 */
-	public Vue_Joueurs (Controleur _c)
+	public Vue_Joueurs (Vue_Fenetre _vf)
 	{
-		super ();
-		this.c = _c;
-		
-		this.bgTerrain = new ButtonGroup();
-		
-		this.jrbDT = new JRadioButton("Demi terrain", true);
-		this.bgTerrain.add(this.jrbDT);
-		this.add(this.jrbDT);
-		
-		this.jrbTC = new JRadioButton("Terrain complet", false);
-		this.bgTerrain.add(this.jrbTC);
-		this.add(this.jrbTC);
-		
+		super (_vf, "Joueurs", true);
+		this.vf = _vf;
+		this.setSize(400, 300);
+		this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+		this.setResizable(false);
+		this.setLocationRelativeTo(null);
+		this.setVisible(true);
 	}
 	
 	/**
-	 * Getter du mode d'affichage : demi terrain ou terrain compet.
-	 * @return True si l'utilisateur a sélectionné le mode demi-terrain, false s'il a séletionné le mode terrain complet.
+	 * Getter de la vue Fenêtre.
+	 * @return La vue Fenêtre.
 	 */
-	public boolean getModeDemiT()
+	public Vue_Fenetre getC()
 	{
-		return this.jrbDT.isSelected();
-	}
-	
-	/**
-	 * Getter du contrôleur.
-	 * @return Le contrôleur.
-	 */
-	public Controleur getC()
-	{
-		return this.c;
+		return this.vf;
 	}
 
 }
