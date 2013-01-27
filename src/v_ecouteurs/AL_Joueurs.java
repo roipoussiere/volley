@@ -25,14 +25,14 @@ public class AL_Joueurs implements ActionListener
 			
 			if(this.vj.getJcbTse1().isSelected()==true)
 			{
-				// Selectionne tous les cases
+				// Selectionne toutes les cases
 				this.vj.getJcbJ1e1().setSelected(true);
 				this.vj.getJcbJ2e1().setSelected(true);
 				this.vj.getJcbJ3e1().setSelected(true);
 				this.vj.getJcbJ4e1().setSelected(true);
 				this.vj.getJcbJ5e1().setSelected(true);
 				this.vj.getJcbJ6e1().setSelected(true);	
-				// Desactive tous les cases
+				// Desactive toutes les cases
 				this.vj.getJcbJ1e1().setEnabled(false);
 				this.vj.getJcbJ2e1().setEnabled(false);
 				this.vj.getJcbJ3e1().setEnabled(false);
@@ -48,7 +48,7 @@ public class AL_Joueurs implements ActionListener
 				this.vj.getJcbJ4e1().setSelected(false);
 				this.vj.getJcbJ5e1().setSelected(false);
 				this.vj.getJcbJ6e1().setSelected(false);	
-				// Reactive tous les cases
+				// Reactive toutes les cases
 				this.vj.getJcbJ1e1().setEnabled(true);
 				this.vj.getJcbJ2e1().setEnabled(true);
 				this.vj.getJcbJ3e1().setEnabled(true);
@@ -61,14 +61,14 @@ public class AL_Joueurs implements ActionListener
 		{
 			if(this.vj.getJcbTse2().isSelected()==true)
 			{
-				// Selectionne tous les cases
+				// Selectionne toutes les cases
 				this.vj.getJcbJ1e2().setSelected(true);
 				this.vj.getJcbJ2e2().setSelected(true);
 				this.vj.getJcbJ3e2().setSelected(true);
 				this.vj.getJcbJ4e2().setSelected(true);
 				this.vj.getJcbJ5e2().setSelected(true);
 				this.vj.getJcbJ6e2().setSelected(true);
-				// Desactive tous les cases
+				// Desactive toutes les cases
 				this.vj.getJcbJ1e2().setEnabled(false);
 				this.vj.getJcbJ2e2().setEnabled(false);
 				this.vj.getJcbJ3e2().setEnabled(false);
@@ -84,7 +84,7 @@ public class AL_Joueurs implements ActionListener
 				this.vj.getJcbJ4e2().setSelected(false);
 				this.vj.getJcbJ5e2().setSelected(false);
 				this.vj.getJcbJ6e2().setSelected(false);
-				// Reactive tous les cases
+				// Reactive toutes les cases
 				this.vj.getJcbJ1e2().setEnabled(true);
 				this.vj.getJcbJ2e2().setEnabled(true);
 				this.vj.getJcbJ3e2().setEnabled(true);

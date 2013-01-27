@@ -283,12 +283,13 @@ public class Vue_Joueurs extends JDialog
 		
 		this.add(this.jtpj); // Ajout des onglets dans la fenetre
 		
-		this.setVisible(true);
+		
 		
 		// Abonnnement au listener
 		alJ = new AL_Joueurs(this); //Ecouteur de fenetre
 		this.jcbTse1.addActionListener(alJ);
 		this.jcbTse2.addActionListener(alJ);	
+		this.setVisible(true);
 	}
 	
 	public JTextField getJtfJ1e1() 
