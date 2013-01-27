@@ -1,22 +1,24 @@
-package v;
+package v_ecouteurs;
 
 import java.awt.event.*;
 
+import v_vues.Vue_Joueurs;
+
 /**
- * ActionListener des boutons de l'onglet Lecture
+ * ActionListener des boutons de la fenêtre Joueurs
  * @author Nathanaël Jourdane
  */
-public class AL_Lecture implements ActionListener
+public class AL_Joueurs implements ActionListener
 {
-	private Vue_Lecture vl;
+	private Vue_Joueurs vj;
 
 	/**
 	 * Constructeur de l'ActionListener.
-	 * @param _vl Vue de lecture d'une stratégie.
+	 * @param _vj Vue de la fenêtre Joueurs.
 	 */
-	public AL_Lecture(Vue_Lecture _vl)
+	public AL_Joueurs(Vue_Joueurs _vj)
 	{
-		this.vl = _vl;
+		this.vj = _vj;
 	}
 
 	/**

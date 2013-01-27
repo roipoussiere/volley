@@ -2,9 +2,10 @@ package c;
 
 import java.awt.*;
 import javax.swing.*;
-import v.Vue_Fenetre;
-import v.Vue_Parcourir;
-import v.Vue_Terrain;
+
+import v_vues.Vue_Fenetre;
+import v_vues.Vue_Parcourir;
+import v_vues.Vue_Terrain;
 
 /**
  * Contrôleur du projet.<br/>

@@ -1,7 +1,9 @@
-package v;
+package v_ecouteurs;
 
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import v_vues.Vue_Fenetre;
 
 /**
  * Écouteur des onglets.

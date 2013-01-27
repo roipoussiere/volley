@@ -1,8 +1,11 @@
-package v;
+package v_vues;
 
 import java.awt.event.*;
 
 import javax.swing.*;
+
+import v_ecouteurs.AL_Fenetre;
+import v_ecouteurs.CL_Fenetre;
 
 import c.Controleur;
 

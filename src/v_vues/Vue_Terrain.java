@@ -1,4 +1,4 @@
-package v;
+package v_vues;
 
 import java.awt.event.*;
 import javax.swing.*;

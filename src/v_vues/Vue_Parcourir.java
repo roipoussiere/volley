@@ -1,24 +1,22 @@
-package v;
+package v_vues;
 
-import javax.swing.*;
+import javax.swing.JFileChooser;
 import c.Controleur;
 
 /**
- * Vue contenant les élements de l'onglet Edition.
+ * Fenetre de sélection du fichier.
+ * @author Nathanaël Jourdane
  */
 @SuppressWarnings("serial")
-public class Vue_Edition extends JPanel
+public class Vue_Parcourir extends JFileChooser
 {
 	private Controleur c;
 	
-	// Composants de la fenêtre
-
-	
 	/**
-	 * Création du JFrame et de tous ses composants.
+	 * Crée le JFileChooser.
 	 * @param _c Le contrôleur.
 	 */
-	public Vue_Edition (Controleur _c)
+	public Vue_Parcourir(Controleur _c)
 	{
 		super ();
 		this.c = _c;

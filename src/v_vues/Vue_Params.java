@@ -1,4 +1,4 @@
-package v;
+package v_vues;
 
 import javax.swing.*;
 

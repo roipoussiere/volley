@@ -1,4 +1,4 @@
-package v;
+package v_vues;
 
 import javax.swing.*;
 
@@ -8,7 +8,7 @@ import c.Controleur;
  * Vue contenant les élements de l'onglet Lecture.
  */
 @SuppressWarnings("serial")
-public class Vue_Lecture extends JPanel
+public class Vue_PGrille extends JPanel
 {
 	private Controleur c;
 	
@@ -19,7 +19,7 @@ public class Vue_Lecture extends JPanel
 	 * Création du JFrame et de tous ses composants.
 	 * @param _c Constrôleur.
 	 */
-	public Vue_Lecture (Controleur _c)
+	public Vue_PGrille (Controleur _c)
 	{
 		super ();
 		this.c = _c;

@@ -1,6 +1,8 @@
-package v;
+package v_ecouteurs;
 
 import java.awt.event.*;
+
+import v_vues.Vue_Edition;
 
 /**
  * ActionListener des boutons de l'onglet Edition
