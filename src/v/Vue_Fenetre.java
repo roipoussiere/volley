@@ -20,14 +20,12 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	private Vue_Lecture vl;
 	private Vue_Edition ve;
 	private Vue_Joueurs vj;
-	private Vue_PGrille vpg;
-	private Vue_PCouleurs vpc;
+	private Vue_Params vp;
 	
 	// La barre de menus
 	private JMenuBar mb = new JMenuBar();
 	private JMenu mf;
 	private JMenu ms;
-	private JMenu mp;
 	private JMenu ma;
 
 	/**
@@ -66,7 +64,6 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		// Création des menus
 		this.mf = new JMenu("Fichier");
 		this.ms = new JMenu("Stratégie");
-		this.mp = new JMenu("Paramètres");
 		this.ma = new JMenu("Aide");
 
 		// Création des items de Fichier
@@ -79,11 +76,8 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		// Création des items de Stratégie
 		JMenuItem msj = new JMenuItem("Joueurs");
 		JMenu mst = new JMenu("Terrain");
-				
-		// Création des items de Paramètres
-		JMenuItem mpg = new JMenuItem("Grille");
-		JMenuItem mpc = new JMenuItem("Couleurs");
-
+		JMenuItem msp = new JMenuItem("Paramètres...");
+		
 		// Création des items de Aide
 		JMenuItem mab = new JMenuItem("Besoin d'aide ?");
 		JMenuItem map = new JMenuItem("À propos de ce programme");
@@ -114,10 +108,7 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		// Ajout des items dans le menu Stratégie
 		this.ms.add(msj);
 		this.ms.add(mst);
-		
-		// Ajout des Items dans le menu Paramètres
-		this.mp.add(mpg);
-		this.mp.add(mpc);
+		this.ms.add(msp);
 		
 		// Ajout des Items dans le menu Aide
 		this.ma.add(mab);
@@ -126,7 +117,6 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		// Ajout des menus dans la barre de menus
 	    this.mb.add(mf);
 	    this.mb.add(ms);
-	    this.mb.add(mp);
 	    this.mb.add(ma);
 	    
 	    // Ajout des écouteurs du menu Fichier
@@ -138,10 +128,7 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	    
 	    // Ajout des écouteurs du menu Stratégie
 	    msj.addActionListener(new AL_Fenetre(this));
-	    
-	    // Ajout des écouteurs du menu Paramètres
-	    mpg.addActionListener(new AL_Fenetre(this));
-	    mpc.addActionListener(new AL_Fenetre(this));
+	    msp.addActionListener(new AL_Fenetre(this));
 	    
 	    // Ajout des écouteurs du menu Aide
 	    mab.addActionListener(new AL_Fenetre(this));
@@ -177,21 +164,27 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	{
 		this.vj = new Vue_Joueurs(this);
 	}
+
+	/**
+	 * Getter de Vue_Joueurs.
+	 * @return La vue de l'onglet Joueur.
+	 */
+	public void vueParams()
+	{
+		this.vp = new Vue_Params(this);
+	}
+	
+	// *** Getters & Setters
 	
 	/**
-	 * 
+	 * Getter de Vue_Joueurs.
+	 * @return La vue de l'onglet Joueur.
 	 */
-	public void vuePGrille()
+	public Vue_Params getVP()
 	{
-		this.vpg = new Vue_PGrille(this);
-	}	
-	/**
-	 * 
-	 */
-	public void vuePCouleurs()
-	{
-		this.vpc = new Vue_PCouleurs(this);
+		return this.vp;
 	}
+	
 	/**
 	 * Getter de Vue_Joueurs.
 	 * @return La vue de l'onglet Joueur.

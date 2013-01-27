@@ -41,11 +41,8 @@ public class AL_Fenetre implements ActionListener
 		else if (t == "Terrain complet")
 			this.vf.getC().ms_terrain(false);
 
-		else if (t == "Grille")
-			this.vf.getC().mp_grille();
-
-		else if (t == "Couleurs")
-			this.vf.getC().mp_couleurs();
+		else if (t == "Paramètres...")
+			this.vf.getC().mp_param();
 
 		else if (t == "Besoin d'aide ?")
 			this.vf.getC().ma_aide();

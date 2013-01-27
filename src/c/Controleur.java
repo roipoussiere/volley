@@ -117,7 +117,7 @@ public class Controleur
 	}
 	
 	/**
-	 * Paramétrage des joueurs.
+	 * Création de la vue Joueurs.
 	 */
 	public void ms_joueurs()
 	{
@@ -126,7 +126,7 @@ public class Controleur
 	}
 	
 	/**
-	 * Paramétrage du terrain.
+	 * Affectation du mode d'affichage du terrain.
 	 * @param demiT Mode d'affichage du terrain : True pour affichage en demi terrain, false pour affichage en terrain complet.
 	 */
 	public void ms_terrain(boolean _demiT)
@@ -141,23 +141,14 @@ public class Controleur
 	}
 	
 	/**
-	 * Paramétrage de la grille.
+	 * Création de la vue Paramètres.
 	 */
-	public void mp_grille()
+	public void mp_param()
 	{
-		System.out.println("Grille...");
-		this.vf.vuePGrille();
+		System.out.println("Paramètres...");
+		this.vf.vueParams();
 	}
-	
-	/**
-	 * Paramétrage des couleurs.
-	 */
-	public void mp_couleurs()
-	{
-		System.out.println("Couleurs...");
-		this.vf.vuePCouleurs();
-	}
-	
+		
 	/**
 	 * Affiche de l'aide pour l'utilisation du programme.
 	 */

@@ -6,7 +6,7 @@ import javax.swing.*;
  * Vue de la fenêtre Joueurs.
  */
 @SuppressWarnings("serial")
-public class Vue_PGrille extends JDialog
+public class Vue_Params extends JDialog
 {
 	private Vue_Fenetre vf;
 	
@@ -16,9 +16,9 @@ public class Vue_PGrille extends JDialog
 	 * Création du JFrame et de tous ses composants.
 	 * @param _c Constrôleur.
 	 */
-	public Vue_PGrille (Vue_Fenetre _vf)
+	public Vue_Params (Vue_Fenetre _vf)
 	{
-		super (_vf, "Paramètres de la grille", true);
+		super (_vf, "Paramètres", true);
 		this.vf = _vf;
 		this.setSize(400, 300);
 		this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
