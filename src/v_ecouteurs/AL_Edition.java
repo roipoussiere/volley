@@ -6,7 +6,7 @@ import v_vues.Vue_Edition;
 
 /**
  * ActionListener des boutons de l'onglet Edition
- * @author Nathanael Jourdane
+ * @author Florian Garnier
  */
 public class AL_Edition implements ActionListener
 {

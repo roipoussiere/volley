@@ -1,9 +1,7 @@
 package v_vues;
 
-import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Insets;
 
 import javax.swing.*;
@@ -26,10 +24,9 @@ public class Vue_Edition extends JPanel
 	private JComboBox typeStrategie ; // permet de selectionner le type de la strategie
 	private JLabel numJ[] ; // tableau de JLabel contenant les numéros de chaque joueur
 	private JTextField deplacementJ[] ; // tableau de JTextField contenant les déplacements saisis de chaque joueur
-	private JScrollPane js ;
 	
 	// Constante
-	private static final int NOMBRE_JOUEURS = 3 ;
+	private static final int NOMBRE_JOUEURS = 6 ; // A MODIFIER ! doit recevoir le nombre de joueurs sélectionnés dans le menu "Joueur"
 	
 	/**
 	 * Creation du JFrame et de tous ses composants.
@@ -80,8 +77,8 @@ public class Vue_Edition extends JPanel
 		this.add (this.typeStrategie, gbc) ;
 		
 		// Saisie des déplacements des joueurs
-		this.numJ = new JLabel[NOMBRE_JOUEURS] ; // A MODIFIER ! doit recevoir le nombre de joueurs sélectionnés dans le menu "Joueur"
-		this.deplacementJ = new JTextField[NOMBRE_JOUEURS] ; // IDEM !
+		this.numJ = new JLabel[NOMBRE_JOUEURS] ; 
+		this.deplacementJ = new JTextField[NOMBRE_JOUEURS] ;
 		for (int i = 0 ; i < NOMBRE_JOUEURS ; i++)
 		{
 			// Ajout du label
@@ -100,13 +97,6 @@ public class Vue_Edition extends JPanel
 			gbc.insets = new Insets (10, 0, 10, 10) ;
 			this.add (this.deplacementJ[i], gbc) ;
 		}
-		
-//		// Mise en place de la barre de défilement
-//		this.js = new JScrollPane () ;
-//		this.js.setHorizontalScrollBarPolicy (ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER) ;
-//		this.js.setVerticalScrollBarPolicy (ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS) ;
-//		
-//		this.add (this.js) ;
 	}
 	
 	/**
