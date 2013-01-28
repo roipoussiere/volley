@@ -6,7 +6,7 @@ import v_vues.Vue_Edition;
 
 /**
  * ActionListener des boutons de l'onglet Edition
- * @author Nathanaël Jourdane
+ * @author Nathanael Jourdane
  */
 public class AL_Edition implements ActionListener
 {
@@ -14,7 +14,7 @@ public class AL_Edition implements ActionListener
 
 	/**
 	 * Constructeur de l'ActionListener.
-	 * @param _ve Vue d'Edition d'une stratégie.
+	 * @param _ve Vue d'Edition d'une strategie.
 	 */
 	public AL_Edition(Vue_Edition _ve)
 	{
