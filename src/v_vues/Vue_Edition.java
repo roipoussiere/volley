@@ -9,7 +9,7 @@ import javax.swing.*;
 import c.Controleur;
 
 /**
- * Vue contenant les elements de l'onglet Edition.
+ * Vue contenant les √©l√©ments de l'onglet Edition.
  * @author Florian Garnier
  */
 @SuppressWarnings("serial")
@@ -18,18 +18,16 @@ public class Vue_Edition extends JPanel
 	private Controleur c ;
 	
 	// Composants de la fenetre
-	private JButton tpsPrecedent ; // permet de retourner au temps precedent
-	private JButton tpsSuivant ; // permet de passer au temps suivant
-	private JTextField tpsEnCours ; // affiche le temps en cours + permet de saisir le temps que l'on souhaite traiter
-	private JComboBox typeStrategie ; // permet de selectionner le type de la strategie
-	private JLabel numJ[] ; // tableau de JLabel contenant les numÈros de chaque joueur
-	private JTextField deplacementJ[] ; // tableau de JTextField contenant les dÈplacements saisis de chaque joueur
+	private SelectionTemps selecTps ; // permet de choisir le temps √† g√©rer
+	private JComboBox typeStrategie ; // permet de s√©lectionner le type de la strat√©gie
+	private JLabel numJ[] ; // tableau de JLabel contenant les num√©ros de chaque joueur
+	private JTextField deplacementJ[] ; // tableau de JTextField contenant les d√©placements saisis de chaque joueur
 	
 	// Constante
-	private static final int NOMBRE_JOUEURS = 6 ; // A MODIFIER ! doit recevoir le nombre de joueurs sÈlectionnÈs dans le menu "Joueur"
+	private static final int NOMBRE_JOUEURS = 6 ; // A MODIFIER ! doit recevoir le nombre de joueurs s√©lectionn√©s dans le menu "Joueur"
 	
 	/**
-	 * Creation du JFrame et de tous ses composants.
+	 * Cr√©ation du JFrame et de tous ses composants.
 	 * @param _c Le controleur.
 	 */
 	public Vue_Edition (Controleur _c)
@@ -41,49 +39,33 @@ public class Vue_Edition extends JPanel
 		this.setLayout (new GridBagLayout()) ;
 		GridBagConstraints gbc = new GridBagConstraints () ;
 		
-		// Bouton "Precedent"
-		this.tpsPrecedent = new JButton ("<") ;
-		gbc.gridx = 0 ; gbc.gridy = 0 ; // On positionne le composant dans la cellule de coordonnÈes (0 ; 0)
-		gbc.gridwidth = 1 ; gbc.gridheight = 1 ; // Le composant occupe 1 colonne et 1 ligne
-		gbc.anchor = GridBagConstraints.LINE_START ; // On positionne le composant au milieu ‡ gauche de la cellule
-		gbc.insets = new Insets (0, 10, 10, 0) ; // On dÈfinit les marges entourant le composant
-		this.add (this.tpsPrecedent, gbc) ;
-		
-		// Affichage et saisie du temps
-		this.tpsEnCours = new JTextField (3) ;
-		gbc.gridx = 1 ; gbc.gridy = 0 ;
-		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
+		// S√©lection du temps
+		this.selecTps = new SelectionTemps () ;
+		gbc.gridx = 0 ; gbc.gridy = 0 ;
+		gbc.gridwidth = 3 ; gbc.gridheight = 1 ; // 3 car SelectionTemps poss√®de 3 composants
 		gbc.anchor = GridBagConstraints.LINE_START ;
-		gbc.insets = new Insets (0, 0, 10, 25) ;
-		this.add (this.tpsEnCours, gbc) ;
-		
-		// Bouton "Suivant"
-		this.tpsSuivant = new JButton (">") ;
-		gbc.gridx = 2 ; gbc.gridy = 0 ;
-		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
-		gbc.anchor = GridBagConstraints.LINE_START ;
-		gbc.insets = new Insets (0, 0, 10, 10) ;
-		this.add (this.tpsSuivant, gbc) ;
+		gbc.insets = new Insets (0, 0, 0, 0) ;
+		this.add (this.selecTps, gbc) ;
 		
 		// Type de la strategie
-		this.typeStrategie = new JComboBox() ;
+		this.typeStrategie = new JComboBox () ;
 		this.typeStrategie.setEditable (false) ;
 		this.typeStrategie.addItem ("Attaque") ;
-		this.typeStrategie.addItem ("DÈfense") ;
+		this.typeStrategie.addItem ("D√©fense") ;
 		gbc.gridx = 3 ; gbc.gridy = 0 ;
 		gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.LINE_START ;
-		gbc.insets = new Insets (0, 100, 10, 10) ;
+		gbc.insets = new Insets (0, 135, 10, 10) ;
 		this.add (this.typeStrategie, gbc) ;
 		
-		// Saisie des dÈplacements des joueurs
+		// Saisie des d√©placements des joueurs
 		this.numJ = new JLabel[NOMBRE_JOUEURS] ; 
 		this.deplacementJ = new JTextField[NOMBRE_JOUEURS] ;
 		for (int i = 0 ; i < NOMBRE_JOUEURS ; i++)
 		{
 			// Ajout du label
 			this.numJ[i] = new JLabel ("Joueur " + (i + 1) + " : ") ;
-			gbc.gridx = 0 ; gbc.gridy = i + 1 ; // + 1 car la premiËre ligne est dÈj‡ occupÈe
+			gbc.gridx = 0 ; gbc.gridy = i + 1 ; // + 1 car la premi√®re ligne est d√©j√† occup√©e
 			gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
 			gbc.anchor = GridBagConstraints.LINE_START ;
 			gbc.insets = new Insets (0, 10, 0, 10) ;
@@ -91,7 +73,7 @@ public class Vue_Edition extends JPanel
 			
 			// Ajout du champs de saisie
 			this.deplacementJ[i] = new JTextField (25) ;
-			gbc.gridx = 1 ; gbc.gridy = i + 1 ; // + 1 car la premiËre ligne est dÈj‡ occupÈe
+			gbc.gridx = 1 ; gbc.gridy = i + 1 ; // + 1 car la premi√®re ligne est d√©j√† occup√©e
 			gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
 			gbc.anchor = GridBagConstraints.LINE_START ;
 			gbc.insets = new Insets (10, 0, 10, 10) ;
