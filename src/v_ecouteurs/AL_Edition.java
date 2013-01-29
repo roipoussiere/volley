@@ -14,7 +14,7 @@ public class AL_Edition implements ActionListener
 
 	/**
 	 * Constructeur de l'ActionListener.
-	 * @param _ve Vue d'Edition d'une strategie.
+	 * @param _ve Vue d'Edition d'une stratégie.
 	 */
 	public AL_Edition(Vue_Edition _ve)
 	{
@@ -22,10 +22,10 @@ public class AL_Edition implements ActionListener
 	}
 
 	/**
-	 * Ecoute l'action du clic sur un bouton.
-	 * @param _ae Evenement de clic sur un bouton.
+	 * Ecoute les actions effectués sur les composants de la fenêtre.
+	 * @param _ae Evenement.
 	 */
-	public void actionPerformed(ActionEvent _ae)
+	public void actionPerformed (ActionEvent _ae)
 	{
 		//_ae.getSource() ...
 	}

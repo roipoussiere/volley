@@ -6,6 +6,8 @@ import java.awt.Insets;
 
 import javax.swing.*;
 
+import v_utilitaires.SelectionTemps;
+
 import c.Controleur;
 
 /**
@@ -87,6 +89,33 @@ public class Vue_Edition extends JPanel
 	 */
 	public Controleur getC()
 	{
-		return this.c;
+		return this.c ;
+	}
+
+	/**
+	 * Getter du sélectionneur de temps.
+	 * @return Le sélectionneur de temps.
+	 */
+	public SelectionTemps getSelecTps () 
+	{
+		return selecTps ;
+	}
+
+	/**
+	 * Getter de la liste de type de stratégie.
+	 * @return La liste de type de stratégie.
+	 */
+	public JComboBox getTypeStrategie () 
+	{
+		return typeStrategie ;
+	}
+
+	/**
+	 * Getter du tableau des déplacements des joueurs.
+	 * @return Le tableau des déplacements des joueurs.
+	 */
+	public JTextField[] getDeplacementJ () 
+	{
+		return deplacementJ ;
 	}
 }
