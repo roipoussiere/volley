@@ -1,3 +1,20 @@
+28/01:
+
+Vue Lecture :
+- Implémenter la vue Lecture !
+
+Vue Édition :
+- Attaque/Défense s'applique à toute la stratégie, pas à un temps.
+Eventuellement on pourrait spécifier cela lorsque on enregistre la strat.
+- Changer temps au clic sur les flèches
+- desactiver les boutons aux extrémités des temps.
+
+Vue Joueurs :
+- Afficher par défaut les noms des joueurs paramétrés (dans la classe Parametres)
+- À la validation, enregistrer les préférences (dans la classe Parametres)
+- Eviter de faire un gros copier-coller mais 1 classe "Onglet Joueur" qui sera 2 fois.
+- Idem pour la ligne de joueur, faire une classe contenant le libellé, le champ de texte, la checkbox, etc.
+
 Onglet Joueurs (Xavier) :
 Par défaut : 1 seule équipe, 6 joueurs
 OK Onglets équipe 1 et équipe 2
