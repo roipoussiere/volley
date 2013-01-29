@@ -27,6 +27,37 @@ public class AL_Edition implements ActionListener
 	 */
 	public void actionPerformed (ActionEvent _ae)
 	{
-		//_ae.getSource() ...
+		// Clic sur le bouton "Temps précédent"
+		if (_ae.getSource().equals(this.ve.getSelecTps().getTpsPrecedent()))
+		{
+			// ON ENREGISTRE LES MOUVEMENTS SAISIS (appel du controleur)
+			// On récupère la valeur du temps en cours
+			int tps = Integer.parseInt(this.ve.getSelecTps().getTpsEnCours().getText()) ;
+			// On décrémente de 1
+			tps-- ;
+			// On inscrit la nouvelle valeur dans le champs
+			this.ve.getSelecTps().getTpsEnCours().setText(Integer.toString(tps)) ;
+			// On désactive le bouton "Temps précédent" si on est revenu au temps 0
+			if (tps == 0)
+				this.ve.getSelecTps().getTpsPrecedent().setEnabled(false) ;
+			// On active le bouton "Temps suivant" (si besoin)
+			this.ve.getSelecTps().getTpsSuivant().setEnabled(true) ;
+		}
+		
+		// Clic sur le bouton "Temps suivant"
+		if (_ae.getSource().equals(this.ve.getSelecTps().getTpsSuivant()))
+		{
+			// ON ENREGISTRE LES MOUVEMENTS SAISIS (appel du controleur)
+			// On récupère la valeur du temps en cours
+			int tps = Integer.parseInt(this.ve.getSelecTps().getTpsEnCours().getText()) ;
+			// On incrémente de 1
+			tps++ ;
+			// On inscrit la nouvelle valeur dans le champs
+			this.ve.getSelecTps().getTpsEnCours().setText(Integer.toString(tps)) ;
+			// On active le bouton "Temps précédent" (si besoin)
+			this.ve.getSelecTps().getTpsPrecedent().setEnabled(true) ;
+			// On désactive le bouton "Temps suivant" jusqu'au remplissage d'au moins 1 champs de déplacement
+			this.ve.getSelecTps().getTpsSuivant().setEnabled(false) ;
+		}
 	}
 }

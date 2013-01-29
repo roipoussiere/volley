@@ -6,6 +6,7 @@ import java.awt.Insets;
 
 import javax.swing.*;
 
+import v_ecouteurs.AL_Edition;
 import v_utilitaires.SelectionTemps;
 
 import c.Controleur;
@@ -81,6 +82,10 @@ public class Vue_Edition extends JPanel
 			gbc.insets = new Insets (10, 0, 10, 10) ;
 			this.add (this.deplacementJ[i], gbc) ;
 		}
+		
+		// Abonnement aux listeners
+		this.selecTps.getTpsPrecedent().addActionListener (new AL_Edition(this)) ;
+		this.selecTps.getTpsSuivant().addActionListener (new AL_Edition(this)) ;
 	}
 	
 	/**

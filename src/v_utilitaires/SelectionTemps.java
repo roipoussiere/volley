@@ -31,6 +31,7 @@ public class SelectionTemps extends JPanel
 
 		// Bouton "Temps précédent"
 		this.tpsPrecedent = new JButton ("<") ;
+		this.tpsPrecedent.setEnabled (false) ;
 		gbc.gridx = 0 ; gbc.gridy = 0 ;
 		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.LINE_START ;
@@ -49,6 +50,7 @@ public class SelectionTemps extends JPanel
 
 		// Bouton "Temps suivant"
 		this.tpsSuivant = new JButton (">") ;
+//		this.tpsSuivant.setEnabled (false) ;
 		gbc.gridx = 2 ; gbc.gridy = 0 ;
 		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.LINE_START ;
