@@ -7,6 +7,7 @@ import java.awt.Insets;
 import javax.swing.*;
 
 import v_ecouteurs.AL_Edition;
+import v_utilitaires.SaisieDeplacement;
 import v_utilitaires.SelectionTemps;
 
 import c.Controleur;
@@ -23,8 +24,7 @@ public class Vue_Edition extends JPanel
 	// Composants de la fenetre
 	private SelectionTemps selecTps ; // permet de choisir le temps à gérer
 	private JComboBox typeStrategie ; // permet de sélectionner le type de la stratégie
-	private JLabel numJ[] ; // tableau de JLabel contenant les numéros de chaque joueur
-	private JTextField deplacementJ[] ; // tableau de JTextField contenant les déplacements saisis de chaque joueur
+	private SaisieDeplacement deplacementJ[] ; // tableau contenant les saisies des déplacements de chaque joueur
 	
 	// Constante
 	private static final int NOMBRE_JOUEURS = 6 ; // A MODIFIER ! doit recevoir le nombre de joueurs sélectionnés dans le menu "Joueur"
@@ -62,24 +62,14 @@ public class Vue_Edition extends JPanel
 		this.add (this.typeStrategie, gbc) ;
 		
 		// Saisie des déplacements des joueurs
-		this.numJ = new JLabel[NOMBRE_JOUEURS] ; 
-		this.deplacementJ = new JTextField[NOMBRE_JOUEURS] ;
+		this.deplacementJ = new SaisieDeplacement[NOMBRE_JOUEURS] ;
 		for (int i = 0 ; i < NOMBRE_JOUEURS ; i++)
-		{
-			// Ajout du label
-			this.numJ[i] = new JLabel ("Joueur " + (i + 1) + " : ") ;
-			gbc.gridx = 0 ; gbc.gridy = i + 1 ; // + 1 car la première ligne est déjà occupée
-			gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
-			gbc.anchor = GridBagConstraints.LINE_START ;
-			gbc.insets = new Insets (0, 10, 0, 10) ;
-			this.add (this.numJ[i], gbc) ;
-			
-			// Ajout du champs de saisie
-			this.deplacementJ[i] = new JTextField (25) ;
-			gbc.gridx = 1 ; gbc.gridy = i + 1 ; // + 1 car la première ligne est déjà occupée
+		{		
+			this.deplacementJ[i] = new SaisieDeplacement("Joueur " + (i + 1), i + 1, "A6") ;
+			gbc.gridx = 0 ; gbc.gridy = i + 2 ; // + 1 car les deux premières lignes sont déjà occupées
 			gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
-			gbc.anchor = GridBagConstraints.LINE_START ;
-			gbc.insets = new Insets (10, 0, 10, 10) ;
+			gbc.anchor = GridBagConstraints.CENTER ;
+			gbc.insets = new Insets (10, 0, 10, 0) ;
 			this.add (this.deplacementJ[i], gbc) ;
 		}
 		
@@ -119,7 +109,7 @@ public class Vue_Edition extends JPanel
 	 * Getter du tableau des déplacements des joueurs.
 	 * @return Le tableau des déplacements des joueurs.
 	 */
-	public JTextField[] getDeplacementJ () 
+	public SaisieDeplacement[] getDeplacementJ () 
 	{
 		return deplacementJ ;
 	}

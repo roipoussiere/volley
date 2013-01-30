@@ -21,7 +21,7 @@ public class SelectionTemps extends JPanel
 	private JTextField tpsEnCours ; // affiche le temps en cours + permet de saisir le temps que l'on souhaite traiter
 
 	/**
-	 * Constructeur du sélectionneur de temps.
+	 * Constructeur de l'utilitaire et de tous ses composants.
 	 */
 	public SelectionTemps ()
 	{
