@@ -1,14 +1,9 @@
 package v_vues;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-
-import javax.swing.*;
-
-import v_ecouteurs.AL_Fenetre;
-
 import c.Controleur;
+import java.awt.*;
+import javax.swing.*;
+import v_utilitaires.SelectionTemps;
 
 /**
  * Vue contenant les élements de l'onglet Lecture.

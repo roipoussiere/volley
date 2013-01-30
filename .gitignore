@@ -10,3 +10,4 @@
 *.metadata
 build.xml
 nbproject
+/build/
