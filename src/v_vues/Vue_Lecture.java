@@ -16,7 +16,6 @@ public class Vue_Lecture extends JPanel
 
 	// Composants de la fenêtre
 	private SelectionTemps selecTps ;
-	private JComboBox typeStrategie, choixEquipe ;
 	private JLabel libelleFichier ;
 	private JButton  lecture, stop, pleinEcran;
 
@@ -43,15 +42,6 @@ public class Vue_Lecture extends JPanel
 		gbc.anchor = GridBagConstraints.PAGE_START ;
 		gbc.insets = new Insets (0, 0, 0, 0) ;
 		this.add (this.selecTps, gbc) ;
-
-		// Choix équipe
-		this.choixEquipe = new JComboBox () ;
-		this.choixEquipe.setEditable (false) ;
-		this.choixEquipe.addItem ("Equipe 1") ;
-		this.choixEquipe.addItem ("Equipe 2") ;
-		gbc.anchor = GridBagConstraints.FIRST_LINE_END ;
-		gbc.insets = new Insets (0, 135, 10, 10) ;
-		this.add (this.choixEquipe, gbc) ;
 		
 		// Nom fichier
 		this.libelleFichier = new JLabel ("Nom du fichier... ") ;
@@ -96,22 +86,6 @@ public class Vue_Lecture extends JPanel
 
 	public void setSelecTps(SelectionTemps selecTps) {
 		this.selecTps = selecTps;
-	}
-
-	public JComboBox getTypeStrategie() {
-		return typeStrategie;
-	}
-
-	public void setTypeStrategie(JComboBox typeStrategie) {
-		this.typeStrategie = typeStrategie;
-	}
-
-	public JComboBox getChoixEquipe() {
-		return choixEquipe;
-	}
-
-	public void setChoixEquipe(JComboBox choixEquipe) {
-		this.choixEquipe = choixEquipe;
 	}
 
 	public JLabel getLibelleFichier() {
