@@ -67,7 +67,7 @@ public class Vue_Lecture extends JPanel
 		this.add (this.lecture, gbc) ;
 
 		// Bouton Stop
-		this.stop = new JButton("[]");
+		this.stop = new JButton("||");
 		gbc.gridwidth = 3 ;
 		gbc.anchor = GridBagConstraints.LAST_LINE_START ;
 		gbc.insets = new Insets (0, 120, 0, 0) ;
