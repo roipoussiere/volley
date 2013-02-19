@@ -1,16 +1,13 @@
 package v_vues;
 
+import c.Controleur;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-
 import javax.swing.*;
-
 import v_ecouteurs.AL_Edition;
 import v_utilitaires.SaisieDeplacement;
 import v_utilitaires.SelectionTemps;
-
-import c.Controleur;
 
 /**
  * Vue contenant les éléments de l'onglet Edition.

@@ -3,7 +3,6 @@ package v_ecouteurs;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JMenuItem;
-
 import v_vues.Vue_Fenetre;
 
 public class AL_Fenetre implements ActionListener
@@ -15,45 +14,58 @@ public class AL_Fenetre implements ActionListener
 		this.vf = _vf;
 	}
 	
+	@Override
 	public void actionPerformed(ActionEvent _ae)
 	{
 		String t = ((JMenuItem)_ae.getSource()).getText();
 		
-		if (t == "Ouvrir")
+		if ("Ouvrir".equals(t)) {
 			this.vf.getC().mf_ouvrir();
+		}
 		
-		else if (t == "Nouveau")
+		else if ("Nouveau".equals(t)) {
 			this.vf.getC().mf_nouveau();
+		}
 		
-		else if (t == "Enregistrer")
+		else if ("Enregistrer".equals(t)) {
 			this.vf.getC().mf_enregistrer();
+		}
 		
-		else if (t == "Enregistrer sous")
+		else if ("Enregistrer sous".equals(t)) {
 			this.vf.getC().mf_enregistrerSous();
+		}
 		
-		else if (t == "Quitter")
+		else if ("Quitter".equals(t)) {
 			this.vf.getC().quitter();
+		}
 		
-		else if (t == "Joueurs")
+		else if ("Joueurs".equals(t)) {
 			this.vf.getC().ms_joueurs();
+		}
 
-		else if (t == "Demi terrain")
+		else if ("Demi terrain".equals(t)) {
 			this.vf.getC().ms_terrain(true);
+		}
 
-		else if (t == "Terrain complet")
+		else if ("Terrain complet".equals(t)) {
 			this.vf.getC().ms_terrain(false);
+		}
 
-		else if (t == "Paramètres...")
+		else if ("Paramètres...".equals(t)) {
 			this.vf.getC().mp_param();
+		}
 
-		else if (t == "Besoin d'aide ?")
+		else if ("Besoin d'aide ?".equals(t)) {
 			this.vf.getC().ma_aide();
+		}
 
-		else if (t == "À propos de ce programme")
+		else if ("À propos de ce programme".equals(t)) {
 			this.vf.getC().ma_apropos();
+		}
 
-		else
+		else {
 			System.out.println("Erreur : écouteur inconnu.");
+		}
 	}
 
 }

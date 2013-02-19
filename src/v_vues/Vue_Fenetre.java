@@ -1,13 +1,10 @@
 package v_vues;
 
+import c.Controleur;
 import java.awt.event.*;
-
 import javax.swing.*;
-
 import v_ecouteurs.AL_Fenetre;
 import v_ecouteurs.CL_Fenetre;
-
-import c.Controleur;
 
 /**
  * Vue de la fenêtre principale du programme.

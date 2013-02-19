@@ -12,6 +12,7 @@ public class Test
 	@SuppressWarnings("unused")
 	public static void main(String[] args)
 	{
+		//Xml xml = new Xml();
 		Controleur c = new Controleur();
 	}
 

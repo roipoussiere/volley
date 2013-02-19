@@ -33,6 +33,7 @@ public class Controleur
 		// Ouverture des fenêtres.
 		this.vf = new Vue_Fenetre(this);
 		this.vt = new Vue_Terrain(this);
+		this.vt.setTaille();
 		this.centrerFen();
 		this.vf.setVisible (true);
 		this.vt.setVisible (true);

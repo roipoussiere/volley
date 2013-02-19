@@ -1,8 +1,7 @@
 package v_vues;
 
-import javax.swing.*;
-
 import c.Controleur;
+import javax.swing.*;
 
 /**
  * Vue contenant les élements de l'onglet Grille.

@@ -2,7 +2,6 @@ package v_ecouteurs;
 
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
 import v_vues.Vue_Fenetre;
 
 /**
@@ -27,6 +26,7 @@ public class CL_Fenetre implements ChangeListener
 	 * Ecoute l'action du clic sur un onglet.
 	 * @param _ce Évenement de clic sur le bouton Lecture.
 	 */
+	@Override
 	public void stateChanged(ChangeEvent _ce)
 	{
 		this.vf.getC().clicOnglet();

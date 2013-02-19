@@ -3,7 +3,6 @@ package v_ecouteurs;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import v_vues.Vue_Joueurs;
 
 
@@ -17,7 +16,7 @@ public class AL_Joueurs implements ActionListener
 		this.vj = _vj;
 	}
 
-	
+	@Override
 	public void actionPerformed(ActionEvent _ae)
 	{
 		if(_ae.getSource().equals(this.vj.getJcbTse1())) // checkbox selection de tous les joueurs de l'équipe 1

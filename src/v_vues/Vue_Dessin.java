@@ -1,10 +1,8 @@
 package v_vues;
 
-import java.awt.*;
-
-import javax.swing.*;
-
 import c.Parametres;
+import java.awt.*;
+import javax.swing.*;
 
 /**
  * Vue de dessin, pour dessiner sur la fenetre de terrain.
@@ -31,6 +29,7 @@ public class Vue_Dessin extends JPanel
 	 * Méthode qui sera appelée à chaque action sur la fenêtre, qui permet de redessiner l'intégralité de son contenu.
 	 * @param _g : Le composant graphique.
 	 */
+	@Override
 	public void paintComponent(Graphics _g)
 	{
 		if (this.vt.getC().getP().isDemiT()) // demi terrain
@@ -138,10 +137,12 @@ public class Vue_Dessin extends JPanel
 		int nbY = 11;
 		
 		_g.setColor(this.p.getCQFin());
-		for (int i=0 ; i<nbX+1 ; i++) // lignes verticales
+		for (int i=0 ; i<nbX+1 ; i++) {
 			_g.drawLine(i*_tc, _posY, i*_tc, nbY*_tc + _posY);
-		for (int i=0 ; i<nbY+1 ; i++) // lignes horizontales
+		}
+		for (int i=0 ; i<nbY+1 ; i++) {
 			_g.drawLine(0, _posY + i*_tc, nbX*_tc, _posY + i*_tc);
+		}
 	}
 	
 	/**

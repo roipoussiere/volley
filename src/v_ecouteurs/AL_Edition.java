@@ -1,7 +1,6 @@
 package v_ecouteurs;
 
 import java.awt.event.*;
-
 import v_vues.Vue_Edition;
 
 /**
@@ -25,6 +24,7 @@ public class AL_Edition implements ActionListener
 	 * Ecoute les actions effectués sur les composants de la fenêtre.
 	 * @param _ae Evenement.
 	 */
+	@Override
 	public void actionPerformed (ActionEvent _ae)
 	{
 		// Clic sur le bouton "Temps précédent"
@@ -38,8 +38,9 @@ public class AL_Edition implements ActionListener
 			// On inscrit la nouvelle valeur dans le champs
 			this.ve.getSelecTps().getTpsEnCours().setText(Integer.toString(tps)) ;
 			// On désactive le bouton "Temps précédent" si on est revenu au temps 0
-			if (tps == 0)
+			if (tps == 0) {
 				this.ve.getSelecTps().getTpsPrecedent().setEnabled(false) ;
+			}
 			// On active le bouton "Temps suivant" (si besoin)
 			this.ve.getSelecTps().getTpsSuivant().setEnabled(true) ;
 		}
