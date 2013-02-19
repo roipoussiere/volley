@@ -12,7 +12,8 @@ public class Parametres
 	private int styleQL; // Style de quadrillage en mode lecture.
 	private int styleQE; // Style de quadrillage en mode Edition.
 	
-	private Color cFond; // Couleur des lignes de base (limites, ligne d'attaque).
+	private Color cFondBas; // Couleur de fond du demi-terrain bas.
+	private Color cFondHaut; // Couleur de fond du demi-terrain haut.
 	private Color cLignes; // Couleur des lignes de base (limites, ligne d'attaque).
 	private Color cQLarge; // Couleur du quadrillage large (3 carreaux).
 	private Color cQFin; // Couleur du quadrillage fin (9 carreaux).
@@ -37,10 +38,11 @@ public class Parametres
 		styleQE = 2;
 		
 		// Couleurs
-		cFond = new Color(0, 100, 0);
-		cLignes = new Color(0, 0, 0);
-		cQLarge = new Color(0, 75, 0);
-		cQFin = new Color(0, 90, 0);
+		cFondBas = new Color(220, 120, 20);
+		cFondHaut = new Color(180, 80, 0);
+		cLignes = new Color(250, 250, 250);
+		cQLarge = new Color(200, 100, 0);
+		cQFin = new Color(210, 110, 10);
 		
 		// Nom des joueurs
 		this.nomJ1[0] = "Jean";
@@ -229,18 +231,36 @@ public class Parametres
 	 * Getter de la couleur de fond du terrain.
 	 * @return La couleur de fond du terrain.
 	 */
-	public Color getCFond()
+	public Color getCFondBas()
 	{
-		return cFond;
+		return cFondBas;
 	}
 	
 	/**
 	 * Setter de la couleur de fond du terrain.
 	 * @param _cFond La couleur de fond du terrain.
 	 */
-	public void setCFond(Color _cFond)
+	public void setCFondBas(Color _cFondBas)
 	{
-		this.cFond = _cFond;
+		this.cFondBas = _cFondBas;
+	}
+	
+	/**
+	 * Getter de la couleur de fond du terrain.
+	 * @return La couleur de fond du terrain.
+	 */
+	public Color getCFondHaut()
+	{
+		return cFondHaut;
+	}
+	
+	/**
+	 * Setter de la couleur de fond du terrain.
+	 * @param _cFond La couleur de fond du terrain.
+	 */
+	public void setCFondHaut(Color _cFondHaut)
+	{
+		this.cFondHaut = _cFondHaut;
 	}
 	
 	/**

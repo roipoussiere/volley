@@ -33,12 +33,14 @@ public class Vue_Dessin extends JPanel
 	 */
 	public void paintComponent(Graphics _g)
 	{
-		_g.setColor(p.getCFond());
-		_g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		if (this.vt.getC().getP().isDemiT()) // demi terrain
+		{
 			dessinerDT(_g);
+		}
 		else // terrain complet
+		{
 			dessinerTC(_g);
+		}
 	}
 	
 	/**
@@ -59,8 +61,13 @@ public class Vue_Dessin extends JPanel
 	{
 		int tc = 50;
 		
+		_g.setColor(p.getCFondBas());
+		_g.fillRect(0, 0, this.getWidth(), this.getHeight());
+		
 		if (this.styleQ == 1)
+		{
 			dessinerQLarge(_g, tc, tc);
+		}
 		else if(this.styleQ == 2)
 		{
 			dessinerQFin(_g, 0, tc);
@@ -83,6 +90,11 @@ public class Vue_Dessin extends JPanel
 	private void dessinerTC(Graphics _g)
 	{
 		int tc = 35;
+		
+		_g.setColor(p.getCFondHaut());
+		_g.fillRect(0, 0, this.getWidth(), this.getHeight()/2);
+		_g.setColor(p.getCFondBas());
+		_g.fillRect(0, this.getHeight()/2, this.getWidth(), this.getHeight());
 		
 		if (this.styleQ == 1)
 		{
