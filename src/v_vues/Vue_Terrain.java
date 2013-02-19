@@ -53,7 +53,7 @@ public class Vue_Terrain extends JFrame implements WindowListener
 		
 		// Si demi-terrain : zone de 11*10 cases de 50px chacune = 550*500 + bordures de la fenêtre
 		if (demiT)	
-			this.setSize(557, 528);
+			this.setSize(557, 578);
 		else // Si terrain complet : zone de 11*20 cases de 35px*35px chacune = 385*700 + bordures de la fenêtre
 			this.setSize(392, 728);
 	}

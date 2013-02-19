@@ -39,7 +39,7 @@ public class Parametres
 		
 		// Couleurs
 		cFondBas = new Color(220, 120, 20);
-		cFondHaut = new Color(180, 80, 0);
+		cFondHaut = new Color(190, 90, 0);
 		cLignes = new Color(250, 250, 250);
 		cQLarge = new Color(200, 100, 0);
 		cQFin = new Color(210, 110, 10);
