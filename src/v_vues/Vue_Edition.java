@@ -1,10 +1,13 @@
 package v_vues;
 
-import c.Controleur;
+import c.ControleurVueEdition;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
 import v_ecouteurs.AL_Edition;
 import v_utilitaires.SaisieDeplacement;
 import v_utilitaires.SelectionTemps;
@@ -16,7 +19,7 @@ import v_utilitaires.SelectionTemps;
 @SuppressWarnings("serial")
 public class Vue_Edition extends JPanel
 {
-	private Controleur c ;
+	private ControleurVueEdition c ;
 	
 	// Composants de la fenetre
 	private SelectionTemps selecTps ; // permet de choisir le temps à gérer
@@ -30,7 +33,7 @@ public class Vue_Edition extends JPanel
 	 * Création du JFrame et de tous ses composants.
 	 * @param _c Le controleur.
 	 */
-	public Vue_Edition (Controleur _c)
+	public Vue_Edition (ControleurVueEdition _c)
 	{
 		super () ;
 		this.c = _c ;
@@ -63,11 +66,12 @@ public class Vue_Edition extends JPanel
 		for (int i = 0 ; i < NOMBRE_JOUEURS ; i++)
 		{		
 			this.deplacementJ[i] = new SaisieDeplacement("Joueur " + (i + 1), i + 1, "A6") ;
-			gbc.gridx = 0 ; gbc.gridy = i + 2 ; // + 1 car les deux premières lignes sont déjà occupées
+			gbc.gridx = 0 ; gbc.gridy = i + 2 ; // + 2 car les deux premières lignes sont déjà occupées
 			gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
 			gbc.anchor = GridBagConstraints.CENTER ;
 			gbc.insets = new Insets (10, 0, 10, 0) ;
 			this.add (this.deplacementJ[i], gbc) ;
+			this.deplacementJ[i].getDepActuel().getDocument().addDocumentListener(new AL_Edition(this)) ;
 		}
 		
 		// Abonnement aux listeners
@@ -79,7 +83,7 @@ public class Vue_Edition extends JPanel
 	 * Getter du controleur.
 	 * @return Le controleur.
 	 */
-	public Controleur getC()
+	public ControleurVueEdition getC()
 	{
 		return this.c ;
 	}
