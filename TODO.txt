@@ -26,9 +26,9 @@ OK *6 :
 OK checkbox afficher tous les joueurs
 
 Onglet Edition (Florian) :
-boutons temps précédent et suivant + champ (idem lecture)
-1 champ pour chaque joueur pour spécifier son emplacement
-Liste déroulante pour sélectionner attaque ou défense
+OK boutons temps précédent et suivant + champ (idem lecture)
+OK 1 champ pour chaque joueur pour spécifier son emplacement
+OK Liste déroulante pour sélectionner attaque ou défense
 
 Onglet lecture (Julien) :
 Onglet inactif tant qu'on a pas sélectionné le fichier
