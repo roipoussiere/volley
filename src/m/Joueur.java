@@ -15,5 +15,15 @@ public class Joueur extends Element
 	
 	// Constructeur
 	
+	public Joueur (String _id, int _num, String _nom, boolean _estMeneur, char _posX, char _posY)
+	{
+		this.idJoueur = _id ;
+		this.numeroJoueur = _num ;
+		this.nomJoueur = _nom ;
+		this.estMeneur = _estMeneur ;
+		this.posX = _posX ; // position en abscisse initiale du joueur
+		this.posY = _posY ; // position en ordonnée initiale du joueur
+	}
 	
+	// Getters & Setters
 }
