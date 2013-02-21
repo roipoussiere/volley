@@ -12,6 +12,7 @@ import javax.swing.JTextField;
  * Utilitaire de saisie des déplacements des joueurs.
  * @author Florian
  */
+@SuppressWarnings("serial")
 public class SaisieDeplacement extends JPanel
 {
 	private JLabel infoJ ; // nom + numéro du joueur 
