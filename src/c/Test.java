@@ -13,6 +13,7 @@ public class Test
 	public static void main(String[] args)
 	{
 		//Xml xml = new Xml();
+		//xml.getParam("cFondBas");
 		Controleur c = new Controleur();
 	}
 

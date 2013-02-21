@@ -18,11 +18,13 @@ public class Parametres
 	private Color cQLarge; // Couleur du quadrillage large (3 carreaux).
 	private Color cQFin; // Couleur du quadrillage fin (9 carreaux).
 	
-	// Joueurs
-	private String nomJ1[] = new String[6];
-	private String nomJ2[] = new String[6];
-	private boolean etatJ1[] = new boolean[6];
-	private boolean etatJ2[] = new boolean[6];
+	// Nom des élements
+	private String tabNomE[] = new String[13];
+	
+	// Etat des élements
+	private boolean tabEtatE[] = new boolean[13];
+	
+	private Color tabCoulE[] = new Color[13];
 	
 	// Divers
 	private String cheminFichier; // Chemin du fichier à lire ou éditer.
@@ -38,123 +40,139 @@ public class Parametres
 		styleQE = 2;
 		
 		// Couleurs
-		cFondBas = new Color(220, 120, 20);
-		cFondHaut = new Color(190, 90, 0);
-		cLignes = new Color(250, 250, 250);
-		cQLarge = new Color(200, 100, 0);
-		cQFin = new Color(210, 110, 10);
+		//conversion hex to int : int j = Integer.parseInt(s, 16);
+		cFondBas = new Color(220, 120, 20); //#dc7814
+		cFondHaut = new Color(190, 90, 0); //#be5a00
+		cLignes = new Color(250, 250, 250); //#fafafa
+		cQLarge = new Color(200, 100, 0); //#c86400
+		cQFin = new Color(210, 110, 10); //#d26e0a
 		
-		// Nom des joueurs
-		this.nomJ1[0] = "Jean";
-		this.nomJ1[1] = "Marie";
-		this.nomJ1[2] = "Philippe";
-		this.nomJ1[3] = "Nathalie";
-		this.nomJ1[4] = "Michel";
-		this.nomJ1[5] = "Isabelle";
-		
-		this.nomJ2[0] = "Alain";
-		this.nomJ2[1] = "Sylvie";
-		this.nomJ2[2] = "Patrick";
-		this.nomJ2[3] = "Catherine";
-		this.nomJ2[4] = "Nicolas";
-		this.nomJ2[5] = "Martine";
-		
-		// État des joueurs
-		this.etatJ1[0] = true;
-		this.etatJ1[1] = true;
-		this.etatJ1[2] = true;
-		this.etatJ1[3] = true;
-		this.etatJ1[4] = true;
-		this.etatJ1[5] = true;
+		// Nom des élements
+	
+		// Ballon
+		this.tabNomE[0] = "Ballon";
 
-		this.etatJ2[0] = false;
-		this.etatJ2[1] = false;
-		this.etatJ2[2] = false;
-		this.etatJ2[3] = false;
-		this.etatJ2[4] = false;
-		this.etatJ2[5] = false;
-
+		// Joueurs équipe 1
+		this.tabNomE[1] = "Jean";
+		this.tabNomE[2] = "Marie";
+		this.tabNomE[3] = "Philippe";
+		this.tabNomE[4] = "Nathalie";
+		this.tabNomE[5] = "Michel";
+		this.tabNomE[6] = "Isabelle";
+		
+		// Joueurs équipe 2
+		this.tabNomE[7] = "Alain";
+		this.tabNomE[8] = "Sylvie";
+		this.tabNomE[9] = "Patrick";
+		this.tabNomE[10] = "Catherine";
+		this.tabNomE[11] = "Nicolas";
+		this.tabNomE[12] = "Martine";
+		
+		// Etat des élements
+		
+		// ballon
+		this.tabEtatE[0] = true;
+		
+		// Joueurs équipe 1
+		this.tabEtatE[1] = true;
+		this.tabEtatE[2] = true;
+		this.tabEtatE[3] = true;
+		this.tabEtatE[4] = true;
+		this.tabEtatE[5] = true;
+		this.tabEtatE[6] = false;
+		
+		// Joueurs équipe 2
+		this.tabEtatE[7] = false;
+		this.tabEtatE[8] = false;
+		this.tabEtatE[9] = false;
+		this.tabEtatE[10] = false;
+		this.tabEtatE[11] = false;
+		this.tabEtatE[12] = false;
+		
+		// Couleur des éléments
+		
+		// Ballon
+		this.tabCoulE[0] = new Color(250, 250, 250);
+		
+		// Joueurs équipe 1
+		this.tabCoulE[1] = new Color(70, 70, 70); // Meneur
+		this.tabCoulE[2] = new Color(50, 50, 50);
+		this.tabCoulE[3] = new Color(50, 50, 50);
+		this.tabCoulE[4] = new Color(50, 50, 50);
+		this.tabCoulE[5] = new Color(50, 50, 50);
+		this.tabCoulE[6] = new Color(50, 50, 50);
+		
+		// Joueurs équipe 2
+		this.tabCoulE[7] = new Color(70, 70, 70); // Meneur
+		this.tabCoulE[8] = new Color(50, 50, 50);
+		this.tabCoulE[9] = new Color(50, 50, 50);
+		this.tabCoulE[10] = new Color(50, 50, 50);
+		this.tabCoulE[11] = new Color(50, 50, 50);
+		this.tabCoulE[12] = new Color(50, 50, 50);
+		
 		// Divers
 		this.demiT = true;
 		this.cheminFichier = "/home/natha/volley/fichiers_strategie/attaque/testAtt.svb";
 	}
 	
 	/**
-	 * Getter des noms des joueurs de la 1ere équipe.
-	 * @return Un tableau contenant les 6 noms des joueurs de la 1ere équipe.
+	 * Getter de nom d'un élement.
+	 * @return Le nom d'un élement
 	 */
-	public String[] getNomJ1()
+	public String getNomE(int _idE)
 	{
-		return nomJ1;
+		return this.tabNomE[_idE];
 	}
 
 	/**
-	 * Setter des noms des joueurs de la 1ere équipe.
-	 * @param _nomJ1 Un tableau contenant les 6 noms des joueurs de la 1ere équipe.
+	 * Setter de nom d'un élement.
+	 * @param _nomE Le nom d'un élement.
 	 */
-	public void setNomJ1(String[] _nomJ1)
+	public void setNomE(String _nomE, int _idE)
 	{
-		this.nomJ1 = _nomJ1;
+		this.tabNomE[_idE] = _nomE;
 	}
 	
 	/**
-	 * Getter des noms des joueurs de la 2eme équipe.
-	 * @return Un tableau contenant les 6 noms des joueurs de la 2eme équipe.
+	 * Getter de l'état d'un élement.
+	 * @return Un booléen représentant l'état d'un élement.<br/>
+	 * Avec true : l'élement est présent sur le terrain et false : l'élement n'apparait pas sur le terrain.
 	 */
-	public String[] getNomJ2()
+	public boolean getEtatE(int _idE)
 	{
-		return nomJ2;
+		return this.tabEtatE[_idE];
 	}
 	
 	/**
-	 * Setter des noms des joueurs de la 2eme équipe.
-	 * @param _nomJ2 Un tableau contenant les 6 noms des joueurs de la 2eme équipe.
+	 * Setter de l'état d'un élement.
+	 * @param etatE Un booléen représentant l'état d'un élement.<br/>
+	 * Avec true : l'élement est présent sur le terrain et false : l'élement n'apparait pas sur le terrain.
 	 */
-	public void setNomJ2(String[] _nomJ2)
+	public void setEtatE(boolean _etatE, int _idE)
 	{
-		this.nomJ2 = _nomJ2;
-	}
-	
-	/**
-	 * Getter de l'état des joueurs de la 1ere équipe.
-	 * @return Un tableau de booléens contenant l'état des 6 joueurs de la 1ere équipe.<br/>
-	 * Avec true : le joueur est présent sur le terrain et false : le joueur n'apparait pas sur le terrain.
-	 */
-	public boolean[] getEtatJ1()
-	{
-		return etatJ1;
-	}
-	
-	/**
-	 * Setter de l'état des joueurs de la 1ere équipe.
-	 * @param _etatJ1 Un tableau de booléens contenant l'état des 6 joueurs de la 1ere équipe.<br/>
-	 * Avec true : le joueur est présent sur le terrain et false : le joueur n'apparait pas sur le terrain.
-	 */
-	public void setEtatJ1(boolean[] _etatJ1)
-	{
-		this.etatJ1 = _etatJ1;
-	}
-	
-	/**
-	 * Getter de l'état des joueurs de la 2eme équipe.
-	 * @return Un tableau de booléens contenant l'état des 6 joueurs de la 2eme équipe.<br/>
-	 * Avec true : le joueur est présent sur le terrain et false : le joueur n'apparait pas sur le terrain.
-	 */
-	public boolean[] getEtatJ2()
-	{
-		return etatJ2;
-	}
-	
-	/**
-	 * Setter de l'état des joueurs de la 2eme équipe.
-	 * @param _etatJ2 Un tableau de booléens contenant l'état des 6 joueurs de la 2eme équipe.<br/>
-	 * Avec true : le joueur est présent sur le terrain et false : le joueur n'apparait pas sur le terrain.
-	 */
-	public void setEtatJ2(boolean[] _etatJ2)
-	{
-		this.etatJ2 = _etatJ2;
+		this.tabEtatE[_idE] = _etatE;
 	}
 
+		/**
+	 * Getter de l'état d'un élement.
+	 * @return Un booléen représentant l'état d'un élement.<br/>
+	 * Avec true : l'élement est présent sur le terrain et false : l'élement n'apparait pas sur le terrain.
+	 */
+	public Color getCoulE(int _idE)
+	{
+		return this.tabCoulE[_idE];
+	}
+	
+	/**
+	 * Setter de l'état d'un élement.
+	 * @param etatE Un booléen représentant l'état d'un élement.<br/>
+	 * Avec true : l'élement est présent sur le terrain et false : l'élement n'apparait pas sur le terrain.
+	 */
+	public void setCoulE(Color _coulE, int _idE)
+	{
+		this.tabCoulE[_idE] = _coulE;
+	}
+	
 	/**
 	 * Getter du chemin du fichier à lire ou éditer.
 	 * @return Le chemin du fichier à lire ou éditer.

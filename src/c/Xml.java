@@ -11,23 +11,17 @@ import org.xml.sax.*;
  */
 public class Xml
 {
-	
+	Document document;
 	public Xml()
 	{
+		this.document = null;
+
 		try
 		{
-			// création d'une fabrique de documents
-			DocumentBuilderFactory fabrique = DocumentBuilderFactory.newInstance();
-
 			// création d'un constructeur de documents
-			DocumentBuilder constructeur = fabrique.newDocumentBuilder();
-
-			// lecture du contenu d'un fichier XML avec DOM
-			File xml = new File("~/test.xml");
-			Document document = constructeur.parse(xml);
-
-			Element racine = document.getDocumentElement();
-			printNode(racine);
+			DocumentBuilder constructeur = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			File xml = new File("test.xml"); // lecture du contenu du fichier XML avec DOM
+			this.document = constructeur.parse(xml);
 		}
 		catch(ParserConfigurationException pce)
 		{
@@ -46,14 +40,19 @@ public class Xml
 		}
 	}
 	
-	public static void printNode(Node node)
+	public String getParam(String _param)
 	{
-		System.out.println(node);
-		NodeList nodes = node.getChildNodes();
-		for(int i=0 ; i<nodes.getLength() ; i++)
+		//this.document.getElementsByTagName(_param);
+		return "";
+	}
+	
+	private void affTout()
+	{
+		// Extraction de la liste des éléments présents dans la racine de l'arbre xml.
+		NodeList nodes = this.document.getDocumentElement().getChildNodes();
+		for(int i=0 ; i<nodes.getLength()/2 ; i++)
 		{
-			Node n = nodes.item(i);
-			printNode(n);
+			System.out.println(i + " : " + nodes.item(i*2+1).getTextContent());
 		}
 	}
 }

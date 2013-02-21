@@ -1,5 +1,6 @@
 package c;
 
+import c_strategie.Ensemble;
 import java.awt.*;
 import javax.swing.*;
 import v_vues.Vue_APropos;
@@ -19,6 +20,7 @@ public class Controleur
 	private Vue_Terrain vt;
 	
 	private Parametres p;
+	private Ensemble s;
 	
 	/**
 	 * Constructeur du contrôleur qui initialise les vues et les autres arguments et lance la vue principale (Vue_Fenetre).
@@ -28,7 +30,10 @@ public class Controleur
 		// Itinitialisation des vues.
 		this.vf = null;
 		this.vt = null;
+		
 		this.p = new Parametres();
+		this.s = new Ensemble(this);
+		this.s.afficher();
 		
 		// Ouverture des fenêtres.
 		this.vf = new Vue_Fenetre(this);
