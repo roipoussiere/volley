@@ -40,7 +40,7 @@ public class Element
 	{
 		return this.etat;
 	}
-
+	
 	public String getNom()
 	{
 		return this.nom;

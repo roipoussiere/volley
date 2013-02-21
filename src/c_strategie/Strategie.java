@@ -1,13 +1,13 @@
 package c_strategie;
 import c.Controleur;
-import java.util.ArrayList;
+import java.util.Vector;
 /**
  *
  * @author Nathanaël Jourdane
  */
 public class Strategie
 {
-	private ArrayList<Temps> strategie;
+	private Vector<Temps> strategie;
 	private Controleur c;
 	private Ensemble e;
 	
@@ -15,7 +15,7 @@ public class Strategie
 	{
 		this.c = _c;
 		this.e = this.c.getE();
-		this.strategie = new ArrayList<Temps>();		
+		this.strategie = new Vector<Temps>();		
 	}
 	
 	public Controleur getC()
@@ -31,6 +31,11 @@ public class Strategie
 	public void suppTemps(int _idT)
 	{
 		this.strategie.remove(_idT);
+	}
+	
+	public Temps DernierTemps()
+	{
+		return this.strategie.lastElement();
 	}
 }
 
