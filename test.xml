@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<config>
+	<styleQL>0</styleQL>
+	<styleQE>2</styleQE>
+	<cFondBas>#dc7814</cFondBas>
+	<cFondHaut>#be5a00</cFondHaut>
+	<cLignes>#fafafa</cLignes>
+	<cQLarge>#c86400</cQLarge>
+	<cQFin>#d26e0a</cQFin>
+	<fichier>"fichiers_strategie/attaque/testAtt.svb"</fichier>
+	<demiT>true</demiT>
+</config>
