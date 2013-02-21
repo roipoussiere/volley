@@ -1,13 +1,17 @@
 package v_ecouteurs;
 
 import java.awt.event.*;
+
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
 import v_vues.Vue_Edition;
 
 /**
  * ActionListener des boutons de l'onglet Edition
  * @author Florian Garnier
  */
-public class AL_Edition implements ActionListener
+public class AL_Edition implements ActionListener, DocumentListener
 {
 	private Vue_Edition ve;
 
@@ -60,5 +64,23 @@ public class AL_Edition implements ActionListener
 			// On désactive le bouton "Temps suivant" jusqu'au remplissage d'au moins 1 champs de déplacement
 			this.ve.getSelecTps().getTpsSuivant().setEnabled(false) ;
 		}
+	}
+
+	@Override
+	public void changedUpdate(DocumentEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void insertUpdate(DocumentEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeUpdate(DocumentEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }

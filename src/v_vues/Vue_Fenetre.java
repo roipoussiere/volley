@@ -1,6 +1,8 @@
 package v_vues;
 
 import c.Controleur;
+import c.ControleurVueEdition;
+
 import java.awt.event.*;
 import javax.swing.*;
 import v_ecouteurs.AL_Fenetre;
@@ -50,7 +52,7 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		this.tp.addTab("Lecture", this.vl);
 		
 		// Ajout de l'onglet Édition dans la barre des onglets
-		this.ve = new Vue_Edition(this.c);
+		this.ve = new Vue_Edition(new ControleurVueEdition());
 		this.tp.addTab("Edition", this.ve);
 
 		this.add(this.tp); // Ajout de la barre d'onglets dans la fenêtre

@@ -155,9 +155,7 @@ public class Controleur
 	// *** Méthodes de Vue_Fichier ***
 
 	// *** Méthodes de Vue_Lecture ***
-			
-	// *** Méthodes de Vue_Edition ***
-	
+				
 	// *** Méthodes de Vue_Terrain ***
 		
 	// *** Autres méthodes ***
@@ -188,7 +186,7 @@ public class Controleur
 	 */
 	private void centrerFen()
 	{
-		// Les dimentions de l'écran
+		// Les dimensions de l'écran
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		
 		if (this.vf != null)
