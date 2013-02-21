@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 
 /**
  * Utilitaire de saisie des déplacements des joueurs.
- * @author Florian
+ * @author Florian Garnier
  */
 public class SaisieDeplacement extends JPanel
 {
@@ -54,7 +54,7 @@ public class SaisieDeplacement extends JPanel
 	}
 
 	/**
-	 * Getter du champs de saisie du déplacement.
+	 * Getter du champ de saisie du déplacement.
 	 * @return Le champ de saisie du déplacement.
 	 */
 	public JTextField getDepActuel ()

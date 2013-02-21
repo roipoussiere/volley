@@ -2,7 +2,7 @@ package m;
 
 /**
  * Classe représentant l'ensemble des éléments présents sur le terrain (joueur + ballon)
- * @author Florian
+ * @author Florian Garnier
  */
 
 public class Element

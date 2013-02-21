@@ -63,7 +63,7 @@ public class Vue_Edition extends JPanel
 		for (int i = 0 ; i < NOMBRE_JOUEURS ; i++)
 		{		
 			this.deplacementJ[i] = new SaisieDeplacement("Joueur " + (i + 1), i + 1, "A6") ;
-			gbc.gridx = 0 ; gbc.gridy = i + 2 ; // + 1 car les deux premières lignes sont déjà occupées
+			gbc.gridx = 0 ; gbc.gridy = i + 2 ; // + 2 car les deux premières lignes sont déjà occupées
 			gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
 			gbc.anchor = GridBagConstraints.CENTER ;
 			gbc.insets = new Insets (10, 0, 10, 0) ;

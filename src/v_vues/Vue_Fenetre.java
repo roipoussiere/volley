@@ -167,7 +167,7 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	 */
 	public void vueJoueurs()
 	{
-		this.vj = new Vue_Joueurs(this);
+		this.vj = new Vue_Joueurs(this, this.c);
 	}
 
 	/**
