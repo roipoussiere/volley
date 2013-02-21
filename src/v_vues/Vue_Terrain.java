@@ -1,8 +1,8 @@
 package v_vues;
 
+import c.Controleur;
 import java.awt.event.*;
 import javax.swing.*;
-import c.Controleur;
 
 /**
  * Vue de la fenêtre représentant le terrain de volley.
@@ -27,8 +27,6 @@ public class Vue_Terrain extends JFrame implements WindowListener
 		this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		this.setResizable(false);
 		
-		this.setTaille();
-		
 		vd = new Vue_Dessin(this);
 	    this.setContentPane(vd);
 	}
@@ -52,10 +50,12 @@ public class Vue_Terrain extends JFrame implements WindowListener
 		System.out.println("Redimentionnement du terrain. demi-terrin : " + demiT);
 		
 		// Si demi-terrain : zone de 11*10 cases de 50px chacune = 550*500 + bordures de la fenêtre
-		if (demiT)	
-			this.setSize(557, 528);
-		else // Si terrain complet : zone de 11*20 cases de 35px*35px chacune = 385*700 + bordures de la fenêtre
+		if (demiT) {	
+			this.setSize(557, 578);
+		}
+		else {
 			this.setSize(392, 728);
+		}
 	}
 		
 	/**
@@ -71,16 +71,23 @@ public class Vue_Terrain extends JFrame implements WindowListener
 	 * Action qui suit la fermeture de la fenêtre.
 	 * @param arg0 L'évenement de clic sur le bouton de fermeture de la fenêtre.
 	 */
+	@Override
 	public void windowClosing(WindowEvent arg0)
 	{
 		this.getC().quitter();
 	}
 	
 	// Ces méthodes sont les autres évenements possibles sur la fenêtre, que nous utilisons pas.
+	@Override
 	public void windowActivated(WindowEvent arg0) {}
+	@Override
 	public void windowClosed(WindowEvent arg0) {}
+	@Override
 	public void windowDeactivated(WindowEvent arg0) {}
+	@Override
 	public void windowDeiconified(WindowEvent arg0) {}
+	@Override
 	public void windowIconified(WindowEvent arg0) {}
+	@Override
 	public void windowOpened(WindowEvent arg0) {}
 }

@@ -4,9 +4,7 @@ package v_vues;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-
 import javax.swing.*;
-
 import v_ecouteurs.AL_Joueurs;
 
 

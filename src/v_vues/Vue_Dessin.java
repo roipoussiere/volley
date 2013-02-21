@@ -1,10 +1,8 @@
 package v_vues;
 
-import java.awt.*;
-
-import javax.swing.*;
-
 import c.Parametres;
+import java.awt.*;
+import javax.swing.*;
 
 /**
  * Vue de dessin, pour dessiner sur la fenetre de terrain.
@@ -31,14 +29,17 @@ public class Vue_Dessin extends JPanel
 	 * Méthode qui sera appelée à chaque action sur la fenêtre, qui permet de redessiner l'intégralité de son contenu.
 	 * @param _g : Le composant graphique.
 	 */
+	@Override
 	public void paintComponent(Graphics _g)
 	{
-		_g.setColor(p.getCFond());
-		_g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		if (this.vt.getC().getP().isDemiT()) // demi terrain
+		{
 			dessinerDT(_g);
+		}
 		else // terrain complet
+		{
 			dessinerTC(_g);
+		}
 	}
 	
 	/**
@@ -59,20 +60,25 @@ public class Vue_Dessin extends JPanel
 	{
 		int tc = 50;
 		
+		_g.setColor(p.getCFondBas());
+		_g.fillRect(0, 0, this.getWidth(), this.getHeight());
+		
 		if (this.styleQ == 1)
+		{
 			dessinerQLarge(_g, tc, tc);
+		}
 		else if(this.styleQ == 2)
 		{
 			dessinerQFin(_g, 0, tc);
-			dessinerQLarge(_g, 0, tc);
+			dessinerQLarge(_g, tc, tc);
 		}
-
 		
 		_g.setColor(this.p.getCLignes());
-		_g.drawLine(tc, tc*9, tc*10, tc*9); // ligne bas
-		_g.drawLine(tc, 0, tc, tc*9); // ligne gauche
-		_g.drawLine(tc*10, 0, tc*10, tc*9); // ligne droite
-		_g.drawLine(tc, tc*3, tc*10, tc*3); // ligne d'attaque
+		_g.drawLine(tc, tc*10, tc*10, tc*10); // ligne bas
+		_g.drawLine(tc, tc, tc, tc*10); // ligne gauche
+		_g.drawLine(tc*10, tc, tc*10, tc*10); // ligne droite
+		_g.drawLine(tc, tc*4, tc*10, tc*4); // ligne d'attaque
+		_g.drawLine(tc, tc, tc*10, tc); // ligne de service
 	}
 	
 	/**
@@ -83,6 +89,11 @@ public class Vue_Dessin extends JPanel
 	private void dessinerTC(Graphics _g)
 	{
 		int tc = 35;
+		
+		_g.setColor(p.getCFondHaut());
+		_g.fillRect(0, 0, this.getWidth(), this.getHeight()/2);
+		_g.setColor(p.getCFondBas());
+		_g.fillRect(0, this.getHeight()/2, this.getWidth(), this.getHeight());
 		
 		if (this.styleQ == 1)
 		{
@@ -115,7 +126,7 @@ public class Vue_Dessin extends JPanel
 	}
 	
 	/**
-	 * Dessine un quadrillage de 11*10 carreaux.
+	 * Dessine un quadrillage de 11*11 carreaux.
 	 * @param _g Le composant graphique.
 	 * @param _posY La position verticale du quadrillage.
 	 * @param _tc La taille d'un carreau, qui déterminera celle du quadrillage.
@@ -123,13 +134,15 @@ public class Vue_Dessin extends JPanel
 	private void dessinerQFin(Graphics _g, int _posY, int _tc)
 	{
 		int nbX = 11;
-		int nbY = 10;
+		int nbY = 11;
 		
 		_g.setColor(this.p.getCQFin());
-		for (int i=0 ; i<nbX+1 ; i++) // lignes verticales
+		for (int i=0 ; i<nbX+1 ; i++) {
 			_g.drawLine(i*_tc, _posY, i*_tc, nbY*_tc + _posY);
-		for (int i=0 ; i<nbY+1 ; i++) // lignes horizontales
+		}
+		for (int i=0 ; i<nbY+1 ; i++) {
 			_g.drawLine(0, _posY + i*_tc, nbX*_tc, _posY + i*_tc);
+		}
 	}
 	
 	/**

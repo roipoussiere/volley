@@ -1,7 +1,6 @@
 package v_ecouteurs;
 
 import java.awt.event.*;
-
 import v_vues.Vue_Lecture;
 
 /**
@@ -25,6 +24,7 @@ public class AL_Lecture implements ActionListener
 	 * Ecoute l'action du clic sur un bouton.
 	 * @param _ae Evenement de clic sur un bouton.
 	 */
+	@Override
 	public void actionPerformed(ActionEvent _ae)
 	{
 		//_ae.getSource() ...

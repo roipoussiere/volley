@@ -3,7 +3,6 @@ package v_utilitaires;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -12,7 +11,6 @@ import javax.swing.JTextField;
  * Utilitaire de saisie des déplacements des joueurs.
  * @author Florian
  */
-@SuppressWarnings("serial")
 public class SaisieDeplacement extends JPanel
 {
 	private JLabel infoJ ; // nom + numéro du joueur 
@@ -64,3 +62,4 @@ public class SaisieDeplacement extends JPanel
 		return depActuel ;
 	}
 }
+
