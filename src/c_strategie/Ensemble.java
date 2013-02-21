@@ -1,5 +1,7 @@
 package c_strategie;
 
+import c.Controleur;
+
 /**
  * Représente les 2 équipes et le ballon.
  * @author Nathanaël Jourdane
@@ -10,11 +12,11 @@ public class Ensemble
 	private static final int nbEl = nbJ*2 + 1; // Nombre d'élements (2 équipes + 1  ballon)
 	
 	Element tabEls[] = new Element[nbEl]; // Crée tous les elements
-	private Strategie s;
+	private Controleur c;
 	
-	public Ensemble(Strategie _s)
+	public Ensemble(Controleur _c)
 	{
-		this.s = _s;
+		this.c = _c;
 		for (int i=0 ; i<nbEl ; i++) {
 			tabEls[i] = new Element(this, i);
 		}
@@ -32,9 +34,9 @@ public class Ensemble
 	 * Getter de la stratégie.
 	 * @return La stratégie.
 	 */
-	public Strategie getS()
+	public Controleur getC()
 	{
-		return this.s;
+		return this.c;
 	}
 	
 	/**

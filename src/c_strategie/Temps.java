@@ -12,11 +12,11 @@ public class Temps
 	{
 		this.s = _s;
 		
-		Ensemble e = this.s.getE();
+		Ensemble e = this.s.getC().getE();
 		for (int i=0 ; i<e.getNbJ() ; i++)
 		{
 			Element el = e.getEl(i);
-			if (el.getEtat()) {
+			if (el.getEtat()) { // Si l'élément est activé
 				
 			}
 		}

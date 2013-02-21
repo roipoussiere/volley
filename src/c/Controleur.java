@@ -1,5 +1,6 @@
 package c;
 
+import c_strategie.Ensemble;
 import c_strategie.Strategie;
 import java.awt.*;
 import javax.swing.*;
@@ -20,6 +21,7 @@ public class Controleur
 	private Vue_Terrain vt;
 	
 	private Parametres p;
+	private Ensemble e;
 	private Strategie s; // À supprimer : normalement la création de la stratégie ne se fait pas ici.
 	
 	/**
@@ -32,6 +34,8 @@ public class Controleur
 		this.vt = null;
 		
 		this.p = new Parametres(); // Initialisation des paramètres
+		this.e = new Ensemble(this); // Création de l'ensemble des élements (2 équipes + 1 ballon)
+		this.e.afficher(); //Affichage des élements (pour test)
 		this.s = new Strategie(this); // À supprimer
 		
 		// Ouverture des fenêtres.
@@ -48,6 +52,12 @@ public class Controleur
 	public Parametres getP()
 	{
 		return this.p;
+	}
+	
+	// À supprimer
+	public Ensemble getE()
+	{
+		return this.e;
 	}
 	
 	// À supprimer

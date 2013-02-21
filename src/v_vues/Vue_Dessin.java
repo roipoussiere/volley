@@ -44,7 +44,7 @@ public class Vue_Dessin extends JPanel
 			dessinerTC(_g);
 		}
 		
-		Ensemble e = this.vt.getC().getS().getE();
+		Ensemble e = this.vt.getC().getE();
 		for (int i=0 ; i<e.getNbEl() ; i++)
 		{
 			Element el = e.getEl(i);

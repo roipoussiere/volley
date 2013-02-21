@@ -14,20 +14,13 @@ public class Strategie
 	public Strategie(Controleur _c)
 	{
 		this.c = _c;
-		this.e = new Ensemble(this);
-		this.strategie = new ArrayList<Temps>();
-		
-		this.e.afficher(); //Affichage des élements (pour test)
+		this.e = this.c.getE();
+		this.strategie = new ArrayList<Temps>();		
 	}
 	
 	public Controleur getC()
 	{
 		return this.c;
-	}
-	
-	public Ensemble getE()
-	{
-		return this.e;
 	}
 	
 	public void addTemps(Temps t)
