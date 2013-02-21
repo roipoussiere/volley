@@ -23,7 +23,7 @@ public class Element
 	public Element(Ensemble _e, int _i)
 	{
 		this.e = _e;
-		Parametres param = this.e.getC().getP();
+		Parametres param = this.e.getS().getC().getP();
 		
 		this.id = _i;
 		this.etat = param.getEtatE(_i);

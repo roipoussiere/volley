@@ -1,6 +1,6 @@
 package c;
 
-import c_strategie.Ensemble;
+import c_strategie.Strategie;
 import java.awt.*;
 import javax.swing.*;
 import v_vues.Vue_APropos;
@@ -20,7 +20,7 @@ public class Controleur
 	private Vue_Terrain vt;
 	
 	private Parametres p;
-	private Ensemble s;
+	private Strategie s; // À supprimer : normalement la création de la stratégie ne se fait pas ici.
 	
 	/**
 	 * Constructeur du contrôleur qui initialise les vues et les autres arguments et lance la vue principale (Vue_Fenetre).
@@ -31,9 +31,8 @@ public class Controleur
 		this.vf = null;
 		this.vt = null;
 		
-		this.p = new Parametres();
-		this.s = new Ensemble(this);
-		this.s.afficher();
+		this.p = new Parametres(); // Initialisation des paramètres
+		this.s = new Strategie(this); // À supprimer
 		
 		// Ouverture des fenêtres.
 		this.vf = new Vue_Fenetre(this);
@@ -44,11 +43,17 @@ public class Controleur
 		this.vt.setVisible (true);
 	}
 	
-	// *** Getters & Setters ***
+	// *** Getters ***
 	
 	public Parametres getP()
 	{
 		return this.p;
+	}
+	
+	// À supprimer
+	public Strategie getS()
+	{
+		return this.s;
 	}
 	
 	// *** Méthodes de Vue_Fenetre ***

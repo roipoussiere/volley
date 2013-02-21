@@ -1,6 +1,8 @@
 package v_vues;
 
 import c.Parametres;
+import c_strategie.Element;
+import c_strategie.Ensemble;
 import java.awt.*;
 import javax.swing.*;
 
@@ -32,6 +34,7 @@ public class Vue_Dessin extends JPanel
 	@Override
 	public void paintComponent(Graphics _g)
 	{
+		// Affichage du quadrillage
 		if (this.vt.getC().getP().isDemiT()) // demi terrain
 		{
 			dessinerDT(_g);
@@ -39,6 +42,13 @@ public class Vue_Dessin extends JPanel
 		else // terrain complet
 		{
 			dessinerTC(_g);
+		}
+		
+		Ensemble e = this.vt.getC().getS().getE();
+		for (int i=0 ; i<e.getNbEl() ; i++)
+		{
+			Element el = e.getEl(i);
+			
 		}
 	}
 	
@@ -49,6 +59,11 @@ public class Vue_Dessin extends JPanel
 	public void setStyleQ(int _styleQ)
 	{
 		this.styleQ = _styleQ;
+	}
+	
+	public void element(Element _e)
+	{
+		
 	}
 	
 	/**
