@@ -10,20 +10,19 @@ import javax.swing.text.Position;
 public class Temps
 {
 	private Strategie s;
-	private Vector<ElementTemporel> etVector; // Vecteur contenant la position de tous les élements actifs.
+	private Vector<ElementTemporel> vecteurET; // Vecteur contenant la position de tous les élements actifs.
 
 	public Temps(Strategie _s)
 	{
 		this.s = _s;
-		this.etVector = new Vector<ElementTemporel>();
+		this.vecteurET = new Vector<ElementTemporel>();
 		
 		Ensemble e = this.s.getC().getE();
 		
 		for (int i=0 ; i<e.getNbJ() ; i++)
 		{
 			if (e.getEl(i).getEtat()) { // Pour chaque élement activé, on crée un nouvel élement temporel.
-				ElementTemporel pos = new ElementTemporel(i, 0, i);
-				this.etVector.add(pos);
+				this.vecteurET.add(new ElementTemporel(i, 0, i));
 			}
 		}
 		
@@ -31,24 +30,38 @@ public class Temps
 	}
 	
 	/**
+	 * Retourne le nombre d'élements temporels.
+	 * @return 
+	 */
+	public int getNbET()
+	{
+		return this.vecteurET.size();
+	}
+	
+	public ElementTemporel getET(int _idEt)
+	{
+		return this.vecteurET.get(_idEt);
+	}
+		
+	/**
 	 * Renvoie un élement temporel à partir de l'id de l'élement.
 	 */
-	public ElementTemporel getEtParId(int _idEl)
+	public ElementTemporel getETParId(int _idEl)
 	{
 		ElementTemporel el = null;
 		
 		// À optimiser
-		for (int i=0 ; i<this.etVector.size() ; i++)
+		for (int i=0 ; i<this.getNbET() ; i++)
 		{
-			if(this.etVector.get(i).getId() == _idEl)
-				el = this.etVector.get(i);
+			if(this.vecteurET.get(i).getId() == _idEl)
+				el = this.vecteurET.get(i);
 		}
 		return el;
 	}
 	
 	public void bougerEl(int _idEl, int _posX, int _posY)
 	{
-		ElementTemporel et = getEtParId(_idEl);
+		ElementTemporel et = getETParId(_idEl);
 		et.setXY(_posX, _posY);
 	}
 	

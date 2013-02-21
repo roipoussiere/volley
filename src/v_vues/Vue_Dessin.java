@@ -3,6 +3,7 @@ package v_vues;
 import c.Parametres;
 import c_strategie.Element;
 import c_strategie.Ensemble;
+import c_strategie.Temps;
 import java.awt.*;
 import javax.swing.*;
 
@@ -13,9 +14,12 @@ import javax.swing.*;
 @SuppressWarnings("serial")
 public class Vue_Dessin extends JPanel
 {
+	private Parametres p; // Pour éviter d'écrire this.vt.getC().getP();
 	private Vue_Terrain vt;
+
 	private int styleQ;
-	private Parametres p;
+	private Temps ta; // Pour éviter d'écrire this.vt.getC().getS().getTA();
+	private int tc;
 	
 	/**
 	 * Constructeur de la vue de dessin.
@@ -25,6 +29,15 @@ public class Vue_Dessin extends JPanel
 	{
 		this.vt = _vt;
 		this.p = this.vt.getC().getP();
+		
+		int vta = this.vt.getC().getS().getTA(); // récupère la valeur du temps actuel
+		this.ta = this.vt.getC().getS().getTemps(vta); // affecte le temps actuel à this.ta
+		
+		this.tc = 35; // taille d'une case
+		if (this.p.isDemiT())
+		{
+			this.tc = 50;
+		}
 	}
 	
 	/**
@@ -35,7 +48,7 @@ public class Vue_Dessin extends JPanel
 	public void paintComponent(Graphics _g)
 	{
 		// Affichage du quadrillage
-		if (this.vt.getC().getP().isDemiT()) // demi terrain
+		if (this.p.isDemiT()) // demi terrain
 		{
 			dessinerDT(_g);
 		}
@@ -43,12 +56,14 @@ public class Vue_Dessin extends JPanel
 		{
 			dessinerTC(_g);
 		}
-		
-		Ensemble e = this.vt.getC().getE();
-		for (int i=0 ; i<e.getNbEl() ; i++)
+
+		for (int i=0 ; i<this.ta.getNbET() ; i++)
 		{
-			Element el = e.getEl(i);
-			
+			int posX = this.ta.getET(i).getX();
+			int posY = this.ta.getET(i).getY();
+
+			System.out.println("elt à la position [" + posX + ";" + posY + "]");
+			element(_g, posX, posY);
 		}
 	}
 	
@@ -61,9 +76,10 @@ public class Vue_Dessin extends JPanel
 		this.styleQ = _styleQ;
 	}
 	
-	public void element(Element _e)
+	public void element(Graphics _g, int _posX, int _posY)
 	{
-		
+		int t = 20;
+		_g.drawOval(tc*(_posX+1) + t/2, tc*(_posY+1) + t/2, t, t);
 	}
 	
 	/**
@@ -73,8 +89,6 @@ public class Vue_Dessin extends JPanel
 	 */
 	private void dessinerDT(Graphics _g)
 	{
-		int tc = 50;
-		
 		_g.setColor(p.getCFondBas());
 		_g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		
@@ -103,8 +117,6 @@ public class Vue_Dessin extends JPanel
 	 */
 	private void dessinerTC(Graphics _g)
 	{
-		int tc = 35;
-		
 		_g.setColor(p.getCFondHaut());
 		_g.fillRect(0, 0, this.getWidth(), this.getHeight()/2);
 		_g.setColor(p.getCFondBas());
