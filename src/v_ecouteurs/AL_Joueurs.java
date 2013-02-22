@@ -1,97 +1,77 @@
 
-//package v_ecouteurs;
-//
-//import java.awt.event.ActionEvent;
-//import java.awt.event.ActionListener;
-//import v_vues.Vue_Joueurs;
-//
-//
-//
-//public class AL_Joueurs implements ActionListener
-//{
-//	private Vue_Joueurs vj;
-//	
-//	public AL_Joueurs(Vue_Joueurs _vj)
-//	{
-//		this.vj = _vj;
-//	}
-//
-//	@Override
-//	public void actionPerformed(ActionEvent _ae)
-//	{
-//		if(_ae.getSource().equals(this.vj.getJcbTse1())) // checkbox selection de tous les joueurs de l'équipe 1
-//		{
-//			
-//			if(this.vj.getJcbTse1().isSelected()==true)
-//			{
-//				// Selectionne toutes les cases
-//				this.vj.getJcbJ1e1().setSelected(true);
-//				this.vj.getJcbJ2e1().setSelected(true);
-//				this.vj.getJcbJ3e1().setSelected(true);
-//				this.vj.getJcbJ4e1().setSelected(true);
-//				this.vj.getJcbJ5e1().setSelected(true);
-//				this.vj.getJcbJ6e1().setSelected(true);	
-//				// Desactive toutes les cases
-//				this.vj.getJcbJ1e1().setEnabled(false);
-//				this.vj.getJcbJ2e1().setEnabled(false);
-//				this.vj.getJcbJ3e1().setEnabled(false);
-//				this.vj.getJcbJ4e1().setEnabled(false);
-//				this.vj.getJcbJ5e1().setEnabled(false);
-//				this.vj.getJcbJ6e1().setEnabled(false);
-//			}
-//			if(this.vj.getJcbTse1().isSelected()==false)
-//			{
-//				this.vj.getJcbJ1e1().setSelected(false);
-//				this.vj.getJcbJ2e1().setSelected(false);
-//				this.vj.getJcbJ3e1().setSelected(false);
-//				this.vj.getJcbJ4e1().setSelected(false);
-//				this.vj.getJcbJ5e1().setSelected(false);
-//				this.vj.getJcbJ6e1().setSelected(false);	
-//				// Reactive toutes les cases
-//				this.vj.getJcbJ1e1().setEnabled(true);
-//				this.vj.getJcbJ2e1().setEnabled(true);
-//				this.vj.getJcbJ3e1().setEnabled(true);
-//				this.vj.getJcbJ4e1().setEnabled(true);
-//				this.vj.getJcbJ5e1().setEnabled(true);
-//				this.vj.getJcbJ6e1().setEnabled(true);
-//			}
-//		}
-//		if(_ae.getSource().equals(this.vj.getJcbTse2())) // checkbox selection de tous les joueurs de l'équipe 2
-//		{
-//			if(this.vj.getJcbTse2().isSelected()==true)
-//			{
-//				// Selectionne toutes les cases
-//				this.vj.getJcbJ1e2().setSelected(true);
-//				this.vj.getJcbJ2e2().setSelected(true);
-//				this.vj.getJcbJ3e2().setSelected(true);
-//				this.vj.getJcbJ4e2().setSelected(true);
-//				this.vj.getJcbJ5e2().setSelected(true);
-//				this.vj.getJcbJ6e2().setSelected(true);
-//				// Desactive toutes les cases
-//				this.vj.getJcbJ1e2().setEnabled(false);
-//				this.vj.getJcbJ2e2().setEnabled(false);
-//				this.vj.getJcbJ3e2().setEnabled(false);
-//				this.vj.getJcbJ4e2().setEnabled(false);
-//				this.vj.getJcbJ5e2().setEnabled(false);
-//				this.vj.getJcbJ6e2().setEnabled(false);
-//			}
-//			if(this.vj.getJcbTse2().isSelected()==false)
-//			{
-//				this.vj.getJcbJ1e2().setSelected(false);
-//				this.vj.getJcbJ2e2().setSelected(false);
-//				this.vj.getJcbJ3e2().setSelected(false);
-//				this.vj.getJcbJ4e2().setSelected(false);
-//				this.vj.getJcbJ5e2().setSelected(false);
-//				this.vj.getJcbJ6e2().setSelected(false);
-//				// Reactive toutes les cases
-//				this.vj.getJcbJ1e2().setEnabled(true);
-//				this.vj.getJcbJ2e2().setEnabled(true);
-//				this.vj.getJcbJ3e2().setEnabled(true);
-//				this.vj.getJcbJ4e2().setEnabled(true);
-//				this.vj.getJcbJ5e2().setEnabled(true);
-//				this.vj.getJcbJ6e2().setEnabled(true);
-//			}
-//		}
-//	}
-//
-//}
+package v_ecouteurs;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import v_vues.Vue_Joueurs;
+
+
+
+public class AL_Joueurs implements ActionListener
+{
+	private Vue_Joueurs vj;
+	
+	public AL_Joueurs(Vue_Joueurs _vj)
+	{
+		this.vj = _vj;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent _ae)
+	{
+		if(_ae.getSource().equals(this.vj.getJcbTout1())) // checkbox selection de tous les joueurs de l'équipe 1
+		{
+
+			if(this.vj.getJcbTout1().isSelected()==true)
+			{
+
+				// Selectionne toutes les cases
+				for(int j=0; j < this.vj.getJoueur1().length;j++)
+					this.vj.getJoueur1()[j].getAfficher().setSelected(true);
+
+				// Desactive toutes les cases
+				for(int j=0; j < this.vj.getJoueur1().length;j++)
+					this.vj.getJoueur1()[j].getAfficher().setEnabled(false);
+			}
+			
+			if(this.vj.getJcbTout1().isSelected()==false)
+			{
+				for(int j=0; j < this.vj.getJoueur1().length;j++)
+					this.vj.getJoueur1()[j].getAfficher().setSelected(false);
+	
+				// Reactive toutes les cases
+				for(int j=0; j < this.vj.getJoueur1().length;j++)
+					this.vj.getJoueur1()[j].getAfficher().setEnabled(true);
+
+			}
+		}
+		if(_ae.getSource().equals(this.vj.getJcbTout2())) // checkbox selection de tous les joueurs de l'équipe 1
+		{
+
+			if(this.vj.getJcbTout2().isSelected()==true)
+			{
+
+				// Selectionne toutes les cases
+				for(int j=0; j < this.vj.getJoueur2().length;j++)
+					this.vj.getJoueur2()[j].getAfficher().setSelected(true);
+
+				// Desactive toutes les cases
+				for(int j=0; j < this.vj.getJoueur2().length;j++)
+					this.vj.getJoueur2()[j].getAfficher().setEnabled(false);
+			}
+			
+			if(this.vj.getJcbTout2().isSelected()==false)
+			{
+				for(int j=0; j < this.vj.getJoueur2().length;j++)
+					this.vj.getJoueur2()[j].getAfficher().setSelected(false);
+	
+				// Reactive toutes les cases
+				for(int j=0; j < this.vj.getJoueur2().length;j++)
+					this.vj.getJoueur2()[j].getAfficher().setEnabled(true);
+
+			}
+		}
+	}
+
+}

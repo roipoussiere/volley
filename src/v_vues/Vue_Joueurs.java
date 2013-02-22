@@ -8,6 +8,7 @@ import java.awt.Insets;
 import javax.swing.*;
 
 import c.Controleur;
+import v_ecouteurs.AL_Joueurs;
 import v_utilitaires.SaisieJoueur;
 
 
@@ -15,8 +16,9 @@ import v_utilitaires.SaisieJoueur;
  * Vue contenant les élements de l'onglet Joueur.
  * @author Xavier Chalut
  */
+@SuppressWarnings("serial")
 public class Vue_Joueurs extends JDialog
-//{
+{
 //	private static final long serialVersionUID = 1L;
 //	private Vue_Fenetre vf;
 //	private AL_Joueurs alJ;
@@ -523,12 +525,17 @@ public class Vue_Joueurs extends JDialog
 //		*/
 //	}
 //}
-{
+//{
 	private Controleur c ;
 	private Vue_Fenetre vf ;
 	
 	// Composants de la fenetre
-	private SaisieJoueur joueur[] ;
+	private SaisieJoueur joueur1[],joueur2[] ;
+	private JLabel jlNom,jlAfficher,jlMeneur; // label des titres de liste et du checkBox general
+	private JCheckBox jcbTout1,jcbTout2;
+	private JTabbedPane jtpj;
+	private JPanel jp1,jp2;
+	private ButtonGroup bgMeneurEqu1,bgMeneurEqu2;
 	
 	// Constante
 	private static final int NOMBRE_JOUEURS = 6 ;
@@ -538,10 +545,11 @@ public class Vue_Joueurs extends JDialog
 		// Définition de la fenêtre
 		super (_vf, "Joueurs", true) ;
 		this.vf = _vf ;
-		this.setSize(400, 300) ;
+		this.setSize(340, 375) ;
 		this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE) ;
 		this.setResizable(false) ;
 		this.setLocationRelativeTo(null) ;
+		int i;
 		
 		// Mise en place du GridBagLayout
 		this.setLayout (new GridBagLayout()) ;
@@ -550,18 +558,143 @@ public class Vue_Joueurs extends JDialog
 		// Attribution du constructeur
 		this.c = _c ;
 		
+		this.jtpj = new JTabbedPane();
+
+		this.jp1 = new JPanel();
+		jp1.setLayout (new GridBagLayout()) ;
+		this.jp2 = new JPanel();
+		jp2.setLayout (new GridBagLayout()) ;
+		this.bgMeneurEqu1 = new ButtonGroup();
+		this.bgMeneurEqu2 = new ButtonGroup();
+		
+		this.jlNom = new JLabel("Nom") ;
+		gbc.gridx = 1 ; gbc.gridy = 0 ; // 
+		gbc.gridwidth = 2 ; gbc.gridheight = 1 ;
+		gbc.anchor = GridBagConstraints.CENTER ;
+		gbc.insets = new Insets (5,125, 10, 40) ;
+		jp1.add(this.jlNom,gbc);
+		
+		this.jlAfficher = new JLabel("Afficher") ;
+		gbc.gridx = 3 ; gbc.gridy = 0 ; // 
+		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
+		gbc.anchor = GridBagConstraints.CENTER ;
+		gbc.insets = new Insets (5, 30, 10, 0) ;
+		jp1.add(this.jlAfficher,gbc);
+		
+		this.jlMeneur = new JLabel("Meneur") ;
+		gbc.gridx = 4 ; gbc.gridy = 0 ; // 
+		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
+		gbc.anchor = GridBagConstraints.CENTER ;
+		gbc.insets = new Insets (5, 12, 10, 0) ;
+		jp1.add (this.jlMeneur,gbc) ;
+		
 		// Paramétrage des joueurs
-		this.joueur = new SaisieJoueur[NOMBRE_JOUEURS] ;
-		for (int i = 0 ; i < NOMBRE_JOUEURS ; i++)
+		this.joueur1 = new SaisieJoueur[NOMBRE_JOUEURS] ;
+		for (i = 0 ; i < NOMBRE_JOUEURS ; i++)
 		{
-			this.joueur[i] = new SaisieJoueur("Joueur " + (i + 1)) ;
+			this.joueur1[i] = new SaisieJoueur("Joueur " + (i + 1)) ;
 			gbc.gridx = 0 ; gbc.gridy = i + 1 ; // + 1 car la première ligne est déjà occupée
 			gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
 			gbc.anchor = GridBagConstraints.CENTER ;
 			gbc.insets = new Insets (10, 0, 10, 0) ;
-			this.add (this.joueur[i], gbc) ;
+			jp1.add (this.joueur1[i],gbc) ;
+			this.bgMeneurEqu1.add(joueur1[i].getMeneur());
 		}
 		
+		this.jcbTout1 = new JCheckBox("Selectioner toute l'équipe") ;
+		gbc.gridx = 1 ; gbc.gridy = i+1 ; // 
+		gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
+		gbc.anchor = GridBagConstraints.CENTER ;
+		gbc.insets = new Insets (5, 12, 10, 0) ;
+		jp1.add (this.jcbTout1,gbc) ;
+		
+		
+		
+		
+		this.jlNom = new JLabel("Nom") ;
+		gbc.gridx = 1 ; gbc.gridy = 0 ; // 
+		gbc.gridwidth = 2 ; gbc.gridheight = 1 ;
+		gbc.anchor = GridBagConstraints.CENTER ;
+		gbc.insets = new Insets (5,125, 10, 40) ;
+		jp2.add(this.jlNom,gbc);
+		
+		this.jlAfficher = new JLabel("Afficher") ;
+		gbc.gridx = 3 ; gbc.gridy = 0 ; // 
+		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
+		gbc.anchor = GridBagConstraints.CENTER ;
+		gbc.insets = new Insets (5, 30, 10, 0) ;
+		jp2.add(this.jlAfficher,gbc);
+		
+		this.jlMeneur = new JLabel("Meneur") ;
+		gbc.gridx = 4 ; gbc.gridy = 0 ; // 
+		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
+		gbc.anchor = GridBagConstraints.CENTER ;
+		gbc.insets = new Insets (5, 12, 10, 0) ;
+		jp2.add (this.jlMeneur,gbc) ;
+		
+		// Paramétrage des joueurs
+		this.joueur2 = new SaisieJoueur[NOMBRE_JOUEURS] ;
+		for (i = 0 ; i < NOMBRE_JOUEURS ; i++)
+		{
+			this.joueur2[i] = new SaisieJoueur("Joueur " + (i + 1)) ;
+			gbc.gridx = 0 ; gbc.gridy = i + 1 ; // + 1 car la première ligne est déjà occupée
+			gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
+			gbc.anchor = GridBagConstraints.CENTER ;
+			gbc.insets = new Insets (10, 0, 10, 0) ;
+			jp2.add (this.joueur2[i],gbc) ;
+			this.bgMeneurEqu2.add(joueur2[i].getMeneur());
+		}
+		
+		this.jcbTout2 = new JCheckBox("Selectioner toute l'équipe") ;
+		gbc.gridx = 1 ; gbc.gridy = i+1 ; // 
+		gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
+		gbc.anchor = GridBagConstraints.CENTER ;
+		gbc.insets = new Insets (5, 12, 10, 0) ;
+		jp2.add (this.jcbTout2,gbc) ;
+		
+		jtpj.addTab("Equipe 1",jp1);
+		jtpj.addTab("Equipe 2",jp2);
+		this.add(this.jtpj);
+
+		
+		this.jcbTout1.addActionListener (new AL_Joueurs(this)) ;
+		this.jcbTout2.addActionListener (new AL_Joueurs(this)) ;
+		for(i=0 ; i < this.joueur1.length ; i++)
+			this.joueur1[i].getAfficher().addActionListener (new AL_Joueurs(this)) ;
+		for(i=0 ; i < this.joueur2.length ; i++)
+			this.joueur2[i].getAfficher().addActionListener (new AL_Joueurs(this)) ;
 		this.setVisible(true) ;
 	}
+	
+	/**
+	 * Getter du champs de saisie du nom du joueur.
+	 * @return Le champs de saisie du nom du joueur.
+	 */
+	public JCheckBox getJcbTout1()
+	{
+		return jcbTout1;
+	}
+	public JCheckBox getJcbTout2()
+	{
+		return jcbTout2;
+	}
+	
+	public SaisieJoueur[] getJoueur1()
+	{
+		return joueur1;
+	}
+	public void setJoueur1(SaisieJoueur[] joueur)
+	{
+		this.joueur1 = joueur;
+	}
+	
+	public SaisieJoueur[] getJoueur2()
+	{
+		return joueur2;
+	}
+	public void setJoueur2(SaisieJoueur[] joueur)
+	{
+		this.joueur2 = joueur;
+	}
+	
 }
