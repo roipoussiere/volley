@@ -1,8 +1,6 @@
 package v_vues;
 
 import c.Parametres;
-import c_strategie.Element;
-import c_strategie.Ensemble;
 import c_strategie.Temps;
 import java.awt.*;
 import javax.swing.*;
@@ -19,7 +17,7 @@ public class Vue_Dessin extends JPanel
 
 	private int styleQ;
 	private Temps ta; // Pour éviter d'écrire this.vt.getC().getS().getTA();
-	private int tc;
+	private int tc; // Taille d'une case
 	
 	/**
 	 * Constructeur de la vue de dessin.
@@ -32,12 +30,6 @@ public class Vue_Dessin extends JPanel
 		
 		int vta = this.vt.getC().getS().getTA(); // récupère la valeur du temps actuel
 		this.ta = this.vt.getC().getS().getTemps(vta); // affecte le temps actuel à this.ta
-		
-		this.tc = 35; // taille d'une case
-		if (this.p.isDemiT())
-		{
-			this.tc = 50;
-		}
 	}
 	
 	/**
@@ -50,10 +42,12 @@ public class Vue_Dessin extends JPanel
 		// Affichage du quadrillage
 		if (this.p.isDemiT()) // demi terrain
 		{
+			this.tc = 50;
 			dessinerDT(_g);
 		}
 		else // terrain complet
 		{
+			this.tc = 35;
 			dessinerTC(_g);
 		}
 
@@ -78,8 +72,9 @@ public class Vue_Dessin extends JPanel
 	
 	public void element(Graphics _g, int _posX, int _posY)
 	{
-		int t = 20;
-		_g.drawOval(tc*(_posX+1) + t/2, tc*(_posY+1) + t/2, t, t);
+		_g.setColor(this.p.getCoulE(0));
+		int t = (int)(0.75*this.tc);
+		_g.fillOval(this.tc*(_posX+1) + this.tc/2 - t/2, this.tc*(_posY+1) + this.tc/2 - t/2, t, t);
 	}
 	
 	/**

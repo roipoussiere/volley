@@ -92,7 +92,7 @@ public class Parametres
 		// Couleur des éléments
 		
 		// Ballon
-		this.tabCoulE[0] = new Color(250, 250, 250);
+		this.tabCoulE[0] = new Color(180, 180, 180);
 		
 		// Joueurs équipe 1
 		this.tabCoulE[1] = new Color(70, 70, 70); // Meneur
