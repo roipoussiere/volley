@@ -1,9 +1,10 @@
 package c;
 
-import c_strategie.Ensemble;
-import c_strategie.Strategie;
 import java.awt.*;
 import javax.swing.*;
+
+import m.Ensemble;
+import m.Strategie;
 import v_vues.Vue_APropos;
 import v_vues.Vue_Aide;
 import v_vues.Vue_Fenetre;

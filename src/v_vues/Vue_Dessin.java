@@ -1,9 +1,10 @@
 package v_vues;
 
 import c.Parametres;
-import c_strategie.Temps;
 import java.awt.*;
 import javax.swing.*;
+
+import m.Temps;
 
 /**
  * Vue de dessin, pour dessiner sur la fenetre de terrain.

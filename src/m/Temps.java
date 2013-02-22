@@ -1,4 +1,4 @@
-package c_strategie;
+package m;
 
 import java.util.Vector;
 import javax.swing.text.Position;

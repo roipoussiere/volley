@@ -1,53 +1,67 @@
 package m;
 
-/**
- * Classe représentant l'ensemble des éléments présents sur le terrain (joueur + ballon)
- * @author Florian Garnier
- */
+import c.Parametres;
+import java.awt.Color;
 
+/**
+ * L'élement 0 est le ballon,<br/>
+ * L'élement 1 est le meneur de la 1ere équipe,<br/>
+ * Les élements 2 à 6 sont les autres joueurs de la 1ere équipe,<br/>
+ * L'élement 7 est le meneur de la 2eme équipe,<br/>
+ * Les élements 8 à 12 sont les autres joueurs de la 2eme équipe.<br/>
+ * @author Nathanaël Jourdane
+ */
 public class Element
 {
-	protected char posX ;
-	protected char posY ;
+	private Ensemble e;
 	
-	// Getters
+	private int id;
+	private boolean etat;
+	private String nom;
+	private Color couleur;
 	
-	/**
-	 * Getter de l'abscisse de l'élément.
-	 * @return L'abscisse.
-	 */
-	public char getPosX ()
+	public Element(Ensemble _e, int _i)
 	{
-		return posX ;
+		this.e = _e;
+		Parametres param = this.e.getC().getP();
+		
+		this.id = _i;
+		this.etat = param.getEtatE(_i);
+		this.nom = param.getNomE(_i);
+		this.couleur = param.getCoulE(_i);
+	}
+	
+	public int getId()
+	{
+		return this.id;
+	}
+	
+	public boolean getEtat()
+	{
+		return this.etat;
+	}
+	
+	public String getNom()
+	{
+		return this.nom;
+	}
+
+	public Color getCoul()
+	{
+		return this.couleur;
 	}
 	
 	/**
-	 * Getter de l'ordonnée de l'élément.
-	 * @return L'ordonnée.
+	 *
+	 * @return
 	 */
-	public char getPosY ()
+	@Override
+	public String toString()
 	{
-		return posY ;
+		String etat = "désactivé";
+		if (this.getEtat()) {
+			etat = "activé";
+		}
+		return "Élément n°" + this.id + " : " + this.getNom() + " - " + etat;
 	}
-	
-	
-	// Setters
-	
-	/**
-	 * Setter de l'abscisse de l'élément.
-	 * @param posX Nouvelle abscisse.
-	 */
-	public void setPosX (char posX)
-	{
-		this.posX = posX ;
-	}
-	
-	/**
-	 * Setter de l'ordonnée de l'élément.
-	 * @param posX Nouvelle ordonnée.
-	 */
-	public void setPosY (char posY)
-	{
-		this.posY = posY ;
-	}	
 }

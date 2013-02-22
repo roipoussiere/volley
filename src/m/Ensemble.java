@@ -1,4 +1,4 @@
-package c_strategie;
+package m;
 
 import c.Controleur;
 
