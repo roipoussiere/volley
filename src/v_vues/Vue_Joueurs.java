@@ -8,6 +8,7 @@ import java.awt.Insets;
 import javax.swing.*;
 
 import c.Controleur;
+import c.ControleurVueJoueurs;
 import v_ecouteurs.AL_Joueurs;
 import v_utilitaires.SaisieJoueur;
 
@@ -20,6 +21,7 @@ import v_utilitaires.SaisieJoueur;
 public class Vue_Joueurs extends JDialog
 {
 	private Controleur c ;
+	ControleurVueJoueurs cvj;
 	private Vue_Fenetre vf ;
 	
 	// Composants de la fenetre
@@ -51,6 +53,8 @@ public class Vue_Joueurs extends JDialog
 		
 		// Attribution du constructeur
 		this.c = _c ;
+
+		
 		
 		this.jtpj = new JTabbedPane();
 
@@ -167,6 +171,8 @@ public class Vue_Joueurs extends JDialog
 		jtpj.addTab("Equipe 2",jp2);
 		this.add(this.jtpj);
 		
+		this.cvj = new ControleurVueJoueurs(this.c,this);
+		
 		this.jcbTout1.addActionListener (new AL_Joueurs(this)) ;
 		this.jcbTout2.addActionListener (new AL_Joueurs(this)) ;
 		this.jbouton1.addActionListener (new AL_Joueurs(this)) ;
@@ -183,6 +189,8 @@ public class Vue_Joueurs extends JDialog
 		}
 		for(i=0 ; i < this.joueur1.length ; i++)
 			this.joueur1[i].getNomJoueur().addActionListener(new AL_Joueurs(this));
+		
+		
 	}
 	
 	/**

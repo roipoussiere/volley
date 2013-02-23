@@ -2,6 +2,7 @@ package v_vues;
 
 import c.Controleur;
 import c.ControleurVueEdition;
+import c.ControleurVueJoueurs;
 
 import java.awt.event.*;
 import javax.swing.*;
@@ -16,6 +17,7 @@ import v_ecouteurs.CL_Fenetre;
 public class Vue_Fenetre extends JFrame implements WindowListener
 {
 	private Controleur c;
+	private ControleurVueJoueurs cvj;
 	private JTabbedPane tp;
 	
 	// Les vues
@@ -170,6 +172,7 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	public void vueJoueurs()
 	{
 		this.vj = new Vue_Joueurs(this, this.c);
+
 	}
 
 	/**

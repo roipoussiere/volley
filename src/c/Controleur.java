@@ -46,9 +46,15 @@ public class Controleur
 		this.centrerFen();
 		this.vf.setVisible (true);
 		this.vt.setVisible (true);
+		
 	}
 	
 	// *** Getters ***
+	
+	public Vue_Fenetre getVueFenetre()
+	{
+		return this.vf;
+	}
 	
 	public Parametres getP()
 	{
