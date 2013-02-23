@@ -4,6 +4,8 @@ package v_ecouteurs;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import c.Parametres;
+
 import v_vues.Vue_Joueurs;
 
 
@@ -71,6 +73,19 @@ public class AL_Joueurs implements ActionListener
 					this.vj.getJoueur2()[j].getAfficher().setEnabled(true);
 
 			}
+		}
+		
+		// Si on enregistre
+		if(_ae.getSource().equals(this.vj.getJbouton1()))
+		{
+			for(int i=0; i < this.vj.getJoueur1().length;i++)
+			this.vj.getC().getP().setNomE(this.vj.getJoueur1()[1].getNomJoueur().getText(), i+1);
+		}
+		
+		if(_ae.getSource().equals(this.vj.getJbouton2()))
+		{
+			for(int i=0; i < this.vj.getJoueur1().length;i++)
+			this.vj.getC().getP().setNomE(this.vj.getJoueur2()[1].getNomJoueur().getText(), i+7);
 		}
 	}
 
