@@ -1,6 +1,6 @@
 package c;
 
-import m.Strategie;
+import m_alternatif.Strategie;
 import v_vues.Vue_Edition;
 
 /**
@@ -27,9 +27,12 @@ public class ControleurVueEdition
 	 * Met à jour le temps en cours de traitement dans la stratégie.
 	 * @param _tpsTraite Le temps en cours de traitement.
 	 */
-	public void majStrategie (int _tpsTraite)
+	public void majStrategieE1 (int _tpsTraite)
 	{
-		
+		for (int i = 0 ; i < this.str.getEq1().getNbJoueur() ; i++)
+		{
+			// A COMPLETER !
+		}
 	}
 	
 	

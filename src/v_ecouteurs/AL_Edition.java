@@ -74,7 +74,7 @@ public class AL_Edition implements ActionListener, DocumentListener
 	public void insertUpdate (DocumentEvent e)
 	{
 		// On appelle la méthode de MAJ du contrôleur en passant en paramètre le temps concerné
-		this.ve.getC().majStrategie(Integer.parseInt(this.ve.getSelecTps().getTpsEnCours().getText())) ;
+		this.ve.getC().majStrategieE1(Integer.parseInt(this.ve.getSelecTps().getTpsEnCours().getText())) ;
 	}
 
 	@Override
