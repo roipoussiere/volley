@@ -23,7 +23,7 @@ public class Vue_Edition extends JPanel
 	
 	// Composants de la fenetre
 	private SelectionTemps selecTps ; // permet de choisir le temps à gérer
-	private JComboBox typeStrategie ; // permet de sélectionner le type de la stratégie
+	private JComboBox selecEquipe ; // permet de sélectionner l'équipe à déplacer
 	private SaisieDeplacement deplacementJ[] ; // tableau contenant les saisies des déplacements de chaque joueur
 	
 	// Constante
@@ -50,16 +50,16 @@ public class Vue_Edition extends JPanel
 		gbc.insets = new Insets (0, 0, 0, 0) ;
 		this.add (this.selecTps, gbc) ;
 		
-		// Type de la strategie
-		this.typeStrategie = new JComboBox () ;
-		this.typeStrategie.setEditable (false) ;
-		this.typeStrategie.addItem ("Attaque") ;
-		this.typeStrategie.addItem ("Défense") ;
+		// Sélection de l'équipe
+		this.selecEquipe = new JComboBox () ;
+		this.selecEquipe.setEditable (false) ;
+		this.selecEquipe.addItem ("Équipe 1") ;
+		this.selecEquipe.addItem ("Équipe 2") ;
 		gbc.gridx = 3 ; gbc.gridy = 0 ;
 		gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.LINE_START ;
 		gbc.insets = new Insets (0, 135, 10, 10) ;
-		this.add (this.typeStrategie, gbc) ;
+		this.add (this.selecEquipe, gbc) ;
 		
 		// Saisie des déplacements des joueurs
 		this.deplacementJ = new SaisieDeplacement[NOMBRE_JOUEURS] ;
@@ -98,12 +98,12 @@ public class Vue_Edition extends JPanel
 	}
 
 	/**
-	 * Getter de la liste de type de stratégie.
-	 * @return La liste de type de stratégie.
+	 * Getter de la liste des équipes.
+	 * @return La liste des équipes.
 	 */
 	public JComboBox getTypeStrategie () 
 	{
-		return typeStrategie ;
+		return selecEquipe ;
 	}
 
 	/**

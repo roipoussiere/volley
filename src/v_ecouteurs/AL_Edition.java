@@ -34,7 +34,6 @@ public class AL_Edition implements ActionListener, DocumentListener
 		// Clic sur le bouton "Temps précédent"
 		if (_ae.getSource().equals(this.ve.getSelecTps().getTpsPrecedent()))
 		{
-			// ON ENREGISTRE LES MOUVEMENTS SAISIS (appel du controleur)
 			// On récupère la valeur du temps en cours
 			int tps = Integer.parseInt(this.ve.getSelecTps().getTpsEnCours().getText()) ;
 			// On décrémente de 1
@@ -52,7 +51,6 @@ public class AL_Edition implements ActionListener, DocumentListener
 		// Clic sur le bouton "Temps suivant"
 		if (_ae.getSource().equals(this.ve.getSelecTps().getTpsSuivant()))
 		{
-			// ON ENREGISTRE LES MOUVEMENTS SAISIS (appel du controleur)
 			// On récupère la valeur du temps en cours
 			int tps = Integer.parseInt(this.ve.getSelecTps().getTpsEnCours().getText()) ;
 			// On incrémente de 1
@@ -67,19 +65,20 @@ public class AL_Edition implements ActionListener, DocumentListener
 	}
 
 	@Override
-	public void changedUpdate(DocumentEvent e) {
+	public void changedUpdate (DocumentEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void insertUpdate(DocumentEvent e) {
-		// TODO Auto-generated method stub
-		
+	public void insertUpdate (DocumentEvent e)
+	{
+		// On appelle la méthode de MAJ du contrôleur en passant en paramètre le temps concerné
+		this.ve.getC().majStrategie(Integer.parseInt(this.ve.getSelecTps().getTpsEnCours().getText())) ;
 	}
 
 	@Override
-	public void removeUpdate(DocumentEvent e) {
+	public void removeUpdate (DocumentEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
