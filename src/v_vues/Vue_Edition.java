@@ -111,4 +111,8 @@ public class Vue_Edition extends JPanel
 	{
 		return deplacementJ ;
 	}
+  
+  public void majVue() {
+    this.selecTps.majSelectionTemps();
+  }
 }
