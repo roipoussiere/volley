@@ -30,7 +30,12 @@ public class Strategie
 	{
 		return this.ta;
 	}
-	
+  	
+	public void setTA(int _ta)
+	{
+		this.ta = _ta;
+	}
+  
 	public Temps getTemps(int _idT)
 	{
 		return this.cycle.get(_idT);

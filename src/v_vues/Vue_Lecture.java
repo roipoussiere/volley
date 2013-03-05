@@ -2,9 +2,7 @@ package v_vues;
 
 import c.Controleur;
 import java.awt.*;
-
 import javax.swing.*;
-
 import v_utilitaires.SelectionTemps;
 
 /**
@@ -60,7 +58,7 @@ public class Vue_Lecture extends JPanel
 		this.add (this.chrono, gbc) ;
 		
 		// Sélection du temps
-		this.selecTps = new SelectionTemps () ;
+		this.selecTps = new SelectionTemps (this.getC().getS()) ;
 		gbc.gridx = 0 ; gbc.gridy = 1 ;
 		gbc.gridwidth = 3 ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.LINE_START ;

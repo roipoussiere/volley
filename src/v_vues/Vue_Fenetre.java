@@ -3,7 +3,6 @@ package v_vues;
 import c.Controleur;
 import c.ControleurVueEdition;
 import c.ControleurVueJoueurs;
-
 import java.awt.event.*;
 import javax.swing.*;
 import v_ecouteurs.AL_Fenetre;
@@ -16,11 +15,12 @@ import v_ecouteurs.CL_Fenetre;
 @SuppressWarnings("serial")
 public class Vue_Fenetre extends JFrame implements WindowListener
 {
+  // Controleurs
 	private Controleur c;
 	private ControleurVueJoueurs cvj;
-	private JTabbedPane tp;
+	private ControleurVueEdition cve;
 	
-	// Les vues
+	// Vues
 	private Vue_Lecture vl;
 	private Vue_Edition ve;
 	private Vue_Joueurs vj;
@@ -32,6 +32,8 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	private JMenu ms;
 	private JMenu ma;
 
+  private JTabbedPane tp;
+  
 	/**
 	 * Création de la fenêtre et de tous ses composants.
 	 * @param _c Le contrôleur.
@@ -40,6 +42,11 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	{
 		super ("Logiciel pour strategie de volley");
 		this.c = _c;
+
+    this.cve = new ControleurVueEdition(this.c, this.ve);
+    //this.cve = new ControleurVueEdition(this.ve, new m_alternatif.Strategie(new m_alternatif.Equipe(6), new m_alternatif.Equipe(6)));
+		this.ve = new Vue_Edition(cve);
+		this.vl = new Vue_Lecture(this.c);
 
 		this.addWindowListener(this); // On abonne la fenêtre à elle-même.
 		this.setSize(400, 375);
@@ -50,11 +57,9 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		this.tp.addChangeListener(new CL_Fenetre(this));
 		
 		// Ajout de l'onglet Lecture dans la barre des onglets
-		this.vl = new Vue_Lecture(this.c);
 		this.tp.addTab("Lecture", this.vl);
 		
 		// Ajout de l'onglet Édition dans la barre des onglets
-		this.ve = new Vue_Edition(new ControleurVueEdition(this.ve, new m_alternatif.Strategie(new m_alternatif.Equipe(6), new m_alternatif.Equipe(6))));
 		this.tp.addTab("Edition", this.ve);
 
 		this.add(this.tp); // Ajout de la barre d'onglets dans la fenêtre
