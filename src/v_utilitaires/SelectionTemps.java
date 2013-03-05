@@ -23,37 +23,22 @@ public class SelectionTemps extends JPanel
 	public SelectionTemps (Strategie _s)
 	{
     this.s = _s;
-		// Mise en place du GridBagLayout
-		this.setLayout (new GridBagLayout ()) ;
-		GridBagConstraints gbc = new GridBagConstraints () ;
 
 		// Bouton "Temps précédent"
 		this.BPPrecedent = new JButton ("<");
 		this.BPPrecedent.setEnabled (false);
-		gbc.gridx = 0 ; gbc.gridy = 0;
-		gbc.gridwidth = 1 ; gbc.gridheight = 1;
-		gbc.anchor = GridBagConstraints.LINE_START;
-		gbc.insets = new Insets (0, 10, 10, 0);
-		this.add (this.BPPrecedent, gbc);
+		this.add (this.BPPrecedent, BorderLayout.WEST);
 
 		// Affichage et saisie du temps
 		this.temps = new JTextField (3) ;
 		this.temps.setText ("0") ;
 		this.temps.setHorizontalAlignment (JTextField.CENTER) ;
-		gbc.gridx = 1 ; gbc.gridy = 0 ;
-		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
-		gbc.anchor = GridBagConstraints.LINE_START ;
-		gbc.insets = new Insets (0, 10, 10, 10) ;
-		this.add (this.temps, gbc) ;
+		this.add (this.temps, BorderLayout.CENTER) ;
 
 		// Bouton "Temps suivant"
 		this.BPSuivant = new JButton (">") ;
-    // this.tpsSuivant.setEnabled (false) ;
-		gbc.gridx = 2 ; gbc.gridy = 0 ;
-		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
-		gbc.anchor = GridBagConstraints.LINE_START ;
-		gbc.insets = new Insets (0, 0, 10, 0) ;
-		this.add (this.BPSuivant, gbc) ;
+
+		this.add (this.BPSuivant, BorderLayout.EAST) ;
     
     this.BPPrecedent.addActionListener (new AL_SelectionTemps(this));
     this.BPSuivant.addActionListener (new AL_SelectionTemps(this));
