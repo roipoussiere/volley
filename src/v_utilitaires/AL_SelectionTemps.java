@@ -34,7 +34,7 @@ public class AL_SelectionTemps implements ActionListener
 		{
       // On réactive le bouton "Temps suivant" si on était au temps max
       if (ta == tmpMax) {
-				this.st.getBPSuivant().setEnabled(true) ;
+				this.st.activerBPSuivant(true);
 			}
       
 			if (ta > 0) {
@@ -43,7 +43,7 @@ public class AL_SelectionTemps implements ActionListener
       
 			// On désactive le bouton "Temps précédent" si on est au temps 0
       if (ta == 0) {
-				this.st.getBPPrecedent().setEnabled(false) ;
+				this.st.activerBPPrecedent(false);
 			}
 		}
 		
@@ -56,7 +56,7 @@ public class AL_SelectionTemps implements ActionListener
       
 			// On désactive le bouton "Temps précédent" si on est au temps 0
       if (ta == tmpMax) {
-				this.st.getBPPrecedent().setEnabled(false) ;
+				this.st.activerBPPrecedent(false);
 			}
 		}
 

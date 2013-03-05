@@ -26,12 +26,12 @@ public class SelectionTemps extends JPanel
 
 		// Bouton "Temps précédent"
 		this.BPPrecedent = new JButton ("<");
-		this.BPPrecedent.setEnabled (false);
+		this.BPPrecedent.setEnabled (true);
 		this.add (this.BPPrecedent, BorderLayout.WEST);
 
 		// Affichage et saisie du temps
 		this.temps = new JTextField (3) ;
-		this.temps.setText ("0") ;
+		this.temps.setText (String.valueOf(this.s.getTA())) ;
 		this.temps.setHorizontalAlignment (JTextField.CENTER) ;
 		this.add (this.temps, BorderLayout.CENTER) ;
 
@@ -53,6 +53,22 @@ public class SelectionTemps extends JPanel
 		return BPPrecedent ;
 	}
 
+  /**
+	 * Modifie l'état du bouton "Temps précédent".
+	 */
+	public void activerBPPrecedent (boolean _activer)
+	{
+		this.BPPrecedent.setEnabled(_activer);
+	}
+  
+   /**
+	 * Modifie l'état du bouton "Temps suivant".
+	 */
+	public void activerBPSuivant (boolean _activer)
+	{
+		this.BPSuivant.setEnabled(_activer);
+	}
+  
 	/**
 	 * Getter du bouton "Temps suivant".
 	 * @return Le bouton "Temps suivant".
