@@ -31,7 +31,6 @@ public class Vue_Lecture extends JPanel
 		super ();
 		this.c = _c;
 		
-
 		// Mise en place du GridBagLayout
 		this.setLayout (new GridBagLayout()) ;
 		GridBagConstraints gbc = new GridBagConstraints () ;
@@ -49,7 +48,7 @@ public class Vue_Lecture extends JPanel
 		
 		// Chronomètre
 		this.chrono = new JTextField (3) ;
-		this.chrono.setText ("00:00") ;
+		this.chrono.setText ("00") ;
 		this.chrono.setHorizontalAlignment (JTextField.CENTER) ;
 		gbc.gridx = 0 ; gbc.gridy = 1 ;
 		gbc.gridwidth = 0 ; gbc.gridheight = 1 ;
@@ -58,9 +57,11 @@ public class Vue_Lecture extends JPanel
 		this.add (this.chrono, gbc) ;
 		
 		// Sélection du temps
-		this.selecTps = new SelectionTemps (this.getC().getS()) ;
-		gbc.gridx = 0 ; gbc.gridy = 1 ;
-		gbc.gridwidth = 3 ; gbc.gridheight = 1 ;
+		this.selecTps = new SelectionTemps (this.getC().getS());
+		gbc.gridx = 0 ;
+    gbc.gridy = 1 ;
+		gbc.gridwidth = 3 ;
+    gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.LINE_START ;
 		gbc.insets = new Insets (0, 0, 0, 0) ;
 		this.add (this.selecTps, gbc) ;
@@ -103,10 +104,9 @@ public class Vue_Lecture extends JPanel
 		this.add (this.commentaire, gbc) ;
 		
 		
-		
 		JPanel boutons = new JPanel (new FlowLayout ()) ;
 
-		// Bouton DÃ©but
+		// Bouton Début
 		this.debut = new JButton("Début");
 		gbc.anchor = GridBagConstraints.LAST_LINE_START ;
 		gbc.insets = new Insets (0, 120, 0, 0) ;
@@ -120,7 +120,7 @@ public class Vue_Lecture extends JPanel
 		this.add (this.lecture, gbc) ;
 		boutons.add (this.lecture) ;
 		
-		// Bouton Plein Ã©cran
+		// Bouton Plein écran
 		this.pleinEcran = new JButton("Plein écran");
 		gbc.anchor = GridBagConstraints.CENTER ;
 		gbc.insets = new Insets (0, 0, 0, 120) ;
@@ -135,19 +135,19 @@ public class Vue_Lecture extends JPanel
 	}
 
 	/**
-	 * Getter du contrÃ´leur.
-	 * @return Le contrÃ´leur.
+	 * Getter du contrôleur.
+	 * @return Le contrôleur.
 	 */
 	public Controleur getC()
 	{
 		return this.c;
 	}
 
-	public SelectionTemps getSelecTps() {
+	public SelectionTemps getSelectTps() {
 		return selecTps;
 	}
 
-	public void setSelecTps(SelectionTemps selecTps) {
+	public void setSelectTps(SelectionTemps selecTps) {
 		this.selecTps = selecTps;
 	}
 
@@ -182,4 +182,8 @@ public class Vue_Lecture extends JPanel
 	public void setPleinEcran(JButton pleinEcran) {
 		this.pleinEcran = pleinEcran;
 	}
+  
+  public void majVue() {
+    this.selecTps.majSelectionTemps();
+  }
 }

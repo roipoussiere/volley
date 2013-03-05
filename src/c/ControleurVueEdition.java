@@ -20,6 +20,10 @@ public class ControleurVueEdition {
 		this.ve = _ve ;
 	}
 	
+  public void majVue() {
+    this.ve.getSelecTps().majSelectionTemps();
+  }
+  
   /**
    * Getter du controleur
    * @return 

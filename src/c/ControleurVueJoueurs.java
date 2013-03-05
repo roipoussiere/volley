@@ -18,6 +18,4 @@ public class ControleurVueJoueurs {
 		for(int i=6; i < 12;i++)
 			this.vj.getJoueur2()[i-6].getNomJoueur().setText(this.c.getP().getNomE(i+1));
 	}
-	
-	
 }

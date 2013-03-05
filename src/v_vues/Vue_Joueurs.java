@@ -54,8 +54,6 @@ public class Vue_Joueurs extends JDialog
 		// Attribution du constructeur
 		this.c = _c ;
 
-		
-		
 		this.jtpj = new JTabbedPane();
 
 		this.jp1 = new JPanel();
@@ -189,8 +187,6 @@ public class Vue_Joueurs extends JDialog
 		}
 		for(i=0 ; i < this.joueur1.length ; i++)
 			this.joueur1[i].getNomJoueur().addActionListener(new AL_Joueurs(this));
-		
-		
 	}
 	
 	/**
