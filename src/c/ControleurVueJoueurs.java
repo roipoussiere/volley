@@ -1,6 +1,5 @@
 package c;
 
-import v_vues.Vue_Fenetre;
 import v_vues.Vue_Joueurs;
 
 public class ControleurVueJoueurs {
@@ -17,5 +16,7 @@ public class ControleurVueJoueurs {
 		this.vj.getJoueur1()[i].getNomJoueur().setText(this.c.getP().getNomE(i+1));
 		for(int i=6; i < 12;i++)
 			this.vj.getJoueur2()[i-6].getNomJoueur().setText(this.c.getP().getNomE(i+1));
+		
+		
 	}
 }
