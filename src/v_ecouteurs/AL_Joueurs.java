@@ -114,7 +114,7 @@ public class AL_Joueurs implements ActionListener
 			}
 		}
 		
-		// Si on enregistre
+		// Si on clique sur le bonton enregistrer
 		if(_ae.getSource().equals(this.vj.getJbouton1()))
 		{
 			for(int i=0; i < this.vj.getJoueur1().length;i++)
