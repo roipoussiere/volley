@@ -39,6 +39,13 @@ public class Equipe
 		this.equipe = equipe ;
 	}
 	
+	// Accesseurs
+	
+	public Joueur getJoueur (int _i)
+	{
+		return this.equipe.elementAt(_i) ;
+	}
+	
 	// Modificateurs
 	
 	public void ajouterJoueur (Joueur _j)

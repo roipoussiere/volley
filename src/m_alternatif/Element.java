@@ -37,7 +37,7 @@ public abstract class Element
 		return couleurE ;
 	}
 
-	public Vector<Position> getDeplacement ()
+	public Vector<Position> getVectorDeplacement ()
 	{
 		return deplacement ;
 	}
@@ -54,8 +54,22 @@ public abstract class Element
 		this.couleurE = couleurE ;
 	}
 
-	public void setDeplacement (Vector<Position> deplacement)
+	public void setVectorDeplacement (Vector<Position> deplacement)
 	{
 		this.deplacement = deplacement ;
+	}
+	
+	// Accesseurs
+	
+	public Position getDeplacementAuTemps (int _i)
+	{
+		return this.deplacement.elementAt(_i) ;
+	}
+	
+	// Modificateurs
+	
+	public void setDeplacementAuTemps (int _i, Position _pos)
+	{
+		this.deplacement.set(_i, _pos) ;
 	}
 }

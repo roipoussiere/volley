@@ -56,4 +56,16 @@ public class Strategie
 	{
 		this.typeS = typeS ;
 	}
+	
+	// Accesseurs
+	
+	public Joueur getJoueurEq1 (int _i)
+	{
+		return this.eq1.getJoueur(_i) ;
+	}
+	
+	public Joueur getJoueurEq2 (int _i)
+	{
+		return this.eq2.getJoueur(_i) ;
+	}
 }

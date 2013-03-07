@@ -2,7 +2,6 @@ package c;
 
 import java.awt.*;
 import javax.swing.*;
-
 import m.Ensemble;
 import m.Strategie;
 import v_vues.Vue_APropos;
@@ -86,11 +85,13 @@ public class Controleur
 		{
 			switch(vf.getOngletOuvert())
 			{
-			case 0:
+			case 0: // Lecture
 				this.vt.dessiner(this.p.getStyleQL());
+        this.vf.getVL().majVue();
 				break;
-			case 1:
+			case 1: // Edition
 				this.vt.dessiner(this.p.getStyleQE());
+        this.vf.getVE().majVue();
 				break;
 			}
 		}
