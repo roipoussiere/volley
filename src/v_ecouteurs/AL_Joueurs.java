@@ -126,10 +126,6 @@ public class AL_Joueurs implements ActionListener
 			for(int i=0; i < this.vj.getJoueur2().length;i++)
 			this.vj.getC().getP().setNomE(this.vj.getJoueur2()[i].getNomJoueur().getText(), i+7);
 		}
-		
-		
-
-		
 	}
 
 }
