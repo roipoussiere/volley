@@ -97,14 +97,14 @@ public class Vue_Joueurs extends JDialog
 			this.bgMeneurEqu1.add(joueur1[i].getMeneur());
 		}
 		
-		this.meneurPresentEqu1 = new JCheckBox("Desactiver meneur") ;
+		this.meneurPresentEqu1 = new JCheckBox("Désactiver meneur") ;
 		gbc.gridx = 1 ; gbc.gridy = i+1 ; // 
 		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.LINE_START;
 		gbc.insets = new Insets (5, 12, 10, 0) ;
 		jp1.add (this.meneurPresentEqu1,gbc) ;
 		
-		this.jcbTout1 = new JCheckBox("Selectioner toute l'équipe") ;
+		this.jcbTout1 = new JCheckBox("Sélectioner toute l'équipe") ;
 		gbc.gridx = 1 ; gbc.gridy = i+2 ; // 
 		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.CENTER ;
