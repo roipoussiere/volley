@@ -57,7 +57,7 @@ public class Vue_Lecture extends JPanel
 		this.add (this.chrono, gbc) ;
 
 		// Sélection du temps
-		this.selecTps = new SelectionTemps (this.getC().getS());
+		this.selecTps = new SelectionTemps ();
 		gbc.gridx = 0 ;
 		gbc.gridy = 1 ;
 		gbc.gridwidth = 3 ;
@@ -184,6 +184,6 @@ public class Vue_Lecture extends JPanel
 	}
 
 	public void majVue() {
-		this.selecTps.majSelectionTemps();
+		
 	}
 }

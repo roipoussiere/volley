@@ -43,8 +43,8 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		super ("Logiciel pour strategie de volley");
 		this.c = _c;
 
-		this.cve = new ControleurVueEdition(this.c, this.ve);
-		//this.cve = new ControleurVueEdition(this.ve, new m_alternatif.Strategie(new m_alternatif.Equipe(6), new m_alternatif.Equipe(6)));
+		//this.cve = new ControleurVueEdition(this.c, this.ve);
+		this.cve = new ControleurVueEdition(this.ve, new m_alternatif.Strategie(new m_alternatif.Equipe(6), new m_alternatif.Equipe(6)));
 		this.ve = new Vue_Edition(cve);
 		this.vl = new Vue_Lecture(this.c);
 
