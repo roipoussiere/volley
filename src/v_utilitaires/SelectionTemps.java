@@ -3,6 +3,9 @@ package v_utilitaires;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -12,7 +15,7 @@ import javax.swing.JTextField;
  * @author Florian Garnier
  */
 @SuppressWarnings("serial")
-public class SelectionTemps extends JPanel
+public class SelectionTemps extends JPanel implements ActionListener
 {
 	// Composants
 	private JButton tpsPrecedent ; // permet de retourner au temps precedent
@@ -57,6 +60,9 @@ public class SelectionTemps extends JPanel
 		this.add (this.tpsSuivant, gbc) ;
 	}
 
+	
+	// Getters
+	
 	/**
 	 * Getter du bouton "Temps précédent".
 	 * @return Le bouton "Temps précédent".
@@ -65,7 +71,7 @@ public class SelectionTemps extends JPanel
 	{
 		return tpsPrecedent ;
 	}
-
+	
 	/**
 	 * Getter du bouton "Temps suivant".
 	 * @return Le bouton "Temps suivant".
@@ -82,6 +88,46 @@ public class SelectionTemps extends JPanel
 	public JTextField getTpsEnCours ()
 	{
 		return tpsEnCours ;
+	}
+	
+	
+	// Listeners
+	
+	/**
+	 * Ecouteur de la classe SelectionTemps.
+	 * Met à jour l'affichage du temps en cours.
+	 * @param _ae Evénement.
+	 */
+	public void actionPerformed (ActionEvent _ae)
+	{
+		// On récupère la valeur du temps en cours
+		int tps = Integer.parseInt(this.tpsEnCours.getText()) ;
+		
+		// Clic sur le bouton "Temps précédent"
+		if (_ae.getSource().equals(this.tpsPrecedent))
+		{
+			// On décrémente de 1 le temps en cours
+			tps-- ;
+			// On désactive le bouton "Temps précédent" si on est revenu au temps 0
+			if (tps == 0)
+			{
+				this.tpsPrecedent.setEnabled(false) ;
+			}
+			// On active le bouton "Temps suivant" (si besoin)
+			this.tpsSuivant.setEnabled(true) ;
+		}
+
+		// Clic sur le bouton "Temps suivant"
+		if (_ae.getSource().equals(this.tpsSuivant))
+		{
+			// On incrémente de 1 le temps en cours
+			tps++ ;
+			// On active le bouton "Temps précédent" (si besoin)
+			this.tpsPrecedent.setEnabled(true) ;
+		}
+		
+		// On inscrit la nouvelle valeur dans le champ
+		this.tpsEnCours.setText(Integer.toString(tps)) ;
 	}
 }
 

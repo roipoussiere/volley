@@ -29,9 +29,6 @@ public class ControleurVueEdition
 	 */
 	public void majStrategieE1 (int _tpsTraite)
 	{
-		for (int i = 0 ; i < this.str.getEq1().getNbJoueur() ; i++)
-		{
-			// A COMPLETER !
-		}
+		
 	}
 }

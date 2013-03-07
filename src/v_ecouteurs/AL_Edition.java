@@ -34,32 +34,16 @@ public class AL_Edition implements ActionListener, DocumentListener
 		// Clic sur le bouton "Temps précédent"
 		if (_ae.getSource().equals(this.ve.getSelecTps().getTpsPrecedent()))
 		{
-			// On récupère la valeur du temps en cours
-			int tps = Integer.parseInt(this.ve.getSelecTps().getTpsEnCours().getText()) ;
-			// On décrémente de 1
-			tps-- ;
-			// On inscrit la nouvelle valeur dans le champs
-			this.ve.getSelecTps().getTpsEnCours().setText(Integer.toString(tps)) ;
-			// On désactive le bouton "Temps précédent" si on est revenu au temps 0
-			if (tps == 0) {
-				this.ve.getSelecTps().getTpsPrecedent().setEnabled(false) ;
-			}
-			// On active le bouton "Temps suivant" (si besoin)
-			this.ve.getSelecTps().getTpsSuivant().setEnabled(true) ;
+			// On appelle le listener intégré dans SelectionTemps
+			this.ve.getSelecTps().actionPerformed(_ae) ;
 		}
 
 		// Clic sur le bouton "Temps suivant"
 		if (_ae.getSource().equals(this.ve.getSelecTps().getTpsSuivant()))
 		{
-			// On récupère la valeur du temps en cours
-			int tps = Integer.parseInt(this.ve.getSelecTps().getTpsEnCours().getText()) ;
-			// On incrémente de 1
-			tps++ ;
-			// On inscrit la nouvelle valeur dans le champs
-			this.ve.getSelecTps().getTpsEnCours().setText(Integer.toString(tps)) ;
-			// On active le bouton "Temps précédent" (si besoin)
-			this.ve.getSelecTps().getTpsPrecedent().setEnabled(true) ;
-			// On désactive le bouton "Temps suivant" jusqu'au remplissage d'au moins 1 champs de déplacement
+			// On appelle le listener intégré dans SelectionTemps
+			this.ve.getSelecTps().actionPerformed(_ae) ;
+			// On désactive le bouton "Temps suivant" jusqu'au remplissage d'au moins 1 champ de déplacement
 			this.ve.getSelecTps().getTpsSuivant().setEnabled(false) ;
 		}
 	}
@@ -73,8 +57,9 @@ public class AL_Edition implements ActionListener, DocumentListener
 	@Override
 	public void insertUpdate (DocumentEvent e)
 	{
+		int tpsEnCours = Integer.parseInt(this.ve.getSelecTps().getTpsEnCours().getText()) ;
 		// On appelle la méthode de MAJ du contrôleur en passant en paramètre le temps concerné
-		this.ve.getC().majStrategieE1(Integer.parseInt(this.ve.getSelecTps().getTpsEnCours().getText())) ;
+		this.ve.getC().majStrategieE1(tpsEnCours) ;
 	}
 
 	@Override

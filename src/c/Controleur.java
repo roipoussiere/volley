@@ -19,11 +19,11 @@ public class Controleur
 	// Vues
 	private Vue_Fenetre vf;
 	private Vue_Terrain vt;
-	
+
 	private Parametres p;
 	private Ensemble e;
 	private Strategie s; // À supprimer : normalement la création de la stratégie ne se fait pas ici.
-	
+
 	/**
 	 * Constructeur du contrôleur qui initialise les vues et les autres arguments et lance la vue principale (Vue_Fenetre).
 	 */
@@ -32,12 +32,12 @@ public class Controleur
 		// Itinitialisation des vues.
 		this.vf = null;
 		this.vt = null;
-		
+
 		this.p = new Parametres(); // Initialisation des paramètres
 		this.e = new Ensemble(this); // Création de l'ensemble des élements (2 équipes + 1 ballon)
 		this.e.afficher(); //Affichage des élements (pour test)
 		this.s = new Strategie(this); // À supprimer
-		
+
 		// Ouverture des fenêtres.
 		this.vf = new Vue_Fenetre(this);
 		this.vt = new Vue_Terrain(this);
@@ -45,35 +45,34 @@ public class Controleur
 		this.centrerFen();
 		this.vf.setVisible (true);
 		this.vt.setVisible (true);
-		
 	}
-	
+
 	// *** Getters ***
-	
+
 	public Vue_Fenetre getVueFenetre()
 	{
 		return this.vf;
 	}
-	
+
 	public Parametres getP()
 	{
 		return this.p;
 	}
-	
+
 	// À supprimer
 	public Ensemble getE()
 	{
 		return this.e;
 	}
-	
+
 	// À supprimer
 	public Strategie getS()
 	{
 		return this.s;
 	}
-	
+
 	// *** Méthodes de Vue_Fenetre ***
-	
+
 	/**
 	 * Action qui suit le clic sur un onglet.<br/>
 	 * Adapte le quadrillage de la vue Terrain en fonction du mode Lecture ou Edition.<br/>
@@ -87,22 +86,22 @@ public class Controleur
 			{
 			case 0: // Lecture
 				this.vt.dessiner(this.p.getStyleQL());
-        this.vf.getVL().majVue();
+				this.vf.getVL().majVue();
 				break;
 			case 1: // Edition
 				this.vt.dessiner(this.p.getStyleQE());
-        //this.vf.getVE().majVue();
+				//this.vf.getVE().majVue();
 				break;
 			}
 		}
 	}
-	
+
 	public void mf_ouvrir()
 	{
 		System.out.println("Ouverture d'un fichier de stratégie...");
 		this.parcourir();
 	}
-	
+
 	/**
 	 * Crée une nouvelle stratégie.
 	 */
@@ -118,7 +117,7 @@ public class Controleur
 	{
 		System.out.println("Enregistrement de cette stratégie...");
 	}
-	
+
 	/**
 	 * Enregistrement de la stratégie dans un dossier spécifié.
 	 */
@@ -127,7 +126,7 @@ public class Controleur
 		System.out.println("Enregistrement de cette stratégie sous...");
 		this.parcourir();
 	}
-	
+
 	/**
 	 * Création de la vue Joueurs.
 	 */
@@ -136,7 +135,7 @@ public class Controleur
 		System.out.println("Affectation des joueurs...");
 		this.vf.vueJoueurs();
 	}
-	
+
 	/**
 	 * Affectation du mode d'affichage du terrain.
 	 */
@@ -150,7 +149,7 @@ public class Controleur
 			this.centrerFen();
 		}
 	}
-	
+
 	/**
 	 * Création de la vue Paramètres.
 	 */
@@ -159,7 +158,7 @@ public class Controleur
 		System.out.println("Paramètres du programme...");
 		this.vf.vueParams();
 	}
-		
+
 	/**
 	 * Affiche de l'aide pour l'utilisation du programme.
 	 */
@@ -169,7 +168,7 @@ public class Controleur
 		System.out.println("Comment utiliser ce programme...");
 		Vue_Aide va = new Vue_Aide(this.vf);
 	}
-	
+
 	/**
 	 * Affiche les informations concernant le programme.
 	 */
@@ -179,17 +178,17 @@ public class Controleur
 		System.out.println("À propos de ce programme...");
 		Vue_APropos vap = new Vue_APropos(this.vf);
 	}
-	
+
 	// *** Méthodes de Vue_Fichier ***
 
 	// *** Méthodes de Vue_Lecture ***
-			
+
 	// *** Méthodes de Vue_Edition ***
-	
+
 	// *** Méthodes de Vue_Terrain ***
-		
+
 	// *** Autres méthodes ***
-	
+
 	/**
 	 * Ouvre une fenêtre invitant l'utilisateur à sélectionner un fichier de stratégie.<br/>
 	 * Stoque le chemin et le nom du fichier dans les arguments nomFichier et cheminFichier du contrôleur.
@@ -202,7 +201,7 @@ public class Controleur
 		if(retour == JFileChooser.APPROVE_OPTION) // Si un fichier a été choisi
 		{
 			this.p.setCheminFichier(fc.getSelectedFile().getAbsolutePath()); // Chemin absolu du fichier choisi
-			
+
 			System.out.println("Il fichier sélectionné se trouve dans : " + this.p.getCheminFichier());			
 		}
 		else // Pas de fichier choisi
@@ -210,7 +209,7 @@ public class Controleur
 			System.out.println("Aucun fichier sélectionné");
 		}
 	}
-	
+
 	/**
 	 * Positionne une ou plusieurs fenêtres au centre de l'écran.
 	 */
@@ -218,7 +217,7 @@ public class Controleur
 	{
 		// Les dimentions de l'écran
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-		
+
 		if (this.vf != null)
 		{
 			this.vt.setLocation(screen.width/2 ,(screen.height - this.vt.getSize().height)/2); 
@@ -226,7 +225,7 @@ public class Controleur
 			System.out.println("Fenêtres centrées.");
 		}
 	}
-	
+
 	/**
 	 * Ferme le programme, avec confirmation.
 	 */
