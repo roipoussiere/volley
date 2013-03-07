@@ -1,8 +1,11 @@
 package v_utilitaires;
 
-import java.awt.*;
-import javax.swing.*;
-import m.Strategie;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  * Utilitaire permettant de creer le "menu" de selection du temps de jeu
@@ -12,107 +15,73 @@ import m.Strategie;
 public class SelectionTemps extends JPanel
 {
 	// Composants
-	private JButton BPPrecedent ; // permet de retourner au temps precedent
-	private JButton BPSuivant ; // permet de passer au temps suivant
-	private JTextField temps ; // affiche le temps en cours + permet de saisir le temps que l'on souhaite traiter
+	private JButton tpsPrecedent ; // permet de retourner au temps precedent
+	private JButton tpsSuivant ; // permet de passer au temps suivant
+	private JTextField tpsEnCours ; // affiche le temps en cours + permet de saisir le temps que l'on souhaite traiter
 
-  private Strategie s;
 	/**
 	 * Constructeur de l'utilitaire et de tous ses composants.
 	 */
-	public SelectionTemps (Strategie _s)
+	public SelectionTemps ()
 	{
-    this.s = _s;
+		// Mise en place du GridBagLayout
+		this.setLayout (new GridBagLayout ()) ;
+		GridBagConstraints gbc = new GridBagConstraints () ;
 
 		// Bouton "Temps précédent"
-		this.BPPrecedent = new JButton ("<");
-		this.add (this.BPPrecedent, BorderLayout.WEST);
+		this.tpsPrecedent = new JButton ("<") ;
+		this.tpsPrecedent.setEnabled (false) ;
+		gbc.gridx = 0 ; gbc.gridy = 0 ;
+		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
+		gbc.anchor = GridBagConstraints.LINE_START ;
+		gbc.insets = new Insets (0, 10, 10, 0) ;
+		this.add (this.tpsPrecedent, gbc) ;
 
 		// Affichage et saisie du temps
-		this.temps = new JTextField (3) ;
-		this.temps.setHorizontalAlignment (JTextField.CENTER) ;
-		this.add (this.temps, BorderLayout.CENTER) ;
+		this.tpsEnCours = new JTextField (3) ;
+		this.tpsEnCours.setText ("0") ;
+		this.tpsEnCours.setHorizontalAlignment (JTextField.CENTER) ;
+		gbc.gridx = 1 ; gbc.gridy = 0 ;
+		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
+		gbc.anchor = GridBagConstraints.LINE_START ;
+		gbc.insets = new Insets (0, 10, 10, 10) ;
+		this.add (this.tpsEnCours, gbc) ;
 
 		// Bouton "Temps suivant"
-		this.BPSuivant = new JButton (">") ;
-		this.add (this.BPSuivant, BorderLayout.EAST) ;
-    
-    // Ecouteurs
-    this.BPPrecedent.addActionListener (new AL_SelectionTemps(this));
-    this.BPSuivant.addActionListener (new AL_SelectionTemps(this));
-    
-    // Mise à jour
-    majSelectionTemps();
+		this.tpsSuivant = new JButton (">") ;
+		// this.tpsSuivant.setEnabled (false) ;
+		gbc.gridx = 2 ; gbc.gridy = 0 ;
+		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
+		gbc.anchor = GridBagConstraints.LINE_START ;
+		gbc.insets = new Insets (0, 0, 10, 0) ;
+		this.add (this.tpsSuivant, gbc) ;
 	}
 
-  /**
-   * Mise à jour du sélecteur de temps.
-   */
-  public void majSelectionTemps() {
-    // Mise à jour du texte
-    this.temps.setText (String.valueOf(this.s.getTA())) ;
-    
-    // Mise à jour de l'état du BP Precedent
-    if (this.s.getTA() <= 0) {
-      this.BPPrecedent.setEnabled (false);
-    }
-    else {
-      this.BPPrecedent.setEnabled (true);
-    }
-    
-    // Mise à jour de l'état du BP Precedent
-    if (this.s.getTA() >= this.s.getTMax()) {
-      this.BPSuivant.setEnabled (false);
-    }
-    else {
-      this.BPSuivant.setEnabled (true);
-    }
-  }
 	/**
 	 * Getter du bouton "Temps précédent".
 	 * @return Le bouton "Temps précédent".
 	 */
-	public JButton getBPPrecedent ()
+	public JButton getTpsPrecedent ()
 	{
-		return BPPrecedent ;
+		return tpsPrecedent ;
 	}
 
-  /**
-	 * Modifie l'état du bouton "Temps précédent".
-	 */
-	public void activerBPPrecedent (boolean _activer)
-	{
-		this.BPPrecedent.setEnabled(_activer);
-	}
-  
-   /**
-	 * Modifie l'état du bouton "Temps suivant".
-	 */
-	public void activerBPSuivant (boolean _activer)
-	{
-		this.BPSuivant.setEnabled(_activer);
-	}
-  
 	/**
 	 * Getter du bouton "Temps suivant".
 	 * @return Le bouton "Temps suivant".
 	 */
-	public JButton getBPSuivant ()
+	public JButton getTpsSuivant ()
 	{
-		return BPSuivant ;
+		return tpsSuivant ;
 	}
 
 	/**
 	 * Getter du champs de saisie du temps.
 	 * @return Le champs de saisie du temps.
 	 */
-	public JTextField getTemps ()
+	public JTextField getTpsEnCours ()
 	{
-		return temps ;
+		return tpsEnCours ;
 	}
-  
-  public Strategie getStrategie ()
-  {
-    return this.s;
-  }
 }
+

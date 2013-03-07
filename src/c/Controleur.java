@@ -91,7 +91,7 @@ public class Controleur
 				break;
 			case 1: // Edition
 				this.vt.dessiner(this.p.getStyleQE());
-        this.vf.getVE().majVue();
+        //this.vf.getVE().majVue();
 				break;
 			}
 		}
