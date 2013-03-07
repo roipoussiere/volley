@@ -5,6 +5,9 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
 import v_ecouteurs.AL_Edition;
 import v_utilitaires.SaisieDeplacement;
 import v_utilitaires.SelectionTemps;
@@ -16,39 +19,37 @@ import v_utilitaires.SelectionTemps;
 @SuppressWarnings("serial")
 public class Vue_Edition extends JPanel
 {
-	private ControleurVueEdition cve ;
-	
+	private ControleurVueEdition c ;
+
 	// Composants de la fenetre
 	private SelectionTemps selecTps ; // permet de choisir le temps à gérer
 	private JComboBox selecEquipe ; // permet de sélectionner l'équipe à déplacer
 	private SaisieDeplacement deplacementJ[] ; // tableau contenant les saisies des déplacements de chaque joueur
-	
+
 	// Constante
 	private static final int NOMBRE_JOUEURS = 6 ; // A MODIFIER ! doit recevoir le nombre de joueurs sélectionnés dans le menu "Joueur"
-	
+
 	/**
 	 * Création du JFrame et de tous ses composants.
-	 * @param _cve Le controleur de Vue Edition
+	 * @param _c Le controleur.
 	 */
-	public Vue_Edition (ControleurVueEdition _cve)
+	public Vue_Edition (ControleurVueEdition _c)
 	{
 		super () ;
-		this.cve = _cve ;
+		this.c = _c ;
 
 		// Mise en place du GridBagLayout
 		this.setLayout (new GridBagLayout()) ;
 		GridBagConstraints gbc = new GridBagConstraints () ;
-		
+
 		// Sélection du temps
-		this.selecTps = new SelectionTemps (this.cve.getC().getS()) ;
-		gbc.gridx = 0 ;
-    gbc.gridy = 0 ;
-		gbc.gridwidth = 3 ; // 3 car SelectionTemps possède 3 composants
-    gbc.gridheight = 1 ;
+		this.selecTps = new SelectionTemps () ;
+		gbc.gridx = 0 ; gbc.gridy = 0 ;
+		gbc.gridwidth = 3 ; gbc.gridheight = 1 ; // 3 car SelectionTemps possède 3 composants
 		gbc.anchor = GridBagConstraints.LINE_START ;
 		gbc.insets = new Insets (0, 0, 0, 0) ;
 		this.add (this.selecTps, gbc) ;
-		
+
 		// Sélection de l'équipe
 		this.selecEquipe = new JComboBox () ;
 		this.selecEquipe.setEditable (false) ;
@@ -59,37 +60,39 @@ public class Vue_Edition extends JPanel
 		gbc.anchor = GridBagConstraints.LINE_START ;
 		gbc.insets = new Insets (0, 135, 10, 10) ;
 		this.add (this.selecEquipe, gbc) ;
-		
+
 		// Saisie des déplacements des joueurs
 		this.deplacementJ = new SaisieDeplacement[NOMBRE_JOUEURS] ;
 		for (int i = 0 ; i < NOMBRE_JOUEURS ; i++)
-		{		
+		{	
 			this.deplacementJ[i] = new SaisieDeplacement("Joueur " + (i + 1), i + 1, "A6") ;
-			gbc.gridx = 0 ;
-      gbc.gridy = i + 2 ; // + 2 car les deux premières lignes sont déjà occupées
-			gbc.gridwidth = GridBagConstraints.REMAINDER ;
-      gbc.gridheight = 1 ;
+			gbc.gridx = 0 ; gbc.gridy = i + 2 ; // + 2 car les deux premières lignes sont déjà occupées
+			gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
 			gbc.anchor = GridBagConstraints.CENTER ;
 			gbc.insets = new Insets (10, 0, 10, 0) ;
 			this.add (this.deplacementJ[i], gbc) ;
-			//this.deplacementJ[i].getDepActuel().getDocument().addDocumentListener(new AL_Edition(this)) ;
+			this.deplacementJ[i].getDepActuel().getDocument().addDocumentListener(new AL_Edition(this)) ;
 		}
+
+		// Abonnement aux listeners
+		this.selecTps.getTpsPrecedent().addActionListener (new AL_Edition(this)) ;
+		this.selecTps.getTpsSuivant().addActionListener (new AL_Edition(this)) ;
 	}
 
-  /**
-	 * Getter du controleur de la vue Edition.
-	 * @return Le controleur de la vue Edition.
+	/**
+	 * Getter du controleur.
+	 * @return Le controleur.
 	 */
-	public ControleurVueEdition getCVE()
+	public ControleurVueEdition getC()
 	{
-		return this.cve ;
+		return this.c ;
 	}
-  
+
 	/**
 	 * Getter du sélectionneur de temps.
 	 * @return Le sélectionneur de temps.
 	 */
-	public SelectionTemps getSelecTps () 
+	public SelectionTemps getSelecTps ()
 	{
 		return selecTps ;
 	}
@@ -98,7 +101,7 @@ public class Vue_Edition extends JPanel
 	 * Getter de la liste des équipes.
 	 * @return La liste des équipes.
 	 */
-	public JComboBox getTypeStrategie () 
+	public JComboBox getTypeStrategie ()
 	{
 		return selecEquipe ;
 	}
@@ -107,12 +110,8 @@ public class Vue_Edition extends JPanel
 	 * Getter du tableau des déplacements des joueurs.
 	 * @return Le tableau des déplacements des joueurs.
 	 */
-	public SaisieDeplacement[] getDeplacementJ () 
+	public SaisieDeplacement[] getDeplacementJ ()
 	{
 		return deplacementJ ;
 	}
-  
-  public void majVue() {
-    this.selecTps.majSelectionTemps();
-  }
 }

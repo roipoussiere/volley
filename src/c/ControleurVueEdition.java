@@ -1,53 +1,37 @@
 package c;
 
+import m_alternatif.Strategie;
 import v_vues.Vue_Edition;
 
 /**
  * Contrôleur de la vue Édition.
  * @author Florian
  */
-public class ControleurVueEdition {
-	private Controleur c ;
+public class ControleurVueEdition
+{
 	private Vue_Edition ve ;
-	
+	private Strategie str ;
+
 	/**
 	 * Création du constructeur.
-	 * @param _c Le controleur
 	 * @param _ve La Vue_Edition liée
+	 * @param _str La Strategie liée
 	 */
-	public ControleurVueEdition (Controleur _c, Vue_Edition _ve) {
-		this.c = _c ;
+	public ControleurVueEdition (Vue_Edition _ve, Strategie _str)
+	{
 		this.ve = _ve ;
+		this.str = _str ;
 	}
-	
-  public void majVue() {
-    this.ve.getSelecTps().majSelectionTemps();
-  }
-  
-  /**
-   * Getter du controleur
-   * @return 
-   */
-  public Controleur getC() {
-    return this.c;
-  }
+
 	/**
 	 * Met à jour le temps en cours de traitement dans la stratégie.
 	 * @param _tpsTraite Le temps en cours de traitement.
 	 */
-	public void majStrategieE1 (int _tpsTraite) {
-		for (int i = 0 ; i < this.c.getE().getNbJ() ; i++) {
+	public void majStrategieE1 (int _tpsTraite)
+	{
+		for (int i = 0 ; i < this.str.getEq1().getNbJoueur() ; i++)
+		{
 			// A COMPLETER !
 		}
 	}
-  
-  /**
-   * Getter du temps maximum
-   * @return Le temps maximum : S'il est atteint, le bouton 'temps suivant' est bloqué.
-   */
-  public int getTmpMAX()
-  {
-    // À modifier
-    return 3;
-  }
 }
