@@ -27,7 +27,7 @@ public class Vue_Edition extends JPanel
 	private SaisieDeplacement deplacementJ[] ; // tableau contenant les saisies des déplacements de chaque joueur
 
 	// Constante
-	private static final int NOMBRE_JOUEURS = 6 ; // A MODIFIER ! doit recevoir le nombre de joueurs sélectionnés dans le menu "Joueur"
+	private static final int NOMBRE_JOUEURS = 6 ;
 
 	/**
 	 * Création du JFrame et de tous ses composants.
@@ -78,6 +78,9 @@ public class Vue_Edition extends JPanel
 		this.selecTps.getTpsPrecedent().addActionListener (new AL_Edition(this)) ;
 		this.selecTps.getTpsSuivant().addActionListener (new AL_Edition(this)) ;
 	}
+	
+	
+	// Getters
 
 	/**
 	 * Getter du controleur.
@@ -107,11 +110,19 @@ public class Vue_Edition extends JPanel
 	}
 
 	/**
-	 * Getter du tableau des déplacements des joueurs.
-	 * @return Le tableau des déplacements des joueurs.
+	 * Getter du tableau des structures de saisie des déplacements des joueurs.
+	 * @return Le tableau des structures de saisie des déplacements des joueurs.
 	 */
 	public SaisieDeplacement[] getDeplacementJ ()
 	{
 		return deplacementJ ;
+	}
+	
+	
+	// Accesseurs
+	
+	public SaisieDeplacement getSaisieDeplacementJ (int _i)
+	{
+		return deplacementJ[_i] ;
 	}
 }

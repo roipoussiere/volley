@@ -44,7 +44,8 @@ public class AL_Edition implements ActionListener, DocumentListener
 			// On appelle le listener intégré dans SelectionTemps
 			this.ve.getSelecTps().actionPerformed(_ae) ;
 			// On désactive le bouton "Temps suivant" jusqu'au remplissage d'au moins 1 champ de déplacement
-			this.ve.getSelecTps().getTpsSuivant().setEnabled(false) ;
+			if (estChampVide())
+				this.ve.getSelecTps().getTpsSuivant().setEnabled(false) ;
 		}
 	}
 
@@ -66,5 +67,23 @@ public class AL_Edition implements ActionListener, DocumentListener
 	public void removeUpdate (DocumentEvent e) {
 		// TODO Auto-generated method stub
 
+	}
+	
+	// Méthodes annexes
+	
+	private boolean estChampVide ()
+	{
+		boolean ok = true ;
+		int i = 0 ;
+		
+		while (ok && i < this.ve.getDeplacementJ().length)
+		{
+			if (! this.ve.getSaisieDeplacementJ(i).getDepActuel().getText().isEmpty())
+				ok = false ;
+			
+			i++ ;
+		}
+		
+		return ok ;
 	}
 }
