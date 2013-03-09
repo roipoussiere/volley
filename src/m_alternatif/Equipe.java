@@ -1,7 +1,5 @@
 package m_alternatif;
 
-import java.util.Vector;
-
 public class Equipe
 {
 	private Joueur[] equipe ;

@@ -75,8 +75,8 @@ public class Vue_Edition extends JPanel
 		}
 
 		// Abonnement aux listeners
-		this.selecTps.getTpsPrecedent().addActionListener (new AL_Edition(this)) ;
-		this.selecTps.getTpsSuivant().addActionListener (new AL_Edition(this)) ;
+		this.selecTps.getButtonTpsPrecedent().addActionListener (new AL_Edition(this)) ;
+		this.selecTps.getButtonTpsSuivant().addActionListener (new AL_Edition(this)) ;
 	}
 	
 	
@@ -104,7 +104,7 @@ public class Vue_Edition extends JPanel
 	 * Getter de la liste des équipes.
 	 * @return La liste des équipes.
 	 */
-	public JComboBox getTypeStrategie ()
+	public JComboBox getListEquipe ()
 	{
 		return selecEquipe ;
 	}

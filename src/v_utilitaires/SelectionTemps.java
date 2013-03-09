@@ -67,7 +67,7 @@ public class SelectionTemps extends JPanel implements ActionListener
 	 * Getter du bouton "Temps précédent".
 	 * @return Le bouton "Temps précédent".
 	 */
-	public JButton getTpsPrecedent ()
+	public JButton getButtonTpsPrecedent ()
 	{
 		return tpsPrecedent ;
 	}
@@ -76,7 +76,7 @@ public class SelectionTemps extends JPanel implements ActionListener
 	 * Getter du bouton "Temps suivant".
 	 * @return Le bouton "Temps suivant".
 	 */
-	public JButton getTpsSuivant ()
+	public JButton getButtonTpsSuivant ()
 	{
 		return tpsSuivant ;
 	}
@@ -85,9 +85,17 @@ public class SelectionTemps extends JPanel implements ActionListener
 	 * Getter du champs de saisie du temps.
 	 * @return Le champs de saisie du temps.
 	 */
-	public JTextField getTpsEnCours ()
+	public JTextField getTextFieldTpsEnCours ()
 	{
 		return tpsEnCours ;
+	}
+	
+	
+	// Accesseurs
+	
+	public int getTempsSelectionne ()
+	{
+		return Integer.parseInt(this.tpsEnCours.getText()) ;
 	}
 	
 	

@@ -68,7 +68,12 @@ public abstract class Element
 	
 	// Modificateurs
 	
-	public void setDeplacementAuTemps (int _i, Position _pos)
+	public void ajouterNouveauDeplacement (Position _pos)
+	{
+		this.deplacement.add(_pos) ;
+	}
+	
+	public void majDeplacementAuTemps (int _i, Position _pos)
 	{
 		this.deplacement.set(_i, _pos) ;
 	}
