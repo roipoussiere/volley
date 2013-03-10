@@ -7,7 +7,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
 
-import m_alternatif.Position;
+import m.Position;
 
 import v_vues.Vue_Edition;
 

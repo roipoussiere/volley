@@ -9,11 +9,11 @@ import v_vues.Vue_Joueurs;
 
 public class ControleurVueJoueurs {
 
-	private Controleur c;
+	private ControleurVueFenetre c;
 	private Vue_Joueurs vj;
 	
 	
-	public ControleurVueJoueurs (Controleur _c,Vue_Joueurs _vj)
+	public ControleurVueJoueurs (ControleurVueFenetre _c,Vue_Joueurs _vj)
 	{
 		this.c = _c;
 		this.vj = _vj;

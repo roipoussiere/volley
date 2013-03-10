@@ -3,8 +3,7 @@ package v_vues;
 import c.Parametres;
 import java.awt.*;
 import javax.swing.*;
-
-import m.Temps;
+import m_natha.Temps;
 
 /**
  * Vue de dessin, pour dessiner sur la fenetre de terrain.
@@ -29,8 +28,8 @@ public class Vue_Dessin extends JPanel
 		this.vt = _vt;
 		this.p = this.vt.getC().getP();
 		
-		int vta = this.vt.getC().getS().getTA(); // récupère la valeur du temps actuel
-		this.ta = this.vt.getC().getS().getTemps(vta); // affecte le temps actuel à this.ta
+		//int vta = this.vt.getC().getS().getTA(); // récupère la valeur du temps actuel
+		//this.ta = this.vt.getC().getS().getTemps(vta); // affecte le temps actuel à this.ta
 	}
 	
 	/**
@@ -52,6 +51,8 @@ public class Vue_Dessin extends JPanel
 			dessinerTC(_g);
 		}
 
+    // affichage des élements
+    /*
 		for (int i=0 ; i<this.ta.getNbET() ; i++)
 		{
 			int posX = this.ta.getET(i).getX();
@@ -59,7 +60,7 @@ public class Vue_Dessin extends JPanel
 
 			System.out.println("elt à la position [" + posX + ";" + posY + "]");
 			element(_g, posX, posY);
-		}
+		}*/
 	}
 	
 	/**

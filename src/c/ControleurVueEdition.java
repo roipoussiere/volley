@@ -1,6 +1,8 @@
 package c;
 
-import m_alternatif.*;
+import m.Strategie;
+import m.Position;
+import m.Equipe;
 import v_vues.Vue_Edition;
 
 /**

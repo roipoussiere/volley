@@ -7,7 +7,7 @@ import java.awt.Insets;
 
 import javax.swing.*;
 
-import c.Controleur;
+import c.ControleurVueFenetre;
 import c.ControleurVueJoueurs;
 import v_ecouteurs.AL_Joueurs;
 import v_utilitaires.SaisieJoueur;
@@ -20,7 +20,7 @@ import v_utilitaires.SaisieJoueur;
 @SuppressWarnings("serial")
 public class Vue_Joueurs extends JDialog
 {
-	private Controleur c ;
+	private ControleurVueFenetre c ;
 	ControleurVueJoueurs cvj;
 	
 	// Composants de la fenetre
@@ -35,7 +35,7 @@ public class Vue_Joueurs extends JDialog
 	// Constante
 	private static final int NOMBRE_JOUEURS = 6 ;
 	
-	public Vue_Joueurs (Vue_Fenetre _vf, Controleur _c)
+	public Vue_Joueurs (Vue_Fenetre _vf, ControleurVueFenetre _c)
 	{
 		// Définition de la fenêtre
 		super (_vf, "Joueurs", true) ;
@@ -261,7 +261,7 @@ public class Vue_Joueurs extends JDialog
 		this.joueur2 = joueur;
 	}
 
-	public Controleur getC() {
+	public ControleurVueFenetre getC() {
 		return c;
 	}
 	

@@ -1,4 +1,4 @@
-package m;
+package m_natha;
 
 import java.util.Vector;
 import javax.swing.text.Position;
@@ -8,7 +8,7 @@ import javax.swing.text.Position;
  * @author Nathanaël Jourdane
  */
 public class Temps
-{
+{/*
 	private Strategie s;
 	private Vector<Mouvement> vecteurET; // Vecteur contenant la position de tous les élements actifs.
 
@@ -29,10 +29,6 @@ public class Temps
 		
 	}
 	
-	/**
-	 * Retourne le nombre d'élements temporels.
-	 * @return 
-	 */
 	public int getNbET()
 	{
 		return this.vecteurET.size();
@@ -43,9 +39,6 @@ public class Temps
 		return this.vecteurET.get(_idEt);
 	}
 		
-	/**
-	 * Renvoie un élement temporel à partir de l'id de l'élement.
-	 */
 	public Mouvement getETParId(int _idEl)
 	{
 		Mouvement el = null;
@@ -64,6 +57,5 @@ public class Temps
 		Mouvement et = getETParId(_idEl);
 		et.setXY(_posX, _posY);
 	}
-	
-	
+	*/
 }

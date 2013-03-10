@@ -1,6 +1,6 @@
 package v_vues;
 
-import c.Controleur;
+import c.ControleurVueFenetre;
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -11,14 +11,14 @@ import javax.swing.*;
 @SuppressWarnings("serial")
 public class Vue_Terrain extends JFrame implements WindowListener
 {
-	private Controleur c;
+	private ControleurVueFenetre c;
 	private Vue_Dessin vd;
 	
 	/**
 	 * Création de la fenêtre représentant le terrain de volley.
 	 * @param _c Le contrôleur.
 	 */
-	public Vue_Terrain(Controleur _c)
+	public Vue_Terrain(ControleurVueFenetre _c)
 	{
 		super ("Terrain");
 		this.c = _c;
@@ -62,7 +62,7 @@ public class Vue_Terrain extends JFrame implements WindowListener
 	 * Getter du contrôleur.
 	 * @return Le contrôleur.
 	 */
-	public Controleur getC()
+	public ControleurVueFenetre getC()
 	{
 		return this.c;
 	}

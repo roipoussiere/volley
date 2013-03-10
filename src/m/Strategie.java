@@ -1,66 +1,78 @@
 package m;
-import c.Controleur;
-import java.util.Vector;
-/**
- *
- * @author Nathanaël Jourdane
- */
+
 public class Strategie
 {
-	private Vector<Temps> cycle;
-	private Controleur c;
-	private Ensemble e;
-	private int ta; // temps actuel
-  private int tMax; // temps maximum
+	public enum TypeStrategie {ATTAQUE, DEFENSE} ;
 	
-	public Strategie(Controleur _c)
-	{
-		this.c = _c;
-		this.e = this.c.getE();
-		this.cycle = new Vector<Temps>(); // On créeur un vecteur de temps.
-		this.cycle.add(new Temps(this)); // On ajoute le temps 0 à ce vecteur.
-		this.ta = 0; // À la création de la stratégie, le temps actuel est 0.
-    this.tMax = 3; // À modifier
-	}
+	private Equipe eq1, eq2 ;
+	private TypeStrategie typeS ;
 	
-	public Controleur getC()
-	{
-		return this.c;
-	}
+	// Constructeurs
 	
-	public int getTA()
+  public Strategie ()
 	{
-		return this.ta;
-	}
-  
-	public void setTA(int _ta)
-	{
-		this.ta = _ta;
-	}
-  
-  public int getTMax()
-	{
-		return this.tMax;
+		this.eq1 = new Equipe() ;
+		this.eq2 = new Equipe() ;
+		this.typeS = TypeStrategie.ATTAQUE ; // Par défaut --> A CHANGER (?)
 	}
     
-	public Temps getTemps(int _idT)
+	public Strategie (Equipe _e1, Equipe _e2)
 	{
-		return this.cycle.get(_idT);
+		this.eq1 = _e1 ;
+		this.eq2 = _e2 ;
+		this.typeS = TypeStrategie.ATTAQUE ; // Par défaut --> A CHANGER (?)
 	}
 	
-	public void addTemps(Temps t)
+	public Strategie (Equipe _e1, Equipe _e2, TypeStrategie _ts)
 	{
-		this.cycle.add(t);
+		this.eq1 = _e1 ;
+		this.eq2 = _e2 ;
+		this.typeS = _ts ;
 	}
 	
-	public void suppTemps(int _idT)
+	// Getters
+	
+	public Equipe getEq1 ()
 	{
-		this.cycle.remove(_idT);
+		return eq1 ;
+	}
+
+	public Equipe getEq2 ()
+	{
+		return eq2 ;
+	}
+
+	public TypeStrategie getTypeS ()
+	{
+		return typeS ;
 	}
 	
-	public Temps DernierTemps()
+	// Setters
+	
+	public void setEq1 (Equipe eq1)
 	{
-		return this.cycle.lastElement();
+		this.eq1 = eq1 ;
+	}
+
+	public void setEq2 (Equipe eq2)
+	{
+		this.eq2 = eq2 ;
+	}
+
+	public void setTypeS (TypeStrategie typeS)
+	{
+		this.typeS = typeS ;
+	}
+	
+	// Accesseurs
+	
+	public Joueur getJoueurEq1 (int _i)
+	{
+		return this.eq1.getJoueur(_i) ;
+	}
+	
+	public Joueur getJoueurEq2 (int _i)
+	{
+		return this.eq2.getJoueur(_i) ;
 	}
 }
-

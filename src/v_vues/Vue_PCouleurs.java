@@ -1,6 +1,6 @@
 package v_vues;
 
-import c.Controleur;
+import c.ControleurVueFenetre;
 import javax.swing.*;
 
 /**
@@ -10,7 +10,7 @@ import javax.swing.*;
 @SuppressWarnings("serial")
 public class Vue_PCouleurs extends JPanel
 {
-	private Controleur c;
+	private ControleurVueFenetre c;
 	
 	// Composants de la fenêtre
 	
@@ -19,7 +19,7 @@ public class Vue_PCouleurs extends JPanel
 	 * Création du JFrame et de tous ses composants.
 	 * @param _c Contrôleur.
 	 */
-	public Vue_PCouleurs (Controleur _c)
+	public Vue_PCouleurs (ControleurVueFenetre _c)
 	{
 		super ();
 		this.c = _c;
@@ -29,7 +29,7 @@ public class Vue_PCouleurs extends JPanel
 	 * Getter du contrôleur.
 	 * @return Le contrôleur.
 	 */
-	public Controleur getC()
+	public ControleurVueFenetre getC()
 	{
 		return this.c;
 	}

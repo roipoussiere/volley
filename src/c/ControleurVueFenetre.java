@@ -2,41 +2,34 @@ package c;
 
 import java.awt.*;
 import javax.swing.*;
-import m.Ensemble;
 import m.Strategie;
-import v_vues.Vue_APropos;
-import v_vues.Vue_Aide;
-import v_vues.Vue_Fenetre;
-import v_vues.Vue_Terrain;
+import v_vues.*;
 
 /**
  * Contrôleur du projet.<br/>
  * Contient le traitement de l'ensemble du programme, notament l'action suivie par le clic de chaque bouton.
  * @author Nathanaël Jourdane
  */
-public class Controleur
+public class ControleurVueFenetre
 {
 	// Vues
 	private Vue_Fenetre vf;
 	private Vue_Terrain vt;
 
 	private Parametres p;
-	private Ensemble e;
 	private Strategie s; // À supprimer : normalement la création de la stratégie ne se fait pas ici.
 
 	/**
 	 * Constructeur du contrôleur qui initialise les vues et les autres arguments et lance la vue principale (Vue_Fenetre).
 	 */
-	public Controleur ()
+	public ControleurVueFenetre ()
 	{
 		// Itinitialisation des vues.
 		this.vf = null;
 		this.vt = null;
 
 		this.p = new Parametres(); // Initialisation des paramètres
-		this.e = new Ensemble(this); // Création de l'ensemble des élements (2 équipes + 1 ballon)
-		this.e.afficher(); //Affichage des élements (pour test)
-		this.s = new Strategie(this); // À supprimer
+		this.s = new Strategie(); // À supprimer : la création d'une stratégie ne devrait pas se faire ici.
 
 		// Ouverture des fenêtres.
 		this.vf = new Vue_Fenetre(this);
@@ -57,12 +50,6 @@ public class Controleur
 	public Parametres getP()
 	{
 		return this.p;
-	}
-
-	// À supprimer
-	public Ensemble getE()
-	{
-		return this.e;
 	}
 
 	// À supprimer

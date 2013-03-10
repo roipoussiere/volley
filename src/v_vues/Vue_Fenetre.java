@@ -1,6 +1,6 @@
 package v_vues;
 
-import c.Controleur;
+import c.ControleurVueFenetre;
 import c.ControleurVueEdition;
 import c.ControleurVueJoueurs;
 import java.awt.event.*;
@@ -16,7 +16,7 @@ import v_ecouteurs.CL_Fenetre;
 public class Vue_Fenetre extends JFrame implements WindowListener
 {
 	// Controleurs
-	private Controleur c;
+	private ControleurVueFenetre c;
 	private ControleurVueJoueurs cvj;
 	private ControleurVueEdition cve;
 
@@ -38,13 +38,13 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	 * Création de la fenêtre et de tous ses composants.
 	 * @param _c Le contrôleur.
 	 */
-	public Vue_Fenetre(Controleur _c)
+	public Vue_Fenetre(ControleurVueFenetre _c)
 	{
 		super ("Logiciel pour strategie de volley");
 		this.c = _c;
 
 		//this.cve = new ControleurVueEdition(this.c, this.ve);
-		this.cve = new ControleurVueEdition(this.ve, new m_alternatif.Strategie(new m_alternatif.Equipe(), new m_alternatif.Equipe()));
+		this.cve = new ControleurVueEdition(this.ve, new m.Strategie(new m.Equipe(), new m.Equipe()));
 		this.ve = new Vue_Edition(cve);
 		this.vl = new Vue_Lecture(this.c);
 
@@ -238,7 +238,7 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	 * Getter du contrôleur.
 	 * @return Le contrôleur.
 	 */
-	public Controleur getC()
+	public ControleurVueFenetre getC()
 	{
 		return this.c;
 	}

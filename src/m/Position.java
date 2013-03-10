@@ -1,4 +1,4 @@
-package m_alternatif;
+package m;
 
 /**
  * Position qu'occupe un élément à un temps donné.

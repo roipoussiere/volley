@@ -1,6 +1,6 @@
 package v_vues;
 
-import c.Controleur;
+import c.ControleurVueFenetre;
 import java.awt.*;
 import javax.swing.*;
 import v_utilitaires.SelectionTemps;
@@ -12,7 +12,7 @@ import v_utilitaires.SelectionTemps;
 @SuppressWarnings("serial")
 public class Vue_Lecture extends JPanel
 {
-	private Controleur c;
+	private ControleurVueFenetre c;
 
 	// Composants de la fenÃªtre
 	private JTextField chrono, libelleFichier ;
@@ -26,7 +26,7 @@ public class Vue_Lecture extends JPanel
 	 * Création du JFrame et de tous ses composants.
 	 * @param _c ConstrÃ´leur.
 	 */
-	public Vue_Lecture (Controleur _c)
+	public Vue_Lecture (ControleurVueFenetre _c)
 	{
 		super ();
 		this.c = _c;
@@ -138,7 +138,7 @@ public class Vue_Lecture extends JPanel
 	 * Getter du contrôleur.
 	 * @return Le contrôleur.
 	 */
-	public Controleur getC()
+	public ControleurVueFenetre getC()
 	{
 		return this.c;
 	}

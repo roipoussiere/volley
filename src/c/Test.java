@@ -14,7 +14,7 @@ public class Test
 	{
 		//Xml xml = new Xml();
 		//xml.getParam("cFondBas");
-		Controleur c = new Controleur();
+		ControleurPrincipal c = new ControleurPrincipal();
 	}
 
 }

@@ -1,11 +1,9 @@
-package m;
+package m_natha;
 
-/**
- *
- * @author Nathanaël Jourdane
- */
+
+
 public class Mouvement
-{
+{/*
 	private int posX;
 	private int posY;
 	private int idEl;
@@ -36,5 +34,5 @@ public class Mouvement
 	{
 		this.posX = _posX;
 		this.posY = _posY;
-	}
+	}*/
 }

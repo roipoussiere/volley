@@ -1,67 +1,80 @@
 package m;
 
-import c.Parametres;
 import java.awt.Color;
+import java.util.Vector;
 
 /**
- * L'élement 0 est le ballon,<br/>
- * L'élement 1 est le meneur de la 1ere équipe,<br/>
- * Les élements 2 à 6 sont les autres joueurs de la 1ere équipe,<br/>
- * L'élement 7 est le meneur de la 2eme équipe,<br/>
- * Les élements 8 à 12 sont les autres joueurs de la 2eme équipe.<br/>
- * @author Nathanaël Jourdane
+ * Classe représentant les éléments affichés sur le terrain (joueurs + ballon).
+ * Chaque indice du vector représente un temps de jeu dans la stratégie et contient 
+ * donc la position de l'élément à ce temps là.
+ * @author Florian Garnier
  */
-public class Element
+public abstract class Element
 {
-	private Ensemble e;
+	private boolean affiche ;
+	private Color couleurE ;
+	private Vector<Position> deplacement ;
 	
-	private int id;
-	private boolean etat;
-	private String nom;
-	private Color couleur;
+	// Constructeurs
 	
-	public Element(Ensemble _e, int _i)
+	public Element (boolean _affiche, Color _couleur)
 	{
-		this.e = _e;
-		Parametres param = this.e.getC().getP();
-		
-		this.id = _i;
-		this.etat = param.getEtatE(_i);
-		this.nom = param.getNomE(_i);
-		this.couleur = param.getCoulE(_i);
+		super() ;
+		this.affiche = _affiche ;
+		this.couleurE = _couleur ;
+		this.deplacement = new Vector<Position> () ;
 	}
 	
-	public int getId()
-	{
-		return this.id;
-	}
+	// Getters
 	
-	public boolean getEtat()
+	public boolean isAffiche ()
 	{
-		return this.etat;
-	}
-	
-	public String getNom()
-	{
-		return this.nom;
+		return affiche ;
 	}
 
-	public Color getCoul()
+	public Color getCouleurE ()
 	{
-		return this.couleur;
+		return couleurE ;
+	}
+
+	public Vector<Position> getVectorDeplacement ()
+	{
+		return deplacement ;
 	}
 	
-	/**
-	 *
-	 * @return
-	 */
-	@Override
-	public String toString()
+	// Setters
+
+	public void setAffiche (boolean affiche)
 	{
-		String etat = "désactivé";
-		if (this.getEtat()) {
-			etat = "activé";
-		}
-		return "Élément n°" + this.id + " : " + this.getNom() + " - " + etat;
+		this.affiche = affiche ;
+	}
+
+	public void setCouleurE (Color couleurE)
+	{
+		this.couleurE = couleurE ;
+	}
+
+	public void setVectorDeplacement (Vector<Position> deplacement)
+	{
+		this.deplacement = deplacement ;
+	}
+	
+	// Accesseurs
+	
+	public Position getDeplacementAuTemps (int _i)
+	{
+		return this.deplacement.elementAt(_i) ;
+	}
+	
+	// Modificateurs
+	
+	public void ajouterNouveauDeplacement (Position _pos)
+	{
+		this.deplacement.add(_pos) ;
+	}
+	
+	public void majDeplacementAuTemps (int _i, Position _pos)
+	{
+		this.deplacement.set(_i, _pos) ;
 	}
 }

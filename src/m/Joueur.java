@@ -1,4 +1,4 @@
-package m_alternatif;
+package m;
 
 import java.awt.Color;
 
