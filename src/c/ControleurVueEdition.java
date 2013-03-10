@@ -24,28 +24,29 @@ public class ControleurVueEdition
 		this.ve = _ve ;
 		this.str = _str ;
 	}
+	
+	
+	// Getters
+	
+	public Vue_Edition getVueEdition ()
+	{
+		return this.ve ;
+	}
+	
+	public Strategie getStrategie ()
+	{
+		return this.str ;
+	}
+		
+	
+	// Modificateurs
 
 	/**
-	 * Ajoute un nouveau déplacement d'un joueur de l'équipe 1 dans la stratégie.
+	 * Ajoute le déplacement d'un joueur à un nouveau temps.
+	 * Initilise les déplacements de tous les autres joueurs à leur position précédente.
+	 * @param _eq Equipe traitée.
 	 */
-	public void ajouterDeplacementE1 ()
-	{
-		this.ajouterDeplacement(this.str.getEq1()) ;
-		this.afficherDeplacementEquipeAuTemps(this.str.getEq1(), 0) ;
-	}
-	
-	/**
-	 * Ajoute un nouveau déplacement d'un joueur de l'équipe 2 dans la stratégie.
-	 */
-	public void ajouterDeplacementE2 ()
-	{
-		this.ajouterDeplacement(this.str.getEq2()) ;
-	}
-	
-	
-	// Méthodes annexes
-	
-	private void ajouterDeplacement (Equipe _eq)
+	public void ajouterDeplacement (Equipe _eq)
 	{
 		// On parcourt tous les champs de saisies (un pour chaque joueur de l'équipe)
 		for (int i = 0 ; i < _eq.getEquipe().length ; i++)
@@ -71,9 +72,12 @@ public class ControleurVueEdition
 			}
 		}
 		
-		// On dégrise le bouton "Temmps suivant" (si besoin)
-		this.ve.getSelecTps().getButtonTpsSuivant().setEnabled(true) ;
+		// On met à jour l'affichage de la fenêtre Vue_Edition
+		this.ve.majVueEdition() ;
 	}
+	
+	
+	// Méthodes annexes
 	
 	
 	// Méthodes utilisées pour les tests (A SUPPRIMER !)

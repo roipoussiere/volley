@@ -32,6 +32,11 @@ public class Equipe
 		return this.equipe[_i] ;
 	}
 	
+	public int getNbJoueur ()
+	{
+		return this.equipe.length ;
+	}
+	
 	// Modificateurs
 	
 	public void setJoueur (int _i, Joueur _j)

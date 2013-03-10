@@ -52,10 +52,22 @@ public class SaisieDeplacement extends JPanel
 		gbc.insets = new Insets (0, 10, 0, 10) ;
 		this.add (this.depActuel, gbc) ;
 	}
+	
+	
+	// Getters
+	
+	/**
+	 * Getter du champ d'affichage du déplacement précédent.
+	 * @return Le champ d'affichage du déplacement précédent.
+	 */
+	public JTextField getDepPrec ()
+	{
+		return this.depPrec ;
+	}
 
 	/**
-	 * Getter du champ de saisie du déplacement.
-	 * @return Le champ de saisie du déplacement.
+	 * Getter du champ de saisie du déplacement du temps en cours.
+	 * @return Le champ de saisie du déplacement du temps en cours.
 	 */
 	public JTextField getDepActuel ()
 	{

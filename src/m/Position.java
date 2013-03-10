@@ -37,7 +37,7 @@ public class Position
 	
 	public String getPosition ()
 	{
-		return (Integer.toString(this.posX) + Integer.toString(this.posY)) ;
+		return (Character.toString(this.posX) + Character.toString(this.posY)) ;
 	}
 	
 	// Setters

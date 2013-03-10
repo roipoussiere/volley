@@ -8,6 +8,8 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import m.Equipe;
+
 import v_ecouteurs.AL_Edition;
 import v_utilitaires.SaisieDeplacement;
 import v_utilitaires.SelectionTemps;
@@ -80,6 +82,38 @@ public class Vue_Edition extends JPanel
 	}
 	
 	
+	// Mise à jour de la fenêtre
+	
+	/**
+	 * Met à jour l'affichage de la fenêtre Vue_Edition avec les données actualisées de la stratégie.
+	 */
+	public void majVueEdition ()
+	{
+		// On récupère l'équipe en cours de traitement
+		Equipe eqSelec ;
+		if (this.selecEquipe.getSelectedIndex() == 0)
+			eqSelec = this.c.getStrategie().getEq1() ; // équipe 1
+		else
+			eqSelec = this.c.getStrategie().getEq2() ; // équipe 2
+		
+		for (int i = 0 ; i < eqSelec.getNbJoueur() ; i++)
+		{
+			int tpsEnCours = this.selecTps.getTempsSelectionne() ; // temps en cours
+			
+			// On met à jour les champs présentant les déplacements précédents
+			if (tpsEnCours != 0) // inutile pour le temps 0
+				this.deplacementJ[i].getDepPrec().setText(eqSelec.getJoueur(i).getDeplacementAuTemps(tpsEnCours - 1).getPosition()) ;
+			
+			// On met à jour les champs présentant les déplacements saisis pour ce temps
+			this.deplacementJ[i].getDepActuel().setText(eqSelec.getJoueur(i).getDeplacementAuTemps(tpsEnCours).getPosition()) ;
+		}
+		
+		// On grise le bouton "Suivant" jusqu'au remplissage d'un champ (si nouveau temps)
+		if (estChampVide())
+			this.selecTps.getButtonTpsSuivant().setEnabled(false) ;
+	}
+	
+	
 	// Getters
 
 	/**
@@ -124,5 +158,24 @@ public class Vue_Edition extends JPanel
 	public SaisieDeplacement getSaisieDeplacementJ (int _i)
 	{
 		return deplacementJ[_i] ;
+	}
+	
+	
+	// Méthodes annexes
+	
+	private boolean estChampVide ()
+	{
+		boolean ok = true ;
+		int i = 0 ;
+		
+		while (ok && i < this.deplacementJ.length)
+		{
+			if (! this.deplacementJ[i].getDepActuel().getText().isEmpty())
+				ok = false ;
+			
+			i++ ;
+		}
+		
+		return ok ;
 	}
 }

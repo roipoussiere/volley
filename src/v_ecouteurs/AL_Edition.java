@@ -42,21 +42,13 @@ public class AL_Edition implements ActionListener, DocumentListener
 	@Override
 	public void actionPerformed (ActionEvent _ae)
 	{
-		// Clic sur le bouton "Temps précédent"
-		if (_ae.getSource().equals(this.ve.getSelecTps().getButtonTpsPrecedent()))
+		// Clic sur le bouton "Temps précédent" ou "Temps suivant"
+		if (_ae.getSource().equals(this.ve.getSelecTps().getButtonTpsPrecedent()) || _ae.getSource().equals(this.ve.getSelecTps().getButtonTpsSuivant()))
 		{
 			// On appelle le listener intégré dans SelectionTemps
 			this.ve.getSelecTps().actionPerformed(_ae) ;
-		}
-
-		// Clic sur le bouton "Temps suivant"
-		if (_ae.getSource().equals(this.ve.getSelecTps().getButtonTpsSuivant()))
-		{
-			// On appelle le listener intégré dans SelectionTemps
-			this.ve.getSelecTps().actionPerformed(_ae) ;
-			// On désactive le bouton "Temps suivant" jusqu'au remplissage d'au moins 1 champ de déplacement
-			if (estChampVide())
-				this.ve.getSelecTps().getButtonTpsSuivant().setEnabled(false) ;
+			// On met à jour l'affichage de la fenêtre
+			this.ve.majVueEdition() ;
 		}
 	}
 
@@ -88,12 +80,12 @@ public class AL_Edition implements ActionListener, DocumentListener
 					if (this.ve.getListEquipe().getSelectedIndex() == 0)
 					{
 						// Si on travaille sur la première équipe...
-						this.ve.getC().ajouterDeplacementE1() ;
+						this.ve.getC().ajouterDeplacement(this.ve.getC().getStrategie().getEq1()) ;
 					}
 					else
 					{
 						// Si on travaille sur la deuxième équipe...
-						this.ve.getC().ajouterDeplacementE2() ;
+						this.ve.getC().ajouterDeplacement(this.ve.getC().getStrategie().getEq2()) ;
 					}
 				}
 				else
@@ -116,22 +108,6 @@ public class AL_Edition implements ActionListener, DocumentListener
 	
 	
 	// Méthodes annexes
-	
-	private boolean estChampVide ()
-	{
-		boolean ok = true ;
-		int i = 0 ;
-		
-		while (ok && i < this.ve.getDeplacementJ().length)
-		{
-			if (! this.ve.getSaisieDeplacementJ(i).getDepActuel().getText().isEmpty())
-				ok = false ;
-			
-			i++ ;
-		}
-		
-		return ok ;
-	}
 	
 	/**
 	 * Contrôle si la saisie passée en paramètre est conforme aux normes ou pas
