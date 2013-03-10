@@ -26,7 +26,7 @@ public class Vue_Dessin extends JPanel
 	public Vue_Dessin(Vue_Terrain _vt)
 	{
 		this.vt = _vt;
-		this.p = this.vt.getC().getP();
+		//this.p = this.vt.getC().getP();
 		
 		//int vta = this.vt.getC().getS().getTA(); // récupère la valeur du temps actuel
 		//this.ta = this.vt.getC().getS().getTemps(vta); // affecte le temps actuel à this.ta

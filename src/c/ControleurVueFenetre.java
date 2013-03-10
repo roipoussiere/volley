@@ -12,32 +12,28 @@ import v_vues.*;
  */
 public class ControleurVueFenetre
 {
-	// Vues
+  ControleurPrincipal cp;
+  
+  // Vue
 	private Vue_Fenetre vf;
-	private Vue_Terrain vt;
-
-	private Parametres p;
-	private Strategie s; // À supprimer : normalement la création de la stratégie ne se fait pas ici.
 
 	/**
 	 * Constructeur du contrôleur qui initialise les vues et les autres arguments et lance la vue principale (Vue_Fenetre).
-	 */
-	public ControleurVueFenetre ()
+   * 
+   * @param _cp Le controleur principal
+   */
+	public ControleurVueFenetre (ControleurPrincipal _cp)
 	{
+    this.cp = _cp;
 		// Itinitialisation des vues.
 		this.vf = null;
-		this.vt = null;
-
-		this.p = new Parametres(); // Initialisation des paramètres
-		this.s = new Strategie(); // À supprimer : la création d'une stratégie ne devrait pas se faire ici.
-
-		// Ouverture des fenêtres.
+	
+		// Ouverture de la fenêtre.
 		this.vf = new Vue_Fenetre(this);
-		this.vt = new Vue_Terrain(this);
-		this.vt.setTaille();
+		
 		this.centrerFen();
 		this.vf.setVisible (true);
-		this.vt.setVisible (true);
+		
 	}
 
 	// *** Getters ***
@@ -47,17 +43,9 @@ public class ControleurVueFenetre
 		return this.vf;
 	}
 
-	public Parametres getP()
-	{
-		return this.p;
-	}
-
-	// À supprimer
-	public Strategie getS()
-	{
-		return this.s;
-	}
-
+  public boolean isDT() {
+    return true;// this.cp.getP().isDemiT();
+  }
 	// *** Méthodes de Vue_Fenetre ***
 
 	/**
@@ -67,16 +55,16 @@ public class ControleurVueFenetre
 	public void clicOnglet()
 	{
 		// Fonctionne que si les 2 fenêtres sont ouvertes
-		if(this.vf != null && this.vt != null)
+		if(this.vf != null && this.cp.getP() != null)
 		{
 			switch(vf.getOngletOuvert())
 			{
 			case 0: // Lecture
-				this.vt.dessiner(this.p.getStyleQL());
+				//this.cp.getCVT().getVT().dessiner(this.cp.getP().getStyleQL());
 				this.vf.getVL().majVue();
 				break;
 			case 1: // Edition
-				this.vt.dessiner(this.p.getStyleQE());
+				//this.cp.getCVT().getVT().dessiner(this.cp.getP().getStyleQE());
 				//this.vf.getVE().majVue();
 				break;
 			}
@@ -120,21 +108,7 @@ public class ControleurVueFenetre
 	public void ms_joueurs()
 	{
 		System.out.println("Affectation des joueurs...");
-		this.vf.vueJoueurs();
-	}
-
-	/**
-	 * Affectation du mode d'affichage du terrain.
-	 */
-	public void ms_terrain(boolean _demiT)
-	{
-		if (this.vt != null)
-		{
-			System.out.println("Demi terrain : " + _demiT);
-			this.p.setDemiT(_demiT);
-			this.vt.setTaille();
-			this.centrerFen();
-		}
+		//this.cp.getCVJ().vueJoueurs();
 	}
 
 	/**
@@ -168,12 +142,6 @@ public class ControleurVueFenetre
 
 	// *** Méthodes de Vue_Fichier ***
 
-	// *** Méthodes de Vue_Lecture ***
-
-	// *** Méthodes de Vue_Edition ***
-
-	// *** Méthodes de Vue_Terrain ***
-
 	// *** Autres méthodes ***
 
 	/**
@@ -187,9 +155,9 @@ public class ControleurVueFenetre
 
 		if(retour == JFileChooser.APPROVE_OPTION) // Si un fichier a été choisi
 		{
-			this.p.setCheminFichier(fc.getSelectedFile().getAbsolutePath()); // Chemin absolu du fichier choisi
+			this.cp.getP().setCheminFichier(fc.getSelectedFile().getAbsolutePath()); // Chemin absolu du fichier choisi
 
-			System.out.println("Il fichier sélectionné se trouve dans : " + this.p.getCheminFichier());			
+			System.out.println("Il fichier sélectionné se trouve dans : " + this.cp.getP().getCheminFichier());			
 		}
 		else // Pas de fichier choisi
 		{
@@ -200,14 +168,14 @@ public class ControleurVueFenetre
 	/**
 	 * Positionne une ou plusieurs fenêtres au centre de l'écran.
 	 */
-	private void centrerFen()
+	public void centrerFen()
 	{
 		// Les dimentions de l'écran
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 
 		if (this.vf != null)
 		{
-			this.vt.setLocation(screen.width/2 ,(screen.height - this.vt.getSize().height)/2); 
+			//this.cp.getCVT().getVT().setLocation(screen.width/2 ,(screen.height - this.cp.getCVT().getVT().getSize().height)/2); 
 			this.vf.setLocation(screen.width/2 - this.vf.getSize().width - 5,(screen.height - this.vf.getSize().height)/2);
 			System.out.println("Fenêtres centrées.");
 		}

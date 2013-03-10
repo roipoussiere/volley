@@ -16,7 +16,7 @@ import v_ecouteurs.CL_Fenetre;
 public class Vue_Fenetre extends JFrame implements WindowListener
 {
 	// Controleurs
-	private ControleurVueFenetre c;
+	private ControleurVueFenetre cvf;
 	private ControleurVueJoueurs cvj;
 	private ControleurVueEdition cve;
 
@@ -38,15 +38,15 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	 * Création de la fenêtre et de tous ses composants.
 	 * @param _c Le contrôleur.
 	 */
-	public Vue_Fenetre(ControleurVueFenetre _c)
+	public Vue_Fenetre(ControleurVueFenetre _cvf)
 	{
 		super ("Logiciel pour strategie de volley");
-		this.c = _c;
+		this.cvf = _cvf;
 
 		//this.cve = new ControleurVueEdition(this.c, this.ve);
 		this.cve = new ControleurVueEdition(this.ve, new m.Strategie(new m.Equipe(), new m.Equipe()));
 		this.ve = new Vue_Edition(cve);
-		this.vl = new Vue_Lecture(this.c);
+		this.vl = new Vue_Lecture(this.cvf);
 
 		this.addWindowListener(this); // On abonne la fenêtre à elle-même.
 		this.setSize(400, 375);
@@ -98,8 +98,8 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		// Création des boutons radio pour sélectionner le mode de terrain,
 		// Avec leur action par défaut récupérée dans les paramètres.
 		ButtonGroup bg = new ButtonGroup();
-		JRadioButtonMenuItem modeDT = new JRadioButtonMenuItem("Demi terrain", this.getC().getP().isDemiT());
-		JRadioButtonMenuItem modeTC = new JRadioButtonMenuItem("Terrain complet", !this.getC().getP().isDemiT());
+		JRadioButtonMenuItem modeDT = new JRadioButtonMenuItem("Demi terrain", this.cvf.isDT());
+		JRadioButtonMenuItem modeTC = new JRadioButtonMenuItem("Terrain complet", !this.cvf.isDT());
 
 		modeDT.addActionListener(new AL_Fenetre(this));
 		modeTC.addActionListener(new AL_Fenetre(this));
@@ -172,15 +172,6 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	}
 
 	/**
-	 * Crée la vue Joueurs.
-	 */
-	public void vueJoueurs()
-	{
-		this.vj = new Vue_Joueurs(this, this.c);
-
-	}
-
-	/**
 	 * Crée la vue Paramères.
 	 */
 	public void vueParams()
@@ -238,9 +229,9 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	 * Getter du contrôleur.
 	 * @return Le contrôleur.
 	 */
-	public ControleurVueFenetre getC()
+	public ControleurVueFenetre getCVF()
 	{
-		return this.c;
+		return this.cvf;
 	}
 
 	/**
@@ -249,7 +240,7 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	 */
 	public void windowClosing(WindowEvent arg0)
 	{
-		this.getC().quitter();
+		this.cvf.quitter();
 	}
 
 	// Ces méthodes sont les autres évenements possibles sur la fenêtre que nous utilisons pas.

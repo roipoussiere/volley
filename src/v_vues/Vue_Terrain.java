@@ -1,6 +1,6 @@
 package v_vues;
 
-import c.ControleurVueFenetre;
+import c.ControleurVueTerrain;
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -11,24 +11,24 @@ import javax.swing.*;
 @SuppressWarnings("serial")
 public class Vue_Terrain extends JFrame implements WindowListener
 {
-	private ControleurVueFenetre c;
+	private ControleurVueTerrain cvt;
 	private Vue_Dessin vd;
 	
 	/**
 	 * Création de la fenêtre représentant le terrain de volley.
 	 * @param _c Le contrôleur.
 	 */
-	public Vue_Terrain(ControleurVueFenetre _c)
+	public Vue_Terrain(ControleurVueTerrain _cvt)
 	{
 		super ("Terrain");
-		this.c = _c;
+		this.cvt = _cvt;
 		
 		this.addWindowListener(this); // On abonne la fenêtre à elle-même.
 		this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		this.setResizable(false);
 		
 		vd = new Vue_Dessin(this);
-	    this.setContentPane(vd);
+	  this.setContentPane(vd);
 	}
 	
 	/**
@@ -46,7 +46,7 @@ public class Vue_Terrain extends JFrame implements WindowListener
 	 */
 	public void setTaille()
 	{
-		boolean demiT = this.getC().getP().isDemiT();
+		boolean demiT = this.getCVT().isDT();
 		System.out.println("Redimentionnement du terrain. demi-terrin : " + demiT);
 		
 		// Si demi-terrain : zone de 11*10 cases de 50px chacune = 550*500 + bordures de la fenêtre
@@ -62,9 +62,9 @@ public class Vue_Terrain extends JFrame implements WindowListener
 	 * Getter du contrôleur.
 	 * @return Le contrôleur.
 	 */
-	public ControleurVueFenetre getC()
+	public ControleurVueTerrain getCVT()
 	{
-		return this.c;
+		return this.cvt;
 	}
 	
 	/**
@@ -74,7 +74,7 @@ public class Vue_Terrain extends JFrame implements WindowListener
 	@Override
 	public void windowClosing(WindowEvent arg0)
 	{
-		this.getC().quitter();
+		this.getCVT().quitter();
 	}
 	
 	// Ces méthodes sont les autres évenements possibles sur la fenêtre, que nous utilisons pas.

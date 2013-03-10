@@ -20,47 +20,47 @@ public class AL_Fenetre implements ActionListener
 		String t = ((JMenuItem)_ae.getSource()).getText();
 		
 		if ("Ouvrir".equals(t)) {
-			this.vf.getC().mf_ouvrir();
+			this.vf.getCVF().mf_ouvrir();
 		}
 		
 		else if ("Nouveau".equals(t)) {
-			this.vf.getC().mf_nouveau();
+			this.vf.getCVF().mf_nouveau();
 		}
 		
 		else if ("Enregistrer".equals(t)) {
-			this.vf.getC().mf_enregistrer();
+			this.vf.getCVF().mf_enregistrer();
 		}
 		
 		else if ("Enregistrer sous".equals(t)) {
-			this.vf.getC().mf_enregistrerSous();
+			this.vf.getCVF().mf_enregistrerSous();
 		}
 		
 		else if ("Quitter".equals(t)) {
-			this.vf.getC().quitter();
+			this.vf.getCVF().quitter();
 		}
 		
 		else if ("Joueurs".equals(t)) {
-			this.vf.getC().ms_joueurs();
+			this.vf.getCVF().ms_joueurs();
 		}
 
 		else if ("Demi terrain".equals(t)) {
-			this.vf.getC().ms_terrain(true);
+			//this.vf.getC().ms_terrain(true);
 		}
 
 		else if ("Terrain complet".equals(t)) {
-			this.vf.getC().ms_terrain(false);
+			//this.vf.getC().ms_terrain(false);
 		}
 
 		else if ("Paramètres...".equals(t)) {
-			this.vf.getC().mp_param();
+			this.vf.getCVF().mp_param();
 		}
 
 		else if ("Besoin d'aide ?".equals(t)) {
-			this.vf.getC().ma_aide();
+			this.vf.getCVF().ma_aide();
 		}
 
 		else if ("À propos de ce programme".equals(t)) {
-			this.vf.getC().ma_apropos();
+			this.vf.getCVF().ma_apropos();
 		}
 
 		else {

@@ -29,6 +29,6 @@ public class CL_Fenetre implements ChangeListener
 	@Override
 	public void stateChanged(ChangeEvent _ce)
 	{
-		this.vf.getC().clicOnglet();
+		this.vf.getCVF().clicOnglet();
 	}
 }
