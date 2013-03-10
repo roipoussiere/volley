@@ -22,5 +22,20 @@ public class ControleurVueJoueurs {
 		for(int i=6; i < 12;i++)
 			this.vj.getJoueur2()[i-6].getNomJoueur().setText(this.c.getP().getNomE(i+1));
 		
+		// La suite du code nécessite  la creation d'une strategie dans le controleur et remplacera l'ancien code
+		
+		/*
+		 * 
+		 * Liaison avec les noms des joueurs des equipes
+		 * 
+		 * Pre-parametrage des donnnées de la fenetre par boucle sur :
+		 * 
+		 * 		- Est afficher
+		 * 		- Est meneur
+		 * 
+		 * 
+		 */
+		
+		
 	}
 }
