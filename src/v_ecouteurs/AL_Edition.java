@@ -7,7 +7,9 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
 
+import m.Joueur;
 import m.Position;
+import m.Equipe;
 
 import v_vues.Vue_Edition;
 
@@ -65,6 +67,7 @@ public class AL_Edition implements ActionListener, DocumentListener
 		{
 			try 
 			{
+				// On récupère le contenu du champ de saisie
 				String saisie = e.getDocument().getText(0, e.getDocument().getLength()) ;
 				System.out.println("<test_flo> Saisie brute : " + saisie) ;
 				
@@ -76,17 +79,26 @@ public class AL_Edition implements ActionListener, DocumentListener
 				{
 					System.out.println("<test_flo> Saisie OK") ;
 					
-					// On appelle la méthode de MAJ du contrôleur en passant en paramètre la position saisie
+					// On convertit la saisie en position
+					Position pos = new Position(saisie) ;
+					
+					// On récupère l'équipe concernée (pour récupérer le joueur...)
+					Equipe eq ;
 					if (this.ve.getListEquipe().getSelectedIndex() == 0)
-					{
-						// Si on travaille sur la première équipe...
-						this.ve.getC().ajouterDeplacement(this.ve.getC().getStrategie().getEq1()) ;
-					}
+						eq = this.ve.getC().getStrategie().getEq1() ;
 					else
+						eq = this.ve.getC().getStrategie().getEq2() ;
+					
+					// On récupère le joueur concerné
+					Joueur jr = eq.getJoueur(0) ; // obligé d'initialiser la variable sinon pb de compilation
+					for (int i = 0 ; i < eq.getNbJoueur() ; i++)
 					{
-						// Si on travaille sur la deuxième équipe...
-						this.ve.getC().ajouterDeplacement(this.ve.getC().getStrategie().getEq2()) ;
+						if (e.getDocument() == this.ve.getSaisieDeplacementJ(i).getDepActuel().getDocument())
+							jr = eq.getJoueur(i) ;
 					}
+					
+					// On appelle la méthode du contrôleur pour ajouter le déplacement
+					this.ve.getC().ajouterDeplacement(jr, pos) ;
 				}
 				else
 				{

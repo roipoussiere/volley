@@ -39,6 +39,9 @@ public class Vue_Edition extends JPanel
 	{
 		super () ;
 		this.c = _c ;
+		
+		// Déclaration du listener
+		AL_Edition led = new AL_Edition(this) ;
 
 		// Mise en place du GridBagLayout
 		this.setLayout (new GridBagLayout()) ;
@@ -73,12 +76,12 @@ public class Vue_Edition extends JPanel
 			gbc.anchor = GridBagConstraints.CENTER ;
 			gbc.insets = new Insets (10, 0, 10, 0) ;
 			this.add (this.deplacementJ[i], gbc) ;
-			this.deplacementJ[i].getDepActuel().getDocument().addDocumentListener(new AL_Edition(this)) ;
+			this.deplacementJ[i].getDepActuel().getDocument().addDocumentListener(led) ;
 		}
 
 		// Abonnement aux listeners
-		this.selecTps.getButtonTpsPrecedent().addActionListener (new AL_Edition(this)) ;
-		this.selecTps.getButtonTpsSuivant().addActionListener (new AL_Edition(this)) ;
+		this.selecTps.getButtonTpsPrecedent().addActionListener(led) ;
+		this.selecTps.getButtonTpsSuivant().addActionListener(led) ;
 	}
 	
 	

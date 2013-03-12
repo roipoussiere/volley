@@ -1,5 +1,6 @@
 package c;
 
+import m.Joueur;
 import m.Strategie;
 import m.Position;
 import m.Equipe;
@@ -46,32 +47,10 @@ public class ControleurVueEdition
 	 * Initilise les déplacements de tous les autres joueurs à leur position précédente.
 	 * @param _eq Equipe traitée.
 	 */
-	public void ajouterDeplacement (Equipe _eq)
+	public void ajouterDeplacement (Joueur _j, Position _pos)
 	{
-		// On parcourt tous les champs de saisies (un pour chaque joueur de l'équipe)
-		for (int i = 0 ; i < _eq.getEquipe().length ; i++)
-		{
-			// On récupère le contenu du champ de saisie
-			String dep = this.ve.getSaisieDeplacementJ(i).getDepActuel().getText() ;
-			// Si le champ de saisie du déplacement est vide...
-			if (dep.length() == 0)
-			{
-				// On récupère le temps en cours
-				int tpsEnCours = this.ve.getSelecTps().getTempsSelectionne() ;
-				// Si l'on n'est pas au temps 0 (==> pas de temps précédent)
-				if (tpsEnCours != 0)
-				{
-					// On ajoute le déplacement du temps précédent (= par défaut, on considère que le joueur ne bouge pas)
-					_eq.getJoueur(i).ajouterNouveauDeplacement(_eq.getJoueur(i).getDeplacementAuTemps(tpsEnCours - 1)) ;
-				}
-			}
-			else // Sinon...
-			{
-				// On ajoute le nouveau déplacement au temps correspondant...
-				_eq.getJoueur(i).ajouterNouveauDeplacement(new Position (dep)) ;
-			}
-		}
-		
+		// On ajoute le nouveau déplacement
+		_j.ajouterNouveauDeplacement(_pos) ;
 		// On met à jour l'affichage de la fenêtre Vue_Edition
 		this.ve.majVueEdition() ;
 	}
