@@ -99,7 +99,7 @@ public class Vue_Edition extends JPanel
 		else
 			eqSelec = this.c.getStrategie().getEq2() ; // équipe 2
 		
-		for (int i = 0 ; i < eqSelec.getNbJoueur() ; i++)
+		for (int i = 0 ; i < this.deplacementJ.length ; i++)
 		{
 			int tpsEnCours = this.selecTps.getTempsSelectionne() ; // temps en cours
 			

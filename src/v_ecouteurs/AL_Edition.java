@@ -65,49 +65,43 @@ public class AL_Edition implements ActionListener, DocumentListener
 	{
 		if (e.getDocument().getLength() >= 2)
 		{
-			try 
+			// On récupère le numéro du joueur concerné par le changement
+			int numJ = 0 ;
+			for (int i = 0 ; i < this.ve.getDeplacementJ().length ; i++)
 			{
-				// On récupère le contenu du champ de saisie
-				String saisie = e.getDocument().getText(0, e.getDocument().getLength()) ;
-				System.out.println("<test_flo> Saisie brute : " + saisie) ;
-				
-				// On formate le champ de saisie (minuscule --> majuscule)
-				saisie = saisie.toUpperCase() ;
-				System.out.println("<test_flo> Saisie en majuscule : " + saisie) ;
-				
-				if (controlerFormatSaisie(saisie))
-				{
-					System.out.println("<test_flo> Saisie OK") ;
-					
-					// On convertit la saisie en position
-					Position pos = new Position(saisie) ;
-					
-					// On récupère l'équipe concernée (pour récupérer le joueur...)
-					Equipe eq ;
-					if (this.ve.getListEquipe().getSelectedIndex() == 0)
-						eq = this.ve.getC().getStrategie().getEq1() ;
-					else
-						eq = this.ve.getC().getStrategie().getEq2() ;
-					
-					// On récupère le joueur concerné
-					Joueur jr = eq.getJoueur(0) ; // obligé d'initialiser la variable sinon pb de compilation
-					for (int i = 0 ; i < eq.getNbJoueur() ; i++)
-					{
-						if (e.getDocument() == this.ve.getSaisieDeplacementJ(i).getDepActuel().getDocument())
-							jr = eq.getJoueur(i) ;
-					}
-					
-					// On appelle la méthode du contrôleur pour ajouter le déplacement
-					this.ve.getC().ajouterDeplacement(jr, pos) ;
-				}
-				else
-				{
-					// On supprime le contenu du champ de saisie
-				}
+				if (e.getDocument() == this.ve.getSaisieDeplacementJ(i).getDepActuel().getDocument())
+					numJ = i ;
 			}
-			catch (BadLocationException e2)
+						
+			// On récupère le contenu du champ de saisie
+			String saisie = this.ve.getSaisieDeplacementJ(numJ).getDepActuel().getText() ;
+			System.out.println("<test_flo> Saisie brute : " + saisie) ;
+			
+			// On formate le champ de saisie (minuscule --> majuscule)
+			saisie = saisie.toUpperCase() ;
+			System.out.println("<test_flo> Saisie en majuscule : " + saisie) ;
+			
+			if (controlerFormatSaisie(saisie))
 			{
-				e2.printStackTrace() ;
+				System.out.println("<test_flo> Saisie OK") ;
+				
+				// On convertit la saisie en position
+				Position pos = new Position(saisie) ;
+				
+				// On récupère l'équipe concernée (pour récupérer le joueur...)
+				Equipe eq ;
+				if (this.ve.getListEquipe().getSelectedIndex() == 0)
+					eq = this.ve.getC().getStrategie().getEq1() ;
+				else
+					eq = this.ve.getC().getStrategie().getEq2() ;
+				
+				// On appelle la méthode du contrôleur pour ajouter le déplacement
+				this.ve.getC().ajouterDeplacement(eq.getJoueur(numJ), pos) ;
+			}
+			else
+			{
+				// On supprime le contenu du champ de saisie
+				//this.ve.getSaisieDeplacementJ(numJ).getDepActuel().setText("") ;
 			}
 		}
 	}
