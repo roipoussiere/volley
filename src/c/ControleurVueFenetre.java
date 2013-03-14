@@ -108,7 +108,7 @@ public class ControleurVueFenetre
 	public void ms_joueurs()
 	{
 		System.out.println("Affectation des joueurs...");
-		//this.cp.getCVJ().vueJoueurs();
+		this.cp.getCVJ().vueJoueurs();
 	}
 
 	/**

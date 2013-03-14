@@ -26,7 +26,7 @@ public class ControleurPrincipal {
     // Initialisations
     cvf = new ControleurVueFenetre(this);
     //cve = new ControleurVueEdition();
-    //cvj = new ControleurVueJoueurs();
+    cvj = new ControleurVueJoueurs(this);
     this.p = new Parametres(); // Initialisation des paramètres
 		this.s = new Strategie(); // À supprimer : la création d'une stratégie ne devrait pas se faire ici.
   }

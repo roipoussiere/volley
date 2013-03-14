@@ -36,7 +36,7 @@ public class Vue_Joueurs extends JDialog
 	// Constante
 	private static final int NOMBRE_JOUEURS = 6 ;
 	
-	public Vue_Joueurs (Vue_Fenetre _vf, ControleurPrincipal _cp)
+	public Vue_Joueurs (Vue_Fenetre _vf)
 	{
 		// Définition de la fenêtre
 		super (_vf, "Joueurs", true) ;
@@ -51,7 +51,6 @@ public class Vue_Joueurs extends JDialog
 		GridBagConstraints gbc = new GridBagConstraints () ;
 		
 		// Attribution du constructeur
-		this.cp = _cp ;
 
 		this.jtpj = new JTabbedPane();
 
@@ -186,7 +185,7 @@ public class Vue_Joueurs extends JDialog
 		this.add(this.jtpj);
 
 		
-		this.cvj = new ControleurVueJoueurs(this.cp,this);
+	//	this.cvj = new ControleurVueJoueurs(this.cp,this);
 		
 		this.meneurPresentEqu1.addActionListener (new AL_Joueurs(this)) ;
 		this.meneurPresentEqu2.addActionListener (new AL_Joueurs(this)) ;
@@ -262,8 +261,5 @@ public class Vue_Joueurs extends JDialog
 		this.joueur2 = joueur;
 	}
 
-	public ControleurPrincipal getCP() {
-		return cp;
-	}
 	
 }
