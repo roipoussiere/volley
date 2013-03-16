@@ -1,14 +1,13 @@
 
 package v_vues;
 
-import c.ControleurPrincipal;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
 import javax.swing.*;
 
-import c.ControleurVueFenetre;
 import c.ControleurVueJoueurs;
 import v_ecouteurs.AL_Joueurs;
 import v_utilitaires.SaisieJoueur;
@@ -21,7 +20,6 @@ import v_utilitaires.SaisieJoueur;
 @SuppressWarnings("serial")
 public class Vue_Joueurs extends JDialog
 {
-	private ControleurPrincipal cp ;
 	ControleurVueJoueurs cvj;
 	
 	// Composants de la fenetre
@@ -36,10 +34,11 @@ public class Vue_Joueurs extends JDialog
 	// Constante
 	private static final int NOMBRE_JOUEURS = 6 ;
 	
-	public Vue_Joueurs (Vue_Fenetre _vf)
+	public Vue_Joueurs (Vue_Fenetre _vf,ControleurVueJoueurs _cvj)
 	{
 		// Définition de la fenêtre
 		super (_vf, "Joueurs", true) ;
+		this.cvj = _cvj;
 		this.setSize(360, 415) ;
 		this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE) ;
 		this.setResizable(false) ;

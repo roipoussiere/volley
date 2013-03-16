@@ -189,6 +189,11 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	{
 		return this.vp;
 	}
+	
+	public ControleurVueJoueurs getCVJ()
+	{
+		return this.cvj;
+	}
 
 	/**
 	 * Getter de Vue_Joueurs.
