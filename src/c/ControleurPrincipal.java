@@ -25,7 +25,6 @@ public class ControleurPrincipal {
 	public ControleurPrincipal() {
 		// Initialisations
 		cvf = new ControleurVueFenetre(this);
-		//cve = new ControleurVueEdition();
 		
 		// *** Mise en place d'une stratégie de base pour les tests ***
 		

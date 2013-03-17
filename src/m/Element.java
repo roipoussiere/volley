@@ -66,6 +66,11 @@ public abstract class Element
 		return this.deplacement.elementAt(_i) ;
 	}
 	
+	public int getNbDeplacements ()
+	{
+		return this.deplacement.size() ;
+	}
+	
 	// Modificateurs
 	
 	public void ajouterNouveauDeplacement (Position _pos)

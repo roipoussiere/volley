@@ -75,4 +75,14 @@ public class Strategie
 	{
 		return this.eq2.getJoueur(_i) ;
 	}
+	
+	public Equipe getEquipeNum (int _i)
+	{
+		if (_i == 1)
+			return this.eq1 ;
+		else if (_i == 2)
+			return this.eq2 ;
+		else
+			return null ;
+	}
 }

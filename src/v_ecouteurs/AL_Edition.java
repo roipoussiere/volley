@@ -25,7 +25,7 @@ public class AL_Edition implements ActionListener, DocumentListener
 	private final char MAXIMUM_ABSCISSE = 'I' ;
 	private final char MINIMUM_ORDONNEE = '1' ;
 	private final char MAXIMUM_ORDONNEE = '9' ;
-	
+
 	private Vue_Edition ve;
 
 	/**
@@ -45,20 +45,29 @@ public class AL_Edition implements ActionListener, DocumentListener
 	public void actionPerformed (ActionEvent _ae)
 	{
 		// Clic sur le bouton "Temps précédent" ou "Temps suivant"
-		if (_ae.getSource().equals(this.ve.getSelecTps().getButtonTpsPrecedent()) || _ae.getSource().equals(this.ve.getSelecTps().getButtonTpsSuivant()))
+		if (_ae.getSource().equals(this.ve.getSelecTps().getButtonTpsPrecedent()))
 		{
 			// On appelle le listener intégré dans SelectionTemps
 			this.ve.getSelecTps().actionPerformed(_ae) ;
 			// On met à jour l'affichage de la fenêtre
 			this.ve.majVueEdition() ;
 		}
+
+
+		if (_ae.getSource().equals(this.ve.getSelecTps().getButtonTpsSuivant()))
+		{
+			// On appelle le listener intégré dans SelectionTemps
+			this.ve.getSelecTps().actionPerformed(_ae) ;
+			// On crée un nouveau temps pour chaque joueur si besoin
+			if (this.ve.getSelecTps().getTempsSelectionne() == this.ve.getC().getStrategie().getEquipeNum(this.ve.getNumEquipeSelec()).getNbMaxTemps())
+				this.ve.getC().creerNouveauTemps(this.ve.getC().getStrategie().getEquipeNum(this.ve.getNumEquipeSelec())) ;
+			// On met à jour l'affichage de la fenêtre
+			this.ve.majVueEdition() ;
+		}
 	}
 
 	@Override
-	public void changedUpdate (DocumentEvent e) {
-		// TODO Auto-generated method stub
-
-	}
+	public void changedUpdate (DocumentEvent e) {}
 
 	@Override
 	public void insertUpdate (DocumentEvent e)
@@ -72,49 +81,39 @@ public class AL_Edition implements ActionListener, DocumentListener
 				if (e.getDocument() == this.ve.getSaisieDeplacementJ(i).getDepActuel().getDocument())
 					numJ = i ;
 			}
-						
+
 			// On récupère le contenu du champ de saisie
 			String saisie = this.ve.getSaisieDeplacementJ(numJ).getDepActuel().getText() ;
 			System.out.println("<test_flo> Saisie brute : " + saisie) ;
-			
+
 			// On formate le champ de saisie (minuscule --> majuscule)
 			saisie = saisie.toUpperCase() ;
 			System.out.println("<test_flo> Saisie en majuscule : " + saisie) ;
-			
+
 			if (controlerFormatSaisie(saisie))
 			{
 				System.out.println("<test_flo> Saisie OK") ;
-				
+
 				// On convertit la saisie en position
 				Position pos = new Position(saisie) ;
-				
 				// On récupère l'équipe concernée (pour récupérer le joueur...)
-				Equipe eq ;
-				if (this.ve.getListEquipe().getSelectedIndex() == 0)
-					eq = this.ve.getC().getStrategie().getEq1() ;
-				else
-					eq = this.ve.getC().getStrategie().getEq2() ;
-				
+				Equipe eq = this.ve.getC().getStrategie().getEquipeNum(this.ve.getNumEquipeSelec()) ;
 				// On appelle la méthode du contrôleur pour ajouter le déplacement
-				this.ve.getC().ajouterDeplacement(eq.getJoueur(numJ), pos) ;
-			}
-			else
-			{
-				// On supprime le contenu du champ de saisie
-				//this.ve.getSaisieDeplacementJ(numJ).getDepActuel().setText("") ;
+				this.ve.getC().saisirDeplacement(eq, eq.getJoueur(numJ), pos, this.ve.getSelecTps().getTempsSelectionne()) ;
 			}
 		}
 	}
 
 	@Override
-	public void removeUpdate (DocumentEvent e) {
-		// TODO Auto-generated method stub
+	public void removeUpdate (DocumentEvent e)
+	{
+		System.out.println("remove");
 
 	}
-	
-	
+
+
 	// Méthodes annexes
-	
+
 	/**
 	 * Contrôle si la saisie passée en paramètre est conforme aux normes ou pas
 	 * @param _saisie Le contenu du champs de saisie à contrôler.
@@ -138,7 +137,7 @@ public class AL_Edition implements ActionListener, DocumentListener
 		{
 			return true ;
 		}
-		
+
 		return false ;
 	}
 }

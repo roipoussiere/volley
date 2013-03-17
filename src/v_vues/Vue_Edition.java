@@ -93,11 +93,7 @@ public class Vue_Edition extends JPanel
 	public void majVueEdition ()
 	{
 		// On récupère l'équipe en cours de traitement
-		Equipe eqSelec ;
-		if (this.selecEquipe.getSelectedIndex() == 0)
-			eqSelec = this.c.getStrategie().getEq1() ; // équipe 1
-		else
-			eqSelec = this.c.getStrategie().getEq2() ; // équipe 2
+		Equipe eqSelec = this.getC().getStrategie().getEquipeNum(this.selecEquipe.getSelectedIndex() + 1) ;
 		
 		for (int i = 0 ; i < this.deplacementJ.length ; i++)
 		{
@@ -161,6 +157,11 @@ public class Vue_Edition extends JPanel
 	public SaisieDeplacement getSaisieDeplacementJ (int _i)
 	{
 		return deplacementJ[_i] ;
+	}
+	
+	public int getNumEquipeSelec ()
+	{
+		return this.selecEquipe.getSelectedIndex() + 1 ;
 	}
 	
 	
