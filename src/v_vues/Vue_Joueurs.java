@@ -186,30 +186,52 @@ public class Vue_Joueurs extends JDialog
 		jtpj.addTab("Equipe 2",jp2);
 		this.add(this.jtpj);
 		
-		this.meneurPresentEqu1.addActionListener (new AL_Joueurs(this)) ;
-		this.meneurPresentEqu2.addActionListener (new AL_Joueurs(this)) ;
-		this.jcbTout1.addActionListener (new AL_Joueurs(this)) ;
-		this.jcbTout2.addActionListener (new AL_Joueurs(this)) ;
-		this.jbouton1.addActionListener (new AL_Joueurs(this)) ;
-		this.jbouton2.addActionListener (new AL_Joueurs(this)) ;
+		//Abonnement a l'ecouteur
+		AL_Joueurs evj = new AL_Joueurs(this);
+		
+		this.meneurPresentEqu1.addActionListener (evj) ;
+		this.meneurPresentEqu2.addActionListener (evj) ;
+		this.jcbTout1.addActionListener (evj) ;
+		this.jcbTout2.addActionListener (evj) ;
+		this.jbouton1.addActionListener (evj) ;
+		this.jbouton2.addActionListener (evj) ;
 		for(i=0 ; i < this.joueur1.length ; i++)
-			this.joueur1[i].getAfficher().addActionListener (new AL_Joueurs(this)) ;
+			this.joueur1[i].getAfficher().addActionListener (evj) ;
 		for(i=0 ; i < this.joueur2.length ; i++)
-			this.joueur2[i].getAfficher().addActionListener (new AL_Joueurs(this)) ;
-		this.setVisible(true) ;
+			this.joueur2[i].getAfficher().addActionListener (evj) ;
+		
 		
 		for(i=0 ; i < this.joueur1.length ; i++)
-		{	this.joueur1[i].getNomJoueur().addActionListener(new AL_Joueurs(this));
+		{	this.joueur1[i].getNomJoueur().addActionListener(evj) ;
 			System.out.println("joueur " +i+" "+ this.joueur1[i].getNomJoueur().getText());
 		}
 		for(i=0 ; i < this.joueur1.length ; i++)
-			this.joueur1[i].getNomJoueur().addActionListener(new AL_Joueurs(this));
+			this.joueur1[i].getNomJoueur().addActionListener(evj) ;
 		
-		this.cvj.majVueJoueurs ();
+		majVueJoueurs();
+		
+	
 	}
 	
-
-	
+	public void majVueJoueurs ()
+	{
+		Equipe eqSelec1,eqSelec2 ;
+		eqSelec1 = this.cvj.getStrategie().getEq1() ; // équipe 1
+		eqSelec2 = this.cvj.getStrategie().getEq2() ; // équipe 2
+		// On récupère l'équipe en cours de traitement
+		for(int i=0; i < 6;i++)
+		{
+			//Equipe 1
+			this.getJoueur1()[i].getNomJoueur().setText(eqSelec1.getJoueur(i).getNomJ());//Remplissage des noms
+			this.getJoueur1()[i].getAfficher().setEnabled(eqSelec1.getJoueur(i).isAffiche());//Remplissage de l'option afficher
+			this.getJoueur1()[i].getMeneur().setEnabled(eqSelec1.getJoueur(i).isMeneur ());//Remplissage de l'option meneur
+			//Equipe 2
+			this.getJoueur2()[i].getNomJoueur().setText(eqSelec2.getJoueur(i).getNomJ());//Remplissage des noms
+			this.getJoueur2()[i].getAfficher().setEnabled(eqSelec2.getJoueur(i).isAffiche());//Remplissage de l'option afficher
+			this.getJoueur2()[i].getMeneur().setEnabled(eqSelec2.getJoueur(i).isMeneur ());//Remplissage de l'option meneur
+		}
+		//System.out.println(this.str.getEq1().getJoueur(1).getNomJ());
+	}
 	
 	/**
 	 * Getter du controleur.

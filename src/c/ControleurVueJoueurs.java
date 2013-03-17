@@ -1,5 +1,7 @@
 package c;
 
+import m.Strategie;
+import v_vues.Vue_Fenetre;
 import v_vues.Vue_Joueurs;
 
 /**
@@ -9,17 +11,16 @@ import v_vues.Vue_Joueurs;
 
 public class ControleurVueJoueurs {
 
-	private ControleurPrincipal cp;
-	private Vue_Joueurs vj;
+	private Vue_Joueurs vj ;
+	private Vue_Fenetre vf ;
+	private Strategie str ;
 	
-	public ControleurVueJoueurs (ControleurPrincipal _cp ,Vue_Joueurs _vj)
+	public ControleurVueJoueurs (Strategie _str, Vue_Fenetre _vf)
 	{
-		this.cp = _cp;
-		this.vj = _vj;
-		for(int i=0; i < 6;i++)
-		this.vj.getJoueur1()[i].getNomJoueur().setText(this.cp.getP().getNomE(i+1));
-		for(int i=6; i < 12;i++)
-	  this.vj.getJoueur2()[i-6].getNomJoueur().setText(this.cp.getP().getNomE(i+1));
+		this.vf = _vf;
+		this.str = _str;
+		vj = new Vue_Joueurs(this.vf,this);
+		vj.setVisible(true) ;
 		
 		// La suite du code nécessite  la creation d'une strategie dans le controleur et remplacera l'ancien code
 		
@@ -35,14 +36,22 @@ public class ControleurVueJoueurs {
 		 * 
 		 */
 		
+	}
+		public void EnregistreEqu1()
+		{
+			for(int i=0; i < this.vj.getJoueur1().length;i++)
+				this.str.getEq1().getJoueur(i).setNomJ(this.vj.getJoueur1()[i].getNomJoueur().getText());
+		}
 		
+		public void EnregistreEqu2()
+		{
+			for(int i=0; i < this.vj.getJoueur2().length;i++)
+				this.str.getEq2().getJoueur(i).setNomJ(this.vj.getJoueur1()[i].getNomJoueur().getText());
+		}
+		
+		public Strategie getStrategie ()
+		{
+			return this.str ;
+		}
+	  
 	}
-  
-  /**
-	 * Crée la vue Joueurs.
-	 */
-	public void vueJoueurs()
-	{
-		this.vj = new Vue_Joueurs(this.cp.getCVF().getVueFenetre(), this.cp);
-	}
-}
