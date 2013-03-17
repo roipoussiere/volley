@@ -114,18 +114,21 @@ public class AL_Joueurs implements ActionListener
 			}
 		}
 		
+		
 		// Si on clique sur le bonton enregistrer
-	/*	if(_ae.getSource().equals(this.vj.getJbouton1()))
+		if(_ae.getSource().equals(this.vj.getJbouton1()))
 		{
-			for(int i=0; i < this.vj.getJoueur1().length;i++)
-			this.vj.getCP().getP().setNomE(this.vj.getJoueur1()[i].getNomJoueur().getText(), i+1);
+			this.vj.getCVJ().EnregistreEqu1();
+			/*for(int i=0; i < this.vj.getJoueur1().length;i++)
+			this.vj.getCP().getP().setNomE(this.vj.getJoueur1()[i].getNomJoueur().getText(), i+1);*/
 		}
 		
 		if(_ae.getSource().equals(this.vj.getJbouton2()))
 		{
-			for(int i=0; i < this.vj.getJoueur2().length;i++)
-			this.vj.getCP().getP().setNomE(this.vj.getJoueur2()[i].getNomJoueur().getText(), i+7);
-		}*/
+			this.vj.getCVJ().EnregistreEqu2();
+			/*for(int i=0; i < this.vj.getJoueur2().length;i++)
+			this.vj.getCP().getP().setNomE(this.vj.getJoueur2()[i].getNomJoueur().getText(), i+7);*/
+		}
 	}
 
 }

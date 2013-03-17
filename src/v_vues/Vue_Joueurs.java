@@ -8,6 +8,9 @@ import java.awt.Insets;
 
 import javax.swing.*;
 
+import m.Equipe;
+
+import c.ControleurVueEdition;
 import c.ControleurVueJoueurs;
 import v_ecouteurs.AL_Joueurs;
 import v_utilitaires.SaisieJoueur;
@@ -20,7 +23,7 @@ import v_utilitaires.SaisieJoueur;
 @SuppressWarnings("serial")
 public class Vue_Joueurs extends JDialog
 {
-	ControleurVueJoueurs cvj;
+	private ControleurVueJoueurs cvj;
 	
 	// Composants de la fenetre
 	private SaisieJoueur joueur1[],joueur2[] ;
@@ -182,9 +185,6 @@ public class Vue_Joueurs extends JDialog
 		jtpj.addTab("Equipe 1",jp1);
 		jtpj.addTab("Equipe 2",jp2);
 		this.add(this.jtpj);
-
-		
-	//	this.cvj = new ControleurVueJoueurs(this.cp,this);
 		
 		this.meneurPresentEqu1.addActionListener (new AL_Joueurs(this)) ;
 		this.meneurPresentEqu2.addActionListener (new AL_Joueurs(this)) ;
@@ -204,6 +204,20 @@ public class Vue_Joueurs extends JDialog
 		}
 		for(i=0 ; i < this.joueur1.length ; i++)
 			this.joueur1[i].getNomJoueur().addActionListener(new AL_Joueurs(this));
+		
+		this.cvj.majVueJoueurs ();
+	}
+	
+
+	
+	
+	/**
+	 * Getter du controleur.
+	 * @return Le controleur.
+	 */
+	public ControleurVueJoueurs getCVJ()
+	{
+		return this.cvj ;
 	}
 	
 	/**
