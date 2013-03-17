@@ -10,6 +10,11 @@ public class Equipe
 	{
 		this.equipe = new Joueur[6] ;
 	}
+	
+	public Equipe (Joueur[] _tabJ)
+	{
+		this.equipe = _tabJ ;
+	}
 
 	// Getters
 

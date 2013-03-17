@@ -9,7 +9,7 @@ public class Strategie
 	
 	// Constructeurs
 	
-  public Strategie ()
+	public Strategie ()
 	{
 		this.eq1 = new Equipe() ;
 		this.eq2 = new Equipe() ;
