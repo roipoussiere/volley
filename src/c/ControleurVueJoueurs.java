@@ -15,7 +15,7 @@ public class ControleurVueJoueurs {
 	private Vue_Fenetre vf ;
 	private Strategie str ;
 	
-	public ControleurVueJoueurs (Strategie _str, Vue_Fenetre _vf)
+	public ControleurVueJoueurs (ControleurPrincipal _cp)
 	{
 		this.vf = _vf;
 		this.str = _str;

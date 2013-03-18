@@ -24,7 +24,7 @@ public class ControleurVueFenetre
    */
 	public ControleurVueFenetre (ControleurPrincipal _cp)
 	{
-    this.cp = _cp;
+		this.cp = _cp;
 		// Itinitialisation des vues.
 		this.vf = null;
 	

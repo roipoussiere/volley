@@ -22,7 +22,7 @@ public class ControleurVueEdition
 	 * @param _ve La Vue_Edition liée
 	 * @param _str La Strategie liée
 	 */
-	public ControleurVueEdition (Vue_Edition _ve, Strategie _str)
+	public ControleurVueEdition (ControleurPrincipal _cp)
 	{
 		this.ve = _ve ;
 		this.str = _str ;
