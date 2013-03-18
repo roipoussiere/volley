@@ -14,8 +14,8 @@ import v_vues.Vue_Edition;
  */
 public class ControleurVueEdition
 {
-	private Vue_Edition ve ;
-	private Strategie str ;
+	private ControleurPrincipal cp;
+	private Vue_Edition ve;
 
 	/**
 	 * Création du constructeur.
@@ -24,8 +24,14 @@ public class ControleurVueEdition
 	 */
 	public ControleurVueEdition (ControleurPrincipal _cp)
 	{
-		this.ve = _ve ;
-		this.str = _str ;
+		// Récupération du controleur principal
+		this.cp = _cp;
+	
+		// Ouverture de la fenêtre.
+		this.ve = new Vue_Edition(this);
+		
+		// Il y avait juste une erreur, au getStrategie(), je l'ai corrigée pour que ça compile.
+		// Natha
 	}
 
 
@@ -38,7 +44,7 @@ public class ControleurVueEdition
 
 	public Strategie getStrategie ()
 	{
-		return this.str ;
+		return this.cp.getS() ;
 	}
 
 

@@ -37,10 +37,10 @@ public class Vue_Joueurs extends JDialog
 	// Constante
 	private static final int NOMBRE_JOUEURS = 6 ;
 	
-	public Vue_Joueurs (Vue_Fenetre _vf,ControleurVueJoueurs _cvj)
+	public Vue_Joueurs (Vue_Fenetre vf, ControleurVueJoueurs _cvj)
 	{
 		// Définition de la fenêtre
-		super (_vf, "Joueurs", true) ;
+		super (vf, "Joueurs", true) ;
 		this.cvj = _cvj;
 		this.setSize(360, 415) ;
 		this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE) ;
@@ -180,8 +180,6 @@ public class Vue_Joueurs extends JDialog
 		gbc.insets = new Insets (5, 12, 10, 0) ;
 		jp2.add (this.jbouton2,gbc) ;
 		
-		
-		
 		jtpj.addTab("Equipe 1",jp1);
 		jtpj.addTab("Equipe 2",jp2);
 		this.add(this.jtpj);
@@ -195,22 +193,21 @@ public class Vue_Joueurs extends JDialog
 		this.jcbTout2.addActionListener (evj) ;
 		this.jbouton1.addActionListener (evj) ;
 		this.jbouton2.addActionListener (evj) ;
+		
 		for(i=0 ; i < this.joueur1.length ; i++)
 			this.joueur1[i].getAfficher().addActionListener (evj) ;
 		for(i=0 ; i < this.joueur2.length ; i++)
 			this.joueur2[i].getAfficher().addActionListener (evj) ;
 		
-		
 		for(i=0 ; i < this.joueur1.length ; i++)
 		{	this.joueur1[i].getNomJoueur().addActionListener(evj) ;
 			System.out.println("joueur " +i+" "+ this.joueur1[i].getNomJoueur().getText());
 		}
+		
 		for(i=0 ; i < this.joueur1.length ; i++)
 			this.joueur1[i].getNomJoueur().addActionListener(evj) ;
 		
 		majVueJoueurs();
-		
-	
 	}
 	
 	public void majVueJoueurs ()
@@ -220,7 +217,7 @@ public class Vue_Joueurs extends JDialog
 		eqSelec2 = this.cvj.getStrategie().getEq2() ; // équipe 2
 		// On récupère l'équipe en cours de traitement
 		for(int i=0; i < 6;i++)
-		{
+		{/*
 			//Equipe 1
 			this.getJoueur1()[i].getNomJoueur().setText(eqSelec1.getJoueur(i).getNomJ());//Remplissage des noms
 			this.getJoueur1()[i].getAfficher().setEnabled(eqSelec1.getJoueur(i).isAffiche());//Remplissage de l'option afficher
@@ -229,7 +226,7 @@ public class Vue_Joueurs extends JDialog
 			this.getJoueur2()[i].getNomJoueur().setText(eqSelec2.getJoueur(i).getNomJ());//Remplissage des noms
 			this.getJoueur2()[i].getAfficher().setEnabled(eqSelec2.getJoueur(i).isAffiche());//Remplissage de l'option afficher
 			this.getJoueur2()[i].getMeneur().setEnabled(eqSelec2.getJoueur(i).isMeneur ());//Remplissage de l'option meneur
-		}
+		*/}
 		//System.out.println(this.str.getEq1().getJoueur(1).getNomJ());
 	}
 	

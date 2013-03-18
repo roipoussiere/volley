@@ -12,25 +12,67 @@ import m.Strategie;
  * @author Nathanaël Jourdane
  */
 public class ControleurPrincipal {
-  private ControleurVueFenetre cvf;
-  private ControleurVueTerrain cvt;
-  private ControleurVueEdition cve;
-  private ControleurVueJoueurs cvj;
-  private Parametres p;
-  private Strategie s; // À supprimer : normalement la création de la stratégie ne se fait pas ici.
-  
+	private Parametres p;
+	private Strategie s;
+	private ControleurVueEdition cve;
+	private ControleurVueLecture cvl;
+	private ControleurVueJoueurs cvj;
+	private ControleurVueFenetre cvf;
+	private ControleurVueTerrain cvt;
+
   /**
    * Constructeur de ControleurPrincipal.
    */
   public ControleurPrincipal() {
 	// Initialisations
+	this.p = new Parametres(); // Initialisation des paramètres
 	this.s = new Strategie();
-    cvf = new ControleurVueFenetre(this);
-    cve = new ControleurVueEdition(this);
-    cvj = new ControleurVueJoueurs(this);
-    this.p = new Parametres(); // Initialisation des paramètres
+	this.cve = new ControleurVueEdition(this);
+	this.cvl = new ControleurVueLecture(this);
+	this.cvf = new ControleurVueFenetre(this);
+	this.cvj = new ControleurVueJoueurs(this);
+	// vueJoueurs doit être crée après VueFenetre car c'est une fenêtre modale qui dépend de VueFenetre.
+	//this.cvt = new ControleurVueTerrain(this);
   }
-  
+
+  /**
+  * Getters de Parametres.
+  * @return La classe Parametres dans laquelle se trouve tous les paramètres de l'application.
+  */
+ public Parametres getP()
+	{
+		return this.p;
+	}
+ 
+	public Strategie getS()
+	{
+		return this.s;
+	}
+	
+  /**
+  * Getters de ControleurVueEdition.
+  * @return Le controleur de VueEdition.
+  */
+ public ControleurVueEdition getCVE() {
+     return cve;
+ }
+ 
+ /**
+ * Getters de ControleurVueLecture.
+ * @return Le controleur de VueLecture.
+ */
+public ControleurVueLecture getCVL() {
+    return cvl;
+}
+
+/**
+* Getters de ControleurVueJoueurs.
+* @return Le controleur de VueJoueurs.
+*/
+public ControleurVueJoueurs getCVJ() {
+   return cvj;
+}
+
    /**
    * Getters de ControleurVueFenetre.
    * @return Le controleur de VueFenetre.
@@ -46,36 +88,4 @@ public class ControleurPrincipal {
   public ControleurVueTerrain getCVT() {
       return cvt;
   }
-  
-   /**
-   * Getters de ControleurVueEdition.
-   * @return Le controleur de VueEdition.
-   */
-  public ControleurVueEdition getCVE() {
-      return cve;
-  }
-
-   /**
-   * Getters de ControleurVueJoueurs.
-   * @return Le controleur de VueJoueurs.
-   */
-  public ControleurVueJoueurs getCVJ() {
-      return cvj;
-  }
-  
-   /**
-   * Getters de Parametres.
-   * @return La classe Parametres dans laquelle se trouve tous les paramètres de l'application.
-   */
-  public Parametres getP()
-	{
-		return this.p;
-	}
-  
-  // À supprimer
-	public Strategie getS()
-	{
-		return this.s;
-	}
-
 }

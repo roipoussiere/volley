@@ -12,10 +12,10 @@ import v_vues.*;
  */
 public class ControleurVueFenetre
 {
-  ControleurPrincipal cp;
-  
-  // Vue
+	private ControleurPrincipal cp;
 	private Vue_Fenetre vf;
+	private Vue_Edition ve;
+	private Vue_Lecture vl;
 
 	/**
 	 * Constructeur du contrôleur qui initialise les vues et les autres arguments et lance la vue principale (Vue_Fenetre).
@@ -25,9 +25,11 @@ public class ControleurVueFenetre
 	public ControleurVueFenetre (ControleurPrincipal _cp)
 	{
 		this.cp = _cp;
-		// Itinitialisation des vues.
-		this.vf = null;
-	
+		
+		// Création des controleurs des vues des onglets
+		// this.cve = new ControleurVueEdition(this);
+		// this.cvj = new ControleurVueJoueurs(this);
+		
 		// Ouverture de la fenêtre.
 		this.vf = new Vue_Fenetre(this);
 		
@@ -41,6 +43,16 @@ public class ControleurVueFenetre
 	public Vue_Fenetre getVueFenetre()
 	{
 		return this.vf;
+	}
+	
+	public Vue_Lecture getVueLecture()
+	{
+		return this.vl;
+	}
+	
+	public Vue_Edition getVueEdition()
+	{
+		return this.ve;
 	}
 
   public boolean isDT() {
@@ -61,7 +73,7 @@ public class ControleurVueFenetre
 			{
 			case 0: // Lecture
 				//this.cp.getCVT().getVT().dessiner(this.cp.getP().getStyleQL());
-				this.vf.getVL().majVue();
+				this.cp.getCVL().majVue();
 				break;
 			case 1: // Edition
 				//this.cp.getCVT().getVT().dessiner(this.cp.getP().getStyleQE());

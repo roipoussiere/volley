@@ -17,13 +17,8 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 {
 	// Controleurs
 	private ControleurVueFenetre cvf;
-	private ControleurVueJoueurs cvj;
-	private ControleurVueEdition cve;
 
 	// Vues
-	private Vue_Lecture vl;
-	private Vue_Edition ve;
-	private Vue_Joueurs vj;
 	private Vue_Params vp;
 
 	// La barre de menus
@@ -43,10 +38,8 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		super ("Logiciel pour strategie de volley");
 		this.cvf = _cvf;
 
-		//this.cve = new ControleurVueEdition(this.c, this.ve);
-		this.cve = new ControleurVueEdition(this.ve, new m.Strategie(new m.Equipe(), new m.Equipe()));
-		this.ve = new Vue_Edition(cve);
-		this.vl = new Vue_Lecture(this.cvf);
+		//this.cvf.getCP(). = new Vue_Edition(cve);
+		//this.vl = new Vue_Lecture(this.cvf);
 
 		this.addWindowListener(this); // On abonne la fenêtre à elle-même.
 		this.setSize(400, 375);
@@ -57,10 +50,10 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		this.tp.addChangeListener(new CL_Fenetre(this));
 
 		// Ajout de l'onglet Lecture dans la barre des onglets
-		this.tp.addTab("Lecture", this.vl);
+		this.tp.addTab("Lecture", this.cvf.getVueLecture());
 
 		// Ajout de l'onglet Édition dans la barre des onglets
-		this.tp.addTab("Edition", this.ve);
+		this.tp.addTab("Edition", this.cvf.getVueEdition());
 
 		this.add(this.tp); // Ajout de la barre d'onglets dans la fenêtre
 
@@ -189,38 +182,7 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	{
 		return this.vp;
 	}
-	
-	public ControleurVueJoueurs getCVJ()
-	{
-		return this.cvj;
-	}
 
-	/**
-	 * Getter de Vue_Joueurs.
-	 * @return La vue de l'onglet Joueur.
-	 */
-	public Vue_Joueurs getVJ()
-	{
-		return this.vj;
-	}
-
-	/**
-	 * Getter de Vue_Edition.
-	 * @return La vue de l'onglet Edition.
-	 */
-	public Vue_Edition getVE()
-	{
-		return this.ve;
-	}
-
-	/**
-	 * Getter de Vue_Lecture.
-	 * @return La vue de l'onglet Lecture.
-	 */
-	public Vue_Lecture getVL()
-	{
-		return this.vl;
-	}
 	/**
 	 * Getter de l'onglet ouvert.
 	 * @return L'id de l'onglet actuellement ouvert : 0 ou 1.

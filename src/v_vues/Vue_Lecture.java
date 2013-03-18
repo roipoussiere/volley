@@ -1,6 +1,8 @@
 package v_vues;
 
-import c.ControleurVueFenetre;
+import c.ControleurPrincipal;
+import c.ControleurVueLecture;
+
 import java.awt.*;
 import javax.swing.*;
 import v_utilitaires.SelectionTemps;
@@ -12,9 +14,9 @@ import v_utilitaires.SelectionTemps;
 @SuppressWarnings("serial")
 public class Vue_Lecture extends JPanel
 {
-	private ControleurVueFenetre c;
+	private ControleurVueLecture cvl;
 
-	// Composants de la fenÃªtre
+	// Composants de la fenêtre
 	private JTextField chrono, libelleFichier ;
 	// private ButtonGroup modeLecture;
 	private JRadioButton automatique, manuel;
@@ -24,12 +26,12 @@ public class Vue_Lecture extends JPanel
 
 	/**
 	 * Création du JFrame et de tous ses composants.
-	 * @param _c ConstrÃ´leur.
+	 * @param _c Constrôleur.
 	 */
-	public Vue_Lecture (ControleurVueFenetre _c)
+	public Vue_Lecture (ControleurVueLecture _cvl)
 	{
 		super ();
-		this.c = _c;
+		this.cvl = _cvl;
 
 		// Mise en place du GridBagLayout
 		this.setLayout (new GridBagLayout()) ;
@@ -132,15 +134,6 @@ public class Vue_Lecture extends JPanel
 		gbc.anchor = GridBagConstraints.PAGE_END ;
 		gbc.insets = new Insets (0, 0, 0, 0) ;
 		this.add (boutons, gbc) ;
-	}
-
-	/**
-	 * Getter du contrôleur.
-	 * @return Le contrôleur.
-	 */
-	public ControleurVueFenetre getC()
-	{
-		return this.c;
 	}
 
 	public SelectionTemps getSelectTps() {

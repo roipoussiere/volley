@@ -13,12 +13,11 @@ public class ControleurVueJoueurs {
 
 	private Vue_Joueurs vj ;
 	private Vue_Fenetre vf ;
-	private Strategie str ;
+	private ControleurPrincipal cp;
 	
 	public ControleurVueJoueurs (ControleurPrincipal _cp)
 	{
-		this.vf = _vf;
-		this.str = _str;
+		this.cp = _cp;
 		vj = new Vue_Joueurs(this.vf,this);
 		vj.setVisible(true) ;
 		
@@ -37,21 +36,21 @@ public class ControleurVueJoueurs {
 		 */
 		
 	}
-		public void EnregistreEqu1()
-		{
-			for(int i=0; i < this.vj.getJoueur1().length;i++)
-				this.str.getEq1().getJoueur(i).setNomJ(this.vj.getJoueur1()[i].getNomJoueur().getText());
-		}
-		
-		public void EnregistreEqu2()
-		{
-			for(int i=0; i < this.vj.getJoueur2().length;i++)
-				this.str.getEq2().getJoueur(i).setNomJ(this.vj.getJoueur1()[i].getNomJoueur().getText());
-		}
-		
-		public Strategie getStrategie ()
-		{
-			return this.str ;
-		}
-	  
+	
+	public void EnregistreEqu1()
+	{
+		for(int i=0; i < this.vj.getJoueur1().length;i++)
+			this.cp.getS().getEq1().getJoueur(i).setNomJ(this.vj.getJoueur1()[i].getNomJoueur().getText());
 	}
+	
+	public void EnregistreEqu2()
+	{
+		for(int i=0; i < this.vj.getJoueur2().length;i++)
+			this.cp.getS().getEq2().getJoueur(i).setNomJ(this.vj.getJoueur1()[i].getNomJoueur().getText());
+	}
+	
+	public Strategie getStrategie()
+	{
+		return this.cp.getS();
+	}
+}
