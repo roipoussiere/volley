@@ -16,8 +16,6 @@ public class ControleurVueFenetre
 	private Vue_Fenetre vf;
 	private Vue_Edition ve;
 	private Vue_Lecture vl;
-	// private ControleurVueEdition cve;
-	// private ControleurVueLecture cvl;
 
 	/**
 	 * Constructeur du contrôleur qui initialise les vues et les autres arguments et lance la vue principale (Vue_Fenetre).
@@ -58,7 +56,7 @@ public class ControleurVueFenetre
 	}
 
   public boolean isDT() {
-    return true;// this.cp.getP().isDemiT();
+    return this.cp.getP().isDemiT();
   }
 	// *** Méthodes de Vue_Fenetre ***
 
@@ -122,7 +120,7 @@ public class ControleurVueFenetre
 	public void ms_joueurs()
 	{
 		System.out.println("Affectation des joueurs...");
-		// this.cp.getCVJ().vueJoueurs();
+		this.cp.setCVJ(new ControleurVueJoueurs(cp));
 	}
 
 	/**

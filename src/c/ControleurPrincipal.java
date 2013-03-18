@@ -30,8 +30,8 @@ public class ControleurPrincipal {
 	this.cve = new ControleurVueEdition(this);
 	this.cvl = new ControleurVueLecture(this);
 	this.cvf = new ControleurVueFenetre(this);
-	this.cvj = new ControleurVueJoueurs(this);
-	// vueJoueurs doit être crée après VueFenetre car c'est une fenêtre modale qui dépend de VueFenetre.
+	this.cvj = null;
+	// vueJoueurs doit être crée maintenant, il est crée quand on clique sur le bouton.
 	//this.cvt = new ControleurVueTerrain(this);
   }
 
@@ -73,6 +73,12 @@ public ControleurVueJoueurs getCVJ() {
    return cvj;
 }
 
+/**
+* Setter de ControleurVueJoueurs.
+*/
+public void setCVJ(ControleurVueJoueurs _cvj) {
+   this.cvj = _cvj;
+}
    /**
    * Getters de ControleurVueFenetre.
    * @return Le controleur de VueFenetre.
