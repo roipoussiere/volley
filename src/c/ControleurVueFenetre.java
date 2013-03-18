@@ -16,6 +16,8 @@ public class ControleurVueFenetre
 	private Vue_Fenetre vf;
 	private Vue_Edition ve;
 	private Vue_Lecture vl;
+	// private ControleurVueEdition cve;
+	// private ControleurVueLecture cvl;
 
 	/**
 	 * Constructeur du contrôleur qui initialise les vues et les autres arguments et lance la vue principale (Vue_Fenetre).
@@ -27,8 +29,8 @@ public class ControleurVueFenetre
 		this.cp = _cp;
 		
 		// Création des controleurs des vues des onglets
-		// this.cve = new ControleurVueEdition(this);
-		// this.cvj = new ControleurVueJoueurs(this);
+		this.ve = cp.getCVE().getVueEdition();
+		this.vl = cp.getCVL().getVueLecture();
 		
 		// Ouverture de la fenêtre.
 		this.vf = new Vue_Fenetre(this);

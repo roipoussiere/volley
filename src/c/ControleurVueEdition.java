@@ -30,7 +30,8 @@ public class ControleurVueEdition
 		// Ouverture de la fenêtre.
 		this.ve = new Vue_Edition(this);
 		
-		// Il y avait juste une erreur, au getStrategie(), je l'ai corrigée pour que ça compile.
+		// Lorsque j'ai modifié le constructeur, il y avait juste une erreur,
+		// au getStrategie(), je l'ai corrigée pour que ça compile.
 		// Natha
 	}
 

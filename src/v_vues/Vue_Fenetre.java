@@ -3,6 +3,8 @@ package v_vues;
 import c.ControleurVueFenetre;
 import c.ControleurVueEdition;
 import c.ControleurVueJoueurs;
+import c.ControleurVueLecture;
+
 import java.awt.event.*;
 import javax.swing.*;
 import v_ecouteurs.AL_Fenetre;
@@ -51,7 +53,8 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 
 		// Ajout de l'onglet Lecture dans la barre des onglets
 		this.tp.addTab("Lecture", this.cvf.getVueLecture());
-
+		// THERE !!!
+		
 		// Ajout de l'onglet Édition dans la barre des onglets
 		this.tp.addTab("Edition", this.cvf.getVueEdition());
 
