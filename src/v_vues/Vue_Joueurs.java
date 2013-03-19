@@ -222,10 +222,20 @@ public class Vue_Joueurs extends JDialog
 			this.getJoueur1()[i].getNomJoueur().setText(eqSelec1.getJoueur(i).getNomJ());//Remplissage des noms
 			this.getJoueur1()[i].getAfficher().setEnabled(eqSelec1.getJoueur(i).isAffiche());//Remplissage de l'option afficher
 			this.getJoueur1()[i].getMeneur().setEnabled(eqSelec1.getJoueur(i).isMeneur ());//Remplissage de l'option meneur
+			if(eqSelec1.getJoueur(i).isMeneur ())	// Si au moins un joueur est meneur
+			{
+					for(int j=0; j < this.vj.getJoueur1().length;j++)
+						this.getJoueur1()[j].getMeneur().setEnabled(true);
+			}
 			//Equipe 2
 			this.getJoueur2()[i].getNomJoueur().setText(eqSelec2.getJoueur(i).getNomJ());//Remplissage des noms
 			this.getJoueur2()[i].getAfficher().setEnabled(eqSelec2.getJoueur(i).isAffiche());//Remplissage de l'option afficher
 			this.getJoueur2()[i].getMeneur().setEnabled(eqSelec2.getJoueur(i).isMeneur ());//Remplissage de l'option meneur
+			if(eqSelec2.getJoueur(i).isMeneur ())	// Si au moins un joueur est meneur
+			{
+					for(int j=0; j < this.vj.getJoueur2().length;j++)
+						this.getJoueur2()[j].getMeneur().setEnabled(true);
+			}
 		*/}
 		//System.out.println(this.str.getEq1().getJoueur(1).getNomJ());
 	}
