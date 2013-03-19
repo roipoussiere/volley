@@ -35,6 +35,8 @@ public class ControleurVueFenetre
 		
 		this.centrerFen();
 		this.vf.setVisible (true);
+		// Le terrain ne s'affiche que maintenant pour éviter de voir la fenêtre qui se déplace.
+		this.cp.getCVT().getVT().setVisible (true);
 		
 	}
 
@@ -184,13 +186,11 @@ public class ControleurVueFenetre
 	{
 		// Les dimentions de l'écran
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-
-		if (this.vf != null)
-		{
-			//this.cp.getCVT().getVT().setLocation(screen.width/2 ,(screen.height - this.cp.getCVT().getVT().getSize().height)/2); 
-			this.vf.setLocation(screen.width/2 - this.vf.getSize().width - 5,(screen.height - this.vf.getSize().height)/2);
-			System.out.println("Fenêtres centrées.");
-		}
+		
+		this.cp.getCVT().getVT().setLocation(screen.width/2 ,(screen.height - this.cp.getCVT().getVT().getSize().height)/2); 
+		this.vf.setLocation(screen.width/2 - this.vf.getSize().width - 5,(screen.height - this.vf.getSize().height)/2);
+		System.out.println("Fenêtres centrées.");
+		
 	}
 
 	/**

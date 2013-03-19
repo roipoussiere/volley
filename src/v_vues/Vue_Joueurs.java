@@ -120,9 +120,6 @@ public class Vue_Joueurs extends JDialog
 		gbc.insets = new Insets (5, 12, 10, 0) ;
 		jp1.add (this.jbouton1,gbc) ;
 		
-		
-		
-		
 		this.jlNom = new JLabel("Nom") ;
 		gbc.gridx = 1 ; gbc.gridy = 0 ; // 
 		gbc.gridwidth = 2 ; gbc.gridheight = 1 ;

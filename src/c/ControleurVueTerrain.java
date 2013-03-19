@@ -17,7 +17,6 @@ public class ControleurVueTerrain {
     this.cp = _cp;
     this.vt = new Vue_Terrain(this);
     this.vt.setTaille();
-    this.vt.setVisible (true);
   }
   
   /**
@@ -32,8 +31,8 @@ public class ControleurVueTerrain {
     this.cp.getCVF().quitter();
   }
   
-  public boolean isDT() {
-    return this.cp.getP().isDemiT();
+  public Parametres getP() {
+	return this.cp.getP();
   }
   
   	/**

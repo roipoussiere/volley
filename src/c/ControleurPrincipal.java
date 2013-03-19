@@ -29,10 +29,12 @@ public class ControleurPrincipal {
 	this.s = new Strategie();
 	this.cve = new ControleurVueEdition(this);
 	this.cvl = new ControleurVueLecture(this);
+	// Vueterrain est crée mais le terrain est affiché à la création de VueFenetre
+	// pour éviter de voir la fenêtre qui se déplace.
+	this.cvt = new ControleurVueTerrain(this);
 	this.cvf = new ControleurVueFenetre(this);
 	this.cvj = null;
-	// vueJoueurs doit être crée maintenant, il est crée quand on clique sur le bouton.
-	//this.cvt = new ControleurVueTerrain(this);
+	// vueJoueurs n'être pas crée maintenant, mais quand on clique sur le bouton.
   }
 
   /**

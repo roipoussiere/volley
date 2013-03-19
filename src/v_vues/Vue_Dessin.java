@@ -3,7 +3,6 @@ package v_vues;
 import c.Parametres;
 import java.awt.*;
 import javax.swing.*;
-import m_natha.Temps;
 
 /**
  * Vue de dessin, pour dessiner sur la fenetre de terrain.
@@ -12,11 +11,10 @@ import m_natha.Temps;
 @SuppressWarnings("serial")
 public class Vue_Dessin extends JPanel
 {
-	private Parametres p; // Pour éviter d'écrire this.vt.getC().getP();
+	private Parametres p; // Pour éviter d'écrire this.vt.getCVT().getP();
 	private Vue_Terrain vt;
 
 	private int styleQ;
-	private Temps ta; // Pour éviter d'écrire this.vt.getC().getS().getTA();
 	private int tc; // Taille d'une case
 	
 	/**
@@ -26,8 +24,7 @@ public class Vue_Dessin extends JPanel
 	public Vue_Dessin(Vue_Terrain _vt)
 	{
 		this.vt = _vt;
-		//this.p = this.vt.getC().getP();
-		
+		this.p = this.vt.getCVT().getP();
 		//int vta = this.vt.getC().getS().getTA(); // récupère la valeur du temps actuel
 		//this.ta = this.vt.getC().getS().getTemps(vta); // affecte le temps actuel à this.ta
 	}
