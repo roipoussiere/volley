@@ -6,12 +6,12 @@ package m;
  */
 public class Position
 {
-	private char posX ; // abscisse
-	private char posY ; // ordonnée
+	private int posX ; // abscisse
+	private int posY ; // ordonnée
 	
 	// Constructeurs
 	
-	public Position (char _pX, char _pY)
+	public Position (int _pX, int _pY)
 	{
 		this.posX = _pX ;
 		this.posY = _pY ;
@@ -25,19 +25,19 @@ public class Position
 	
 	// Getters
 	
-	public char getPosX ()
+	public int getPosX ()
 	{
 		return posX ;
 	}
 	
-	public char getPosY ()
+	public int getPosY ()
 	{
 		return posY ;
 	}
 	
 	public String getPosition ()
 	{
-		return (Character.toString(this.posX) + Character.toString(this.posY)) ;
+		return (String.valueOf(this.posX) + String.valueOf(this.posY)) ;
 	}
 	
 	// Setters

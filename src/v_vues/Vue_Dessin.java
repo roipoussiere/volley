@@ -56,13 +56,12 @@ public class Vue_Dessin extends JPanel
 		
 		for (int i=0 ; i<6 ; i++)
 		{
-			//m.Position pos = 
-			this.strategie.getJoueurEq1(0).getDeplacementAuTemps(0);
-			//int posX = pos.getPosX();
-			//int posY = pos.getPosY();
+			m.Position pos = this.strategie.getJoueurEq1(i).getDeplacementAuTemps(this.strategie.getTA());
+			int posX = pos.getPosX();
+			int posY = pos.getPosY();
 
-			//System.out.println("elt à la position [" + posX + ";" + posY + "]");
-			//element(_g, posX, posY);
+			System.out.println("elt à la position [" + posX + ";" + posY + "]");
+			element(_g, posX, posY);
 		}
 	}
 	
