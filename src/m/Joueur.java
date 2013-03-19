@@ -10,16 +10,24 @@ public class Joueur extends Element
 	
 	// Constructeurs
 	
-	public Joueur (String _idJ, String _nomJ)
+	/*public Joueur ()
 	{
-		super (true, Color.BLUE) ;
+		super () ;
+		this.idJ = "idJ" ;
+		this.nomJ = "Joueur" ;
+	}
+	*/
+	
+	public Joueur (String _idJ, String _nomJ, m.Position _pos)
+	{
+		super (true, Color.BLUE, _pos) ;
 		this.idJ = _idJ ;
 		this.nomJ = _nomJ ;
 	}
 	
-	public Joueur (String _idJ, String _nomJ, boolean _meneur, boolean _affiche, Color _couleur)
+	public Joueur (String _idJ, String _nomJ, boolean _meneur, boolean _affiche, Color _couleur, m.Position _pos)
 	{
-		super (_affiche, _couleur) ;
+		super (_affiche, _couleur, _pos) ;
 		this.idJ = _idJ ;
 		this.nomJ = _nomJ ;
 		this.meneur = _meneur ;

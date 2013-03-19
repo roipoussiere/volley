@@ -17,12 +17,22 @@ public abstract class Element
 	
 	// Constructeurs
 	
-	public Element (boolean _affiche, Color _couleur)
+	/*public Element ()
+	{
+		super() ;
+		this.affiche = true ;
+		this.couleurE = Color.BLACK;
+		this.deplacement = new Vector<Position> () ;
+		this.deplacement.add(new m.Position('0','0'));
+	}*/
+	
+	public Element (boolean _affiche, Color _couleur, m.Position _pos)
 	{
 		super() ;
 		this.affiche = _affiche ;
 		this.couleurE = _couleur ;
 		this.deplacement = new Vector<Position> () ;
+		this.deplacement.add(_pos);
 	}
 	
 	// Getters

@@ -3,6 +3,9 @@ package v_vues;
 import c.Parametres;
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.text.Position;
+
+import m.Strategie;
 
 /**
  * Vue de dessin, pour dessiner sur la fenetre de terrain.
@@ -12,6 +15,7 @@ import javax.swing.*;
 public class Vue_Dessin extends JPanel
 {
 	private Parametres p; // Pour éviter d'écrire this.vt.getCVT().getP();
+	private Strategie strategie; // Pour éviter d'écrire ...
 	private Vue_Terrain vt;
 
 	private int styleQ;
@@ -24,8 +28,8 @@ public class Vue_Dessin extends JPanel
 	public Vue_Dessin(Vue_Terrain _vt)
 	{
 		this.vt = _vt;
-		this.p = this.vt.getCVT().getP();
-		//int vta = this.vt.getC().getS().getTA(); // récupère la valeur du temps actuel
+		this.p = this.vt.getCVT().getCP().getP();
+		this.strategie = this.vt.getCVT().getCP().getS();
 		//this.ta = this.vt.getC().getS().getTemps(vta); // affecte le temps actuel à this.ta
 	}
 	
@@ -47,17 +51,19 @@ public class Vue_Dessin extends JPanel
 			this.tc = 35;
 			dessinerTC(_g);
 		}
-
-    // affichage des élements
-    /*
-		for (int i=0 ; i<this.ta.getNbET() ; i++)
+		
+		// affichage des élements
+		
+		for (int i=0 ; i<6 ; i++)
 		{
-			int posX = this.ta.getET(i).getX();
-			int posY = this.ta.getET(i).getY();
+			//m.Position pos = 
+			this.strategie.getJoueurEq1(0).getDeplacementAuTemps(0);
+			//int posX = pos.getPosX();
+			//int posY = pos.getPosY();
 
-			System.out.println("elt à la position [" + posX + ";" + posY + "]");
-			element(_g, posX, posY);
-		}*/
+			//System.out.println("elt à la position [" + posX + ";" + posY + "]");
+			//element(_g, posX, posY);
+		}
 	}
 	
 	/**

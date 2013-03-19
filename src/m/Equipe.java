@@ -8,7 +8,7 @@ public class Equipe
 
 	public Equipe ()
 	{
-		this.equipe = new Joueur[6] ;		
+		this.equipe = new Joueur[6] ;
 	}
 	
 	public Equipe (Joueur[] _tabJ)

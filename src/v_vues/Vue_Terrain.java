@@ -46,7 +46,7 @@ public class Vue_Terrain extends JFrame implements WindowListener
 	 */
 	public void setTaille()
 	{
-		boolean demiT = this.getCVT().getP().isDemiT();
+		boolean demiT = this.getCVT().getCP().getP().isDemiT();
 		
 		// Si demi-terrain : zone de 11*10 cases de 50px chacune = 550*500 + bordures de la fenêtre
 		if (demiT) {	

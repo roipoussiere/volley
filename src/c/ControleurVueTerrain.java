@@ -31,8 +31,8 @@ public class ControleurVueTerrain {
     this.cp.getCVF().quitter();
   }
   
-  public Parametres getP() {
-	return this.cp.getP();
+  public ControleurPrincipal getCP() {
+	return this.cp;
   }
   
   	/**
