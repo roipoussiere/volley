@@ -1,13 +1,11 @@
 package m;
 
-import m.Strategie.TypeStrategie;
 
 /**
  * Position qu'occupe un élément à un temps donné.
  * @author Florian Garnier
  */
 
-enum Orientation {DROITE, HAUT, GAUCHE, BAS};
 
 public class Position
 {
@@ -21,6 +19,14 @@ public class Position
 	{
 		this.posX = _pX ;
 		this.posY = _pY ;
+		this.ort = Orientation.HAUT;
+	}
+	
+	public Position (int _pX, int _pY, Orientation _ort)
+	{
+		this.posX = _pX ;
+		this.posY = _pY ;
+		this.ort = _ort;
 	}
 	
 	public Position (String _coord)
@@ -73,6 +79,6 @@ public class Position
 	
 	public String toString ()
 	{
-		return ("[" + (char)('A'+this.posX) + ";" + String.valueOf(this.posY) + "]") ;
+		return ("[" + (char)('A'+this.posX) + ";" + String.valueOf(this.posY) + "]-" + ort) ;
 	}
 }

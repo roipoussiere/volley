@@ -2,6 +2,7 @@ package c;
 
 import java.awt.Color;
 
+import m.Orientation;
 import m.Strategie;
 import v_vues.Vue_Dessin;
 import v_vues.Vue_Terrain;
@@ -67,7 +68,7 @@ public class ControleurVueDessin {
 		int t = (int)(0.75*this.tc);
 		int posX = this.tc*(_pos.getPosX()+1) + this.tc/2 - t/2;
 		int posY = this.tc*(_pos.getPosY()+1) + this.tc/2 - t/2;
-		this.vd.affJeton(posX, posY, t, c);
+		this.vd.affJeton(posX, posY, _pos.getOrt(), t, c);
 	}
 	
 	public int getTC()

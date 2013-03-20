@@ -1,12 +1,12 @@
 package v_vues;
 
-import c.ControleurVueDessin;
-import c.Parametres;
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.text.Position;
+import java.awt.Color;
+import java.awt.Graphics;
+import javax.swing.JPanel;
 
-import m.Strategie;
+import m.Orientation;
+import m.Position;
+import c.ControleurVueDessin;
 
 /**
  * Vue de dessin, pour dessiner sur la fenetre de terrain.
@@ -38,12 +38,14 @@ public class Vue_Dessin extends JPanel
 		this.cvd.majDessin();
 	}
 	
-	public void affJeton(int _posX, int _posY, int taille, Color coul)
+	public void affJeton(int _posX, int _posY, Orientation ort, int taille, Color coul)
 	{
 		this.graph.setColor(coul);
 		this.graph.fillOval(_posX, _posY, taille, taille);
-		float angle1 = (float)Math.PI/4;
-		float angle2 = 3*(float)Math.PI/4;
+		float angle1 = (2*ort.ordinal()+1)*(float)Math.PI/4;
+		System.out.println(2*ort.ordinal()+1 + "pi/4");
+		float angle2 = (2*ort.ordinal()+3)*(float)Math.PI/4;
+		System.out.println(2*ort.ordinal()+3 + "pi/4");
 		int cX = _posX+taille/2;
 		int cY = _posY+taille/2;
 		this.graph.setColor(Color.WHITE);
