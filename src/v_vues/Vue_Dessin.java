@@ -42,6 +42,12 @@ public class Vue_Dessin extends JPanel
 	{
 		this.graph.setColor(coul);
 		this.graph.fillOval(_posX, _posY, taille, taille);
+		float angle1 = (float)Math.PI/4;
+		float angle2 = 3*(float)Math.PI/4;
+		int cX = _posX+taille/2;
+		int cY = _posY+taille/2;
+		this.graph.setColor(Color.WHITE);
+		this.graph.drawLine((int)(cX+Math.cos(angle1)*taille/2), (int)(cY+Math.sin(angle1)*taille/2), (int)(cX+Math.cos(angle2)*taille/2), (int)(cY+Math.sin(angle2)*taille/2));
 	}
 	
 	/**

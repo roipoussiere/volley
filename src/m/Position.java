@@ -1,13 +1,19 @@
 package m;
 
+import m.Strategie.TypeStrategie;
+
 /**
  * Position qu'occupe un élément à un temps donné.
  * @author Florian Garnier
  */
+
+enum Orientation {DROITE, HAUT, GAUCHE, BAS};
+
 public class Position
 {
 	private int posX ; // abscisse
 	private int posY ; // ordonnée
+	private Orientation ort;
 	
 	// Constructeurs
 	
@@ -33,6 +39,11 @@ public class Position
 	public int getPosY ()
 	{
 		return posY ;
+	}
+	
+	public Orientation getOrt ()
+	{
+		return this.ort;
 	}
 	
 	public String getPosition ()

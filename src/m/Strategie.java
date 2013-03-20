@@ -2,7 +2,7 @@ package m;
 
 public class Strategie
 {
-	public enum TypeStrategie {ATTAQUE, DEFENSE} ;
+	public enum TypeStrategie {ATTAQUE, DEFENSE};
 	
 	private Equipe eq1, eq2 ;
 	private TypeStrategie typeS ;
