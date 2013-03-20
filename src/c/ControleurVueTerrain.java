@@ -15,8 +15,8 @@ public class ControleurVueTerrain {
    */
   public ControleurVueTerrain(ControleurPrincipal _cp) {
     this.cp = _cp;
-    this.vt = new Vue_Terrain(this);
-    this.vt.setTaille();
+    this.vt = new Vue_Terrain(this, this.cp.getCVD());
+    this.vt.setTaille(this.cp.getP().isDemiT());
   }
   
   /**
@@ -31,21 +31,21 @@ public class ControleurVueTerrain {
     this.cp.getCVF().quitter();
   }
   
-  public ControleurPrincipal getCP() {
-	return this.cp;
-  }
-  
   	/**
 	 * Affectation du mode d'affichage du terrain.
 	 */
-	public void ms_terrain(boolean _demiT)
+	public void modeAff(boolean _demiT)
 	{
 		if (this.vt != null)
 		{
-			System.out.println("Demi terrain : " + _demiT);
+			System.out.println("Mode : demi terrain");
 			this.cp.getP().setDemiT(_demiT);
-			this.vt.setTaille();
+			this.vt.setTaille(this.cp.getP().isDemiT());
 			this.cp.getCVF().centrerFen();
+		}
+		else
+		{
+			System.out.println("Mode : terrain complet");			
 		}
 	}
 }

@@ -1,5 +1,6 @@
 package v_vues;
 
+import c.ControleurVueDessin;
 import c.ControleurVueTerrain;
 import java.awt.event.*;
 import javax.swing.*;
@@ -12,23 +13,22 @@ import javax.swing.*;
 public class Vue_Terrain extends JFrame implements WindowListener
 {
 	private ControleurVueTerrain cvt;
-	private Vue_Dessin vd;
+	private ControleurVueDessin cvd;
 	
 	/**
 	 * Création de la fenêtre représentant le terrain de volley.
 	 * @param _c Le contrôleur.
 	 */
-	public Vue_Terrain(ControleurVueTerrain _cvt)
+	public Vue_Terrain(ControleurVueTerrain _cvt, ControleurVueDessin _cvd)
 	{
 		super ("Terrain");
 		this.cvt = _cvt;
-		
+		this.cvd = _cvd;
 		this.addWindowListener(this); // On abonne la fenêtre à elle-même.
 		this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		this.setResizable(false);
 		
-		vd = new Vue_Dessin(this);
-	  this.setContentPane(vd);
+		this.setContentPane(this.cvd.getVD());
 	}
 	
 	/**
@@ -37,19 +37,17 @@ public class Vue_Terrain extends JFrame implements WindowListener
 	 */
 	public void dessiner(int _styleQ)
 	{
-		vd.setStyleQ(_styleQ);
-		vd.repaint();
+		this.cvd.setStyleQ(_styleQ);
+		this.cvd.getVD().repaint();
 	}
 	
 	/**
 	 * 
 	 */
-	public void setTaille()
+	public void setTaille(boolean _demiT)
 	{
-		boolean demiT = this.getCVT().getCP().getP().isDemiT();
-		
 		// Si demi-terrain : zone de 11*10 cases de 50px chacune = 550*500 + bordures de la fenêtre
-		if (demiT) {	
+		if (_demiT) {	
 			this.setSize(557, 578);
 			System.out.println("Redimentionnement en demi-terrain.");
 		}

@@ -1,5 +1,6 @@
 package v_vues;
 
+import c.ControleurVueDessin;
 import c.Parametres;
 import java.awt.*;
 import javax.swing.*;
@@ -14,23 +15,16 @@ import m.Strategie;
 @SuppressWarnings("serial")
 public class Vue_Dessin extends JPanel
 {
-	private Parametres p; // Pour éviter d'écrire this.vt.getCVT().getP();
-	private Strategie strategie; // Pour éviter d'écrire ...
-	private Vue_Terrain vt;
-
-	private int styleQ;
-	private int tc; // Taille d'une case
-	
+	private ControleurVueDessin cvd;
+	private Graphics graph;
 	/**
 	 * Constructeur de la vue de dessin.
-	 * @param _vt La fenêtre du terrain.
+	 * @param _cvd La fenêtre du terrain.
 	 */
-	public Vue_Dessin(Vue_Terrain _vt)
+	public Vue_Dessin(ControleurVueDessin _cvd)
 	{
-		this.vt = _vt;
-		this.p = this.vt.getCVT().getCP().getP();
-		this.strategie = this.vt.getCVT().getCP().getS();
-		//this.ta = this.vt.getC().getS().getTemps(vta); // affecte le temps actuel à this.ta
+		this.cvd = _cvd;
+		this.graph = null;
 	}
 	
 	/**
@@ -40,45 +34,14 @@ public class Vue_Dessin extends JPanel
 	@Override
 	public void paintComponent(Graphics _g)
 	{
-		// Affichage du quadrillage
-		if (this.p.isDemiT()) // demi terrain
-		{
-			this.tc = 50;
-			dessinerDT(_g);
-		}
-		else // terrain complet
-		{
-			this.tc = 35;
-			dessinerTC(_g);
-		}
-		
-		// affichage des élements
-		
-		for (int i=0 ; i<6 ; i++)
-		{
-			m.Position pos = this.strategie.getJoueurEq1(i).getDeplacementAuTemps(this.strategie.getTA());
-			int posX = pos.getPosX();
-			int posY = pos.getPosY();
-
-			System.out.println("elt à la position [" + posX + ";" + posY + "]");
-			element(_g, posX, posY);
-		}
+		this.graph = _g;
+		this.cvd.majDessin();
 	}
-	
-	/**
-	 * Setter du style de quadrillage (aucun, fin ou large).
-	 * @param _styleQ Le style de quadrillage (aucun, fin ou large).
-	 */
-	public void setStyleQ(int _styleQ)
+		
+	public void affJeton(int _posX, int _posY, int taille, Color coul)
 	{
-		this.styleQ = _styleQ;
-	}
-	
-	public void element(Graphics _g, int _posX, int _posY)
-	{
-		_g.setColor(this.p.getCoulE(0));
-		int t = (int)(0.75*this.tc);
-		_g.fillOval(this.tc*(_posX+1) + this.tc/2 - t/2, this.tc*(_posY+1) + this.tc/2 - t/2, t, t);
+		this.graph.setColor(coul);
+		this.graph.fillOval(_posX, _posY, taille, taille);
 	}
 	
 	/**
@@ -86,27 +49,28 @@ public class Vue_Dessin extends JPanel
 	 * @param _g Le composant graphique.
 	 * @param _styleQ Style de quadrillage : 0 pour aucun, 1 pour 3 carreaux, 2 pour 9 carreaux.
 	 */
-	private void dessinerDT(Graphics _g)
+	public void dessinerDT(int _styleQ, int _tc, Color _coulFond, Color _coulLigne, Color _coulQLarge, Color _coulQFin)
 	{
-		_g.setColor(p.getCFondBas());
-		_g.fillRect(0, 0, this.getWidth(), this.getHeight());
+		this.graph.setColor(_coulFond); //p.getCFondBas()
+		this.graph.fillRect(0, 0, this.getWidth(), this.getHeight());
 		
-		if (this.styleQ == 1)
+		// Si styleQ = 0 on ne dessine pas de lignes
+		if (_styleQ == 1)
 		{
-			dessinerQLarge(_g, tc, tc);
+			dessinerQLarge(_tc, _tc, _coulQLarge);
 		}
-		else if(this.styleQ == 2)
+		else if(_styleQ == 2)
 		{
-			dessinerQFin(_g, 0, tc);
-			dessinerQLarge(_g, tc, tc);
+			dessinerQFin(0, _tc, _coulQFin);
+			dessinerQLarge(_tc, _tc, _coulQLarge);
 		}
 		
-		_g.setColor(this.p.getCLignes());
-		_g.drawLine(tc, tc*10, tc*10, tc*10); // ligne bas
-		_g.drawLine(tc, tc, tc, tc*10); // ligne gauche
-		_g.drawLine(tc*10, tc, tc*10, tc*10); // ligne droite
-		_g.drawLine(tc, tc*4, tc*10, tc*4); // ligne d'attaque
-		_g.drawLine(tc, tc, tc*10, tc); // ligne de service
+		this.graph.setColor(_coulLigne);
+		this.graph.drawLine(_tc, _tc*10, _tc*10, _tc*10); // ligne bas
+		this.graph.drawLine(_tc, _tc, _tc, _tc*10); // ligne gauche
+		this.graph.drawLine(_tc*10, _tc, _tc*10, _tc*10); // ligne droite
+		this.graph.drawLine(_tc, _tc*4, _tc*10, _tc*4); // ligne d'attaque
+		this.graph.drawLine(_tc, _tc, _tc*10, _tc); // ligne de service
 	}
 	
 	/**
@@ -114,41 +78,37 @@ public class Vue_Dessin extends JPanel
 	 * @param _g Le composant graphique.
 	 * @param _styleQ Style de quadrillage : 0 pour aucun, 1 pour 3 carreaux, 2 pour 9 carreaux.
 	 */
-	private void dessinerTC(Graphics _g)
+	public void dessinerTC(int _styleQ, int _tc, Color _coulFond, Color _coulLignes, Color _coulQLarge, Color _coulQFin)
 	{
-		_g.setColor(p.getCFondHaut());
-		_g.fillRect(0, 0, this.getWidth(), this.getHeight()/2);
-		_g.setColor(p.getCFondBas());
-		_g.fillRect(0, this.getHeight()/2, this.getWidth(), this.getHeight());
+		this.graph.setColor(_coulFond);
+		this.graph.fillRect(0, 0, this.getWidth(), this.getHeight());
 		
-		if (this.styleQ == 1)
+		if (_styleQ == 1)
 		{
-			_g.setColor(this.p.getCQLarge());
-			dessinerQLarge(_g, 0, tc);
-			dessinerQLarge(_g, 10*tc, tc);
+			dessinerQLarge(0, _tc, _coulQLarge);
+			dessinerQLarge(10*_tc, _tc, _coulQLarge);
 		}
-		else if(this.styleQ == 2)
+		else if(_styleQ == 2)
 		{
-			_g.setColor(this.p.getCQFin());
-			dessinerQFin(_g, 0, tc);
-			dessinerQFin(_g, 10*tc, tc);
-			dessinerQLarge(_g, tc, tc);
-			dessinerQLarge(_g, 10*tc, tc);
+			dessinerQFin(0, _tc, _coulQFin);
+			dessinerQFin(10*_tc, _tc,_coulQFin);
+			dessinerQLarge(_tc, _tc, _coulQLarge);
+			dessinerQLarge(10*_tc, _tc, _coulQLarge);
 
 		}
 		
-		_g.setColor(this.p.getCLignes());
+		this.graph.setColor(_coulLignes);
 		
 		// lignes verticales
-		_g.drawLine(tc, tc, tc*10, tc); // limite haut
-		_g.drawLine(tc, tc*7, tc*10, tc*7); // attaque haut
-		_g.drawLine(tc, tc*10, tc*10, tc*10); // ligne de service
-		_g.drawLine(tc, tc*13, tc*10, tc*13); // attaque bas
-		_g.drawLine(tc, tc*19, tc*10, tc*19); // ligne bas
+		this.graph.drawLine(_tc, _tc, _tc*10, _tc); // limite haut
+		this.graph.drawLine(_tc, _tc*7, _tc*10, _tc*7); // attaque haut
+		this.graph.drawLine(_tc, _tc*10, _tc*10, _tc*10); // ligne de service
+		this.graph.drawLine(_tc, _tc*13, _tc*10, _tc*13); // attaque bas
+		this.graph.drawLine(_tc, _tc*19, _tc*10, _tc*19); // ligne bas
 		
 		//lignes verticales
-		_g.drawLine(tc, tc, tc, tc*19); // ligne gauche
-		_g.drawLine(tc*10, tc, tc*10, tc*19); // ligne droite
+		this.graph.drawLine(_tc, _tc, _tc, _tc*19); // ligne gauche
+		this.graph.drawLine(_tc*10, _tc, _tc*10, _tc*19); // ligne droite
 	}
 	
 	/**
@@ -157,17 +117,18 @@ public class Vue_Dessin extends JPanel
 	 * @param _posY La position verticale du quadrillage.
 	 * @param _tc La taille d'un carreau, qui déterminera celle du quadrillage.
 	 */
-	private void dessinerQFin(Graphics _g, int _posY, int _tc)
+	public void dessinerQFin(int _posY, int _tc, Color _coulQFin)
 	{
 		int nbX = 11;
 		int nbY = 11;
 		
-		_g.setColor(this.p.getCQFin());
+		this.graph.setColor(_coulQFin);
+		
 		for (int i=0 ; i<nbX+1 ; i++) {
-			_g.drawLine(i*_tc, _posY, i*_tc, nbY*_tc + _posY);
+			this.graph.drawLine(i*_tc, _posY, i*_tc, nbY*_tc + _posY);
 		}
 		for (int i=0 ; i<nbY+1 ; i++) {
-			_g.drawLine(0, _posY + i*_tc, nbX*_tc, _posY + i*_tc);
+			this.graph.drawLine(0, _posY + i*_tc, nbX*_tc, _posY + i*_tc);
 		}
 	}
 	
@@ -177,16 +138,16 @@ public class Vue_Dessin extends JPanel
 	 * @param _posY La position verticale du quadrillage.
 	 * @param _tc La taille d'un carreau, qui déterminera celle du quadrillage.
 	 */
-	private void dessinerQLarge(Graphics _g, int _posY, int _tc)
+	private void dessinerQLarge(int _posY, int _tc, Color _coulQLarge)
 	{
-		_g.setColor(this.p.getCQLarge());
+		this.graph.setColor(_coulQLarge);
 
 		// lignes horizontales
-		_g.drawLine(_tc, _posY + _tc*6, _tc*10, _posY + _tc*6);
-		_g.drawLine(_tc, _posY + _tc*3, _tc*10, _posY + _tc*3);
+		this.graph.drawLine(_tc, _posY + _tc*6, _tc*10, _posY + _tc*6);
+		this.graph.drawLine(_tc, _posY + _tc*3, _tc*10, _posY + _tc*3);
 		
 		// lignes verticales
-		_g.drawLine(_tc*4, _posY, _tc*4, _posY + _tc*9);
-		_g.drawLine(_tc*7, _posY, _tc*7, _posY + _tc*9);
+		this.graph.drawLine(_tc*4, _posY, _tc*4, _posY + _tc*9);
+		this.graph.drawLine(_tc*7, _posY, _tc*7, _posY + _tc*9);
 	}
 }

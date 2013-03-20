@@ -17,8 +17,9 @@ public class ControleurPrincipal {
 	private ControleurVueEdition cve;
 	private ControleurVueLecture cvl;
 	private ControleurVueJoueurs cvj;
-	private ControleurVueFenetre cvf;
+	private ControleurVueDessin cvd;
 	private ControleurVueTerrain cvt;
+	private ControleurVueFenetre cvf;
 
   /**
    * Constructeur de ControleurPrincipal.
@@ -31,10 +32,10 @@ public class ControleurPrincipal {
 	this.cvl = new ControleurVueLecture(this);
 	// Vueterrain est crée mais le terrain est affiché à la création de VueFenetre
 	// pour éviter de voir la fenêtre qui se déplace.
+	this.cvj = null; // vueJoueurs n'être pas crée maintenant, mais quand on clique sur le bouton.
+	this.cvd = new ControleurVueDessin(this);
 	this.cvt = new ControleurVueTerrain(this);
 	this.cvf = new ControleurVueFenetre(this);
-	this.cvj = null;
-	// vueJoueurs n'être pas crée maintenant, mais quand on clique sur le bouton.
   }
 
   /**
@@ -59,6 +60,14 @@ public class ControleurPrincipal {
      return cve;
  }
  
+ /**
+ * Getters de ControleurVueDessin.
+ * @return Le controleur de VueDessin.
+ */
+public ControleurVueDessin getCVD() {
+    return cvd;
+}
+
  /**
  * Getters de ControleurVueLecture.
  * @return Le controleur de VueLecture.
