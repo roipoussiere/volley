@@ -37,7 +37,7 @@ public class Vue_Dessin extends JPanel
 		this.graph = _g;
 		this.cvd.majDessin();
 	}
-		
+	
 	public void affJeton(int _posX, int _posY, int taille, Color coul)
 	{
 		this.graph.setColor(coul);

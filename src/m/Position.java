@@ -57,4 +57,11 @@ public class Position
 		this.posX = _coord.charAt(0) ;
 		this.posY = _coord.charAt(1) ;
 	}
+	
+	// Affichage
+	
+	public String toString ()
+	{
+		return ("[" + (char)('A'+this.posX) + ";" + String.valueOf(this.posY) + "]") ;
+	}
 }

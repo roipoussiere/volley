@@ -42,19 +42,12 @@ public class ControleurVueDessin {
 		for (int i=0 ; i<6 ; i++)
 		{
 			m.Position posE1 = this.cp.getS().getJoueurEq1(i).getDeplacementAuTemps(this.cp.getS().getTA());
+			jeton(posE1);
+			System.out.println("elt de E1 à la position " + posE1);
+
 			m.Position posE2 = this.cp.getS().getJoueurEq2(i).getDeplacementAuTemps(this.cp.getS().getTA());
-
-			int posX = posE1.getPosX();
-			int posY = posE1.getPosY();
-
-			System.out.println("elt de E1 à la position [" + posX + ";" + posY + "]");
-			jeton(posX, posY);
-
-			posX = posE2.getPosX();
-			posY = posE2.getPosY();
-
-			System.out.println("elt de E2 à la position [" + posX + ";" + posY + "]");
-			jeton(posX, posY);
+			jeton(posE2);
+			System.out.println("elt de E2 à la position " + posE2);
 		}
 
 	}
@@ -68,12 +61,12 @@ public class ControleurVueDessin {
 		this.styleQ = _styleQ;
 	}
 	
-	public void jeton(int _posX, int _posY)
+	public void jeton(m.Position _pos)
 	{
 		Color c = this.cp.getP().getCoulE(0);
 		int t = (int)(0.75*this.tc);
-		int posX = this.tc*(_posX+1) + this.tc/2 - t/2;
-		int posY = this.tc*(_posY+1) + this.tc/2 - t/2;
+		int posX = this.tc*(_pos.getPosX()+1) + this.tc/2 - t/2;
+		int posY = this.tc*(_pos.getPosY()+1) + this.tc/2 - t/2;
 		this.vd.affJeton(posX, posY, t, c);
 	}
 	
