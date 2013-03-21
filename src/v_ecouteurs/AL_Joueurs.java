@@ -3,10 +3,15 @@ package v_ecouteurs;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import v_vues.Vue_Joueurs;
 
-
+/**
+ * Vue contenant les élements de l'onglet Joueur.
+ * @author Xavier Chalut v1.1
+ */
 
 public class AL_Joueurs implements ActionListener
 {
@@ -22,6 +27,7 @@ public class AL_Joueurs implements ActionListener
 	{
 		if(_ae.getSource().equals(this.vj.getJcbTout1())) // checkbox selection de tous les joueurs de l'équipe 1
 		{
+			this.vj.getCVJ().getequipesSauvegarde1(false);
 
 			if(this.vj.getJcbTout1().isSelected()==true)
 			{
@@ -48,6 +54,7 @@ public class AL_Joueurs implements ActionListener
 		}
 		if(_ae.getSource().equals(this.vj.getJcbTout2())) // checkbox selection de tous les joueurs de l'équipe 2
 		{
+			this.vj.getCVJ().getequipesSauvegarde2(false);
 
 			if(this.vj.getJcbTout2().isSelected()==true)
 			{
@@ -75,6 +82,8 @@ public class AL_Joueurs implements ActionListener
 		
 		if(_ae.getSource().equals(this.vj.getMeneurPresentEqu1())) // checkbox selection de l'activation du meneur
 		{
+			this.vj.getCVJ().getequipesSauvegarde1(false);
+			
 			if(this.vj.getMeneurPresentEqu1().isSelected()==false)
 			{
 				// Active toutes les cases
@@ -96,6 +105,8 @@ public class AL_Joueurs implements ActionListener
 		
 		if(_ae.getSource().equals(this.vj.getMeneurPresentEqu2())) // checkbox selection de l'activation du meneur
 		{
+			this.vj.getCVJ().getequipesSauvegarde2(false);
+			
 			if(this.vj.getMeneurPresentEqu2().isSelected()==false)
 			{
 				// Desactive toutes les cases
@@ -119,12 +130,16 @@ public class AL_Joueurs implements ActionListener
 		if(_ae.getSource().equals(this.vj.getJbouton1()))
 		{
 			this.vj.getCVJ().EnregistreEqu1();
+			this.vj.getCVJ().getequipesSauvegarde1(true);
 		}
 		
 		if(_ae.getSource().equals(this.vj.getJbouton2()))
 		{
 			this.vj.getCVJ().EnregistreEqu2();
+			this.vj.getCVJ().getequipesSauvegarde2(true);
 		}
+		
+
 	}
 
 }

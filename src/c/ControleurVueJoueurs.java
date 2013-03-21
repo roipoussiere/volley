@@ -7,8 +7,8 @@ import v_vues.Vue_Fenetre;
 import v_vues.Vue_Joueurs;
 
 /**
- * Contrôleur de la vue Édition.
- * @author Xavier
+ * Contrôleur de la vue joueur.
+ * @author Xavier v1.1
  */
 
 public class ControleurVueJoueurs {
@@ -16,6 +16,8 @@ public class ControleurVueJoueurs {
 	private Vue_Joueurs vj ;
 	private Vue_Fenetre vf ;
 	private ControleurPrincipal cp;
+	private boolean estSauvegardeEqu1 = true;
+	private boolean estSauvegardeEqu2 = true;
 	
 	public ControleurVueJoueurs (ControleurPrincipal _cp)
 	{
@@ -47,6 +49,27 @@ public class ControleurVueJoueurs {
 		}
 		//Affichage de message de confirmation
 				JOptionPane.showMessageDialog(vj,"Configuration de l'equipe 2 enregistrée");
+	}
+	
+	public void getequipesSauvegarde1(boolean _save)
+	{
+		estSauvegardeEqu1 =  _save;
+		System.out.println("Le getequipesSauvegarde1 est :"+_save);
+	}
+	
+	public void getequipesSauvegarde2(boolean _save)
+	{
+		estSauvegardeEqu2 = _save;
+	}
+	
+	public int estEnregistre()
+	{
+		if(!estSauvegardeEqu1)
+			return 1;
+		else if(!estSauvegardeEqu2)
+			return 2;
+		else
+			return 0;
 	}
 	
 	public Strategie getStrategie()
