@@ -17,6 +17,7 @@ public class Parametres
 	private Color cFond; // Couleur de fond du terrain.
 	private Color cBordures; // Couleur de la bordure du terrain.
 	private Color cLignes; // Couleur des lignes de base (limites, ligne d'attaque).
+	private Color coulBallon;
 	
 	// Nom des élements
 	private Joueur tabJE1[] = new Joueur[6];
@@ -37,13 +38,14 @@ public class Parametres
 	public Parametres()
 	{
 		// Style de quadrillage
-		styleQL = 0;
-		styleQE = 2;
+		this.styleQL = 0;
+		this.styleQE = 2;
 		
 		// Couleurs
-		cFond = hexToRgb("#dc7814");
-		cBordures = hexToRgb("#009900");
-		cLignes = hexToRgb("#fafafa");
+		this.cFond = hexToRgb("#dc7814");
+		this.cBordures = hexToRgb("#009900");
+		this.cLignes = hexToRgb("#fafafa");
+		this.coulBallon = hexToRgb("#FFCC33");
 		
 		// Nom des élements
 	
@@ -185,6 +187,23 @@ public class Parametres
 	public Color getCoulE(int _idE)
 	{
 		return this.tabCoulE[_idE];
+	}
+	
+	/**
+	 * Setter de la couleur du ballon.
+	 * @param _coulB La couleur du ballon.
+	 */
+	public void setCBallon(Color _coulB)
+	{
+		this.coulBallon = _coulB;
+	}
+	
+	/**
+	 * Getter de la couleur du ballon.
+	 * @return La couleur du ballon.	*/
+	public Color getCBallon()
+	{
+		return this.coulBallon;
 	}
 	
 	/**

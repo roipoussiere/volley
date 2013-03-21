@@ -49,21 +49,24 @@ public class Vue_Dessin extends JPanel
 		this.graph.setColor(Color.BLACK);
 		this.graph.draw(new Ellipse2D.Float(_posX, _posY, _taille, _taille));
 		
-		// Création de la barre pour l'orientation
-		float angle1 = (2*_ort+1)*(float)Math.PI/4;
-		float angle2 = (2*_ort+3)*(float)Math.PI/4;
-		
 		// Coordonnées du centre du cercle
 		float cX = _posX+_taille/2;
 		float cY = _posY+_taille/2;
-				
-		float x1 = (float) (cX+Math.cos(angle1)*_taille/2);
-		float y1 = (float) (cY+Math.sin(angle1)*_taille/2);
-		float x2 = (float) (cX+Math.cos(angle2)*_taille/2);
-		float y2 =(float) (cY+Math.sin(angle2)*_taille/2);
 		
-		// Dessin de la barre
-		this.graph.draw(new Line2D.Float(x1, y1, x2, y2));
+		if (_ort != 4)
+		{
+			// Création de la barre pour l'orientation
+			float angle1 = (2*_ort+1)*(float)Math.PI/4;
+			float angle2 = (2*_ort+3)*(float)Math.PI/4;
+								
+			float x1 = (float) (cX+Math.cos(angle1)*_taille/2);
+			float y1 = (float) (cY+Math.sin(angle1)*_taille/2);
+			float x2 = (float) (cX+Math.cos(angle2)*_taille/2);
+			float y2 =(float) (cY+Math.sin(angle2)*_taille/2);
+			
+			// Dessin de la barre
+			this.graph.draw(new Line2D.Float(x1, y1, x2, y2));
+		}
 		
 		// Dessin de l'id
 		this.graph.drawString(_id, (int)(cX-0.19*_taille), (int)(cY+0.15*_taille));

@@ -4,5 +4,6 @@ public enum Orientation {
 	BAS,
 	GAUCHE,
 	HAUT,
-	DROITE;
+	DROITE,
+	NULL;
 }

@@ -1,6 +1,8 @@
 package c;
 
 import java.awt.Color;
+
+import m.Orientation;
 import v_vues.Vue_Dessin;
 
 public class ControleurVueDessin {
@@ -46,7 +48,9 @@ public class ControleurVueDessin {
 			jeton(posE2, this.cp.getS().getJoueurEq2(i).getIdJ());
 			System.out.println("elt de E2 à la position " + posE2);
 		}
-
+		
+		// Affichage du ballon
+		jeton(this.cp.getS().getBallon(), "");
 	}
 	
 	/**
@@ -61,6 +65,11 @@ public class ControleurVueDessin {
 	public void jeton(m.Position _pos, String _nomAff)
 	{
 		Color c = this.cp.getP().getCoulE(0);
+		if (_pos.getOrt() == Orientation.NULL)
+		{
+			c = this.cp.getP().getCBallon();
+		}
+			
 		float t = (float)0.75*this.tc;
 		float posX = this.tc*(_pos.getPosX()+1) + this.tc/2 - t/2;
 		float posY = this.tc*(_pos.getPosY()+1) + this.tc/2 - t/2;
