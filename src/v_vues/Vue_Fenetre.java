@@ -1,10 +1,6 @@
 package v_vues;
 
 import c.ControleurVueFenetre;
-import c.ControleurVueEdition;
-import c.ControleurVueJoueurs;
-import c.ControleurVueLecture;
-
 import java.awt.event.*;
 import javax.swing.*;
 import v_ecouteurs.AL_Fenetre;

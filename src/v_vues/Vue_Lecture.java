@@ -1,8 +1,6 @@
 package v_vues;
 
-import c.ControleurPrincipal;
 import c.ControleurVueLecture;
-
 import java.awt.*;
 import javax.swing.*;
 import v_utilitaires.SelectionTemps;

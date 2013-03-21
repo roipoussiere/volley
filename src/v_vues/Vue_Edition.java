@@ -26,7 +26,7 @@ public class Vue_Edition extends JPanel
 
 	// Composants de la fenetre
 	private SelectionTemps selecTps ; // permet de choisir le temps à gérer
-	private JComboBox selecEquipe ; // permet de sélectionner l'équipe à déplacer
+	private JComboBox<String> selecEquipe ; // permet de sélectionner l'équipe à déplacer
 	private SaisieDeplacementAvecOrientation deplacementJ[] ; // tableau contenant les panel de saisie des déplacements des joueurs
 	private SaisieDeplacement deplacementB ; // contient le panel de saisie du déplacement du ballon
 	private JButton enregistrer ; // bouton enregistrer
@@ -59,7 +59,7 @@ public class Vue_Edition extends JPanel
 		this.add (this.selecTps, gbc) ;
 
 		// Sélection de l'équipe
-		this.selecEquipe = new JComboBox () ;
+		this.selecEquipe = new JComboBox<String> () ;
 		this.selecEquipe.setEditable (false) ;
 		this.selecEquipe.addItem ("Équipe 1") ;
 		this.selecEquipe.addItem ("Équipe 2") ;
@@ -160,7 +160,7 @@ public class Vue_Edition extends JPanel
 	 * Getter de la liste des équipes.
 	 * @return La liste des équipes.
 	 */
-	public JComboBox getListEquipe ()
+	public JComboBox<String> getListEquipe ()
 	{
 		return selecEquipe ;
 	}

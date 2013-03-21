@@ -1,7 +1,6 @@
 package c;
 
 import javax.swing.JOptionPane;
-
 import m.*;
 import v_vues.Vue_Edition;
 

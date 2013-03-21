@@ -1,16 +1,6 @@
 package v_ecouteurs;
 
 import java.awt.event.*;
-
-import javax.swing.JOptionPane;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.text.BadLocationException;
-
-import m.Joueur;
-import m.Position;
-import m.Equipe;
-
 import v_vues.Vue_Edition;
 
 /**

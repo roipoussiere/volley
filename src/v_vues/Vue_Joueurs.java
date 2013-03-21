@@ -1,16 +1,11 @@
 
 package v_vues;
 
-
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-
 import javax.swing.*;
-
 import m.Equipe;
-
-import c.ControleurVueEdition;
 import c.ControleurVueJoueurs;
 import v_ecouteurs.AL_Joueurs;
 import v_utilitaires.SaisieJoueur;
@@ -120,9 +115,7 @@ public class Vue_Joueurs extends JDialog
 		gbc.insets = new Insets (5, 12, 5, 0) ;
 		jp1.add (this.jbouton1,gbc) ;
 		
-		
 		// Deuxieme onglet
-		
 		
 		this.jlNom = new JLabel("Nom") ;
 		gbc.gridx = 1 ; gbc.gridy = 0 ; // 

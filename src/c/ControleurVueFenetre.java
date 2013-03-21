@@ -2,7 +2,6 @@ package c;
 
 import java.awt.*;
 import javax.swing.*;
-import m.Strategie;
 import v_vues.*;
 
 /**
