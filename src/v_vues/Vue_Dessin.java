@@ -89,7 +89,7 @@ public class Vue_Dessin extends JPanel
 			dessinerQFin(0, _tc, _coulQFin);
 			dessinerQLarge(_tc, _tc, _coulQLarge);
 			
-			dessinerCoords(_tc, _coulCoords);
+			dessinerCoords(_tc, _coulCoords, true);
 		}
 		
 		this.graph.setColor(_coulLigne);
@@ -122,7 +122,7 @@ public class Vue_Dessin extends JPanel
 			dessinerQFin(10*_tc, _tc,_coulQFin);
 			dessinerQLarge(_tc, _tc, _coulQLarge);
 			dessinerQLarge(10*_tc, _tc, _coulQLarge);
-			dessinerCoords(_tc, _coulCoords);
+			dessinerCoords(_tc, _coulCoords, false);
 		}
 		
 		this.graph.setColor(_coulLignes);
@@ -139,15 +139,17 @@ public class Vue_Dessin extends JPanel
 		this.graph.drawLine(_tc*10, _tc, _tc*10, _tc*19); // ligne droite
 	}
 	
-	private void dessinerCoords(int _tc, Color _coulCoords)
+	private void dessinerCoords(int _tc, Color _coulCoords, boolean _isDT)
 	{
 		this.graph.setColor(_coulCoords);
-		
+		int nbCarH = 9; // Nombre de carreaux en hauteu
+		if (!_isDT)
+			nbCarH = 18;
 		for (int i=0 ; i<9 ; i++)
 		{
 			this.graph.drawString(String.valueOf((char) (i+'A')), (int) (_tc*(i+1.4)), (int) (_tc*0.6));
 		}
-		for (int i=0 ; i<9 ; i++)
+		for (int i=0 ; i<nbCarH ; i++)
 		{
 			this.graph.drawString(String.valueOf(i), (int) (_tc*0.4), (int) (_tc*(i+1.6)));
 		}
