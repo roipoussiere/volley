@@ -17,7 +17,7 @@ public class SaisieDeplacementAvecOrientation extends SaisieDeplacement
 		GridBagConstraints gbc = new GridBagConstraints () ;
 		
 		// Création de la liste de sélection de l'orientation
-		this.listeOrientation = new JComboBox<Orientation> (new Orientation[] {Orientation.GAUCHE, Orientation.BAS, Orientation.DROITE, Orientation.HAUT}) ;
+		this.listeOrientation = new JComboBox<Orientation> (new Orientation[] {Orientation.AUCUNE, Orientation.GAUCHE, Orientation.BAS, Orientation.DROITE, Orientation.HAUT}) ;
 		gbc.gridx = 3 ; gbc.gridy = 0 ;
 		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.LINE_START ;

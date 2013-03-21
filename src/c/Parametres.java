@@ -17,6 +17,7 @@ public class Parametres
 	private Color cFond; // Couleur de fond du terrain.
 	private Color cBordures; // Couleur de la bordure du terrain.
 	private Color cLignes; // Couleur des lignes de base (limites, ligne d'attaque).
+	private Color coulJoueur;
 	private Color coulBallon;
 	
 	// Nom des élements
@@ -25,8 +26,6 @@ public class Parametres
 	
 	// Etat des élements
 	private boolean tabEtatE[] = new boolean[13];
-	
-	private Color tabCoulE[] = new Color[13];
 	
 	// Divers
 	private String cheminFichier; // Chemin du fichier à lire ou éditer.
@@ -46,6 +45,7 @@ public class Parametres
 		this.cBordures = hexToRgb("#009900");
 		this.cLignes = hexToRgb("#fafafa");
 		this.coulBallon = hexToRgb("#FFCC33");
+		this.coulJoueur = hexToRgb("#AAAAAA");
 		
 		// Nom des élements
 	
@@ -87,27 +87,6 @@ public class Parametres
 		this.tabEtatE[10] = false;
 		this.tabEtatE[11] = false;
 		this.tabEtatE[12] = false;
-		
-		// Couleur des éléments
-		
-		// Ballon
-		this.tabCoulE[0] = new Color(180, 180, 180);
-		
-		// Joueurs équipe 1
-		this.tabCoulE[1] = new Color(70, 70, 70); // Meneur
-		this.tabCoulE[2] = new Color(50, 50, 50);
-		this.tabCoulE[3] = new Color(50, 50, 50);
-		this.tabCoulE[4] = new Color(50, 50, 50);
-		this.tabCoulE[5] = new Color(50, 50, 50);
-		this.tabCoulE[6] = new Color(50, 50, 50);
-		
-		// Joueurs équipe 2
-		this.tabCoulE[7] = new Color(70, 70, 70); // Meneur
-		this.tabCoulE[8] = new Color(50, 50, 50);
-		this.tabCoulE[9] = new Color(50, 50, 50);
-		this.tabCoulE[10] = new Color(50, 50, 50);
-		this.tabCoulE[11] = new Color(50, 50, 50);
-		this.tabCoulE[12] = new Color(50, 50, 50);
 		
 		// Divers
 		this.demiT = true;
@@ -178,15 +157,22 @@ public class Parametres
 	{
 		this.tabEtatE[_idE] = _etatE;
 	}
-
-		/**
-	 * Getter de l'état d'un élement.
-	 * @return Un booléen représentant l'état d'un élement.<br/>
-	 * Avec true : l'élement est présent sur le terrain et false : l'élement n'apparait pas sur le terrain.
+	
+	/**
+	 * Setter de la couleur du ballon.
+	 * @param _coulB La couleur du ballon.
 	 */
-	public Color getCoulE(int _idE)
+	public void setCJoueur(Color _coulJ)
 	{
-		return this.tabCoulE[_idE];
+		this.coulJoueur = _coulJ;
+	}
+	
+	/**
+	 * Getter de la couleur du ballon.
+	 * @return La couleur du ballon.	*/
+	public Color getCJoueur()
+	{
+		return this.coulJoueur;
 	}
 	
 	/**
@@ -205,17 +191,7 @@ public class Parametres
 	{
 		return this.coulBallon;
 	}
-	
-	/**
-	 * Setter de l'état d'un élement.
-	 * @param etatE Un booléen représentant l'état d'un élement.<br/>
-	 * Avec true : l'élement est présent sur le terrain et false : l'élement n'apparait pas sur le terrain.
-	 */
-	public void setCoulE(Color _coulE, int _idE)
-	{
-		this.tabCoulE[_idE] = _coulE;
-	}
-	
+
 	/**
 	 * Getter du chemin du fichier à lire ou éditer.
 	 * @return Le chemin du fichier à lire ou éditer.

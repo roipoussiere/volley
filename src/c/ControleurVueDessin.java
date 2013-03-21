@@ -3,6 +3,7 @@ package c;
 import java.awt.Color;
 
 import m.Orientation;
+import m.TypeElt;
 import v_vues.Vue_Dessin;
 
 public class ControleurVueDessin {
@@ -36,21 +37,32 @@ public class ControleurVueDessin {
 			this.vd.dessinerTC(this.styleQ, this.tc, this.cp.getP().getCFond(), this.cp.getP().getCBordures(), this.cp.getP().getCLignes());
 		}
 		
-		// affichage des élements
+		// affichage des joueurs équipe 1
 		
 		for (int i=0 ; i<6 ; i++)
 		{
-			m.Position posE1 = this.cp.getS().getJoueurEq1(i).getDeplacementAuTemps(this.cp.getS().getTA());
-			jeton(posE1, this.cp.getS().getJoueurEq1(i).getIdJ());
-			System.out.println("elt de E1 à la position " + posE1);
-
-			m.Position posE2 = this.cp.getS().getJoueurEq2(i).getDeplacementAuTemps(this.cp.getS().getTA());
-			jeton(posE2, this.cp.getS().getJoueurEq2(i).getIdJ());
-			System.out.println("elt de E2 à la position " + posE2);
+			TypeElt type = TypeElt.JOUEUR;
+			if (this.cp.getS().getJoueurEq1(i).isMeneur())
+				type = TypeElt.MENEUR;
+			
+			m.Position pos = this.cp.getS().getJoueurEq1(i).getDeplacementAuTemps(this.cp.getS().getTA());
+			jeton(pos, this.cp.getS().getJoueurEq1(i).getIdJ(), type);
+		}
+		
+		// affichage des joueurs équipe 2
+		
+		for (int i=0 ; i<6 ; i++)
+		{
+			TypeElt type = TypeElt.JOUEUR;
+			if (this.cp.getS().getJoueurEq2(i).isMeneur())
+				type = TypeElt.MENEUR;
+			
+			m.Position pos = this.cp.getS().getJoueurEq2(i).getDeplacementAuTemps(this.cp.getS().getTA());
+			jeton(pos, this.cp.getS().getJoueurEq2(i).getIdJ(), type);
 		}
 		
 		// Affichage du ballon
-		jeton(this.cp.getS().getBallon(), "");
+		jeton(this.cp.getS().getBallon(), "", TypeElt.BALLON);
 	}
 	
 	/**
@@ -62,10 +74,14 @@ public class ControleurVueDessin {
 		this.styleQ = _styleQ;
 	}
 	
-	public void jeton(m.Position _pos, String _nomAff)
+	public void jeton(m.Position _pos, String _nomAff, TypeElt _type)
 	{
-		Color c = this.cp.getP().getCoulE(0);
-		if (_pos.getOrt() == Orientation.NULL)
+		Color c = this.cp.getP().getCJoueur();
+		if (_type == TypeElt.MENEUR)
+		{
+			c = c.darker();
+		}
+		else if (_type == TypeElt.BALLON)
 		{
 			c = this.cp.getP().getCBallon();
 		}

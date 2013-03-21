@@ -21,7 +21,12 @@ public class Strategie
 		Joueur e1[] = new Joueur[6];
 		Joueur e2[] = new Joueur[6];
 		
-		for (int i =0 ; i<6 ; i++)
+		e1[0] = cp.getP().getJE1(0);
+		e1[0].setMeneur(true);
+		e2[0] = cp.getP().getJE2(0);
+		e2[0].setMeneur(true);
+		
+		for (int i = 1 ; i<6 ; i++)
 		{
 			e1[i] = cp.getP().getJE1(i);
 			e2[i] = cp.getP().getJE2(i);
@@ -29,7 +34,7 @@ public class Strategie
 		
 		this.eq1 = new Equipe(e1) ;
 		this.eq2 = new Equipe(e2) ;
-		this.ballon = new m.Position(4, 9, Orientation.NULL);
+		this.ballon = new m.Position(4, 9, Orientation.AUCUNE);
 		
 		this.typeS = TypeStrategie.ATTAQUE ; // Par défaut --> A CHANGER (?)
 		this.tempsActuel = 0; // Temps à 0 à la création de la stratégie

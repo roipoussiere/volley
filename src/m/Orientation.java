@@ -5,5 +5,5 @@ public enum Orientation {
 	HAUT,
 	DROITE,
 	BAS,
-	NULL; // Permet de reconnaitre le ballon
+	AUCUNE; // Permet de reconnaitre le ballon
 }

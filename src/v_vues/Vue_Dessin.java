@@ -6,7 +6,6 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.Arc2D;
 import java.awt.geom.Ellipse2D;
-import java.awt.geom.Line2D;
 import javax.swing.JPanel;
 import c.ControleurVueDessin;
 
@@ -66,7 +65,7 @@ public class Vue_Dessin extends JPanel
 		}
 		
 		// Dessin de l'id
-		this.graph.drawString(_id, (int)(_posX+0.31*_taille), (int)(_posY+0.65*_taille));
+		this.graph.drawString(_id, (int)(_posX+0.26*_taille), (int)(_posY+0.68*_taille));
 	}
 	
 	/**
