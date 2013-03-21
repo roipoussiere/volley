@@ -1,22 +1,29 @@
 
 package v_vues;
 
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
 import javax.swing.*;
+
 import m.Equipe;
+
+import c.ControleurVueEdition;
 import c.ControleurVueJoueurs;
 import v_ecouteurs.AL_Joueurs;
 import v_utilitaires.SaisieJoueur;
 
 
 /**
- * Vue contenant les élements de l'onglet Joueur.
- * @author Xavier Chalut
+ * Listener de vue_joueur.
+ * @author Xavier Chalut v1.1
  */
 @SuppressWarnings("serial")
-public class Vue_Joueurs extends JDialog
+public class Vue_Joueurs extends JDialog implements WindowListener
 {
 	private ControleurVueJoueurs cvj;
 	
@@ -115,7 +122,9 @@ public class Vue_Joueurs extends JDialog
 		gbc.insets = new Insets (5, 12, 5, 0) ;
 		jp1.add (this.jbouton1,gbc) ;
 		
+		
 		// Deuxieme onglet
+		
 		
 		this.jlNom = new JLabel("Nom") ;
 		gbc.gridx = 1 ; gbc.gridy = 0 ; // 
@@ -200,6 +209,8 @@ public class Vue_Joueurs extends JDialog
 		
 		for(i=0 ; i < this.joueur1.length ; i++)
 			this.joueur1[i].getNomJoueur().addActionListener(evj) ;
+		
+		this.addWindowListener(this);
 		
 		majVueJoueurs();
 	}
@@ -294,6 +305,35 @@ public class Vue_Joueurs extends JDialog
 	public void setJoueur2(SaisieJoueur[] joueur)
 	{
 		this.joueur2 = joueur;
+	}
+	
+	//Methode de windowsListener
+
+	public void windowOpened     (WindowEvent arg0)		{}
+	public void windowClosed     (WindowEvent arg0)		{}
+	public void windowIconified  (WindowEvent arg0)		{}
+	public void windowDeiconified(WindowEvent arg0)		{}
+	public void windowActivated  (WindowEvent arg0)		{}
+	public void windowDeactivated(WindowEvent arg0)		{}
+	public void windowClosing    (WindowEvent arg0)		
+	{
+		int i = 0 ;
+		if(cvj.estEnregistre()==1)
+		{
+			i = JOptionPane.showConfirmDialog(this, "Les modifications de l'equipe 1 ne sont pas enregistre\nEtes-vous sur de vouloir quitter ?","Fermer", JOptionPane.YES_NO_OPTION);
+		}
+		else if (cvj.estEnregistre()==2)
+		{
+			i = JOptionPane.showConfirmDialog(this, "Les modifications de l'equipe 2 ne sont pas enregistre\nEtes-vous sur de vouloir quitter ?","Fermer", JOptionPane.YES_NO_OPTION);
+		}
+		System.out.println(i);
+		switch(i)
+		{
+			case 0 : {this.setVisible(false);}
+			case 1 : {}
+			case 2 : {}
+			case -1 : {}
+		}
 	}
 
 	
