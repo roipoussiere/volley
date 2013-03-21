@@ -26,12 +26,12 @@ public class ControleurVueDessin {
 		if (this.cp.getP().isDemiT()) // demi terrain
 		{
 			this.tc = 50;
-			this.vd.dessinerDT(this.styleQ, this.tc, this.cp.getP().getCFond(), this.cp.getP().getCLignes(), this.cp.getP().getCQLarge(), this.cp.getP().getCQFin());
+			this.vd.dessinerDT(this.styleQ, this.tc, this.cp.getP().getCFond(), this.cp.getP().getCLignes(), this.cp.getP().getCQLarge(), this.cp.getP().getCQFin(), this.cp.getP().getCCoords());
 		}
 		else // terrain complet
 		{
 			this.tc = 35;
-			this.vd.dessinerTC(this.styleQ, this.tc, this.cp.getP().getCFond(), this.cp.getP().getCLignes(), this.cp.getP().getCQLarge(), this.cp.getP().getCQFin());
+			this.vd.dessinerTC(this.styleQ, this.tc, this.cp.getP().getCFond(), this.cp.getP().getCLignes(), this.cp.getP().getCQLarge(), this.cp.getP().getCQFin(), this.cp.getP().getCCoords());
 		}
 		
 		// affichage des élements

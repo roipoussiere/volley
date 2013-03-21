@@ -74,7 +74,7 @@ public class Vue_Dessin extends JPanel
 	 * @param _g Le composant graphique.
 	 * @param _styleQ Style de quadrillage : 0 pour aucun, 1 pour 3 carreaux, 2 pour 9 carreaux.
 	 */
-	public void dessinerDT(int _styleQ, int _tc, Color _coulFond, Color _coulLigne, Color _coulQLarge, Color _coulQFin)
+	public void dessinerDT(int _styleQ, int _tc, Color _coulFond, Color _coulLigne, Color _coulQLarge, Color _coulQFin, Color _coulCoords)
 	{
 		this.graph.setColor(_coulFond);
 		this.graph.fillRect(0, 0, this.getWidth(), this.getHeight());
@@ -89,15 +89,7 @@ public class Vue_Dessin extends JPanel
 			dessinerQFin(0, _tc, _coulQFin);
 			dessinerQLarge(_tc, _tc, _coulQLarge);
 			
-			// Texte
-			for (int i=0 ; i<9 ; i++)
-			{
-				this.graph.drawString(String.valueOf((char) (i+'A')), (int) (_tc*(i+1.4)), (int) (_tc*0.6));
-			}
-			for (int i=0 ; i<9 ; i++)
-			{
-				this.graph.drawString(String.valueOf(i), (int) (_tc*0.4), (int) (_tc*(i+1.6)));
-			}
+			dessinerCoords(_tc, _coulCoords);
 		}
 		
 		this.graph.setColor(_coulLigne);
@@ -114,7 +106,7 @@ public class Vue_Dessin extends JPanel
 	 * @param _g Le composant graphique.
 	 * @param _styleQ Style de quadrillage : 0 pour aucun, 1 pour 3 carreaux, 2 pour 9 carreaux.
 	 */
-	public void dessinerTC(int _styleQ, int _tc, Color _coulFond, Color _coulLignes, Color _coulQLarge, Color _coulQFin)
+	public void dessinerTC(int _styleQ, int _tc, Color _coulFond, Color _coulLignes, Color _coulQLarge, Color _coulQFin, Color _coulCoords)
 	{
 		this.graph.setColor(_coulFond);
 		this.graph.fillRect(0, 0, this.getWidth(), this.getHeight());
@@ -130,6 +122,7 @@ public class Vue_Dessin extends JPanel
 			dessinerQFin(10*_tc, _tc,_coulQFin);
 			dessinerQLarge(_tc, _tc, _coulQLarge);
 			dessinerQLarge(10*_tc, _tc, _coulQLarge);
+			dessinerCoords(_tc, _coulCoords);
 		}
 		
 		this.graph.setColor(_coulLignes);
@@ -144,6 +137,20 @@ public class Vue_Dessin extends JPanel
 		//lignes verticales
 		this.graph.drawLine(_tc, _tc, _tc, _tc*19); // ligne gauche
 		this.graph.drawLine(_tc*10, _tc, _tc*10, _tc*19); // ligne droite
+	}
+	
+	private void dessinerCoords(int _tc, Color _coulCoords)
+	{
+		this.graph.setColor(_coulCoords);
+		
+		for (int i=0 ; i<9 ; i++)
+		{
+			this.graph.drawString(String.valueOf((char) (i+'A')), (int) (_tc*(i+1.4)), (int) (_tc*0.6));
+		}
+		for (int i=0 ; i<9 ; i++)
+		{
+			this.graph.drawString(String.valueOf(i), (int) (_tc*0.4), (int) (_tc*(i+1.6)));
+		}
 	}
 	
 	/**

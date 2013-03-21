@@ -125,7 +125,7 @@ public class ControleurVueFenetre
 		System.out.println("Affectation des joueurs...");
 		this.cp.setCVJ(new ControleurVueJoueurs(cp));
 	}
-
+	
 	/**
 	 * Création de la vue Joueurs.
 	 */
