@@ -1,5 +1,7 @@
 package c;
 
+import javax.swing.JOptionPane;
+
 import m.Strategie;
 import v_vues.Vue_Fenetre;
 import v_vues.Vue_Joueurs;
@@ -20,33 +22,31 @@ public class ControleurVueJoueurs {
 		this.cp = _cp;
 		vj = new Vue_Joueurs(this.vf,this);
 		vj.setVisible(true) ;
-		
-		// La suite du code nécessite  la creation d'une strategie dans le controleur et remplacera l'ancien code
-		
-		/*
-		 * 
-		 * Liaison avec les noms des joueurs des equipes
-		 * 
-		 * Pre-parametrage des donnnées de la fenetre par boucle sur :
-		 * 
-		 * 		- Est afficher
-		 * 		- Est meneur
-		 * 
-		 * 
-		 */
-		
 	}
 	
 	public void EnregistreEqu1()
 	{
 		for(int i=0; i < this.vj.getJoueur1().length;i++)
+		{
 			this.cp.getS().getEq1().getJoueur(i).setNomJ(this.vj.getJoueur1()[i].getNomJoueur().getText());
+			this.cp.getS().getEq1().getJoueur(i).setAffiche(this.vj.getJoueur1()[i].getAfficher().isSelected());
+			this.cp.getS().getEq1().getJoueur(i).setMeneur(this.vj.getJoueur1()[i].getMeneur().isSelected());
+		}
+		
+		//Affichage de message de confirmation
+		JOptionPane.showMessageDialog(vj,"Configuration de l'equipe 1 enregistrée");
 	}
 	
 	public void EnregistreEqu2()
 	{
 		for(int i=0; i < this.vj.getJoueur2().length;i++)
-			this.cp.getS().getEq2().getJoueur(i).setNomJ(this.vj.getJoueur1()[i].getNomJoueur().getText());
+		{
+			this.cp.getS().getEq2().getJoueur(i).setNomJ(this.vj.getJoueur2()[i].getNomJoueur().getText());
+			this.cp.getS().getEq2().getJoueur(i).setAffiche(this.vj.getJoueur2()[i].getAfficher().isSelected());
+			this.cp.getS().getEq2().getJoueur(i).setMeneur(this.vj.getJoueur2()[i].getMeneur().isSelected());
+		}
+		//Affichage de message de confirmation
+				JOptionPane.showMessageDialog(vj,"Configuration de l'equipe 2 enregistrée");
 	}
 	
 	public Strategie getStrategie()

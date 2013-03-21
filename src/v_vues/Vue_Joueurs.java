@@ -214,27 +214,26 @@ public class Vue_Joueurs extends JDialog
 		eqSelec2 = this.cvj.getStrategie().getEq2() ; // équipe 2
 		// On récupère l'équipe en cours de traitement
 		for(int i=0; i < 6;i++)
-		{/*
+		{
 			//Equipe 1
 			this.getJoueur1()[i].getNomJoueur().setText(eqSelec1.getJoueur(i).getNomJ());//Remplissage des noms
-			this.getJoueur1()[i].getAfficher().setEnabled(eqSelec1.getJoueur(i).isAffiche());//Remplissage de l'option afficher
-			this.getJoueur1()[i].getMeneur().setEnabled(eqSelec1.getJoueur(i).isMeneur ());//Remplissage de l'option meneur
+			this.getJoueur1()[i].getAfficher().setSelected(eqSelec1.getJoueur(i).isAffiche());//Remplissage de l'option afficher
 			if(eqSelec1.getJoueur(i).isMeneur ())	// Si au moins un joueur est meneur
 			{
-					for(int j=0; j < this.vj.getJoueur1().length;j++)
+					for(int j=0; j < this.getJoueur1().length;j++)
 						this.getJoueur1()[j].getMeneur().setEnabled(true);
+					this.getJoueur1()[i].getMeneur().setSelected(eqSelec1.getJoueur(i).isMeneur ());//Remplissage de l'option meneur
 			}
 			//Equipe 2
 			this.getJoueur2()[i].getNomJoueur().setText(eqSelec2.getJoueur(i).getNomJ());//Remplissage des noms
-			this.getJoueur2()[i].getAfficher().setEnabled(eqSelec2.getJoueur(i).isAffiche());//Remplissage de l'option afficher
-			this.getJoueur2()[i].getMeneur().setEnabled(eqSelec2.getJoueur(i).isMeneur ());//Remplissage de l'option meneur
+			this.getJoueur2()[i].getAfficher().setSelected(eqSelec2.getJoueur(i).isAffiche());//Remplissage de l'option afficher
 			if(eqSelec2.getJoueur(i).isMeneur ())	// Si au moins un joueur est meneur
 			{
-					for(int j=0; j < this.vj.getJoueur2().length;j++)
+					for(int j=0; j < this.getJoueur2().length;j++)
 						this.getJoueur2()[j].getMeneur().setEnabled(true);
+					this.getJoueur2()[i].getMeneur().setEnabled(eqSelec2.getJoueur(i).isMeneur ());//Remplissage de l'option meneur
 			}
-		*/}
-		//System.out.println(this.str.getEq1().getJoueur(1).getNomJ());
+		}
 	}
 	
 	/**
