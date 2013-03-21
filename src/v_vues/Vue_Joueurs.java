@@ -42,7 +42,7 @@ public class Vue_Joueurs extends JDialog
 		// Définition de la fenêtre
 		super (vf, "Joueurs", true) ;
 		this.cvj = _cvj;
-		this.setSize(360, 415) ;
+		this.setSize(360, 350) ;
 		this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE) ;
 		this.setResizable(false) ;
 		this.setLocationRelativeTo(null) ;
@@ -94,7 +94,7 @@ public class Vue_Joueurs extends JDialog
 			gbc.gridx = 0 ; gbc.gridy = i + 1 ; // + 1 car la première ligne est déjà occupée
 			gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
 			gbc.anchor = GridBagConstraints.CENTER ;
-			gbc.insets = new Insets (10, 10, 10, 10) ;
+			gbc.insets = new Insets (5, 10, 5, 10) ;
 			jp1.add (this.joueur1[i],gbc) ;
 			this.bgMeneurEqu1.add(joueur1[i].getMeneur());
 		}
@@ -103,22 +103,26 @@ public class Vue_Joueurs extends JDialog
 		gbc.gridx = 1 ; gbc.gridy = i+1 ; // 
 		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.LINE_START;
-		gbc.insets = new Insets (5, 12, 10, 0) ;
+		gbc.insets = new Insets (5, 12, 5, 0) ;
 		jp1.add (this.meneurPresentEqu1,gbc) ;
 		
 		this.jcbTout1 = new JCheckBox("Sélectionner toute l'équipe") ;
 		gbc.gridx = 1 ; gbc.gridy = i+2 ; // 
 		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.CENTER ;
-		gbc.insets = new Insets (5, 12, 10, 0) ;
+		gbc.insets = new Insets (5, 12, 5, 0) ;
 		jp1.add (this.jcbTout1,gbc) ;
 		
 		this.jbouton1 = new JButton("Enregistrer") ;
 		gbc.gridx = 2 ; gbc.gridy = i+2 ; // 
 		gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.CENTER ;
-		gbc.insets = new Insets (5, 12, 10, 0) ;
+		gbc.insets = new Insets (5, 12, 5, 0) ;
 		jp1.add (this.jbouton1,gbc) ;
+		
+		
+		// Deuxieme onglet
+		
 		
 		this.jlNom = new JLabel("Nom") ;
 		gbc.gridx = 1 ; gbc.gridy = 0 ; // 
@@ -151,7 +155,7 @@ public class Vue_Joueurs extends JDialog
 			gbc.gridx = 0 ; gbc.gridy = i + 1 ; // + 1 car la première ligne est déjà occupée
 			gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
 			gbc.anchor = GridBagConstraints.CENTER ;
-			gbc.insets = new Insets (10, 10, 10, 10) ;
+			gbc.insets = new Insets (5, 10, 5, 10) ;
 			jp2.add (this.joueur2[i],gbc) ;
 			this.bgMeneurEqu2.add(joueur2[i].getMeneur());
 		}
@@ -160,21 +164,21 @@ public class Vue_Joueurs extends JDialog
 		gbc.gridx = 1 ; gbc.gridy = i+1 ; // 
 		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.LINE_START;
-		gbc.insets = new Insets (5, 12, 10, 0) ;
+		gbc.insets = new Insets (5, 12, 5, 0) ;
 		jp2.add (this.meneurPresentEqu2,gbc) ;
 		
 		this.jcbTout2 = new JCheckBox("Sélectionner toute l'équipe") ;
 		gbc.gridx = 1 ; gbc.gridy = i+2 ;
 		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.CENTER ;
-		gbc.insets = new Insets (5, 12, 10, 0) ;
+		gbc.insets = new Insets (5, 12, 5, 0) ;
 		jp2.add (this.jcbTout2,gbc) ;
 		
 		this.jbouton2 = new JButton("Enregistrer") ;
 		gbc.gridx = 2 ; gbc.gridy = i+2 ; 
 		gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.CENTER ;
-		gbc.insets = new Insets (5, 12, 10, 0) ;
+		gbc.insets = new Insets (5, 12, 5, 0) ;
 		jp2.add (this.jbouton2,gbc) ;
 		
 		jtpj.addTab("Equipe 1",jp1);
