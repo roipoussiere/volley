@@ -44,7 +44,7 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		//this.vl = new Vue_Lecture(this.cvf);
 
 		this.addWindowListener(this); // On abonne la fenêtre à elle-même.
-		this.setSize(400, 375);
+		this.setSize(400, 385);
 		this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		this.setResizable(false);
 
