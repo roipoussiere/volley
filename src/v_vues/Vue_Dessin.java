@@ -76,7 +76,7 @@ public class Vue_Dessin extends JPanel
 	 */
 	public void dessinerDT(int _styleQ, int _tc, Color _coulFond, Color _coulLigne, Color _coulQLarge, Color _coulQFin)
 	{
-		this.graph.setColor(_coulFond); //p.getCFondBas()
+		this.graph.setColor(_coulFond);
 		this.graph.fillRect(0, 0, this.getWidth(), this.getHeight());
 		
 		// Si styleQ = 0 on ne dessine pas de lignes
@@ -88,9 +88,20 @@ public class Vue_Dessin extends JPanel
 		{
 			dessinerQFin(0, _tc, _coulQFin);
 			dessinerQLarge(_tc, _tc, _coulQLarge);
+			
+			// Texte
+			for (int i=0 ; i<9 ; i++)
+			{
+				this.graph.drawString(String.valueOf((char) (i+'A')), (int) (_tc*(i+1.4)), (int) (_tc*0.6));
+			}
+			for (int i=0 ; i<9 ; i++)
+			{
+				this.graph.drawString(String.valueOf(i), (int) (_tc*0.4), (int) (_tc*(i+1.6)));
+			}
 		}
 		
 		this.graph.setColor(_coulLigne);
+		
 		this.graph.drawLine(_tc, _tc*10, _tc*10, _tc*10); // ligne bas
 		this.graph.drawLine(_tc, _tc, _tc, _tc*10); // ligne gauche
 		this.graph.drawLine(_tc*10, _tc, _tc*10, _tc*10); // ligne droite
@@ -119,7 +130,6 @@ public class Vue_Dessin extends JPanel
 			dessinerQFin(10*_tc, _tc,_coulQFin);
 			dessinerQLarge(_tc, _tc, _coulQLarge);
 			dessinerQLarge(10*_tc, _tc, _coulQLarge);
-
 		}
 		
 		this.graph.setColor(_coulLignes);
