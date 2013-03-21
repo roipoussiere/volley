@@ -13,7 +13,7 @@ public abstract class Element
 {
 	private boolean affiche ;
 	private Color couleurE ;
-	private Vector<Position> deplacement ;
+	private Vector<m.Position> deplacement ;
 	
 	// Constructeurs
 	
@@ -31,7 +31,7 @@ public abstract class Element
 		super() ;
 		this.affiche = _affiche ;
 		this.couleurE = _couleur ;
-		this.deplacement = new Vector<Position> () ;
+		this.deplacement = new Vector<m.Position> () ;
 		this.deplacement.add(_pos);
 	}
 	

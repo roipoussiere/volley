@@ -11,8 +11,7 @@ import javax.swing.event.DocumentListener;
 import m.Equipe;
 
 import v_ecouteurs.AL_Edition;
-import v_utilitaires.SaisieDeplacement;
-import v_utilitaires.SelectionTemps;
+import v_utilitaires.*;
 
 /**
  * Vue contenant les éléments de l'onglet Edition.
@@ -26,7 +25,7 @@ public class Vue_Edition extends JPanel
 	// Composants de la fenetre
 	private SelectionTemps selecTps ; // permet de choisir le temps à gérer
 	private JComboBox selecEquipe ; // permet de sélectionner l'équipe à déplacer
-	private SaisieDeplacement deplacementJ[] ; // tableau contenant les saisies des déplacements de chaque joueur
+	private SaisieDeplacementAvecOrientation deplacementJ[] ; // tableau contenant les panel de saisie des déplacements des joueurs
 
 	// Constante
 	private static final int NOMBRE_JOUEURS = 6 ;
@@ -67,14 +66,14 @@ public class Vue_Edition extends JPanel
 		this.add (this.selecEquipe, gbc) ;
 
 		// Saisie des déplacements des joueurs
-		this.deplacementJ = new SaisieDeplacement[NOMBRE_JOUEURS] ;
+		this.deplacementJ = new SaisieDeplacementAvecOrientation[NOMBRE_JOUEURS] ;
 		for (int i = 0 ; i < NOMBRE_JOUEURS ; i++)
 		{	
-			this.deplacementJ[i] = new SaisieDeplacement("Joueur " + (i + 1), i + 1, "A6") ;
+			this.deplacementJ[i] = new SaisieDeplacementAvecOrientation ("Joueur " + (i + 1), i + 1) ;
 			gbc.gridx = 0 ; gbc.gridy = i + 2 ; // + 2 car les deux premières lignes sont déjà occupées
 			gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
 			gbc.anchor = GridBagConstraints.CENTER ;
-			gbc.insets = new Insets (10, 0, 10, 0) ;
+			gbc.insets = new Insets (5, 0, 5, 0) ;
 			this.add (this.deplacementJ[i], gbc) ;
 			this.deplacementJ[i].getDepActuel().getDocument().addDocumentListener(led) ;
 		}
@@ -82,6 +81,8 @@ public class Vue_Edition extends JPanel
 		// Abonnement aux listeners
 		this.selecTps.getButtonTpsPrecedent().addActionListener(led) ;
 		this.selecTps.getButtonTpsSuivant().addActionListener(led) ;
+		
+		this.majVueEdition() ;
 	}
 	
 	

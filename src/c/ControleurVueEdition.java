@@ -29,10 +29,6 @@ public class ControleurVueEdition
 	
 		// Ouverture de la fenêtre.
 		this.ve = new Vue_Edition(this);
-		
-		// Lorsque j'ai modifié le constructeur, il y avait juste une erreur,
-		// au getStrategie(), je l'ai corrigée pour que ça compile.
-		// Natha
 	}
 
 
@@ -50,11 +46,22 @@ public class ControleurVueEdition
 
 
 	// Modificateurs
-
-	public void creerNouveauTemps (Equipe _eq)
+	
+	public void creerNouveauTemps ()
 	{
-		for (int i = 0 ; i < _eq.getNbJoueur() ; i++)
-			_eq.getJoueur(i).getVectorDeplacement().add(_eq.getJoueur(i).getDeplacementAuTemps(_eq.getNbMaxTemps() - 1)) ;
+		Joueur joueurEq1, joueurEq2 ;
+		int tpsEnCours = this.cp.getS().getTA() ;
+		
+		// On crée un nouveau temps dans le vector de déplacement de chaque joueur de chaque équipe
+		for (int i = 0 ; i < this.cp.getS().getEq1().getNbJoueur() ; i++)
+		{
+			// On initialise les déplacements des joueurs à ceux du temps précédent
+			joueurEq1 = this.cp.getS().getEq1().getJoueur(i) ;
+			joueurEq1.ajouterNouveauDeplacement(joueurEq1.getDeplacementAuTemps(tpsEnCours - 1)) ;
+			
+			joueurEq2 = this.cp.getS().getEq2().getJoueur(i) ;
+			joueurEq2.ajouterNouveauDeplacement(joueurEq2.getDeplacementAuTemps(tpsEnCours - 1)) ;
+		}
 	}
 
 	public void saisirDeplacement (Equipe _eq, Joueur _j, Position _pos, int _tps)
@@ -105,5 +112,11 @@ public class ControleurVueEdition
 		{
 			System.out.println("<test_flo> Joueur " + (i+1) + " : " + _eq.getJoueur(i).getDeplacementAuTemps(_tps)) ;
 		}
+	}
+
+
+	public void majVue()
+	{
+		// À compléter
 	}
 }

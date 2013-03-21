@@ -26,12 +26,12 @@ public class ControleurVueDessin {
 		if (this.cp.getP().isDemiT()) // demi terrain
 		{
 			this.tc = 50;
-			this.vd.dessinerDT(this.styleQ, this.tc, this.cp.getP().getCFond(), this.cp.getP().getCLignes(), this.cp.getP().getCQLarge(), this.cp.getP().getCQFin());
+			this.vd.dessinerDT(this.styleQ, this.tc, this.cp.getP().getCFond(), this.cp.getP().getCLignes(), this.cp.getP().getCQLarge(), this.cp.getP().getCQFin(), this.cp.getP().getCCoords());
 		}
 		else // terrain complet
 		{
 			this.tc = 35;
-			this.vd.dessinerTC(this.styleQ, this.tc, this.cp.getP().getCFond(), this.cp.getP().getCLignes(), this.cp.getP().getCQLarge(), this.cp.getP().getCQFin());
+			this.vd.dessinerTC(this.styleQ, this.tc, this.cp.getP().getCFond(), this.cp.getP().getCLignes(), this.cp.getP().getCQLarge(), this.cp.getP().getCQFin(), this.cp.getP().getCCoords());
 		}
 		
 		// affichage des élements
@@ -39,11 +39,11 @@ public class ControleurVueDessin {
 		for (int i=0 ; i<6 ; i++)
 		{
 			m.Position posE1 = this.cp.getS().getJoueurEq1(i).getDeplacementAuTemps(this.cp.getS().getTA());
-			jeton(posE1);
+			jeton(posE1, this.cp.getS().getJoueurEq1(i).getIdJ());
 			System.out.println("elt de E1 à la position " + posE1);
 
 			m.Position posE2 = this.cp.getS().getJoueurEq2(i).getDeplacementAuTemps(this.cp.getS().getTA());
-			jeton(posE2);
+			jeton(posE2, this.cp.getS().getJoueurEq2(i).getIdJ());
 			System.out.println("elt de E2 à la position " + posE2);
 		}
 
@@ -58,13 +58,13 @@ public class ControleurVueDessin {
 		this.styleQ = _styleQ;
 	}
 	
-	public void jeton(m.Position _pos)
+	public void jeton(m.Position _pos, String _nomAff)
 	{
 		Color c = this.cp.getP().getCoulE(0);
 		float t = (float)0.75*this.tc;
 		float posX = this.tc*(_pos.getPosX()+1) + this.tc/2 - t/2;
 		float posY = this.tc*(_pos.getPosY()+1) + this.tc/2 - t/2;
-		this.vd.affJeton(posX, posY, _pos.getOrt(), t, c);
+		this.vd.affJeton(posX, posY, _pos.getOrt().ordinal(), _nomAff, t, c);
 	}
 	
 	public float getTC()

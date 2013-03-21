@@ -16,6 +16,7 @@ public class Parametres
 	private Color cLignes; // Couleur des lignes de base (limites, ligne d'attaque).
 	private Color cQLarge; // Couleur du quadrillage large (3 carreaux).
 	private Color cQFin; // Couleur du quadrillage fin (9 carreaux).
+	private Color cCoords; // Couleur des coordonnées.
 	
 	// Nom des élements
 	private String tabNomE[] = new String[13];
@@ -44,6 +45,7 @@ public class Parametres
 		cLignes = new Color(250, 250, 250); //#fafafa
 		cQLarge = new Color(200, 100, 0); //#c86400
 		cQFin = new Color(210, 110, 10); //#d26e0a
+		cCoords = new Color(50, 50, 50);
 		
 		// Nom des élements
 	
@@ -313,5 +315,23 @@ public class Parametres
 	public void setCQFin(Color _cQFin)
 	{
 		this.cQFin = _cQFin;
+	}
+	
+	/**
+	 * Getter de la couleur du quadrillage fin (terrain découpé en 9*9).
+	 * @return La couleur du quadrillage fin (terrain découpé en 9*9).
+	 */
+	public Color getCCoords()
+	{
+		return cCoords;
+	}
+	
+	/**
+	 * Setter de la couleur du quadrillage fin (terrain découpé en 9*9).
+	 * @param _cQFin La couleur du quadrillage fin (terrain découpé en 9*9).
+	 */
+	public void setCCoords(Color _cCoords)
+	{
+		this.cCoords = _cCoords;
 	}
 }
