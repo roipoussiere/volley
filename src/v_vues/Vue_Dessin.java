@@ -2,10 +2,14 @@ package v_vues;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Line2D;
+
 import javax.swing.JPanel;
 
 import m.Orientation;
-import m.Position;
 import c.ControleurVueDessin;
 
 /**
@@ -16,7 +20,7 @@ import c.ControleurVueDessin;
 public class Vue_Dessin extends JPanel
 {
 	private ControleurVueDessin cvd;
-	private Graphics graph;
+	private Graphics2D graph;
 	/**
 	 * Constructeur de la vue de dessin.
 	 * @param _cvd La fenêtre du terrain.
@@ -31,25 +35,38 @@ public class Vue_Dessin extends JPanel
 	 * Méthode qui sera appelée à chaque action sur la fenêtre, qui permet de redessiner l'intégralité de son contenu.
 	 * @param _g : Le composant graphique.
 	 */
-	@Override
 	public void paintComponent(Graphics _g)
 	{
-		this.graph = _g;
+		this.graph = (Graphics2D)_g;
+		this.graph.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		this.cvd.majDessin();
 	}
 	
-	public void affJeton(int _posX, int _posY, Orientation ort, int taille, Color coul)
+	public void affJeton(float _posX, float _posY, Orientation ort, float taille, Color coul)
 	{
+		// Création du cercle
 		this.graph.setColor(coul);
-		this.graph.fillOval(_posX, _posY, taille, taille);
+		this.graph.fill(new Ellipse2D.Float(_posX, _posY, taille, taille));
+		
+		// Contour du cercle
+		this.graph.setColor(Color.BLACK);
+		this.graph.draw(new Ellipse2D.Float(_posX, _posY, taille, taille));
+		
+		// Création de la barre pour l'orientation
 		float angle1 = (2*ort.ordinal()+1)*(float)Math.PI/4;
-		System.out.println(2*ort.ordinal()+1 + "pi/4");
 		float angle2 = (2*ort.ordinal()+3)*(float)Math.PI/4;
-		System.out.println(2*ort.ordinal()+3 + "pi/4");
-		int cX = _posX+taille/2;
-		int cY = _posY+taille/2;
-		this.graph.setColor(Color.WHITE);
-		this.graph.drawLine((int)(cX+Math.cos(angle1)*taille/2), (int)(cY+Math.sin(angle1)*taille/2), (int)(cX+Math.cos(angle2)*taille/2), (int)(cY+Math.sin(angle2)*taille/2));
+		
+		// Coordonnées du centre du cercle
+		float cX = _posX+taille/2;
+		float cY = _posY+taille/2;
+				
+		float x1 = (float) (cX+Math.cos(angle1)*taille/2);
+		float y1 = (float) (cY+Math.sin(angle1)*taille/2);
+		float x2 = (float) (cX+Math.cos(angle2)*taille/2);
+		float y2 =(float) (cY+Math.sin(angle2)*taille/2);
+		
+		// Création de la barre
+		this.graph.draw(new Line2D.Float(x1, y1, x2, y2)); 
 	}
 	
 	/**
