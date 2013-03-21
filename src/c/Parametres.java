@@ -49,7 +49,7 @@ public class Parametres
 		cLignes = hexToRgb("#fafafa");
 		cQLarge = hexToRgb("#c86400");
 		cQFin = hexToRgb("#d26e0a");
-		cCoords = hexToRgb("#dc7814");
+		cCoords = hexToRgb("#b85400");
 		
 		// Nom des élements
 	
