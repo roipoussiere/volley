@@ -74,12 +74,12 @@ public class ControleurVueFenetre
 			switch(vf.getOngletOuvert())
 			{
 			case 0: // Lecture
-				//this.cp.getCVT().getVT().dessiner(this.cp.getP().getStyleQL());
-				this.cp.getCVL().majVue();
+				this.cp.getCVT().getVT().dessiner(this.cp.getP().getStyleQL());
+				// this.cp.getCVL().majVue();
 				break;
 			case 1: // Edition
-				//this.cp.getCVT().getVT().dessiner(this.cp.getP().getStyleQE());
-				//this.vf.getVE().majVue();
+				this.cp.getCVT().getVT().dessiner(this.cp.getP().getStyleQE());
+				// this.vf.getCVE().majVue();
 				break;
 			}
 		}
