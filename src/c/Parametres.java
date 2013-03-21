@@ -17,9 +17,6 @@ public class Parametres
 	private Color cFond; // Couleur de fond du terrain.
 	private Color cBordures; // Couleur de la bordure du terrain.
 	private Color cLignes; // Couleur des lignes de base (limites, ligne d'attaque).
-	private Color cQLarge; // Couleur du quadrillage large (3 carreaux).
-	private Color cQFin; // Couleur du quadrillage fin (9 carreaux).
-	private Color cCoords; // Couleur des coordonnées.
 	
 	// Nom des élements
 	private Joueur tabJE1[] = new Joueur[6];
@@ -47,9 +44,6 @@ public class Parametres
 		cFond = hexToRgb("#dc7814");
 		cBordures = hexToRgb("#009900");
 		cLignes = hexToRgb("#fafafa");
-		cQLarge = hexToRgb("#c86400");
-		cQFin = hexToRgb("#d26e0a");
-		cCoords = hexToRgb("#222222");
 		
 		// Nom des élements
 	
@@ -327,59 +321,5 @@ public class Parametres
 	public void setCLignes(Color _cLignes)
 	{
 		this.cLignes = _cLignes;
-	}
-	
-	/**
-	 * Getter de la couleur du quadrillage large (terrain découpé en 3*3).
-	 * @return La couleur du quadrillage large (terrain découpé en 3*3).
-	 */
-	public Color getCQLarge()
-	{
-		return cQLarge;
-	}
-	
-	/**
-	 * Setter de la couleur du quadrillage large (terrain découpé en 3*3).
-	 * @param _cQLarge La couleur du quadrillage large (terrain découpé en 3*3).
-	 */
-	public void setCQLarge(Color _cQLarge)
-	{
-		this.cQLarge = _cQLarge;
-	}
-	
-	/**
-	 * Getter de la couleur du quadrillage fin (terrain découpé en 9*9).
-	 * @return La couleur du quadrillage fin (terrain découpé en 9*9).
-	 */
-	public Color getCQFin()
-	{
-		return cQFin;
-	}
-	
-	/**
-	 * Setter de la couleur du quadrillage fin (terrain découpé en 9*9).
-	 * @param _cQFin La couleur du quadrillage fin (terrain découpé en 9*9).
-	 */
-	public void setCQFin(Color _cQFin)
-	{
-		this.cQFin = _cQFin;
-	}
-	
-	/**
-	 * Getter de la couleur du quadrillage fin (terrain découpé en 9*9).
-	 * @return La couleur du quadrillage fin (terrain découpé en 9*9).
-	 */
-	public Color getCCoords()
-	{
-		return cCoords;
-	}
-	
-	/**
-	 * Setter de la couleur du quadrillage fin (terrain découpé en 9*9).
-	 * @param _cQFin La couleur du quadrillage fin (terrain découpé en 9*9).
-	 */
-	public void setCCoords(Color _cCoords)
-	{
-		this.cCoords = _cCoords;
 	}
 }

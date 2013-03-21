@@ -77,7 +77,7 @@ public class Vue_Dessin extends JPanel
 	 * @param _g Le composant graphique.
 	 * @param _styleQ Style de quadrillage : 0 pour aucun, 1 pour 3 carreaux, 2 pour 9 carreaux.
 	 */
-	public void dessinerDT(int _styleQ, int _tc, Color _coulFond, Color _coulBord, Color _coulLigne, Color _coulQLarge, Color _coulQFin, Color _coulCoords)
+	public void dessinerDT(int _styleQ, int _tc, Color _coulFond, Color _coulBord, Color _coulLigne)
 	{
 		this.graph.setColor(_coulBord);
 		this.graph.fillRect(0, 0, this.getWidth(), this.getHeight());
@@ -88,14 +88,15 @@ public class Vue_Dessin extends JPanel
 		// Si styleQ = 0 on ne dessine pas de lignes
 		if (_styleQ == 1)
 		{
-			dessinerQLarge(_tc, _tc, _coulQLarge);
+			dessinerQLarge(_tc, _tc, _coulFond.darker().darker());
 		}
 		else if(_styleQ == 2)
 		{
-			dessinerQFin(0, _tc, _coulQFin);
-			dessinerQLarge(_tc, _tc, _coulQLarge);
+			dessinerQFin(0, _tc, _coulBord.darker(), true);
+			dessinerQFin(0, _tc, _coulFond.darker(), false);
+			dessinerQLarge(_tc, _tc, _coulFond.darker().darker());
 			
-			dessinerCoords(_tc, _coulCoords, true);
+			dessinerCoords(_tc, _coulBord.darker().darker(), true);
 		}
 		
 		this.graph.setColor(_coulLigne);
@@ -112,7 +113,7 @@ public class Vue_Dessin extends JPanel
 	 * @param _g Le composant graphique.
 	 * @param _styleQ Style de quadrillage : 0 pour aucun, 1 pour 3 carreaux, 2 pour 9 carreaux.
 	 */
-	public void dessinerTC(int _styleQ, int _tc, Color _coulFond, Color _coulBord, Color _coulLignes, Color _coulQLarge, Color _coulQFin, Color _coulCoords)
+	public void dessinerTC(int _styleQ, int _tc, Color _coulFond, Color _coulBord, Color _coulLignes)
 	{
 		this.graph.setColor(_coulBord);
 		this.graph.fillRect(0, 0, this.getWidth(), this.getHeight());
@@ -122,16 +123,18 @@ public class Vue_Dessin extends JPanel
 		
 		if (_styleQ == 1)
 		{
-			dessinerQLarge(0, _tc, _coulQLarge);
-			dessinerQLarge(10*_tc, _tc, _coulQLarge);
+			dessinerQLarge(0, _tc, _coulFond.darker().darker());
+			dessinerQLarge(10*_tc, _tc, _coulFond.darker().darker());
 		}
 		else if(_styleQ == 2)
 		{
-			dessinerQFin(0, _tc, _coulQFin);
-			dessinerQFin(10*_tc, _tc,_coulQFin);
-			dessinerQLarge(_tc, _tc, _coulQLarge);
-			dessinerQLarge(10*_tc, _tc, _coulQLarge);
-			dessinerCoords(_tc, _coulCoords, false);
+			dessinerQFin(0, _tc, _coulBord.darker(), true);
+			dessinerQFin(10*_tc, _tc, _coulBord.darker(), true);
+			dessinerQFin(0, _tc, _coulFond.darker(), false);
+			dessinerQFin(9*_tc, _tc, _coulFond.darker(), false);
+			dessinerQLarge(_tc, _tc, _coulFond.darker().darker());
+			dessinerQLarge(10*_tc, _tc, _coulFond.darker().darker());
+			dessinerCoords(_tc, _coulBord.darker().darker(), false);
 		}
 		
 		this.graph.setColor(_coulLignes);
@@ -160,7 +163,7 @@ public class Vue_Dessin extends JPanel
 		}
 		for (int i=0 ; i<nbCarH ; i++)
 		{
-			this.graph.drawString(String.valueOf(i), (int) (_tc*0.4), (int) (_tc*(i+1.6)));
+			this.graph.drawString(String.valueOf(i+1), (int) (_tc*0.4), (int) (_tc*(i+1.6)));
 		}
 	}
 	
@@ -169,20 +172,34 @@ public class Vue_Dessin extends JPanel
 	 * @param _g Le composant graphique.
 	 * @param _posY La position verticale du quadrillage.
 	 * @param _tc La taille d'un carreau, qui déterminera celle du quadrillage.
+	 * @param _avecBord True pour dessiner sur les bordures, false sinon
 	 */
-	public void dessinerQFin(int _posY, int _tc, Color _coulQFin)
+	public void dessinerQFin(int _posY, int _tc, Color _coulQFin, boolean _avecBord)
 	{
 		int nbX = 11;
 		int nbY = 11;
 		
 		this.graph.setColor(_coulQFin);
 		
-		for (int i=0 ; i<nbX+1 ; i++) {
-			this.graph.drawLine(i*_tc, _posY, i*_tc, nbY*_tc + _posY);
+		if (_avecBord)
+		{
+			for (int i=0 ; i<nbX+1 ; i++) {
+				this.graph.drawLine(i*_tc, _posY, i*_tc, nbY*_tc + _posY);
+			}
+			for (int i=0 ; i<nbY+1 ; i++) {
+				this.graph.drawLine(0, _posY + i*_tc, nbX*_tc, _posY + i*_tc);
+			}
 		}
-		for (int i=0 ; i<nbY+1 ; i++) {
-			this.graph.drawLine(0, _posY + i*_tc, nbX*_tc, _posY + i*_tc);
+		else
+		{
+			for (int i=0 ; i<nbX ; i++) {
+				this.graph.drawLine(i*_tc, _posY+_tc, i*_tc, (nbY-1)*_tc + _posY);
+			}
+			for (int i=0 ; i<nbY ; i++) {
+				this.graph.drawLine(_tc, _posY + i*_tc, (nbX-1)*_tc, _posY + i*_tc);
+			}
 		}
+
 	}
 	
 	/**
