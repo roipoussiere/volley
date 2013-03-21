@@ -11,7 +11,7 @@ public class Position
 {
 	private int posX ; // abscisse
 	private int posY ; // ordonnée
-	private Orientation ort;
+	private Orientation ort ;
 	
 	// Constructeurs
 	

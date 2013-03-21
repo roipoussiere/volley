@@ -1,9 +1,7 @@
 package m;
 
 public class Strategie
-{
-	public enum TypeStrategie {ATTAQUE, DEFENSE};
-	
+{	
 	private Equipe eq1, eq2 ;
 	private TypeStrategie typeS ;
 	private int tempsActuel;
@@ -120,4 +118,17 @@ public class Strategie
 			return null ;
 	}
 	
+	/**
+	 * Retourne le nombre de temps traité dans la stratégie.
+	 * @return Le nombre de temps traité.
+	 * Tips : soustraire 1 pour obtenir l'indice du dernier temps.
+	 */
+	public int getNbTemps ()
+	{
+		return (this.eq1.getJoueur(0).getNbDeplacements()) ;
+		/* 
+		 * Fonctionnement : les joueurs de la startégie ont tous le même nombre de temps traités, quelque soit leur équipe.
+		 * Ceci est géré dans la classe ControleurVueEdition.
+		 */
+	}
 }

@@ -3,6 +3,8 @@ package v_utilitaires;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -20,7 +22,7 @@ public class SaisieDeplacement extends JPanel
 	/**
 	 * Constructeur de l'utilitaire et de tous ses composants.
 	 */
-	public SaisieDeplacement (String _nomJ, int _numJ, String _depPrec)
+	public SaisieDeplacement (String _nomJ, int _numJ)
 	{
 		// Mise en place du GridBagLayout
 		this.setLayout (new GridBagLayout ()) ;
@@ -35,8 +37,7 @@ public class SaisieDeplacement extends JPanel
 		this.add (this.infoJ, gbc) ;
 		
 		// Label déplacement précédent
-		this.depPrec = new JTextField (5) ;
-		this.depPrec.setText (_depPrec) ;
+		this.depPrec = new JTextField (3) ;
 		this.depPrec.setEditable (false) ;
 		gbc.gridx = 1 ; gbc.gridy = 0 ;
 		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
@@ -45,12 +46,12 @@ public class SaisieDeplacement extends JPanel
 		this.add (this.depPrec, gbc) ;
 		
 		// Champs de saisie du déplacement
-		this.depActuel = new JTextField (5) ;
+		this.depActuel = new JTextField (3) ;
 		gbc.gridx = 2 ; gbc.gridy = 0 ;
 		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.LINE_START ;
 		gbc.insets = new Insets (0, 10, 0, 10) ;
-		this.add (this.depActuel, gbc) ;
+		this.add (this.depActuel, gbc) ;		
 	}
 	
 	
