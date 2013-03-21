@@ -21,10 +21,10 @@ public class AL_Edition implements ActionListener, DocumentListener
 {
 	// Constantes indiquants les limites du quadrillage
 	// A REMPLACER AVEC LES VALEURS OBTENUES DEPUIS LA CLASSE TERRAIN
-	private final char MINIMUM_ABSCISSE = 'A' ;
-	private final char MAXIMUM_ABSCISSE = 'I' ;
-	private final char MINIMUM_ORDONNEE = '1' ;
-	private final char MAXIMUM_ORDONNEE = '9' ;
+	private final int MINIMUM_ABSCISSE = '1' ;
+	private final int MAXIMUM_ABSCISSE = '9' ;
+	private final int MINIMUM_ORDONNEE = '0' ;
+	private final int MAXIMUM_ORDONNEE = '8' ;
 
 	private Vue_Edition ve;
 
@@ -130,11 +130,11 @@ public class AL_Edition implements ActionListener, DocumentListener
 		{
 			JOptionPane.showMessageDialog (this.ve, "Saisie incorrecte !\nUn maxixum de 2 caractères est attendu.", null, JOptionPane.ERROR_MESSAGE) ;
 		}
-		else if (_saisie.charAt(0) < MINIMUM_ABSCISSE || _saisie.charAt(0) > MAXIMUM_ABSCISSE) // Si le premier caractère n'est pas une abscisse répertoriée
+		else if ((int) (_saisie.charAt(0) - 'A' + 1) <= MINIMUM_ABSCISSE || (int) (_saisie.charAt(0) - 'A' + 1) >= MAXIMUM_ABSCISSE) // Si le premier caractère n'est pas une abscisse répertoriée
 		{
 			JOptionPane.showMessageDialog (this.ve, "Saisie incorrecte !\nLe premier caractère doit être une lettre.", null, JOptionPane.ERROR_MESSAGE) ;
 		}
-		else if (_saisie.charAt(1) < MINIMUM_ORDONNEE || _saisie.charAt(1) > MAXIMUM_ORDONNEE) // Si le second caractère n'est pas une ordonnée répertoriée
+		else if ((int) (_saisie.charAt(1) - 'A' + 1) <= MINIMUM_ORDONNEE || (int) (_saisie.charAt(1) - 'A' + 1) >= MAXIMUM_ORDONNEE) // Si le second caractère n'est pas une ordonnée répertoriée
 		{
 			JOptionPane.showMessageDialog (this.ve, "Saisie incorrecte !\nLe second caractère doit être un chiffre.", null, JOptionPane.ERROR_MESSAGE) ;
 		}
