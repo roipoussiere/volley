@@ -28,6 +28,7 @@ public class Vue_Edition extends JPanel
 	private SelectionTemps selecTps ; // permet de choisir le temps à gérer
 	private JComboBox selecEquipe ; // permet de sélectionner l'équipe à déplacer
 	private SaisieDeplacementAvecOrientation deplacementJ[] ; // tableau contenant les panel de saisie des déplacements des joueurs
+	private SaisieDeplacement deplacementB ; // contient le panel de saisie du déplacement du ballon
 	private JButton enregistrer ; // bouton enregistrer
 
 	// Constante
@@ -72,7 +73,7 @@ public class Vue_Edition extends JPanel
 		this.deplacementJ = new SaisieDeplacementAvecOrientation[NOMBRE_JOUEURS] ;
 		for (int i = 0 ; i < NOMBRE_JOUEURS ; i++)
 		{	
-			this.deplacementJ[i] = new SaisieDeplacementAvecOrientation ("Joueur " + (i + 1), i + 1) ;
+			this.deplacementJ[i] = new SaisieDeplacementAvecOrientation ("Joueur " + (i + 1)) ;
 			gbc.gridx = 0 ; gbc.gridy = i + 2 ; // + 2 car les deux premières lignes sont déjà occupées
 			gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
 			gbc.anchor = GridBagConstraints.CENTER ;
@@ -80,9 +81,17 @@ public class Vue_Edition extends JPanel
 			this.add (this.deplacementJ[i], gbc) ;
 		}
 		
+		// Saisie des déplacements du ballon
+		this.deplacementB = new SaisieDeplacement ("Ballon") ;
+		gbc.gridx = 0 ; gbc.gridy = 9 ;
+		gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
+		gbc.anchor = GridBagConstraints.LINE_START ;
+		gbc.insets = new Insets (3, 69, 3, 0) ;
+		this.add (this.deplacementB, gbc) ;
+		
 		// Bouton enregistrer
 		this.enregistrer = new JButton ("Enregistrer") ;
-		gbc.gridx = 2 ; gbc.gridy = 9 ;
+		gbc.gridx = 2 ; gbc.gridy = 10 ;
 		gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.LINE_START ;
 		gbc.insets = new Insets (10, 140, 10, 0) ;

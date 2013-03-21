@@ -4,7 +4,6 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -13,6 +12,7 @@ import javax.swing.JTextField;
  * Utilitaire de saisie des déplacements des joueurs.
  * @author Florian Garnier
  */
+@SuppressWarnings("serial")
 public class SaisieDeplacement extends JPanel
 {
 	private JLabel infoJ ; // nom + numéro du joueur 
@@ -22,14 +22,14 @@ public class SaisieDeplacement extends JPanel
 	/**
 	 * Constructeur de l'utilitaire et de tous ses composants.
 	 */
-	public SaisieDeplacement (String _nomJ, int _numJ)
+	public SaisieDeplacement (String _nomJ)
 	{
 		// Mise en place du GridBagLayout
 		this.setLayout (new GridBagLayout ()) ;
 		GridBagConstraints gbc = new GridBagConstraints () ;
 		
 		// Label info joueur
-		this.infoJ = new JLabel (_nomJ + " (" + _numJ + ")") ;
+		this.infoJ = new JLabel (_nomJ) ;
 		gbc.gridx = 0 ; gbc.gridy = 0 ;
 		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.LINE_START ;

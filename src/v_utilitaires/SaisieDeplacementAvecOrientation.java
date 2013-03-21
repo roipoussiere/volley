@@ -12,9 +12,9 @@ public class SaisieDeplacementAvecOrientation extends SaisieDeplacement
 {
 	private JComboBox listeOrientation ;
 
-	public SaisieDeplacementAvecOrientation (String _nomJ, int _numJ)
+	public SaisieDeplacementAvecOrientation (String _nomJ)
 	{
-		super(_nomJ, _numJ) ;
+		super(_nomJ) ;
 
 		GridBagConstraints gbc = new GridBagConstraints () ;
 		
