@@ -2,6 +2,8 @@ package c;
 
 import java.awt.Color;
 
+import m.Joueur;
+
 /**
  * Classe contenant tous les paramètres du programme et tous ses getters & setters.
  * @author Nathanaël Jourdane
@@ -13,13 +15,15 @@ public class Parametres
 	private int styleQE; // Style de quadrillage en mode Edition.
 	
 	private Color cFond; // Couleur de fond du terrain.
+	private Color cBordures; // Couleur de la bordure du terrain.
 	private Color cLignes; // Couleur des lignes de base (limites, ligne d'attaque).
 	private Color cQLarge; // Couleur du quadrillage large (3 carreaux).
 	private Color cQFin; // Couleur du quadrillage fin (9 carreaux).
 	private Color cCoords; // Couleur des coordonnées.
 	
 	// Nom des élements
-	private String tabNomE[] = new String[13];
+	private Joueur tabJE1[] = new Joueur[6];
+	private Joueur tabJE2[] = new Joueur[6];
 	
 	// Etat des élements
 	private boolean tabEtatE[] = new boolean[13];
@@ -29,7 +33,7 @@ public class Parametres
 	// Divers
 	private String cheminFichier; // Chemin du fichier à lire ou éditer.
 	private boolean demiT; // Mode d'affichage : Demi-terrain (true) ou terrain complet (false).
-
+	
 	/**
 	 * Affectation des valeurs par défaut
 	 */
@@ -40,33 +44,32 @@ public class Parametres
 		styleQE = 2;
 		
 		// Couleurs
-		//conversion hex to int : int j = Integer.parseInt(s, 16);
-		cFond = new Color(220, 120, 20); //#dc7814
-		cLignes = new Color(250, 250, 250); //#fafafa
-		cQLarge = new Color(200, 100, 0); //#c86400
-		cQFin = new Color(210, 110, 10); //#d26e0a
-		cCoords = new Color(50, 50, 50);
+		cFond = hexToRgb("#dc7814");
+		cBordures = hexToRgb("#009900");
+		cLignes = hexToRgb("#fafafa");
+		cQLarge = hexToRgb("#c86400");
+		cQFin = hexToRgb("#d26e0a");
+		cCoords = hexToRgb("#dc7814");
 		
 		// Nom des élements
 	
 		// Ballon
-		this.tabNomE[0] = "Ballon";
 
 		// Joueurs équipe 1
-		this.tabNomE[1] = "Jean";
-		this.tabNomE[2] = "Marie";
-		this.tabNomE[3] = "Philippe";
-		this.tabNomE[4] = "Nathalie";
-		this.tabNomE[5] = "Michel";
-		this.tabNomE[6] = "Isabelle";
+		this.tabJE1[0] = new Joueur("A1", "Jean", new m.Position(1, 1));
+		this.tabJE1[1] = new Joueur("A2", "Marie", new m.Position(4, 1));
+		this.tabJE1[2] = new Joueur("A3", "Philippe", new m.Position(7, 1));
+		this.tabJE1[3] = new Joueur("A4", "Nathalie", new m.Position(1, 4));
+		this.tabJE1[4] = new Joueur("A5", "Michel", new m.Position(4, 4));
+		this.tabJE1[5] = new Joueur("A6", "Isabelle", new m.Position(7, 4));
 		
 		// Joueurs équipe 2
-		this.tabNomE[7] = "Alain";
-		this.tabNomE[8] = "Sylvie";
-		this.tabNomE[9] = "Patrick";
-		this.tabNomE[10] = "Catherine";
-		this.tabNomE[11] = "Nicolas";
-		this.tabNomE[12] = "Martine";
+		this.tabJE2[0] = new Joueur("B1", "Alain", new m.Position(1, 13));
+		this.tabJE2[1] = new Joueur("B2", "Sylvie", new m.Position(4, 13));
+		this.tabJE2[2] = new Joueur("B3", "Patrick", new m.Position(7, 13));
+		this.tabJE2[3] = new Joueur("B4", "Catherine", new m.Position(1, 16));
+		this.tabJE2[4] = new Joueur("B5", "Nicolas", new m.Position(4, 16));
+		this.tabJE2[5] = new Joueur("B6", "Martine", new m.Position(7, 16));
 		
 		// Etat des élements
 		
@@ -115,22 +118,49 @@ public class Parametres
 		this.cheminFichier = "/home/natha/volley/fichiers_strategie/attaque/testAtt.svb";
 	}
 	
+	private Color hexToRgb(String colorStr) {
+		int r = Integer.valueOf( colorStr.substring(1, 3 ), 16 );
+		int g = Integer.valueOf( colorStr.substring(3, 5 ), 16 );
+		int b = Integer.valueOf( colorStr.substring(5, 7 ), 16 );
+	    return new Color(r, g, b);
+	}
+	
 	/**
-	 * Getter de nom d'un élement.
-	 * @return Le nom d'un élement
+	 * Getter des joueurs par défaut de l'équipe 1.
+	 * @return Le joueur par défaut de l'équipe 1.
 	 */
-	public String getNomE(int _idE)
+	public Joueur getJE1(int _idE)
 	{
-		return this.tabNomE[_idE];
+		return this.tabJE1[_idE];
 	}
 
 	/**
-	 * Setter de nom d'un élement.
-	 * @param _nomE Le nom d'un élement.
+	 * Setter des joueurs par défaut de l'équipe 1.
+	 * @param _j Le joueur par défaut de l'équipe 1.
+	 * @param _idE L'index d'accès au joueur.
 	 */
-	public void setNomE(String _nomE, int _idE)
+	public void setJe1(Joueur _j, int _idE)
 	{
-		this.tabNomE[_idE] = _nomE;
+		this.tabJE1[_idE] = _j;
+	}
+	
+	/**
+	 * Getter des joueurs par défaut de l'équipe 2.
+	 * @return Le joueur par défaut de l'équipe 2.
+	 */
+	public Joueur getJE2(int _idE)
+	{
+		return this.tabJE2[_idE];
+	}
+
+	/**
+	 * Setter des joueurs par défaut de l'équipe 2.
+	 * @param _j Le joueur par défaut de l'équipe 2.
+	 * @param _idE L'index d'accès au joueur.
+	 */
+	public void setJe2(Joueur _j, int _idE)
+	{
+		this.tabJE2[_idE] = _j;
 	}
 	
 	/**

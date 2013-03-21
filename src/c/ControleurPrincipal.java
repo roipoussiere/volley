@@ -27,7 +27,7 @@ public class ControleurPrincipal {
   public ControleurPrincipal() {
 	// Initialisations
 	this.p = new Parametres(); // Initialisation des paramètres
-	this.s = new Strategie();
+	this.s = new Strategie(this);
 	this.cve = new ControleurVueEdition(this);
 	this.cvl = new ControleurVueLecture(this);
 	// Vueterrain est crée mais le terrain est affiché à la création de VueFenetre

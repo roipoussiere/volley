@@ -1,33 +1,29 @@
 package m;
 
+import c.ControleurPrincipal;
+
 public class Strategie
-{	
+{
+	private ControleurPrincipal cp;
 	private Equipe eq1, eq2 ;
 	private TypeStrategie typeS ;
 	private int tempsActuel;
 	
 	// Constructeurs
 	
-	public Strategie ()
+	public Strategie (ControleurPrincipal _cp)
 	{
+		this.cp = _cp;
 		// Il est nécessaire de remplir les équipes au début, sinon tous les joueurs sont à NULL.
 		// À remplacer par les valeurs dans Parametres()
 		
-		Joueur j11 = new Joueur("11", "Joueur_1-1", new m.Position(0, 0));
-		Joueur j12 = new Joueur("12", "Joueur_1-2", new m.Position(0, 1));
-		Joueur j13 = new Joueur("13", "Joueur_1-3", new m.Position(0, 2));
-		Joueur j14 = new Joueur("14", "Joueur_1-4", new m.Position(0, 3));
-		Joueur j15 = new Joueur("15", "Joueur_1-5", new m.Position(0, 4));
-		Joueur j16 = new Joueur("16", "Joueur_1-6", new m.Position(0, 5));
-		Joueur[] e1 = {j11, j12, j13, j14, j15, j16};
-		
-		Joueur j21 = new Joueur("21", "Joueur_1-1", new m.Position(1, 0));
-		Joueur j22 = new Joueur("22", "Joueur_2-2", new m.Position(1, 1));
-		Joueur j23 = new Joueur("23", "Joueur_2-3", new m.Position(1, 2));
-		Joueur j24 = new Joueur("24", "Joueur_2-4", new m.Position(1, 3));
-		Joueur j25 = new Joueur("25", "Joueur_2-5", new m.Position(1, 4));
-		Joueur j26 = new Joueur("26", "Joueur_2-6", new m.Position(1, 5));
-		Joueur[] e2 = {j21, j22, j23, j24, j25, j26};
+		Joueur e1[] = new Joueur[6];
+		Joueur e2[] = new Joueur[6];
+		for (int i =0 ; i<6 ; i++)
+		{
+			e1[i] = cp.getP().getJE1(i);
+			e2[i] = cp.getP().getJE2(i);
+		}
 		
 		this.eq1 = new Equipe(e1) ;
 		this.eq2 = new Equipe(e2) ;
