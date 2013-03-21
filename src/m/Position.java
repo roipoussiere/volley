@@ -75,6 +75,15 @@ public class Position
 		this.posY = _coord.charAt(1) ;
 	}
 	
+	
+	// Conversion
+	
+	public String toFormatSaisie ()
+	{
+		return (Character.toString((char) (this.posX + 'A')) + Integer.toString(this.posY)) ;
+	}
+	
+	
 	// Affichage
 	
 	public String toString ()

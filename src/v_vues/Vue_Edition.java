@@ -102,10 +102,10 @@ public class Vue_Edition extends JPanel
 			
 			// On met à jour les champs présentant les déplacements précédents
 			if (tpsEnCours != 0) // inutile pour le temps 0
-				this.deplacementJ[i].getDepPrec().setText(eqSelec.getJoueur(i).getDeplacementAuTemps(tpsEnCours - 1).getPosition()) ;
+				this.deplacementJ[i].getDepPrec().setText(eqSelec.getJoueur(i).getDeplacementAuTemps(tpsEnCours - 1).toFormatSaisie()) ;
 			
 			// On met à jour les champs présentant les déplacements saisis pour ce temps
-			this.deplacementJ[i].getDepActuel().setText(eqSelec.getJoueur(i).getDeplacementAuTemps(tpsEnCours).getPosition()) ;
+			this.deplacementJ[i].getDepActuel().setText(eqSelec.getJoueur(i).getDeplacementAuTemps(tpsEnCours).toFormatSaisie()) ;
 		}
 		
 		// On grise le bouton "Suivant" jusqu'au remplissage d'un champ (si nouveau temps)
