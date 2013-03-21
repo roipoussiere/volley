@@ -44,23 +44,28 @@ public class AL_Edition implements ActionListener, DocumentListener
 	@Override
 	public void actionPerformed (ActionEvent _ae)
 	{
-		// Clic sur le bouton "Temps précédent" ou "Temps suivant"
+		// Clic sur le bouton "Temps précédent"
 		if (_ae.getSource().equals(this.ve.getSelecTps().getButtonTpsPrecedent()))
 		{
 			// On appelle le listener intégré dans SelectionTemps
 			this.ve.getSelecTps().actionPerformed(_ae) ;
+			// On met à jour le temps actuel dans Strategie
+			this.ve.getC().getStrategie().setTA(this.ve.getSelecTps().getTempsSelectionne()) ;
 			// On met à jour l'affichage de la fenêtre
 			this.ve.majVueEdition() ;
 		}
 
-
+		// Clic sur le bouton "Temps suivant"
 		if (_ae.getSource().equals(this.ve.getSelecTps().getButtonTpsSuivant()))
 		{
 			// On appelle le listener intégré dans SelectionTemps
 			this.ve.getSelecTps().actionPerformed(_ae) ;
-			// On crée un nouveau temps pour chaque joueur si besoin
-			if (this.ve.getSelecTps().getTempsSelectionne() == this.ve.getC().getStrategie().getEquipeNum(this.ve.getNumEquipeSelec()).getNbMaxTemps())
-				this.ve.getC().creerNouveauTemps(this.ve.getC().getStrategie().getEquipeNum(this.ve.getNumEquipeSelec())) ;
+			System.out.println("<test_flo> Temps en cours : " + this.ve.getSelecTps().getTempsSelectionne()) ;
+			// Si le temps affiché n'existe pas encotre dans la stratégie, on le crée
+			if (this.ve.getSelecTps().getTempsSelectionne() >= this.ve.getC().getStrategie().getNbTemps())
+				this.ve.getC().creerNouveauTemps() ;
+			// On met à jour le temps actuel dans Strategie
+			this.ve.getC().getStrategie().setTA(this.ve.getSelecTps().getTempsSelectionne()) ;
 			// On met à jour l'affichage de la fenêtre
 			this.ve.majVueEdition() ;
 		}
