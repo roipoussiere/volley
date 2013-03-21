@@ -49,7 +49,7 @@ public class Parametres
 		cLignes = hexToRgb("#fafafa");
 		cQLarge = hexToRgb("#c86400");
 		cQFin = hexToRgb("#d26e0a");
-		cCoords = hexToRgb("#b85400");
+		cCoords = hexToRgb("#222222");
 		
 		// Nom des élements
 	
@@ -291,6 +291,24 @@ public class Parametres
 	public void setCFond(Color _cFond)
 	{
 		this.cFond = _cFond;
+	}
+	
+	/**
+	 * Getter de la couleur des bordures du terrain.
+	 * @return La couleur des bordures du terrain.
+	 */
+	public Color getCBordures()
+	{
+		return cBordures;
+	}
+	
+	/**
+	 * Setter de la couleur des bordures du terrain.
+	 * @param _cFond La couleur des bordures du terrain.
+	 */
+	public void setCBordures(Color _cBordures)
+	{
+		this.cBordures = _cBordures;
 	}
 	
 	/**

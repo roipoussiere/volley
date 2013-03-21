@@ -77,11 +77,14 @@ public class Vue_Dessin extends JPanel
 	 * @param _g Le composant graphique.
 	 * @param _styleQ Style de quadrillage : 0 pour aucun, 1 pour 3 carreaux, 2 pour 9 carreaux.
 	 */
-	public void dessinerDT(int _styleQ, int _tc, Color _coulFond, Color _coulLigne, Color _coulQLarge, Color _coulQFin, Color _coulCoords)
+	public void dessinerDT(int _styleQ, int _tc, Color _coulFond, Color _coulBord, Color _coulLigne, Color _coulQLarge, Color _coulQFin, Color _coulCoords)
 	{
-		this.graph.setColor(_coulFond);
+		this.graph.setColor(_coulBord);
 		this.graph.fillRect(0, 0, this.getWidth(), this.getHeight());
 		
+		this.graph.setColor(_coulFond);
+		this.graph.fillRect(_tc, _tc, this.getWidth()-2*_tc, this.getHeight()-2*_tc);
+
 		// Si styleQ = 0 on ne dessine pas de lignes
 		if (_styleQ == 1)
 		{
@@ -109,10 +112,13 @@ public class Vue_Dessin extends JPanel
 	 * @param _g Le composant graphique.
 	 * @param _styleQ Style de quadrillage : 0 pour aucun, 1 pour 3 carreaux, 2 pour 9 carreaux.
 	 */
-	public void dessinerTC(int _styleQ, int _tc, Color _coulFond, Color _coulLignes, Color _coulQLarge, Color _coulQFin, Color _coulCoords)
+	public void dessinerTC(int _styleQ, int _tc, Color _coulFond, Color _coulBord, Color _coulLignes, Color _coulQLarge, Color _coulQFin, Color _coulCoords)
 	{
-		this.graph.setColor(_coulFond);
+		this.graph.setColor(_coulBord);
 		this.graph.fillRect(0, 0, this.getWidth(), this.getHeight());
+		
+		this.graph.setColor(_coulFond);
+		this.graph.fillRect(_tc, _tc, this.getWidth()-2*_tc, this.getHeight()-2*_tc);
 		
 		if (_styleQ == 1)
 		{
