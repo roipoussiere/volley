@@ -1,17 +1,19 @@
 package v_vues;
 
-import c.ControleurVueEdition;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JPanel;
 
 import m.Equipe;
-
 import v_ecouteurs.AL_Edition;
-import v_utilitaires.*;
+import v_utilitaires.SaisieDeplacement;
+import v_utilitaires.SaisieDeplacementAvecOrientation;
+import v_utilitaires.SelectionTemps;
+import c.ControleurVueEdition;
 
 /**
  * Vue contenant les éléments de l'onglet Edition.
@@ -26,6 +28,7 @@ public class Vue_Edition extends JPanel
 	private SelectionTemps selecTps ; // permet de choisir le temps à gérer
 	private JComboBox selecEquipe ; // permet de sélectionner l'équipe à déplacer
 	private SaisieDeplacementAvecOrientation deplacementJ[] ; // tableau contenant les panel de saisie des déplacements des joueurs
+	private JButton enregistrer ; // bouton enregistrer
 
 	// Constante
 	private static final int NOMBRE_JOUEURS = 6 ;
@@ -51,7 +54,7 @@ public class Vue_Edition extends JPanel
 		gbc.gridx = 0 ; gbc.gridy = 0 ;
 		gbc.gridwidth = 3 ; gbc.gridheight = 1 ; // 3 car SelectionTemps possède 3 composants
 		gbc.anchor = GridBagConstraints.LINE_START ;
-		gbc.insets = new Insets (0, 0, 0, 0) ;
+		gbc.insets = new Insets (0, 0, 5, 0) ;
 		this.add (this.selecTps, gbc) ;
 
 		// Sélection de l'équipe
@@ -62,7 +65,7 @@ public class Vue_Edition extends JPanel
 		gbc.gridx = 3 ; gbc.gridy = 0 ;
 		gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.LINE_START ;
-		gbc.insets = new Insets (0, 135, 10, 10) ;
+		gbc.insets = new Insets (0, 135, 15, 10) ;
 		this.add (this.selecEquipe, gbc) ;
 
 		// Saisie des déplacements des joueurs
@@ -73,14 +76,22 @@ public class Vue_Edition extends JPanel
 			gbc.gridx = 0 ; gbc.gridy = i + 2 ; // + 2 car les deux premières lignes sont déjà occupées
 			gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
 			gbc.anchor = GridBagConstraints.CENTER ;
-			gbc.insets = new Insets (5, 0, 5, 0) ;
+			gbc.insets = new Insets (3, 0, 3, 0) ;
 			this.add (this.deplacementJ[i], gbc) ;
-			this.deplacementJ[i].getDepActuel().getDocument().addDocumentListener(led) ;
 		}
+		
+		// Bouton enregistrer
+		this.enregistrer = new JButton ("Enregistrer") ;
+		gbc.gridx = 2 ; gbc.gridy = 9 ;
+		gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
+		gbc.anchor = GridBagConstraints.LINE_START ;
+		gbc.insets = new Insets (10, 140, 10, 0) ;
+		this.add (this.enregistrer, gbc) ;
 
 		// Abonnement aux listeners
 		this.selecTps.getButtonTpsPrecedent().addActionListener(led) ;
 		this.selecTps.getButtonTpsSuivant().addActionListener(led) ;
+		this.enregistrer.addActionListener(led) ;
 		
 		this.majVueEdition() ;
 	}
@@ -101,16 +112,18 @@ public class Vue_Edition extends JPanel
 			int tpsEnCours = this.selecTps.getTempsSelectionne() ; // temps en cours
 			
 			// On met à jour les champs présentant les déplacements précédents
-			if (tpsEnCours != 0) // inutile pour le temps 0
+			if (tpsEnCours == 0) // Si le temps en cours est 0, on vide les champs affichant les déplacements précédents
+				for (int j = 0 ; j < this.deplacementJ.length ; j++)
+					this.deplacementJ[i].getDepPrec().setText("") ;
+			else
 				this.deplacementJ[i].getDepPrec().setText(eqSelec.getJoueur(i).getDeplacementAuTemps(tpsEnCours - 1).toFormatSaisie()) ;
 			
 			// On met à jour les champs présentant les déplacements saisis pour ce temps
 			this.deplacementJ[i].getDepActuel().setText(eqSelec.getJoueur(i).getDeplacementAuTemps(tpsEnCours).toFormatSaisie()) ;
+			
+			// On met à jour l'orientation choisi pour chaque déplacement
+			this.deplacementJ[i].getListeOrientation().setSelectedItem(eqSelec.getJoueur(i).getDeplacementAuTemps(tpsEnCours).getOrt()) ;
 		}
-		
-		// On grise le bouton "Suivant" jusqu'au remplissage d'un champ (si nouveau temps)
-		if (estChampVide())
-			this.selecTps.getButtonTpsSuivant().setEnabled(false) ;
 	}
 	
 	
@@ -147,15 +160,24 @@ public class Vue_Edition extends JPanel
 	 * Getter du tableau des structures de saisie des déplacements des joueurs.
 	 * @return Le tableau des structures de saisie des déplacements des joueurs.
 	 */
-	public SaisieDeplacement[] getDeplacementJ ()
+	public SaisieDeplacementAvecOrientation[] getDeplacementJ ()
 	{
 		return deplacementJ ;
+	}
+	
+	/**
+	 * Getter du bouton enregistrer.
+	 * @return Le bouton enregistrer.
+	 */
+	public JButton getButtonEnregistrer ()
+	{
+		return enregistrer ;
 	}
 	
 	
 	// Accesseurs
 	
-	public SaisieDeplacement getSaisieDeplacementJ (int _i)
+	public SaisieDeplacementAvecOrientation getSaisieDeplacementJ (int _i)
 	{
 		return deplacementJ[_i] ;
 	}
@@ -163,24 +185,5 @@ public class Vue_Edition extends JPanel
 	public int getNumEquipeSelec ()
 	{
 		return this.selecEquipe.getSelectedIndex() + 1 ;
-	}
-	
-	
-	// Méthodes annexes
-	
-	private boolean estChampVide ()
-	{
-		boolean ok = true ;
-		int i = 0 ;
-		
-		while (ok && i < this.deplacementJ.length)
-		{
-			if (! this.deplacementJ[i].getDepActuel().getText().isEmpty())
-				ok = false ;
-			
-			i++ ;
-		}
-		
-		return ok ;
 	}
 }

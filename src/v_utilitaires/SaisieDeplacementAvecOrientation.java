@@ -26,4 +26,9 @@ public class SaisieDeplacementAvecOrientation extends SaisieDeplacement
 		gbc.insets = new Insets (0, 10, 0, 10) ;
 		this.add (this.listeOrientation, gbc) ;
 	}
+	
+	public JComboBox getListeOrientation ()
+	{
+		return this.listeOrientation ;
+	}
 }

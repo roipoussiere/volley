@@ -31,8 +31,16 @@ public class Position
 	
 	public Position (String _coord)
 	{
-		this.posX = _coord.charAt(0) ;
-		this.posY = _coord.charAt(1) ;
+		this.posX = (int) (_coord.charAt(0) - 'A') ;
+		this.posY = Integer.parseInt(Character.toString(_coord.charAt(1))) ;
+		this.ort = Orientation.HAUT ;
+	}
+	
+	public Position (String _coord, Orientation _ort)
+	{
+		this.posX = (int) (_coord.charAt(0) - 'A') ;
+		this.posY = Integer.parseInt(Character.toString(_coord.charAt(1))) ;
+		this.ort = _ort ;
 	}
 	
 	// Getters
