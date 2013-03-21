@@ -44,11 +44,11 @@ public class AL_Fenetre implements ActionListener
 		}
 
 		else if ("Demi terrain".equals(t)) {
-			//this.vf.getC().ms_terrain(true);
+			this.vf.getCVF().ms_terrain(true);
 		}
 
 		else if ("Terrain complet".equals(t)) {
-			//this.vf.getC().ms_terrain(false);
+			this.vf.getCVF().ms_terrain(false);
 		}
 
 		else if ("Paramètres...".equals(t)) {

@@ -106,4 +106,10 @@ public class ControleurVueEdition
 			System.out.println("<test_flo> Joueur " + (i+1) + " : " + _eq.getJoueur(i).getDeplacementAuTemps(_tps)) ;
 		}
 	}
+
+
+	public void majVue()
+	{
+		// À compléter
+	}
 }

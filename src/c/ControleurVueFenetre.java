@@ -58,7 +58,8 @@ public class ControleurVueFenetre
 	}
 
   public boolean isDT() {
-    return this.cp.getP().isDemiT();
+	  System.out.println("demiT : " + this.cp.getP().isDemiT());
+	  return this.cp.getP().isDemiT();
   }
 	// *** Méthodes de Vue_Fenetre ***
 
@@ -75,11 +76,11 @@ public class ControleurVueFenetre
 			{
 			case 0: // Lecture
 				this.cp.getCVT().getVT().dessiner(this.cp.getP().getStyleQL());
-				// this.cp.getCVL().majVue();
+				this.cp.getCVL().majVue();
 				break;
 			case 1: // Edition
 				this.cp.getCVT().getVT().dessiner(this.cp.getP().getStyleQE());
-				// this.vf.getCVE().majVue();
+				this.cp.getCVE().majVue();
 				break;
 			}
 		}
@@ -125,6 +126,16 @@ public class ControleurVueFenetre
 		this.cp.setCVJ(new ControleurVueJoueurs(cp));
 	}
 
+	/**
+	 * Création de la vue Joueurs.
+	 */
+	public void ms_terrain(boolean _demiT)
+	{
+		System.out.println("Nouveau terrain");
+		this.cp.getP().setDemiT(_demiT);
+		this.cp.getCVT().refresh();
+	}
+	
 	/**
 	 * Création de la vue Paramètres.
 	 */

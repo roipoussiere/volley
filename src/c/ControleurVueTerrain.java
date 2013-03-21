@@ -27,6 +27,10 @@ public class ControleurVueTerrain {
     return vt;
   }
   
+  public void refresh() {
+	  this.vt.setTaille(this.cp.getP().isDemiT());
+  }
+  
   public void quitter() {
     this.cp.getCVF().quitter();
   }
