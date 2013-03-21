@@ -21,7 +21,7 @@ public class Vue_Terrain extends JFrame implements WindowListener
 	 */
 	public Vue_Terrain(ControleurVueTerrain _cvt, ControleurVueDessin _cvd)
 	{
-		super ("Terrain");
+		super ();
 		this.cvt = _cvt;
 		this.cvd = _cvd;
 		this.addWindowListener(this); // On abonne la fenêtre à elle-même.

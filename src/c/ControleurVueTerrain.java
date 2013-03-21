@@ -16,7 +16,7 @@ public class ControleurVueTerrain {
   public ControleurVueTerrain(ControleurPrincipal _cp) {
     this.cp = _cp;
     this.vt = new Vue_Terrain(this, this.cp.getCVD());
-    this.vt.setTaille(this.cp.getP().isDemiT());
+    this.refresh();
   }
   
   /**
@@ -28,7 +28,16 @@ public class ControleurVueTerrain {
   }
   
   public void refresh() {
-	  this.vt.setTaille(this.cp.getP().isDemiT());
+	  boolean isDT = this.cp.getP().isDemiT();
+	  this.vt.setTaille(isDT);
+	  if (isDT)
+	  {
+		  this.vt.setTitle("Demi-terrain");
+	  }
+	  else
+	  {
+		  this.vt.setTitle("Terrain-complet");
+	  }
   }
   
   public void quitter() {
