@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.geom.Arc2D;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import javax.swing.JPanel;
@@ -39,37 +40,33 @@ public class Vue_Dessin extends JPanel
 		this.cvd.majDessin();
 	}
 	
-	public void affJeton(float _posX, float _posY, int _ort, String _id, float _taille, Color _coul)
-	{
-		// Dessin du cercle
-		this.graph.setColor(_coul);
-		this.graph.fill(new Ellipse2D.Float(_posX, _posY, _taille, _taille));
-		
-		// Contour du cercle
-		this.graph.setColor(Color.BLACK);
-		this.graph.draw(new Ellipse2D.Float(_posX, _posY, _taille, _taille));
-		
-		// Coordonnées du centre du cercle
-		float cX = _posX+_taille/2;
-		float cY = _posY+_taille/2;
-		
-		if (_ort != 4)
+	public void affJeton(float _posX, float _posY, int _angle, String _id, float _taille, Color _coul)
+	{		
+		// Si c'est un joueur
+		if (_angle != 405)
 		{
-			// Création de la barre pour l'orientation
-			float angle1 = (2*_ort+1)*(float)Math.PI/4;
-			float angle2 = (2*_ort+3)*(float)Math.PI/4;
-								
-			float x1 = (float) (cX+Math.cos(angle1)*_taille/2);
-			float y1 = (float) (cY+Math.sin(angle1)*_taille/2);
-			float x2 = (float) (cX+Math.cos(angle2)*_taille/2);
-			float y2 =(float) (cY+Math.sin(angle2)*_taille/2);
+			// Dessin du jeton
+			this.graph.setColor(_coul);
+			this.graph.fill(new Arc2D.Float(_posX, _posY, _taille, _taille, _angle, 270, Arc2D.CHORD));
+		
+			// Contour du jeton
+			this.graph.setColor(Color.BLACK);
+			this.graph.draw(new Arc2D.Float(_posX, _posY, _taille, _taille, _angle, 270, Arc2D.CHORD));
+		}
+		// Si c'est le ballon
+		else
+		{
+			// Dessin du cercle
+			this.graph.setColor(_coul);
+			this.graph.fill(new Ellipse2D.Float(_posX, _posY, _taille, _taille));
 			
-			// Dessin de la barre
-			this.graph.draw(new Line2D.Float(x1, y1, x2, y2));
+			// Contour du cercle
+			this.graph.setColor(Color.BLACK);
+			this.graph.draw(new Ellipse2D.Float(_posX, _posY, _taille, _taille));
 		}
 		
 		// Dessin de l'id
-		this.graph.drawString(_id, (int)(cX-0.19*_taille), (int)(cY+0.15*_taille));
+		this.graph.drawString(_id, (int)(_posX+0.31*_taille), (int)(_posY+0.65*_taille));
 	}
 	
 	/**

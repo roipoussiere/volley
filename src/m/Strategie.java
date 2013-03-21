@@ -29,7 +29,7 @@ public class Strategie
 		
 		this.eq1 = new Equipe(e1) ;
 		this.eq2 = new Equipe(e2) ;
-		this.ballon = new m.Position(5, 9, Orientation.NULL);
+		this.ballon = new m.Position(4, 9, Orientation.NULL);
 		
 		this.typeS = TypeStrategie.ATTAQUE ; // Par défaut --> A CHANGER (?)
 		this.tempsActuel = 0; // Temps à 0 à la création de la stratégie

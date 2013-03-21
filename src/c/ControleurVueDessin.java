@@ -73,7 +73,7 @@ public class ControleurVueDessin {
 		float t = (float)0.75*this.tc;
 		float posX = this.tc*(_pos.getPosX()+1) + this.tc/2 - t/2;
 		float posY = this.tc*(_pos.getPosY()+1) + this.tc/2 - t/2;
-		this.vd.affJeton(posX, posY, _pos.getOrt().ordinal(), _nomAff, t, c);
+		this.vd.affJeton(posX, posY, _pos.getOrt().ordinal()*90+45, _nomAff, t, c);
 	}
 	
 	public float getTC()
