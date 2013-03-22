@@ -192,7 +192,7 @@ public class Vue_Dessin extends JPanel
 				this.graph.drawLine(i*_tc, _posY+_tc, i*_tc, (nbY-1)*_tc + _posY);
 			}
 			for (int i=0 ; i<nbY ; i++) {
-				this.graph.drawLine(_tc, _posY + i*_tc, (nbX-1)*_tc, _posY + i*_tc);
+				this.graph.drawLine(_tc, _posY + (i+1)*_tc, (nbX-1)*_tc, _posY + (i+1)*_tc);
 			}
 		}
 
