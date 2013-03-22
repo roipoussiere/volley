@@ -56,10 +56,25 @@ public class AL_Edition implements ActionListener
 			this.ve.majVueEdition() ;
 		}
 		
+		// Clic sur le bouton E1 ou E2
+		if (_ae.getSource().equals(this.ve.getSelecEquipe().getButtonEquipe1()))
+		{
+			this.ve.getSelecEquipe().getButtonEquipe1().setEnabled(false) ;
+			this.ve.getSelecEquipe().getButtonEquipe2().setEnabled(true) ;
+			this.ve.majVueEdition() ;
+		}
+		
+		if (_ae.getSource().equals(this.ve.getSelecEquipe().getButtonEquipe2()))
+		{
+			this.ve.getSelecEquipe().getButtonEquipe2().setEnabled(false) ;
+			this.ve.getSelecEquipe().getButtonEquipe1().setEnabled(true) ;
+			this.ve.majVueEdition() ;
+		}
+		
 		// Clic sur le bouton "Enregistrer"
 		if (_ae.getSource().equals(this.ve.getButtonEnregistrer()))
 		{
-			this.ve.getC().enregistrerDeplacements(this.ve.getC().getStrategie().getEquipeNum(this.ve.getListEquipe().getSelectedIndex() + 1), this.ve.getSelecTps().getTempsSelectionne()) ;
+			this.ve.getC().enregistrerDeplacements(this.ve.getC().getStrategie().getEquipeNum(this.ve.getSelecEquipe().getNumEquipeSelec()), this.ve.getSelecTps().getTempsSelectionne()) ;
 		}
 	}
 }

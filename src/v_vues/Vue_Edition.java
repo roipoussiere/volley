@@ -5,14 +5,11 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
 import m.Equipe;
 import v_ecouteurs.AL_Edition;
-import v_utilitaires.SaisieDeplacement;
-import v_utilitaires.SaisieDeplacementAvecOrientation;
-import v_utilitaires.SelectionTemps;
+import v_utilitaires.*;
 import c.ControleurVueEdition;
 
 /**
@@ -26,7 +23,7 @@ public class Vue_Edition extends JPanel
 
 	// Composants de la fenetre
 	private SelectionTemps selecTps ; // permet de choisir le temps à gérer
-	private JComboBox selecEquipe ; // permet de sélectionner l'équipe à déplacer
+	private SelectionEquipe selecEquipe ; // permet de sélectionner l'équipe à déplacer
 	private SaisieDeplacementAvecOrientation deplacementJ[] ; // tableau contenant les panel de saisie des déplacements des joueurs
 	private SaisieDeplacement deplacementB ; // contient le panel de saisie du déplacement du ballon
 	private JButton enregistrer ; // bouton enregistrer
@@ -59,21 +56,19 @@ public class Vue_Edition extends JPanel
 		this.add (this.selecTps, gbc) ;
 
 		// Sélection de l'équipe
-		this.selecEquipe = new JComboBox () ;
-		this.selecEquipe.setEditable (false) ;
-		this.selecEquipe.addItem ("Équipe 1") ;
-		this.selecEquipe.addItem ("Équipe 2") ;
+		this.selecEquipe = new SelectionEquipe() ;
+		this.selecEquipe.getButtonEquipe1().setEnabled(false) ;
 		gbc.gridx = 3 ; gbc.gridy = 0 ;
 		gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.LINE_START ;
-		gbc.insets = new Insets (0, 135, 15, 10) ;
+		gbc.insets = new Insets (0, 110, 15, 10) ;
 		this.add (this.selecEquipe, gbc) ;
 
 		// Saisie des déplacements des joueurs
 		this.deplacementJ = new SaisieDeplacementAvecOrientation[NOMBRE_JOUEURS] ;
 		for (int i = 0 ; i < NOMBRE_JOUEURS ; i++)
 		{	
-			this.deplacementJ[i] = new SaisieDeplacementAvecOrientation ("Joueur " + (i + 1)) ;
+			this.deplacementJ[i] = new SaisieDeplacementAvecOrientation ("Joueur " + (i + 1), i + 1) ;
 			gbc.gridx = 0 ; gbc.gridy = i + 2 ; // + 2 car les deux premières lignes sont déjà occupées
 			gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
 			gbc.anchor = GridBagConstraints.CENTER ;
@@ -86,7 +81,7 @@ public class Vue_Edition extends JPanel
 		gbc.gridx = 0 ; gbc.gridy = 9 ;
 		gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.LINE_START ;
-		gbc.insets = new Insets (3, 69, 3, 0) ;
+		gbc.insets = new Insets (3, 78, 3, 0) ;
 		this.add (this.deplacementB, gbc) ;
 		
 		// Bouton enregistrer
@@ -114,7 +109,7 @@ public class Vue_Edition extends JPanel
 	public void majVueEdition ()
 	{
 		// On récupère l'équipe en cours de traitement
-		Equipe eqSelec = this.getC().getStrategie().getEquipeNum(this.selecEquipe.getSelectedIndex() + 1) ;
+		Equipe eqSelec = this.getC().getStrategie().getEquipeNum(this.selecEquipe.getNumEquipeSelec()) ;
 		
 		for (int i = 0 ; i < this.deplacementJ.length ; i++)
 		{
@@ -160,7 +155,7 @@ public class Vue_Edition extends JPanel
 	 * Getter de la liste des équipes.
 	 * @return La liste des équipes.
 	 */
-	public JComboBox getListEquipe ()
+	public SelectionEquipe getSelecEquipe ()
 	{
 		return selecEquipe ;
 	}
@@ -189,10 +184,5 @@ public class Vue_Edition extends JPanel
 	public SaisieDeplacementAvecOrientation getSaisieDeplacementJ (int _i)
 	{
 		return deplacementJ[_i] ;
-	}
-	
-	public int getNumEquipeSelec ()
-	{
-		return this.selecEquipe.getSelectedIndex() + 1 ;
 	}
 }

@@ -22,14 +22,14 @@ public class SaisieDeplacement extends JPanel
 	/**
 	 * Constructeur de l'utilitaire et de tous ses composants.
 	 */
-	public SaisieDeplacement (String _nomJ)
+	public SaisieDeplacement (String _nom)
 	{
 		// Mise en place du GridBagLayout
 		this.setLayout (new GridBagLayout ()) ;
 		GridBagConstraints gbc = new GridBagConstraints () ;
 		
 		// Label info joueur
-		this.infoJ = new JLabel (_nomJ) ;
+		this.infoJ = new JLabel (_nom) ;
 		gbc.gridx = 0 ; gbc.gridy = 0 ;
 		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.LINE_START ;
@@ -52,6 +52,12 @@ public class SaisieDeplacement extends JPanel
 		gbc.anchor = GridBagConstraints.LINE_START ;
 		gbc.insets = new Insets (0, 10, 0, 10) ;
 		this.add (this.depActuel, gbc) ;		
+	}
+	
+	public SaisieDeplacement (String _nom, int _numJ)
+	{
+		this (_nom) ;
+		this.infoJ.setText(_nom + " (" + _numJ + ")") ;
 	}
 	
 	
