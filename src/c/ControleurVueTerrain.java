@@ -30,6 +30,7 @@ public class ControleurVueTerrain {
   public void refresh() {
 	  boolean isDT = this.cp.getP().isDemiT();
 	  this.vt.setTaille(isDT);
+	  
 	  if (isDT)
 	  {
 		  this.vt.setTitle("Demi-terrain");

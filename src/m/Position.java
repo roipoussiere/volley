@@ -19,7 +19,7 @@ public class Position
 	{
 		this.posX = _pX ;
 		this.posY = _pY ;
-		this.ort = Orientation.HAUT ;
+		this.ort = Orientation.AUCUNE ;
 	}
 	
 	public Position (int _pX, int _pY, Orientation _ort)

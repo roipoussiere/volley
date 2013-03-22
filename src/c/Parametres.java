@@ -3,6 +3,7 @@ package c;
 import java.awt.Color;
 
 import m.Joueur;
+import m.Orientation;
 
 /**
  * Classe contenant tous les paramètres du programme et tous ses getters & setters.
@@ -52,20 +53,20 @@ public class Parametres
 		// Ballon
 
 		// Joueurs équipe 1
-		this.tabJE1[0] = new Joueur("A1", "Jean", new m.Position(1, 1));
-		this.tabJE1[1] = new Joueur("A2", "Marie", new m.Position(4, 1));
-		this.tabJE1[2] = new Joueur("A3", "Philippe", new m.Position(7, 1));
-		this.tabJE1[3] = new Joueur("A4", "Nathalie", new m.Position(1, 4));
-		this.tabJE1[4] = new Joueur("A5", "Michel", new m.Position(4, 4));
-		this.tabJE1[5] = new Joueur("A6", "Isabelle", new m.Position(7, 4));
+		this.tabJE1[0] = new Joueur("B1", "Jean", new m.Position(1, 1, Orientation.BAS));
+		this.tabJE1[1] = new Joueur("B2", "Marie", new m.Position(4, 1, Orientation.BAS));
+		this.tabJE1[2] = new Joueur("B3", "Philippe", new m.Position(7, 1, Orientation.BAS));
+		this.tabJE1[3] = new Joueur("B4", "Nathalie", new m.Position(1, 4, Orientation.BAS));
+		this.tabJE1[4] = new Joueur("B5", "Michel", new m.Position(4, 4, Orientation.BAS));
+		this.tabJE1[5] = new Joueur("B6", "Isabelle", new m.Position(7, 4, Orientation.BAS));
 		
 		// Joueurs équipe 2
-		this.tabJE2[0] = new Joueur("B1", "Alain", new m.Position(1, 13));
-		this.tabJE2[1] = new Joueur("B2", "Sylvie", new m.Position(4, 13));
-		this.tabJE2[2] = new Joueur("B3", "Patrick", new m.Position(7, 13));
-		this.tabJE2[3] = new Joueur("B4", "Catherine", new m.Position(1, 16));
-		this.tabJE2[4] = new Joueur("B5", "Nicolas", new m.Position(4, 16));
-		this.tabJE2[5] = new Joueur("B6", "Martine", new m.Position(7, 16));
+		this.tabJE2[0] = new Joueur("A1", "Alain", new m.Position(1, 13, Orientation.HAUT));
+		this.tabJE2[1] = new Joueur("A2", "Sylvie", new m.Position(4, 13, Orientation.HAUT));
+		this.tabJE2[2] = new Joueur("A3", "Patrick", new m.Position(7, 13, Orientation.HAUT));
+		this.tabJE2[3] = new Joueur("A4", "Catherine", new m.Position(1, 16, Orientation.HAUT));
+		this.tabJE2[4] = new Joueur("A5", "Nicolas", new m.Position(4, 16, Orientation.HAUT));
+		this.tabJE2[5] = new Joueur("A6", "Martine", new m.Position(7, 16, Orientation.HAUT));
 		
 		// Etat des élements
 		
