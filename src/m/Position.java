@@ -24,8 +24,7 @@ public class Position
 	
 	public Position (int _pX, int _pY, Orientation _ort)
 	{
-		this.posX = _pX ;
-		this.posY = _pY ;
+		this (_pX, _pY) ;
 		this.ort = _ort ;
 	}
 	
@@ -38,8 +37,7 @@ public class Position
 	
 	public Position (String _coord, Orientation _ort)
 	{
-		this.posX = (int) (_coord.charAt(0) - 'A') ;
-		this.posY = Integer.parseInt(Character.toString(_coord.charAt(1))) ;
+		this (_coord) ;
 		this.ort = _ort ;
 	}
 	
