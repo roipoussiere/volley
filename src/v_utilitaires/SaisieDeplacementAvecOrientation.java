@@ -5,10 +5,10 @@ import java.awt.Insets;
 import javax.swing.JComboBox;
 import m.Orientation;
 
+@SuppressWarnings("serial")
 public class SaisieDeplacementAvecOrientation extends SaisieDeplacement
 {
-	private static final long serialVersionUID = 1L;
-	private JComboBox<Orientation> listeOrientation ;
+	private JComboBox listeOrientation ;
 
 	public SaisieDeplacementAvecOrientation (String _nomJ)
 	{
@@ -17,7 +17,7 @@ public class SaisieDeplacementAvecOrientation extends SaisieDeplacement
 		GridBagConstraints gbc = new GridBagConstraints () ;
 		
 		// Création de la liste de sélection de l'orientation
-		this.listeOrientation = new JComboBox<Orientation> (new Orientation[] {Orientation.AUCUNE, Orientation.GAUCHE, Orientation.BAS, Orientation.DROITE, Orientation.HAUT}) ;
+		this.listeOrientation = new JComboBox (new Orientation[] {Orientation.GAUCHE, Orientation.BAS, Orientation.DROITE, Orientation.HAUT}) ;
 		gbc.gridx = 3 ; gbc.gridy = 0 ;
 		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.LINE_START ;
@@ -25,7 +25,7 @@ public class SaisieDeplacementAvecOrientation extends SaisieDeplacement
 		this.add (this.listeOrientation, gbc) ;
 	}
 	
-	public JComboBox<Orientation> getListeOrientation ()
+	public JComboBox getListeOrientation ()
 	{
 		return this.listeOrientation ;
 	}
