@@ -57,17 +57,10 @@ public class AL_Edition implements ActionListener
 		}
 		
 		// Clic sur le bouton E1 ou E2
-		if (_ae.getSource().equals(this.ve.getSelecEquipe().getButtonEquipe1()))
+		if (_ae.getSource().equals(this.ve.getSelecEquipe().getButtonEquipe1()) || _ae.getSource().equals(this.ve.getSelecEquipe().getButtonEquipe2()))
 		{
-			this.ve.getSelecEquipe().getButtonEquipe1().setEnabled(false) ;
-			this.ve.getSelecEquipe().getButtonEquipe2().setEnabled(true) ;
-			this.ve.majVueEdition() ;
-		}
-		
-		if (_ae.getSource().equals(this.ve.getSelecEquipe().getButtonEquipe2()))
-		{
-			this.ve.getSelecEquipe().getButtonEquipe2().setEnabled(false) ;
-			this.ve.getSelecEquipe().getButtonEquipe1().setEnabled(true) ;
+			this.ve.getSelecEquipe().actionPerformed(_ae) ;
+			System.out.println("<test_flo> Equipe sélectionnée : " + this.ve.getSelecEquipe().getNumEquipeSelec());
 			this.ve.majVueEdition() ;
 		}
 		

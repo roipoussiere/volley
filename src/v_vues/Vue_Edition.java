@@ -96,6 +96,8 @@ public class Vue_Edition extends JPanel
 		this.selecTps.getButtonTpsPrecedent().addActionListener(led) ;
 		this.selecTps.getButtonTpsSuivant().addActionListener(led) ;
 		this.enregistrer.addActionListener(led) ;
+		this.selecEquipe.getButtonEquipe1().addActionListener(led) ;
+		this.selecEquipe.getButtonEquipe2().addActionListener(led) ;
 		
 		this.majVueEdition() ;
 	}
