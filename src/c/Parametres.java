@@ -46,7 +46,7 @@ public class Parametres
 		this.cBordures = hexToRgb("#009900");
 		this.cLignes = hexToRgb("#fafafa");
 		this.coulBallon = hexToRgb("#FFCC33");
-		this.coulJoueur = hexToRgb("#AAAAAA");
+		this.coulJoueur = hexToRgb("#3b34d1");
 		
 		// Nom des élements
 	

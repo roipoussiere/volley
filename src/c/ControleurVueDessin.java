@@ -69,7 +69,6 @@ public class ControleurVueDessin {
 				
 				pos = this.cp.getS().getJoueurEq2(i).getDeplacementAuTemps(this.cp.getS().getTA());
 				jeton(pos, this.cp.getS().getJoueurEq2(i).getIdJ(), type);
-				System.out.println("elem à la pos " + pos);
 			}
 		}
 		
@@ -91,7 +90,7 @@ public class ControleurVueDessin {
 		Color c = this.cp.getP().getCJoueur();
 		if (_type == TypeElt.MENEUR)
 		{
-			c = c.darker();
+			c = c.brighter().brighter();
 		}
 		else if (_type == TypeElt.BALLON)
 		{
@@ -99,6 +98,9 @@ public class ControleurVueDessin {
 		}
 			
 		float t = (float)0.75*this.tc;
+		if (_type == TypeElt.BALLON)
+			t = (float)0.5*this.tc;
+		
 		float posX = this.tc*(_pos.getPosX()+1) + this.tc/2 - t/2;
 		float posY = this.tc*(_pos.getPosY()+1) + this.tc/2 - t/2;
 		// Pour afficher l'équipe 1 sur le terrain, il faut la décaler vers le haut.

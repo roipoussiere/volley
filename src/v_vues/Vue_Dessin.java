@@ -75,11 +75,14 @@ public class Vue_Dessin extends JPanel
 	 */
 	public void dessinerDT(int _styleQ, int _tc, Color _coulFond, Color _coulBord, Color _coulLigne)
 	{
-		this.graph.setColor(_coulBord);
+		this.graph.setColor(_coulBord.darker());
 		this.graph.fillRect(0, 0, this.getWidth(), this.getHeight());
+
+		this.graph.setColor(_coulBord);
+		this.graph.fillRect(0, 0, 11*_tc, 11*_tc);
 		
 		this.graph.setColor(_coulFond);
-		this.graph.fillRect(_tc, _tc, this.getWidth()-2*_tc, this.getHeight()-2*_tc);
+		this.graph.fillRect(_tc, _tc, 9*_tc, 9*_tc);
 
 		// Si styleQ = 0 on ne dessine pas de lignes
 		if (_styleQ == 1)
@@ -92,7 +95,7 @@ public class Vue_Dessin extends JPanel
 			dessinerQFin(0, _tc, _coulFond.darker(), false);
 			dessinerQLarge(_tc, _tc, _coulFond.darker().darker());
 			
-			dessinerCoords(_tc, _coulBord.darker().darker(), true);
+			dessinerCoords(_tc, _coulBord.darker().darker().darker(), true);
 		}
 		
 		this.graph.setColor(_coulLigne);
@@ -111,11 +114,14 @@ public class Vue_Dessin extends JPanel
 	 */
 	public void dessinerTC(int _styleQ, int _tc, Color _coulFond, Color _coulBord, Color _coulLignes)
 	{
-		this.graph.setColor(_coulBord);
+		this.graph.setColor(_coulBord.darker());
 		this.graph.fillRect(0, 0, this.getWidth(), this.getHeight());
+
+		this.graph.setColor(_coulBord);
+		this.graph.fillRect(0, 0, 11*_tc, 20*_tc);
 		
 		this.graph.setColor(_coulFond);
-		this.graph.fillRect(_tc, _tc, this.getWidth()-2*_tc, this.getHeight()-2*_tc);
+		this.graph.fillRect(_tc, _tc, 9*_tc, 18*_tc);
 		
 		if (_styleQ == 1)
 		{
@@ -130,7 +136,8 @@ public class Vue_Dessin extends JPanel
 			dessinerQFin(9*_tc, _tc, _coulFond.darker(), false);
 			dessinerQLarge(_tc, _tc, _coulFond.darker().darker());
 			dessinerQLarge(10*_tc, _tc, _coulFond.darker().darker());
-			dessinerCoords(_tc, _coulBord.darker().darker(), false);
+			
+			dessinerCoords(_tc, _coulBord.darker().darker().darker(), false);
 		}
 		
 		this.graph.setColor(_coulLignes);
@@ -150,16 +157,19 @@ public class Vue_Dessin extends JPanel
 	private void dessinerCoords(int _tc, Color _coulCoords, boolean _isDT)
 	{
 		this.graph.setColor(_coulCoords);
-		int nbCarH = 9; // Nombre de carreaux en hauteu
+		int nbCarH = 11; // Nombre de carreaux en hauteur
+		int nbCarL = 11;
+		
 		if (!_isDT)
-			nbCarH = 18;
-		for (int i=0 ; i<9 ; i++)
+			nbCarH = 20;
+		
+		for (int i=0 ; i<nbCarL ; i++)
 		{
-			this.graph.drawString(String.valueOf((char) (i+'A')), (int) (_tc*(i+1.4)), (int) (_tc*0.6));
+			this.graph.drawString(String.valueOf((char) (i+'A')), (int) (_tc*(i+0.4)), nbCarH*_tc+13);
 		}
 		for (int i=0 ; i<nbCarH ; i++)
 		{
-			this.graph.drawString(String.valueOf(i+1), (int) (_tc*0.4), (int) (_tc*(i+1.6)));
+			this.graph.drawString(String.valueOf(i), nbCarL*_tc+3, (int) (_tc*(i+0.6)));
 		}
 	}
 	
@@ -182,7 +192,7 @@ public class Vue_Dessin extends JPanel
 			for (int i=0 ; i<nbX+1 ; i++) {
 				this.graph.drawLine(i*_tc, _posY, i*_tc, nbY*_tc + _posY);
 			}
-			for (int i=0 ; i<nbY+1 ; i++) {
+			for (int i=0 ; i<nbY ; i++) {
 				this.graph.drawLine(0, _posY + i*_tc, nbX*_tc, _posY + i*_tc);
 			}
 		}
@@ -191,7 +201,7 @@ public class Vue_Dessin extends JPanel
 			for (int i=0 ; i<nbX ; i++) {
 				this.graph.drawLine(i*_tc, _posY+_tc, i*_tc, (nbY-1)*_tc + _posY);
 			}
-			for (int i=0 ; i<nbY ; i++) {
+			for (int i=0 ; i<nbY-1 ; i++) {
 				this.graph.drawLine(_tc, _posY + (i+1)*_tc, (nbX-1)*_tc, _posY + (i+1)*_tc);
 			}
 		}
