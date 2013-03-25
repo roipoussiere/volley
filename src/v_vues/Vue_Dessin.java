@@ -39,7 +39,7 @@ public class Vue_Dessin extends JPanel
 		this.cvd.majDessin();
 	}
 	
-	public void affJeton(float _posX, float _posY, int _angle, String _id, float _taille, Color _coul)
+	public void affJeton(float _posX, float _posY, int _angle, String _nom, String _id, float _taille, Color _coul)
 	{		
 		// Si c'est un joueur
 		if (_angle != 405)
@@ -51,7 +51,14 @@ public class Vue_Dessin extends JPanel
 			// Contour du jeton
 			this.graph.setColor(Color.BLACK);
 			this.graph.draw(new Arc2D.Float(_posX, _posY, _taille, _taille, _angle, 270, Arc2D.CHORD));
+
+			// Dessin de l'id
+			this.graph.drawString(_id, (int)(_posX+0.26*_taille), (int)(_posY+0.68*_taille));
+			
+			// Dessin du nom
+			this.graph.drawString(_nom, _posX, (int)(_posY+1.35*_taille));
 		}
+		
 		// Si c'est le ballon
 		else
 		{
@@ -63,9 +70,6 @@ public class Vue_Dessin extends JPanel
 			this.graph.setColor(Color.BLACK);
 			this.graph.draw(new Ellipse2D.Float(_posX, _posY, _taille, _taille));
 		}
-		
-		// Dessin de l'id
-		this.graph.drawString(_id, (int)(_posX+0.26*_taille), (int)(_posY+0.68*_taille));
 	}
 	
 	/**
