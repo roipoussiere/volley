@@ -7,7 +7,7 @@ package m;
  */
 
 
-public class Position
+public class Position implements java.io.Serializable
 {
 	private int posX ; // abscisse
 	private int posY ; // ordonnée
