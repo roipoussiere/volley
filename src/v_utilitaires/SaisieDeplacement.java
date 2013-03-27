@@ -1,5 +1,6 @@
 package v_utilitaires;
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -15,25 +16,27 @@ import javax.swing.JTextField;
 @SuppressWarnings("serial")
 public class SaisieDeplacement extends JPanel
 {
-	private JLabel infoJ ; // nom + numéro du joueur 
-	private JTextField depPrec ; // déplacement saisi au temps précédent
-	private JTextField depActuel ; // saisie du déplacement du temps en cours
+	protected JLabel infoJ ; // nom + numéro du joueur 
+	protected JTextField depPrec ; // déplacement saisi au temps précédent
+	protected JTextField depActuel ; // saisie du déplacement du temps en cours
 	
 	/**
 	 * Constructeur de l'utilitaire et de tous ses composants.
 	 */
-	public SaisieDeplacement (String _nom)
+	public SaisieDeplacement (String _nomJ)
 	{
 		// Mise en place du GridBagLayout
 		this.setLayout (new GridBagLayout ()) ;
 		GridBagConstraints gbc = new GridBagConstraints () ;
 		
 		// Label info joueur
-		this.infoJ = new JLabel (_nom) ;
+		this.infoJ = new JLabel (_nomJ) ;
+		this.infoJ.setPreferredSize(new Dimension(60, 20)) ;
 		gbc.gridx = 0 ; gbc.gridy = 0 ;
 		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.LINE_START ;
 		gbc.insets = new Insets (0, 10, 0, 10) ;
+		gbc.fill = GridBagConstraints.HORIZONTAL ;
 		this.add (this.infoJ, gbc) ;
 		
 		// Label déplacement précédent
@@ -54,14 +57,23 @@ public class SaisieDeplacement extends JPanel
 		this.add (this.depActuel, gbc) ;		
 	}
 	
-	public SaisieDeplacement (String _nom, int _numJ)
+	public SaisieDeplacement (String _nomJ, String _idJ)
 	{
-		this (_nom) ;
-		this.infoJ.setText(_nom + " (" + _numJ + ")") ;
+		this (_nomJ) ;
+		this.infoJ.setText(_nomJ + " (" + _idJ + ")") ;
 	}
 	
 	
 	// Getters
+	
+	/**
+	 * Getter du label d'affichage du nom du joueur.
+	 * @return Le label d'affichage du nom du joueur.
+	 */
+	public JLabel getNomJ ()
+	{
+		return this.infoJ ;
+	}
 	
 	/**
 	 * Getter du champ d'affichage du déplacement précédent.

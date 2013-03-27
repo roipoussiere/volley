@@ -28,9 +28,6 @@ public class Vue_Edition extends JPanel
 	private SaisieDeplacement deplacementB ; // contient le panel de saisie du déplacement du ballon
 	private JButton enregistrer ; // bouton enregistrer
 
-	// Constante
-	private static final int NOMBRE_JOUEURS = 6 ;
-
 	/**
 	 * Création du JFrame et de tous ses composants.
 	 * @param _c Le controleur.
@@ -65,10 +62,13 @@ public class Vue_Edition extends JPanel
 		this.add (this.selecEquipe, gbc) ;
 
 		// Saisie des déplacements des joueurs
-		this.deplacementJ = new SaisieDeplacementAvecOrientation[NOMBRE_JOUEURS] ;
-		for (int i = 0 ; i < NOMBRE_JOUEURS ; i++)
+		this.deplacementJ = new SaisieDeplacementAvecOrientation[this.c.getStrategie().getEq1().getNbJoueur()] ;
+		for (int i = 0 ; i < this.deplacementJ.length ; i++)
 		{	
-			this.deplacementJ[i] = new SaisieDeplacementAvecOrientation ("Joueur " + (i + 1), i + 1) ;
+			if (this.c.getStrategie().getEq1().getJoueur(i).isMeneur())
+				this.deplacementJ[i] = new SaisieDeplacementAvecOrientation ("<html><u>" + this.c.getStrategie().getEq1().getJoueur(i).getNomJ() + "</u></html>") ;
+			else
+				this.deplacementJ[i] = new SaisieDeplacementAvecOrientation (this.c.getStrategie().getEq1().getJoueur(i).getNomJ()) ;
 			gbc.gridx = 0 ; gbc.gridy = i + 2 ; // + 2 car les deux premières lignes sont déjà occupées
 			gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
 			gbc.anchor = GridBagConstraints.CENTER ;
@@ -81,7 +81,7 @@ public class Vue_Edition extends JPanel
 		gbc.gridx = 0 ; gbc.gridy = 9 ;
 		gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.LINE_START ;
-		gbc.insets = new Insets (3, 78, 3, 0) ;
+		gbc.insets = new Insets (3, 49, 3, 0) ;
 		this.add (this.deplacementB, gbc) ;
 		
 		// Bouton enregistrer
@@ -116,6 +116,15 @@ public class Vue_Edition extends JPanel
 		for (int i = 0 ; i < this.deplacementJ.length ; i++)
 		{
 			int tpsEnCours = this.selecTps.getTempsSelectionne() ; // temps en cours
+			
+			// On met à jour les noms de joueurs
+			for (int j = 0 ; j < this.deplacementJ.length ; j++)
+			{
+				if (this.c.getStrategie().getEq1().getJoueur(i).isMeneur())
+					this.deplacementJ[i].getNomJ().setText("<html><u>" + eqSelec.getJoueur(i).getNomJ() + "</u></html>") ;
+				else
+					this.deplacementJ[i].getNomJ().setText(eqSelec.getJoueur(i).getNomJ()) ;
+			}
 			
 			// On met à jour les champs présentant les déplacements précédents
 			if (tpsEnCours == 0) // Si le temps en cours est 0, on vide les champs affichant les déplacements précédents
@@ -186,5 +195,30 @@ public class Vue_Edition extends JPanel
 	public SaisieDeplacementAvecOrientation getSaisieDeplacementJ (int _i)
 	{
 		return deplacementJ[_i] ;
+	}
+	
+	
+	// Utilitaires
+	
+	private String[] autoCompletionNomJ (Equipe _eq)
+	{
+		String[] tabNom = new String[_eq.getNbJoueur()] ;
+		int tailleNomMax = 0 ;
+		
+		// On récupère la taille du nom du joueur le plus long
+		for (int i = 0 ; i < _eq.getNbJoueur() ; i++)
+			if (tailleNomMax < _eq.getJoueur(i).getNomJ().length())
+				tailleNomMax = _eq.getJoueur(i).getNomJ().length() ;
+		
+		// On complète les noms des joueurs avec des espaces pour qu'ils aient tous la même taille
+		// (et ne créent pas de décalage à l'affichage)
+		for (int i = 0 ; i < _eq.getNbJoueur() ; i++)
+		{
+			tabNom[i] = _eq.getJoueur(i).getNomJ() ;
+			for (int j = tabNom[i].length() ; j < tailleNomMax ; j++)
+				tabNom[i] = tabNom[i] + " " ;
+		}
+		
+		return tabNom ;
 	}
 }
