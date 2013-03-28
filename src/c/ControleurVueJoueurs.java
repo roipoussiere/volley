@@ -36,7 +36,7 @@ public class ControleurVueJoueurs {
 		}
 		
 		//Affichage de message de confirmation
-		JOptionPane.showMessageDialog(vj,"Configuration de l'equipe 1 enregistrée");
+		JOptionPane.showMessageDialog(vj,"Configuration de l'équipe 1 enregistrée");
 	}
 	
 	public void EnregistreEqu2()
@@ -48,7 +48,7 @@ public class ControleurVueJoueurs {
 			this.cp.getS().getEq2().getJoueur(i).setMeneur(this.vj.getJoueur2()[i].getMeneur().isSelected());
 		}
 		//Affichage de message de confirmation
-				JOptionPane.showMessageDialog(vj,"Configuration de l'equipe 2 enregistrée");
+				JOptionPane.showMessageDialog(vj,"Configuration de l'équipe 2 enregistrée");
 	}
 	
 	public void getequipesSauvegarde1(boolean _save)

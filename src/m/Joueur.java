@@ -2,7 +2,7 @@ package m;
 
 import java.awt.Color;
 
-public class Joueur extends Element
+public class Joueur extends Element implements java.io.Serializable
 {
 	private String idJ ;
 	private String nomJ ;

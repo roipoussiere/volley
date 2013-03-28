@@ -2,6 +2,9 @@ package m;
 
 public class Equipe implements java.io.Serializable
 {
+	/**
+	 * 
+	 */
 	private Joueur[] equipe ;
 	
 	// Constructeurs

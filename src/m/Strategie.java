@@ -4,6 +4,9 @@ import c.ControleurPrincipal;
 
 public class Strategie implements java.io.Serializable
 {
+	/**
+	 * 
+	 */
 	private ControleurPrincipal cp;
 	private Equipe eq1, eq2 ;
 	private Position ballon;

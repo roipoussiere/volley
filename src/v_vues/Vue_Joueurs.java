@@ -79,7 +79,7 @@ public class Vue_Joueurs extends JDialog implements WindowListener
 		gbc.insets = new Insets (5, 40, 10, 0) ;
 		jp1.add(this.jlAfficher,gbc);
 		
-		this.jlMeneur = new JLabel("Meneur") ;
+		this.jlMeneur = new JLabel("Libero ") ;
 		gbc.gridx = 4 ; gbc.gridy = 0 ; // 
 		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.CENTER ;
@@ -108,7 +108,7 @@ public class Vue_Joueurs extends JDialog implements WindowListener
 		gbc.insets = new Insets (5, 12, 5, 0) ;
 		jp1.add (this.meneurPresentEqu1,gbc) ;
 		
-		this.jcbTout1 = new JCheckBox("Sélectionner toute l'équipe") ;
+		this.jcbTout1 = new JCheckBox("Afficher toute l'équipe") ;
 		gbc.gridx = 1 ; gbc.gridy = i+2 ; // 
 		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.CENTER ;
@@ -140,7 +140,7 @@ public class Vue_Joueurs extends JDialog implements WindowListener
 		gbc.insets = new Insets (5, 40, 10, 0) ;
 		jp2.add(this.jlAfficher,gbc);
 		
-		this.jlMeneur = new JLabel("Meneur") ;
+		this.jlMeneur = new JLabel("Libero") ;
 		gbc.gridx = 4 ; gbc.gridy = 0 ; // 
 		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.CENTER ;
@@ -169,7 +169,7 @@ public class Vue_Joueurs extends JDialog implements WindowListener
 		gbc.insets = new Insets (5, 12, 5, 0) ;
 		jp2.add (this.meneurPresentEqu2,gbc) ;
 		
-		this.jcbTout2 = new JCheckBox("Sélectionner toute l'équipe") ;
+		this.jcbTout2 = new JCheckBox("Afficher toute l'équipe") ;
 		gbc.gridx = 1 ; gbc.gridy = i+2 ;
 		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.CENTER ;
