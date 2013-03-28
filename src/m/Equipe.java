@@ -1,6 +1,6 @@
 package m;
 
-public class Equipe
+public class Equipe implements java.io.Serializable
 {
 	private Joueur[] equipe ;
 	

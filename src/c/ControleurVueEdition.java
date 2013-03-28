@@ -13,9 +13,12 @@ public class ControleurVueEdition
 	// Constantes indiquants les limites du quadrillage
 	// A REMPLACER AVEC LES VALEURS OBTENUES DEPUIS LA CLASSE TERRAIN
 	private final char MINIMUM_ABSCISSE = 'A' ;
-	private final char MAXIMUM_ABSCISSE = 'I' ;
-	private final char MINIMUM_ORDONNEE = '0' ;
-	private final char MAXIMUM_ORDONNEE = '9' ;
+	private final char MAXIMUM_ABSCISSE = 'K' ;
+	private final int MINIMUM_ORDONNEE_EQ1 = 0 ;
+	private final int MAXIMUM_ORDONNEE_EQ1 = 9 ;
+	private final int MINIMUM_ORDONNEE_EQ2 = 10 ;
+	private final int MAXIMUM_ORDONNEE_EQ2 = 19 ;
+	
 
 	private ControleurPrincipal cp;
 	private Vue_Edition ve;
@@ -84,7 +87,7 @@ public class ControleurVueEdition
 			}
 			else
 			{
-				if (!controlerFormatSaisie(depSaisie) || !estPositionLibre(_eq, _eq.getJoueur(i), new Position (depSaisie), _tps))
+				if (!controlerFormatSaisie(this.ve.getSelecEquipe().getNumEquipeSelec(), depSaisie) || !estPositionLibre(_eq, _eq.getJoueur(i), new Position (depSaisie), _tps))
 				{
 					// Sinon, on vide le champ et on place le curseur à l'intérieur
 					this.ve.getSaisieDeplacementJ(i).getDepActuel().setText("") ;
@@ -142,26 +145,59 @@ public class ControleurVueEdition
 	 * @param _saisie Le contenu du champs de saisie à contrôler.
 	 * @return TRUE si la saisie est conforme aux normes, FALSE sinon.
 	 */
-	private boolean controlerFormatSaisie (String _saisie)
+	private boolean controlerFormatSaisie (int _numEq, String _saisie)
 	{
-		if (_saisie.length() > 2) // Si la saisie est trop longue
+		if (_saisie.length() < 2) // Si la saisie est trop courte...
 		{
-			JOptionPane.showMessageDialog (this.ve, "Saisie incorrecte !\nUn maxixum de 2 caractères est attendu.", null, JOptionPane.ERROR_MESSAGE) ;
+			JOptionPane.showMessageDialog (this.ve, "Saisie incorrecte !\nUne coordonnée se compose d'au minimum 2 caractères.", null, JOptionPane.ERROR_MESSAGE) ;
+			return false ;
 		}
-		else if (_saisie.charAt(0) < MINIMUM_ABSCISSE || _saisie.charAt(0) > MAXIMUM_ABSCISSE) // Si le premier caractère n'est pas une abscisse répertoriée
+		
+		if (_numEq == 1) // Si l'équipe traitée est la première...
 		{
-			JOptionPane.showMessageDialog (this.ve, "Saisie incorrecte !\nLe premier caractère doit être une lettre.", null, JOptionPane.ERROR_MESSAGE) ;
-		}
-		else if (_saisie.charAt(1) < MINIMUM_ORDONNEE || _saisie.charAt(1) > MAXIMUM_ORDONNEE) // Si le second caractère n'est pas une ordonnée répertoriée
-		{
-			JOptionPane.showMessageDialog (this.ve, "Saisie incorrecte !\nLe second caractère doit être un chiffre.", null, JOptionPane.ERROR_MESSAGE) ;
-		}
-		else
-		{
-			return true ;
+			if (_saisie.length() > 2) // Si la saisie est trop longue...
+			{
+				JOptionPane.showMessageDialog (this.ve, "Saisie incorrecte !\nUn joueur de l'équipe 1 se déplace sur des\ncoordonnées composées de 2 caractères.", null, JOptionPane.ERROR_MESSAGE) ;
+				return false ;
+			}
+			
+			if (_saisie.charAt(0) < MINIMUM_ABSCISSE || _saisie.charAt(0) > MAXIMUM_ABSCISSE) // Si le premier caractère n'est pas une abscisse répertoriée...
+			{
+				JOptionPane.showMessageDialog (this.ve, "Saisie incorrecte !\nAbscisse inexploitable.", null, JOptionPane.ERROR_MESSAGE) ;
+				return false ;
+			}
+			
+			if (_saisie.charAt(1) < '0' || _saisie.charAt(1) > '9' || Integer.parseInt(_saisie.substring(1)) < MINIMUM_ORDONNEE_EQ1 || 
+				Integer.parseInt(_saisie.substring(1)) > MAXIMUM_ORDONNEE_EQ1) // Si le second caractère n'est pas une ordonnée répertoriée...
+			{
+				JOptionPane.showMessageDialog (this.ve, "Saisie incorrecte !\nOrdonnée inexploitable.", null, JOptionPane.ERROR_MESSAGE) ;
+				return false ;
+			}
 		}
 
-		return false ;
+		if (_numEq == 2)
+		{
+			if (_saisie.length() < 3 || _saisie.length() > 3) // Si la saisie est trop longue...
+			{
+				JOptionPane.showMessageDialog (this.ve, "Saisie incorrecte !\nUn joueur de l'équipe 2 se déplace sur des\ncoordonnées composées de 3 caractères.", null, JOptionPane.ERROR_MESSAGE) ;
+				return false ;
+			}
+			
+			if (_saisie.charAt(0) < MINIMUM_ABSCISSE || _saisie.charAt(0) > MAXIMUM_ABSCISSE) // Si le premier caractère n'est pas une abscisse répertoriée...
+			{
+				JOptionPane.showMessageDialog (this.ve, "Saisie incorrecte !\nAbscisse inexploitable.", null, JOptionPane.ERROR_MESSAGE) ;
+				return false ;
+			}
+			
+			if (_saisie.charAt(1) < '0' || _saisie.charAt(1) > '9' || _saisie.charAt(2) < '0' || _saisie.charAt(2) > '9' ||
+				Integer.parseInt(_saisie.substring(1)) < MINIMUM_ORDONNEE_EQ2 || Integer.parseInt(_saisie.substring(1)) > MAXIMUM_ORDONNEE_EQ2) // Si le second caractère n'est pas une ordonnée répertoriée...
+			{
+				JOptionPane.showMessageDialog (this.ve, "Saisie incorrecte !\nOrdonnée inexploitable.", null, JOptionPane.ERROR_MESSAGE) ;
+				return false ;
+			}
+		}
+
+		return true ;
 	}
 
 

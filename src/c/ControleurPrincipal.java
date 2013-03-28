@@ -105,4 +105,13 @@ public void setCVJ(ControleurVueJoueurs _cvj) {
   public ControleurVueTerrain getCVT() {
       return cvt;
   }
+  
+ /**
+  * Setter de strategie
+  */
+  
+  public void setS(Strategie _strat) 
+  {
+  	this.s = _strat;
+  }
 }

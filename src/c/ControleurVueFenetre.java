@@ -2,6 +2,8 @@ package c;
 
 import java.awt.*;
 import javax.swing.*;
+
+import m.GestionDesSauvegardeDeStrategie;
 import v_vues.*;
 
 /**
@@ -15,6 +17,7 @@ public class ControleurVueFenetre
 	private Vue_Fenetre vf;
 	private Vue_Edition ve;
 	private Vue_Lecture vl;
+	public boolean sauvegarder;
 
 	/**
 	 * Constructeur du contrôleur qui initialise les vues et les autres arguments et lance la vue principale (Vue_Fenetre).
@@ -88,7 +91,8 @@ public class ControleurVueFenetre
 	public void mf_ouvrir()
 	{
 		System.out.println("Ouverture d'un fichier de stratégie...");
-		this.parcourir();
+		chargerStrategie();
+		
 	}
 
 	/**
@@ -105,6 +109,7 @@ public class ControleurVueFenetre
 	public void mf_enregistrer()
 	{
 		System.out.println("Enregistrement de cette stratégie...");
+		
 	}
 
 	/**
@@ -113,7 +118,7 @@ public class ControleurVueFenetre
 	public void mf_enregistrerSous()
 	{
 		System.out.println("Enregistrement de cette stratégie sous...");
-		this.parcourir();
+		sauvegarderStrategie();
 	}
 
 	/**
@@ -168,26 +173,6 @@ public class ControleurVueFenetre
 
 	// *** Autres méthodes ***
 
-	/**
-	 * Ouvre une fenêtre invitant l'utilisateur à sélectionner un fichier de stratégie.<br/>
-	 * Stoque le chemin et le nom du fichier dans les arguments nomFichier et cheminFichier du contrôleur.
-	 */
-	private void parcourir()
-	{
-		JFileChooser fc = new JFileChooser();
-		int retour = fc.showOpenDialog(null);
-
-		if(retour == JFileChooser.APPROVE_OPTION) // Si un fichier a été choisi
-		{
-			this.cp.getP().setCheminFichier(fc.getSelectedFile().getAbsolutePath()); // Chemin absolu du fichier choisi
-
-			System.out.println("Il fichier sélectionné se trouve dans : " + this.cp.getP().getCheminFichier());			
-		}
-		else // Pas de fichier choisi
-		{
-			System.out.println("Aucun fichier sélectionné");
-		}
-	}
 
 	/**
 	 * Positionne une ou plusieurs fenêtres au centre de l'écran.
@@ -215,4 +200,149 @@ public class ControleurVueFenetre
 			System.exit(0);
 		}
 	}
+	
+	
+	//------------------------------- GESTION DES SAUVEGARDES -------------------------------------------
+
+		public void sauvegarderStrategie ()
+		{
+			// Création
+			JFileChooser chooser = new JFileChooser();  
+
+			// Paramétrage
+			chooser.setApproveButtonText("Enregistrer") ; 
+			chooser.setApproveButtonToolTipText ("Enregistrer un fichier dans l’éditeur"); 
+			chooser.setDialogTitle("Enregistrer");
+			chooser.setFileSelectionMode (JFileChooser.FILES_ONLY);
+
+			// Utilisation		
+			int returnVal ;
+
+			// Affichage du dialogue en mode modal (jusqu’à fermeture par l’utilisateur)
+			returnVal = chooser.showOpenDialog(this.vf);
+
+			// … l’utilisateur a-t-il cliqué "Enregistrer Fichier" ?
+			if(returnVal == JFileChooser.APPROVE_OPTION) 
+			{
+				String path = chooser.getSelectedFile().getPath();
+				GestionDesSauvegardeDeStrategie gdss = new GestionDesSauvegardeDeStrategie();
+				gdss.SerializerStrategie(path,cp.getS());
+				JOptionPane.showMessageDialog(vf, "Enregistrement effectuée avec succès", "Enregistrement effectuée", JOptionPane.INFORMATION_MESSAGE);
+				sauvegarder = true;
+
+			}
+
+		}
+
+
+		//------------------------------- GESTION DES CHARGEMENTS -------------------------------------------
+
+
+		public void chargerStrategie  ()
+		{
+			GestionDesSauvegardeDeStrategie gdss = new GestionDesSauvegardeDeStrategie();
+			
+			if(!sauvegarder)
+			{
+				int i;
+				i = JOptionPane.showConfirmDialog(vf, "Le sondage n'a pas été enregistré\n Voulez-vous sauvegarder ?");
+				switch(i)
+				{
+				case 0 : 
+				{
+					// ---- chargement avec sauvegegarde -----
+					// Création
+					JFileChooser chooser = new JFileChooser();  
+
+					// Paramétrage
+					chooser.setApproveButtonText("Ouvrir") ; 
+					chooser.setApproveButtonToolTipText ("Enregistrer un fichier dans l’éditeur"); 
+					chooser.setDialogTitle("Ouvrir");
+					chooser.setFileSelectionMode (JFileChooser.FILES_ONLY);
+				//	chooser.setSelectedFile(new File(this.getLibelleSondage()));
+
+					// Utilisation		
+					int returnVal ;
+
+					// Affichage du dialogue en mode modal (jusqu’à fermeture par l’utilisateur)
+					returnVal = chooser.showOpenDialog(this.vf);
+
+					// … l’utilisateur a-t-il cliqué "Ouvrir Fichier" ?
+					if(returnVal == JFileChooser.APPROVE_OPTION) 
+					{
+						if(gdss.DeSerializerStrategie(chooser.getSelectedFile().getPath())!=null)
+						{
+							cp.setS(gdss.DeSerializerStrategie(chooser.getSelectedFile().getPath()));
+						}
+						else
+							JOptionPane.showMessageDialog(vf, "Format du ficher selectionné incorrect", "Erreur", JOptionPane.ERROR_MESSAGE);
+					}
+
+				}
+				case 1 : 
+				{
+					// ---- chargement sans sauvegegarde -----
+
+					// Création
+					JFileChooser chooser = new JFileChooser();  
+
+					// Paramétrage
+					chooser.setApproveButtonText("Ouvrir") ; 
+					chooser.setApproveButtonToolTipText ("Enregistrer un fichier dans l’éditeur"); 
+					chooser.setDialogTitle("Ouvrir");
+					chooser.setFileSelectionMode (JFileChooser.FILES_ONLY);
+				//	chooser.setSelectedFile(new File(this.getLibelleSondage()));
+
+					// Utilisation		
+					int returnVal ;
+
+					// Affichage du dialogue en mode modal (jusqu’à fermeture par l’utilisateur)
+					returnVal = chooser.showOpenDialog(this.vf);
+
+					// … l’utilisateur a-t-il cliqué "Ouvrir Fichier" ?
+					if(returnVal == JFileChooser.APPROVE_OPTION) 
+					{
+						if(gdss.DeSerializerStrategie(chooser.getSelectedFile().getPath())!=null)
+						{
+							cp.setS(gdss.DeSerializerStrategie(chooser.getSelectedFile().getPath()));
+						}
+						else
+							JOptionPane.showMessageDialog(vf, "Format du ficher selectionné incorrect", "Erreur", JOptionPane.ERROR_MESSAGE);
+					}
+				}
+				case 2 : {}
+				case -1 : {}
+				}
+			}
+			else
+			{
+				// Création
+				JFileChooser chooser = new JFileChooser();  
+
+				// Paramétrage
+				chooser.setApproveButtonText("Ouvrir") ; 
+				chooser.setApproveButtonToolTipText ("Enregistrer un fichier dans l’éditeur"); 
+				chooser.setDialogTitle("Ouvrir");
+				chooser.setFileSelectionMode (JFileChooser.FILES_ONLY);
+			//	chooser.setSelectedFile(new File(this.getLibelleSondage()));
+
+				// Utilisation		
+				int returnVal ;
+
+				// Affichage du dialogue en mode modal (jusqu’à fermeture par l’utilisateur)
+				returnVal = chooser.showOpenDialog(this.vf);
+
+				// … l’utilisateur a-t-il cliqué "Ouvrir Fichier" ?
+				if(returnVal == JFileChooser.APPROVE_OPTION) 
+				{
+					if(gdss.DeSerializerStrategie(chooser.getSelectedFile().getPath())!=null)
+					{
+						cp.setS(gdss.DeSerializerStrategie(chooser.getSelectedFile().getPath()));
+					}
+					else
+						JOptionPane.showMessageDialog(vf, "Format du ficher selectionné incorrect", "Erreur", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+
+		}
 }
