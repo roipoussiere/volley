@@ -79,7 +79,7 @@ public class Vue_Dessin extends JPanel
 	 */
 	public void dessinerDT(int _styleQ, int _tc, Color _coulFond, Color _coulBord, Color _coulLigne)
 	{
-		this.graph.setColor(_coulBord.darker());
+		this.graph.setColor(_coulBord.brighter());
 		this.graph.fillRect(0, 0, this.getWidth(), this.getHeight());
 
 		this.graph.setColor(_coulBord);
@@ -99,7 +99,7 @@ public class Vue_Dessin extends JPanel
 			dessinerQFin(0, _tc, _coulFond.darker(), false);
 			dessinerQLarge(_tc, _tc, _coulFond.darker().darker());
 			
-			dessinerCoords(_tc, _coulBord.darker().darker().darker(), true);
+			dessinerCoords(_tc, _coulBord.darker().darker().darker().darker(), true);
 		}
 		
 		this.graph.setColor(_coulLigne);
@@ -118,7 +118,7 @@ public class Vue_Dessin extends JPanel
 	 */
 	public void dessinerTC(int _styleQ, int _tc, Color _coulFond, Color _coulBord, Color _coulLignes)
 	{
-		this.graph.setColor(_coulBord.darker());
+		this.graph.setColor(_coulBord.brighter());
 		this.graph.fillRect(0, 0, this.getWidth(), this.getHeight());
 
 		this.graph.setColor(_coulBord);
@@ -141,7 +141,7 @@ public class Vue_Dessin extends JPanel
 			dessinerQLarge(_tc, _tc, _coulFond.darker().darker());
 			dessinerQLarge(10*_tc, _tc, _coulFond.darker().darker());
 			
-			dessinerCoords(_tc, _coulBord.darker().darker().darker(), false);
+			dessinerCoords(_tc, _coulBord.darker().darker().darker().darker(), false);
 		}
 		
 		this.graph.setColor(_coulLignes);
