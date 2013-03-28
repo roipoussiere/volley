@@ -6,7 +6,7 @@ package m;
  * @author Florian Garnier
  */
 
-
+@SuppressWarnings("serial")
 public class Position implements java.io.Serializable
 {
 	private int posX ; // abscisse
@@ -19,7 +19,7 @@ public class Position implements java.io.Serializable
 	{
 		this.posX = _pX ;
 		this.posY = _pY ;
-		this.ort = Orientation.AUCUNE ;
+		this.ort = Orientation.HAUT ;
 	}
 	
 	public Position (int _pX, int _pY, Orientation _ort)
@@ -31,7 +31,11 @@ public class Position implements java.io.Serializable
 	public Position (String _coord)
 	{
 		this.posX = (int) (_coord.charAt(0) - 'A') ;
-		this.posY = Integer.parseInt(Character.toString(_coord.charAt(1))) ;
+		if (_coord.length() == 2) // Si c'est une coordonnée à 2 caractères...
+			this.posY = Integer.parseInt(_coord.substring(1)) ;
+		else // Sinon, c'est une coordonnée à 3 caractères...
+			this.posY = Integer.parseInt(_coord.substring(1)) ;
+			
 		this.ort = Orientation.HAUT ;
 	}
 	
@@ -65,12 +69,12 @@ public class Position implements java.io.Serializable
 	
 	// Setters
 	
-	public void setPosX (char posX)
+	public void setPosX (int posX)
 	{
 		this.posX = posX ;
 	}
 	
-	public void setPosY (char posY)
+	public void setPosY (int posY)
 	{
 		this.posY = posY ;
 	}
