@@ -121,7 +121,7 @@ public class ControleurVueDessin {
 		}
 
 		float posX = this.tc*(_pos.getPosX() + 1) + this.tc/2 - t/2;
-		float posY = this.vd.getHeight() - (this.tc*(_pos.getPosY() + 1) + this.tc/2 - t/2);
+		float posY = this.vd.getHeight() - (this.tc*(_pos.getPosY() + 1) + this.tc/2 + t/2 + 15);
 		System.out.println("pos : " + _pos.getPosY() + " ; hauteur : " + this.vd.getHeight() + " ; posY avant : " + (this.tc*(_pos.getPosY() + 1) + this.tc/2 - t/2) + " ; posY après : " + posY);
 		this.vd.affJeton(posX, posY, _pos.getOrt().ordinal()*90+45, _nom, _id, t, c);
 	}
