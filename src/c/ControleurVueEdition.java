@@ -86,14 +86,15 @@ public class ControleurVueEdition
 			depSaisie = this.ve.getSaisieDeplacementJ(i).getDepActuel().getText() ;
 			if (depSaisie.isEmpty())
 			{
-				// Si le champ de saisie est vide, on le complète avec le déplacement précédent
-				this.ve.getSaisieDeplacementJ(i).getDepActuel().setText(this.ve.getSaisieDeplacementJ(i).getDepPrec().getText()) ;
+				// Si le champ de saisie est vide, on le complète avec le déplacement par défaut (si _tps = 0, il s'agit de la position initiale
+				// du joueur, sinon, il s'agit de la position du joueur au temps précédent)
+				this.ve.getSaisieDeplacementJ(i).getDepActuel().setText(_eq.getJoueur(i).getDeplacementAuTemps(_tps).toFormatSaisie()) ;
 			}
 			else
 			{
 				if (!controlerFormatSaisie(this.ve.getSelecEquipe().getNumEquipeSelec(), depSaisie) || !estPositionLibre(_eq, _eq.getJoueur(i), new Position (depSaisie), _tps))
 				{
-					// Sinon, on vide le champ et on place le curseur à l'intérieur
+					// Si la position saisie est incorrecte ou déjà occupée, on vide le champ et on place le curseur à l'intérieur
 					this.ve.getSaisieDeplacementJ(i).getDepActuel().setText("") ;
 					this.ve.getSaisieDeplacementJ(i).getDepActuel().requestFocus() ;
 					ok = false ;
@@ -109,14 +110,15 @@ public class ControleurVueEdition
 			depSaisie = this.ve.getDeplacementB().getDepActuel().getText() ;
 			if (depSaisie.isEmpty())
 			{
-				// Si le champ de saisie est vide, on le complète avec le déplacement précédent
-				this.ve.getDeplacementB().getDepActuel().setText(this.ve.getDeplacementB().getDepPrec().getText()) ;
+				// Si le champ de saisie est vide, on le complète avec le déplacement par défaut (si _tps = 0, il s'agit de la position initiale
+				// du ballon, sinon, il s'agit de la position du joueur au temps précédent)
+				this.ve.getDeplacementB().getDepActuel().setText(this.cp.getS().getBallon().getDeplacementAuTemps(_tps).toFormatSaisie()) ;
 			}
 			else
 			{
 				if (!controlerFormatSaisie(0, depSaisie))
 				{
-					// Sinon, on vide le champ et on place le curseur à l'intérieur
+					// Si la position saisie est incorrecte, on vide le champ et on place le curseur à l'intérieur
 					this.ve.getDeplacementB().getDepActuel().setText("") ;
 					this.ve.getDeplacementB().getDepActuel().requestFocus() ;
 					ok = false ;
@@ -132,13 +134,27 @@ public class ControleurVueEdition
 			{
 				// On récupère le champ de saisie du déplacement
 				depSaisie = this.ve.getSaisieDeplacementJ(i).getDepActuel().getText() ;
-				_eq.getJoueur(i).majDeplacementAuTemps(_tps, new Position (depSaisie, (Orientation) this.ve.getSaisieDeplacementJ(i).getListeOrientation().getSelectedItem())) ;
+				// Si l'utilisateur modifie un déplacement d'un temps autre que le dernier...
+				if (_tps < (_eq.getJoueur(i).getNbDeplacements() - 1) && !depSaisie.equals(_eq.getJoueur(i).getDeplacementAuTemps(_tps).toFormatSaisie()))
+				{
+					// On affiche un message d'alerte
+					int od = JOptionPane.showConfirmDialog (this.ve, "Attention !\nD'autres déplacements ont été saisis pour " + _eq.getJoueur(i).getNomJ() + 
+							".\nLa modification de celui-ci pourrait entraîner des\nincohérences dans la stratégie. Continuer ?", null, JOptionPane.YES_NO_OPTION,
+		            		JOptionPane.WARNING_MESSAGE, null);
+					// Si l'utilisateur choisit "Oui", on met à jour le déplacement (à ses risques)
+					if (od == JOptionPane.YES_OPTION)
+						_eq.getJoueur(i).majDeplacementAuTemps(_tps, new Position (depSaisie, (Orientation) this.ve.getSaisieDeplacementJ(i).getListeOrientation().getSelectedItem())) ;
+				}
+				else
+					_eq.getJoueur(i).majDeplacementAuTemps(_tps, new Position (depSaisie, (Orientation) this.ve.getSaisieDeplacementJ(i).getListeOrientation().getSelectedItem())) ;
 			}
 			
 			// Ballon
 			depSaisie = this.ve.getDeplacementB().getDepActuel().getText() ;
 			this.cp.getS().getBallon().majDeplacementAuTemps(_tps, new Position (depSaisie)) ;
 		}
+		
+		this.ve.majVueEdition() ;
 	}
 
 
