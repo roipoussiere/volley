@@ -34,6 +34,7 @@ public class ControleurVueJoueurs {
 			this.cp.getS().getEq1().getJoueur(i).setAffiche(this.vj.getJoueur1()[i].getAfficher().isSelected());
 			this.cp.getS().getEq1().getJoueur(i).setMeneur(this.vj.getJoueur1()[i].getMeneur().isSelected());
 		}
+		this.cp.getCVE().majVue();
 		
 		//Affichage de message de confirmation
 		JOptionPane.showMessageDialog(vj,"Configuration de l'équipe 1 enregistrée");
@@ -48,7 +49,8 @@ public class ControleurVueJoueurs {
 			this.cp.getS().getEq2().getJoueur(i).setMeneur(this.vj.getJoueur2()[i].getMeneur().isSelected());
 		}
 		//Affichage de message de confirmation
-				JOptionPane.showMessageDialog(vj,"Configuration de l'équipe 2 enregistrée");
+		JOptionPane.showMessageDialog(vj,"Configuration de l'équipe 2 enregistrée");
+		this.cp.getCVE().majVue();
 	}
 	
 	public void getequipesSauvegarde1(boolean _save)
