@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import m.Joueur;
 import m.Orientation;
+import m.TypeElt;
 
 /**
  * Classe contenant tous les paramètres du programme et tous ses getters & setters.
@@ -18,8 +19,9 @@ public class Parametres
 	private Color cFond; // Couleur de fond du terrain.
 	private Color cBordures; // Couleur de la bordure du terrain.
 	private Color cLignes; // Couleur des lignes de base (limites, ligne d'attaque).
-	private Color coulJoueur;
-	private Color coulBallon;
+	private Color cJoueurE1;
+	private Color cJoueurE2;
+	private Color cBallon;
 	
 	// Nom des élements
 	private Joueur tabJE1[] = new Joueur[6];
@@ -45,29 +47,25 @@ public class Parametres
 		this.cFond = hexToRgb("#dc7814");
 		this.cBordures = hexToRgb("#009900");
 		this.cLignes = hexToRgb("#fafafa");
-		this.coulBallon = hexToRgb("#FFCC33");
-		this.coulJoueur = hexToRgb("#4b44e1");
-		//this.coulJoueurE2 = hexToRgb("");
-		
-		// Nom des élements
-	
-		// Ballon
+		this.cBallon = hexToRgb("#FFCC33");
+		this.cJoueurE1 = hexToRgb("#4b44e1");
+		this.cJoueurE2 = hexToRgb("#7b04a1");
 
 		// Joueurs équipe 1
-		this.tabJE1[0] = new Joueur("B1", "Jean", new m.Position(1, 1, Orientation.BAS));
-		this.tabJE1[1] = new Joueur("B2", "Marie", new m.Position(4, 1, Orientation.BAS));
-		this.tabJE1[2] = new Joueur("B3", "Philippe", new m.Position(7, 1, Orientation.BAS));
-		this.tabJE1[3] = new Joueur("B4", "Nathalie", new m.Position(1, 4, Orientation.BAS));
-		this.tabJE1[4] = new Joueur("B5", "Michel", new m.Position(4, 4, Orientation.BAS));
-		this.tabJE1[5] = new Joueur("B6", "Isabelle", new m.Position(7, 4, Orientation.BAS));
+		this.tabJE1[0] = new Joueur("A1", "Jean", new m.Position(1, 2, Orientation.HAUT));
+		this.tabJE1[1] = new Joueur("A2", "Marie", new m.Position(4, 2, Orientation.HAUT));
+		this.tabJE1[2] = new Joueur("A3", "Philippe", new m.Position(7, 2, Orientation.HAUT));
+		this.tabJE1[3] = new Joueur("A4", "Nathalie", new m.Position(1, 5, Orientation.HAUT));
+		this.tabJE1[4] = new Joueur("A5", "Michel", new m.Position(4, 5, Orientation.HAUT));
+		this.tabJE1[5] = new Joueur("A6", "Isabelle", new m.Position(7, 5, Orientation.HAUT));
 		
 		// Joueurs équipe 2
-		this.tabJE2[0] = new Joueur("A1", "Alain", new m.Position(1, 13, Orientation.HAUT));
-		this.tabJE2[1] = new Joueur("A2", "Sylvie", new m.Position(4, 13, Orientation.HAUT));
-		this.tabJE2[2] = new Joueur("A3", "Patrick", new m.Position(7, 13, Orientation.HAUT));
-		this.tabJE2[3] = new Joueur("A4", "Catherine", new m.Position(1, 16, Orientation.HAUT));
-		this.tabJE2[4] = new Joueur("A5", "Nicolas", new m.Position(4, 16, Orientation.HAUT));
-		this.tabJE2[5] = new Joueur("A6", "Martine", new m.Position(7, 16, Orientation.HAUT));
+		this.tabJE2[0] = new Joueur("B1", "Alain", new m.Position(1, 12, Orientation.BAS));
+		this.tabJE2[1] = new Joueur("B2", "Sylvie", new m.Position(4, 12, Orientation.BAS));
+		this.tabJE2[2] = new Joueur("B3", "Patrick", new m.Position(7, 12, Orientation.BAS));
+		this.tabJE2[3] = new Joueur("B4", "Catherine", new m.Position(1, 15, Orientation.BAS));
+		this.tabJE2[4] = new Joueur("B5", "Nicolas", new m.Position(4, 15, Orientation.BAS));
+		this.tabJE2[5] = new Joueur("B6", "Martine", new m.Position(7, 15, Orientation.BAS));
 		
 		// Etat des élements
 		
@@ -116,7 +114,7 @@ public class Parametres
 	 * @param _j Le joueur par défaut de l'équipe 1.
 	 * @param _idE L'index d'accès au joueur.
 	 */
-	public void setJe1(Joueur _j, int _idE)
+	public void setJE1(Joueur _j, int _idE)
 	{
 		this.tabJE1[_idE] = _j;
 	}
@@ -135,7 +133,7 @@ public class Parametres
 	 * @param _j Le joueur par défaut de l'équipe 2.
 	 * @param _idE L'index d'accès au joueur.
 	 */
-	public void setJe2(Joueur _j, int _idE)
+	public void setJE2(Joueur _j, int _idE)
 	{
 		this.tabJE2[_idE] = _j;
 	}
@@ -161,29 +159,48 @@ public class Parametres
 	}
 	
 	/**
-	 * Setter de la couleur du ballon.
-	 * @param _coulB La couleur du ballon.
+	 * Setter de la couleur du joueur de la 1ere équipe.
+	 * @param _coulB La couleur du joueur de la 1ere équipe.
 	 */
-	public void setCJoueur(Color _coulJ)
+	public void setCJoueurE1(Color _cJoueurE1)
 	{
-		this.coulJoueur = _coulJ;
+		this.cJoueurE1 = _cJoueurE1;
 	}
 	
 	/**
-	 * Getter de la couleur du ballon.
-	 * @return La couleur du ballon.	*/
-	public Color getCJoueur()
+	 * Getter de la couleur du joueur de la 1ere équipe
+	 * @return La couleur du joueur de la 1ere équipe.
+	 */
+	public Color getCJoueurE1()
 	{
-		return this.coulJoueur;
+		return this.cJoueurE1;
 	}
 	
+	/**
+	 * Setter de la couleur du joueur de la 2eme équipe.
+	 * @param _coulB La couleur du joueur de la 2eme équipe.
+	 */
+	public void setCJoueurE2(Color _cJoueurE2)
+	{
+		this.cJoueurE2 = _cJoueurE2;
+	}
+	
+	/**
+	 * Getter de la couleur du joueur de la 2eme équipe
+	 * @return La couleur du joueur de la 2eme équipe.
+	 */
+	public Color getCJoueurE2()
+	{
+		return this.cJoueurE2;
+	}
+
 	/**
 	 * Setter de la couleur du ballon.
 	 * @param _coulB La couleur du ballon.
 	 */
-	public void setCBallon(Color _coulB)
+	public void setCBallon(Color _cBallon)
 	{
-		this.coulBallon = _coulB;
+		this.cBallon = _cBallon;
 	}
 	
 	/**
@@ -191,7 +208,7 @@ public class Parametres
 	 * @return La couleur du ballon.	*/
 	public Color getCBallon()
 	{
-		return this.coulBallon;
+		return this.cBallon;
 	}
 
 	/**

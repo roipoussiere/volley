@@ -32,14 +32,14 @@ public class ControleurVueDessin {
 			// Affichage du quadrillage
 			this.tc = 50;
 			this.vd.dessinerDT(this.styleQ, this.tc, this.cp.getP().getCFond(), this.cp.getP().getCBordures(), this.cp.getP().getCLignes());
-		
+			
 			// affichage des joueurs équipe 1
 			for (int i=0 ; i<6 ; i++)
 			{
-				j = this.cp.getS().getJoueurEq2(i);
-				TypeElt type = TypeElt.JOUEUR;
+				j = this.cp.getS().getJoueurEq1(i);
+				TypeElt type = TypeElt.JOUEUR1;
 				if (j.isMeneur())
-					type = TypeElt.MENEUR;
+					type = TypeElt.MENEUR1;
 				
 				m.Position pos = j.getDeplacementAuTemps(this.cp.getS().getTA());
 				
@@ -57,20 +57,25 @@ public class ControleurVueDessin {
 			{
 				// affichage des joueurs équipe 1
 				j = this.cp.getS().getJoueurEq1(i);
-				TypeElt type = TypeElt.JOUEUR;
+				TypeElt type = TypeElt.JOUEUR1;
 				if (j.isMeneur())
-					type = TypeElt.MENEUR;
+					type = TypeElt.MENEUR1;
 				
 				m.Position pos = j.getDeplacementAuTemps(this.cp.getS().getTA());
+				System.out.println("E1 : " + pos.getPosY());
+				
 				jeton(pos, j.getNomJ(), j.getIdJ(), type);
 				
 				// affichage des joueurs équipe 2
-				type = TypeElt.JOUEUR;
+				System.out.println("équipe 2");
+				type = TypeElt.JOUEUR2;
 				j = this.cp.getS().getJoueurEq2(i);
-				if (j.isMeneur())
-					type = TypeElt.MENEUR;
-				
 				pos = j.getDeplacementAuTemps(this.cp.getS().getTA());
+				System.out.println("E1 : " + pos.getPosY());
+
+				if (j.isMeneur())
+					type = TypeElt.MENEUR2;
+				
 				jeton(pos, j.getNomJ(), j.getIdJ(), type);
 			}
 		}
@@ -88,27 +93,36 @@ public class ControleurVueDessin {
 		this.styleQ = _styleQ;
 	}
 	
+	// On pourrait améliorer en plaçant en paramètre un type Joueur
 	public void jeton(m.Position _pos, String _nom, String _id, TypeElt _type)
 	{
-		Color c = this.cp.getP().getCJoueur();
-		if (_type == TypeElt.MENEUR)
-		{
-			c = c.brighter().brighter();
-		}
-		else if (_type == TypeElt.BALLON)
-		{
-			c = this.cp.getP().getCBallon();
-		}
-		
+		Color c = Color.white;
 		float t = (float)0.75*this.tc;
-		if (_type == TypeElt.BALLON)
-			t = (float)0.5*this.tc;
-		
-		float posX = this.tc*(_pos.getPosX()+1) + this.tc/2 - t/2;
-		float posY = this.tc*(_pos.getPosY()+1) + this.tc/2 - t/2;
-		// Pour afficher l'équipe 1 sur le terrain, il faut la décaler vers le haut.
-		if (this.cp.getP().isDemiT())
-			posY -= 9*this.tc;
+
+		switch(_type)
+		{
+			case JOUEUR1 :
+				c = this.cp.getP().getCJoueurE1();
+			break;
+			case MENEUR1 :
+				c = this.cp.getP().getCJoueurE1().brighter().brighter();
+			break;
+			case JOUEUR2 :
+				c = this.cp.getP().getCJoueurE2();
+			break;
+			case MENEUR2 :
+				c = this.cp.getP().getCJoueurE2().brighter().brighter();
+			break;
+			case BALLON :
+				c = this.cp.getP().getCBallon();
+				t = (float)0.5*this.tc;
+			break;
+			default: break;
+		}
+
+		float posX = this.tc*(_pos.getPosX() + 1) + this.tc/2 - t/2;
+		float posY = this.vd.getHeight() - (this.tc*(_pos.getPosY() + 1) + this.tc/2 - t/2);
+		System.out.println("pos : " + _pos.getPosY() + " ; hauteur : " + this.vd.getHeight() + " ; posY avant : " + (this.tc*(_pos.getPosY() + 1) + this.tc/2 - t/2) + " ; posY après : " + posY);
 		this.vd.affJeton(posX, posY, _pos.getOrt().ordinal()*90+45, _nom, _id, t, c);
 	}
 	

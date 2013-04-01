@@ -1,7 +1,9 @@
 package m;
 
 public enum TypeElt {
-	JOUEUR,
-	MENEUR,
+	JOUEUR1,
+	JOUEUR2,
+	MENEUR1,
+	MENEUR2,
 	BALLON;
 }

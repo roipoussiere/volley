@@ -40,7 +40,7 @@ public class Vue_Dessin extends JPanel
 	}
 	
 	public void affJeton(float _posX, float _posY, int _angle, String _nom, String _id, float _taille, Color _coul)
-	{		
+	{
 		// Si c'est un joueur
 		if (_angle != 405)
 		{
