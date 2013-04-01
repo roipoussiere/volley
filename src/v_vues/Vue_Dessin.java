@@ -108,7 +108,7 @@ public class Vue_Dessin extends JPanel
 		this.graph.drawLine(_tc, _tc, _tc, _tc*10); // ligne gauche
 		this.graph.drawLine(_tc*10, _tc, _tc*10, _tc*10); // ligne droite
 		this.graph.drawLine(_tc, _tc*4, _tc*10, _tc*4); // ligne d'attaque
-		this.graph.drawLine(_tc, _tc, _tc*10, _tc); // ligne de service
+		this.graph.fillRect(_tc, _tc, _tc*9, 3);  // ligne de service
 	}
 	
 	/**
@@ -146,10 +146,10 @@ public class Vue_Dessin extends JPanel
 		
 		this.graph.setColor(_coulLignes);
 		
-		// lignes verticales
+		// lignes horizontales
 		this.graph.drawLine(_tc, _tc, _tc*10, _tc); // limite haut
 		this.graph.drawLine(_tc, _tc*7, _tc*10, _tc*7); // attaque haut
-		this.graph.drawLine(_tc, _tc*10, _tc*10, _tc*10); // ligne de service
+		this.graph.fillRect(_tc, _tc*10-2, _tc*9, 3);  // ligne de service
 		this.graph.drawLine(_tc, _tc*13, _tc*10, _tc*13); // attaque bas
 		this.graph.drawLine(_tc, _tc*19, _tc*10, _tc*19); // ligne bas
 		
@@ -167,13 +167,16 @@ public class Vue_Dessin extends JPanel
 		if (!_isDT)
 			nbCarH = 20;
 		
+		// Coordonnées horizontales
 		for (int i=0 ; i<nbCarL ; i++)
 		{
 			this.graph.drawString(String.valueOf((char) (i+'A')), (int) (_tc*(i+0.4)), nbCarH*_tc+13);
 		}
+
+		// Coordonnées verticales
 		for (int i=0 ; i<nbCarH ; i++)
 		{
-			this.graph.drawString(String.valueOf(i), nbCarL*_tc+3, (int) (_tc*(i+0.6)));
+			this.graph.drawString(String.valueOf(i), nbCarL*_tc+3, (int) (_tc*(nbCarH-i-0.4)));
 		}
 	}
 	
