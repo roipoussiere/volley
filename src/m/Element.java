@@ -9,7 +9,7 @@ import java.util.Vector;
  * donc la position de l'élément à ce temps là.
  * @author Florian Garnier
  */
-public abstract class Element implements java.io.Serializable
+public class Element implements java.io.Serializable
 {
 	private boolean affiche ;
 	private Color couleurE ;

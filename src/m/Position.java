@@ -31,11 +31,7 @@ public class Position implements java.io.Serializable
 	public Position (String _coord)
 	{
 		this.posX = (int) (_coord.charAt(0) - 'A') ;
-		if (_coord.length() == 2) // Si c'est une coordonnée à 2 caractères...
-			this.posY = Integer.parseInt(_coord.substring(1)) ;
-		else // Sinon, c'est une coordonnée à 3 caractères...
-			this.posY = Integer.parseInt(_coord.substring(1)) ;
-			
+		this.posY = Integer.parseInt(_coord.substring(1)) ;
 		this.ort = Orientation.HAUT ;
 	}
 	

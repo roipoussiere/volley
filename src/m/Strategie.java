@@ -1,5 +1,7 @@
 package m;
 
+import java.awt.Color;
+
 import c.ControleurPrincipal;
 
 public class Strategie implements java.io.Serializable
@@ -9,7 +11,7 @@ public class Strategie implements java.io.Serializable
 	 */
 	private ControleurPrincipal cp;
 	private Equipe eq1, eq2 ;
-	private Position ballon;
+	private Element ballon;
 	private TypeStrategie typeS ;
 	private int tempsActuel;
 	
@@ -37,7 +39,7 @@ public class Strategie implements java.io.Serializable
 		
 		this.eq1 = new Equipe(e1) ;
 		this.eq2 = new Equipe(e2) ;
-		this.ballon = new m.Position(4, 9, Orientation.AUCUNE);
+		this.ballon = new Element(true, Color.YELLOW, new m.Position(4, 9, Orientation.AUCUNE));
 		
 		this.typeS = TypeStrategie.ATTAQUE ; // Par défaut --> A CHANGER (?)
 		this.tempsActuel = 0; // Temps à 0 à la création de la stratégie
@@ -61,7 +63,7 @@ public class Strategie implements java.io.Serializable
 	
 	// Getters
 	
-	public Position getBallon()
+	public Element getBallon()
 	{
 		return this.ballon;
 	}

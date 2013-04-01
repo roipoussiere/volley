@@ -18,7 +18,7 @@ public class ControleurVueEdition
 	private final int MAXIMUM_ORDONNEE_EQ1 = 9 ;
 	private final int MINIMUM_ORDONNEE_EQ2 = 10 ;
 	private final int MAXIMUM_ORDONNEE_EQ2 = 19 ;
-	
+
 
 	private ControleurPrincipal cp;
 	private Vue_Edition ve;
@@ -68,6 +68,9 @@ public class ControleurVueEdition
 			joueurEq2 = this.cp.getS().getEq2().getJoueur(i) ;
 			joueurEq2.ajouterNouveauDeplacement(joueurEq2.getDeplacementAuTemps(tpsEnCours - 1)) ;
 		}
+		
+		// On crée un nouveau temps dans le vector de déplacement du ballon
+		this.cp.getS().getBallon().ajouterNouveauDeplacement(this.cp.getS().getBallon().getDeplacementAuTemps(tpsEnCours - 1)) ;
 	}
 
 	public void enregistrerDeplacements (Equipe _eq, int _tps)
@@ -75,8 +78,9 @@ public class ControleurVueEdition
 		String depSaisie ; // contient le déplacement saisi
 		boolean ok = true ; // évalue la condition d'enregistrement
 		int i = 0 ; // indice de parcours
-		
+
 		// On vérifie d'abord que chaque champ de saisie est valide
+		// Joueurs
 		while (i < _eq.getNbJoueur() && ok)
 		{
 			depSaisie = this.ve.getSaisieDeplacementJ(i).getDepActuel().getText() ;
@@ -95,25 +99,51 @@ public class ControleurVueEdition
 					ok = false ;
 				}
 			}
-			
+
 			i++ ;
 		}
 		
+		// Ballon
 		if (ok)
 		{
-			// Si tous les champs de saisie sont valides, on enregistre les déplacements
+			depSaisie = this.ve.getDeplacementB().getDepActuel().getText() ;
+			if (depSaisie.isEmpty())
+			{
+				// Si le champ de saisie est vide, on le complète avec le déplacement précédent
+				this.ve.getDeplacementB().getDepActuel().setText(this.ve.getDeplacementB().getDepPrec().getText()) ;
+			}
+			else
+			{
+				if (!controlerFormatSaisie(0, depSaisie))
+				{
+					// Sinon, on vide le champ et on place le curseur à l'intérieur
+					this.ve.getDeplacementB().getDepActuel().setText("") ;
+					this.ve.getDeplacementB().getDepActuel().requestFocus() ;
+					ok = false ;
+				}
+			}
+		}
+
+		// Si tous les champs de saisie sont valides, on enregistre les déplacements
+		if (ok)
+		{
+			// Joueurs
 			for (i = 0 ; i < _eq.getNbJoueur() ; i++)
 			{
 				// On récupère le champ de saisie du déplacement
 				depSaisie = this.ve.getSaisieDeplacementJ(i).getDepActuel().getText() ;
 				_eq.getJoueur(i).majDeplacementAuTemps(_tps, new Position (depSaisie, (Orientation) this.ve.getSaisieDeplacementJ(i).getListeOrientation().getSelectedItem())) ;
 			}
+			
+			// Ballon
+			depSaisie = this.ve.getDeplacementB().getDepActuel().getText() ;
+			this.cp.getS().getBallon().majDeplacementAuTemps(_tps, new Position (depSaisie)) ;
 		}
 	}
-	
-	
+
+
 	// Mise à jour de la vue
-	
+
 	public void majVue ()
 	{
 		this.ve.majVueEdition() ;
@@ -145,54 +175,64 @@ public class ControleurVueEdition
 	 * @param _saisie Le contenu du champs de saisie à contrôler.
 	 * @return TRUE si la saisie est conforme aux normes, FALSE sinon.
 	 */
-	private boolean controlerFormatSaisie (int _numEq, String _saisie)
+	private boolean controlerFormatSaisie (int _num, String _saisie)
 	{
 		if (_saisie.length() < 2) // Si la saisie est trop courte...
 		{
-			JOptionPane.showMessageDialog (this.ve, "Saisie incorrecte !\nUne coordonnée se compose d'au minimum 2 caractères.", null, JOptionPane.ERROR_MESSAGE) ;
+			JOptionPane.showMessageDialog (this.ve, "Coordonnées incorrectes !\nUn minimum de 2 caractères est attendu.", null, JOptionPane.ERROR_MESSAGE) ;
 			return false ;
 		}
 		
-		if (_numEq == 1) // Si l'équipe traitée est la première...
+		if (_saisie.charAt(0) < MINIMUM_ABSCISSE || _saisie.charAt(0) > MAXIMUM_ABSCISSE) // Si le premier caractère n'est pas une abscisse répertoriée...
 		{
-			if (_saisie.length() > 2) // Si la saisie est trop longue...
+			JOptionPane.showMessageDialog (this.ve, "Coordonnées incorrectes !\nL'abscisse doit être comprise entre " + MINIMUM_ABSCISSE + " et " + MAXIMUM_ABSCISSE + ".", null, JOptionPane.ERROR_MESSAGE) ;
+			return false ;
+		}
+
+		if (_num == 0) // Si on traite le ballon...
+		{
+			if (_saisie.length() > 3) // Si la saisie est trop longue...
 			{
-				JOptionPane.showMessageDialog (this.ve, "Saisie incorrecte !\nUn joueur de l'équipe 1 se déplace sur des\ncoordonnées composées de 2 caractères.", null, JOptionPane.ERROR_MESSAGE) ;
+				JOptionPane.showMessageDialog (this.ve, "Coordonnées incorrectes !\nLes coordonnées du ballon se composent d'au maximum 3 caractères.", null, JOptionPane.ERROR_MESSAGE) ;
 				return false ;
 			}
-			
-			if (_saisie.charAt(0) < MINIMUM_ABSCISSE || _saisie.charAt(0) > MAXIMUM_ABSCISSE) // Si le premier caractère n'est pas une abscisse répertoriée...
-			{
-				JOptionPane.showMessageDialog (this.ve, "Saisie incorrecte !\nAbscisse inexploitable.", null, JOptionPane.ERROR_MESSAGE) ;
-				return false ;
-			}
-			
+
 			if (_saisie.charAt(1) < '0' || _saisie.charAt(1) > '9' || Integer.parseInt(_saisie.substring(1)) < MINIMUM_ORDONNEE_EQ1 || 
-				Integer.parseInt(_saisie.substring(1)) > MAXIMUM_ORDONNEE_EQ1) // Si le second caractère n'est pas une ordonnée répertoriée...
+					Integer.parseInt(_saisie.substring(1)) > MAXIMUM_ORDONNEE_EQ2) // Si le second caractère n'est pas une ordonnée répertoriée...
 			{
-				JOptionPane.showMessageDialog (this.ve, "Saisie incorrecte !\nOrdonnée inexploitable.", null, JOptionPane.ERROR_MESSAGE) ;
+				JOptionPane.showMessageDialog (this.ve, "Coordonnées incorrectes !\nL'ordonnée du ballon doit être comprise\nentre " + MINIMUM_ORDONNEE_EQ1 + " et " + MAXIMUM_ORDONNEE_EQ2 + ".", null, JOptionPane.ERROR_MESSAGE) ;
 				return false ;
 			}
 		}
 
-		if (_numEq == 2)
+		if (_num == 1) // Si on traite la première équipe...
+		{
+			if (_saisie.length() > 2) // Si la saisie est trop longue...
+			{
+				JOptionPane.showMessageDialog (this.ve, "Coordonnées incorrectes !\nLes coordonnées d'un joueur de l'équipe 1\nse composent d'au maximum 2 caractères.", null, JOptionPane.ERROR_MESSAGE) ;
+				return false ;
+			}
+
+			if (_saisie.charAt(1) < '0' || _saisie.charAt(1) > '9' || Integer.parseInt(_saisie.substring(1)) < MINIMUM_ORDONNEE_EQ1 || 
+					Integer.parseInt(_saisie.substring(1)) > MAXIMUM_ORDONNEE_EQ1) // Si le second caractère n'est pas une ordonnée répertoriée...
+			{
+				JOptionPane.showMessageDialog (this.ve, "Coordonnées incorrectes !\nL'ordonnée d'un joueur de l'équipe 1 doit être\ncomprise entre " + MINIMUM_ORDONNEE_EQ1 + " et " + MAXIMUM_ORDONNEE_EQ1 + ".", null, JOptionPane.ERROR_MESSAGE) ;
+				return false ;
+			}
+		}
+
+		if (_num == 2) // Si on traite la deuxième équipe...
 		{
 			if (_saisie.length() < 3 || _saisie.length() > 3) // Si la saisie est trop longue...
 			{
-				JOptionPane.showMessageDialog (this.ve, "Saisie incorrecte !\nUn joueur de l'équipe 2 se déplace sur des\ncoordonnées composées de 3 caractères.", null, JOptionPane.ERROR_MESSAGE) ;
+				JOptionPane.showMessageDialog (this.ve, "Coordonnées incorrectes !\nLes coordonnées d'un joueur de l'équipe 2\nse composent de 3 caractères.", null, JOptionPane.ERROR_MESSAGE) ;
 				return false ;
 			}
-			
-			if (_saisie.charAt(0) < MINIMUM_ABSCISSE || _saisie.charAt(0) > MAXIMUM_ABSCISSE) // Si le premier caractère n'est pas une abscisse répertoriée...
-			{
-				JOptionPane.showMessageDialog (this.ve, "Saisie incorrecte !\nAbscisse inexploitable.", null, JOptionPane.ERROR_MESSAGE) ;
-				return false ;
-			}
-			
+
 			if (_saisie.charAt(1) < '0' || _saisie.charAt(1) > '9' || _saisie.charAt(2) < '0' || _saisie.charAt(2) > '9' ||
-				Integer.parseInt(_saisie.substring(1)) < MINIMUM_ORDONNEE_EQ2 || Integer.parseInt(_saisie.substring(1)) > MAXIMUM_ORDONNEE_EQ2) // Si le second caractère n'est pas une ordonnée répertoriée...
+					Integer.parseInt(_saisie.substring(1)) < MINIMUM_ORDONNEE_EQ2 || Integer.parseInt(_saisie.substring(1)) > MAXIMUM_ORDONNEE_EQ2) // Si le second caractère n'est pas une ordonnée répertoriée...
 			{
-				JOptionPane.showMessageDialog (this.ve, "Saisie incorrecte !\nOrdonnée inexploitable.", null, JOptionPane.ERROR_MESSAGE) ;
+				JOptionPane.showMessageDialog (this.ve, "Coordonnées incorrectes !\nL'ordonnée d'un joueur de l'équipe 2 doit être\ncomprise entre " + MINIMUM_ORDONNEE_EQ2 + " et " + MAXIMUM_ORDONNEE_EQ2 + ".", null, JOptionPane.ERROR_MESSAGE) ;
 				return false ;
 			}
 		}

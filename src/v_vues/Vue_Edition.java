@@ -110,13 +110,16 @@ public class Vue_Edition extends JPanel
 	 */
 	public void majVueEdition ()
 	{
+		// On récupère la valeur du temps en cours
+		int tpsEnCours = this.selecTps.getTempsSelectionne() ;
+		
+		// Joueurs
+		
 		// On récupère l'équipe en cours de traitement
 		Equipe eqSelec = this.getC().getStrategie().getEquipeNum(this.selecEquipe.getNumEquipeSelec()) ;
 		
 		for (int i = 0 ; i < this.deplacementJ.length ; i++)
-		{
-			int tpsEnCours = this.selecTps.getTempsSelectionne() ; // temps en cours
-			
+		{	
 			// On met à jour les noms de joueurs
 			for (int j = 0 ; j < this.deplacementJ.length ; j++)
 			{
@@ -139,6 +142,17 @@ public class Vue_Edition extends JPanel
 			// On met à jour l'orientation choisi pour chaque déplacement
 			this.deplacementJ[i].getListeOrientation().setSelectedItem(eqSelec.getJoueur(i).getDeplacementAuTemps(tpsEnCours).getOrt()) ;
 		}
+		
+		// Ballon
+		
+		// On met à jour le champ présentant le déplacement précédent
+		if (tpsEnCours == 0) // Si le temps en cours est 0, on vide le champ affichant le déplacement précédent
+			this.deplacementB.getDepPrec().setText("") ;
+		else
+			this.deplacementB.getDepPrec().setText(this.c.getStrategie().getBallon().getDeplacementAuTemps(tpsEnCours - 1).toFormatSaisie()) ;
+		
+		// On met à jour le champ présentant le déplacement saisi pour ce temps
+		this.deplacementB.getDepActuel().setText(this.c.getStrategie().getBallon().getDeplacementAuTemps(tpsEnCours).toFormatSaisie()) ;
 	}
 	
 	
@@ -172,12 +186,21 @@ public class Vue_Edition extends JPanel
 	}
 
 	/**
-	 * Getter du tableau des structures de saisie des déplacements des joueurs.
-	 * @return Le tableau des structures de saisie des déplacements des joueurs.
+	 * Getter du tableau des JPanel de saisie des déplacements des joueurs.
+	 * @return Le tableau des JPanel de saisie des déplacements des joueurs.
 	 */
 	public SaisieDeplacementAvecOrientation[] getDeplacementJ ()
 	{
 		return deplacementJ ;
+	}
+	
+	/**
+	 * Getter du JPanel de saisie des déplacements du ballon.
+	 * @return Le JPanel de saisie des déplacements du ballon.
+	 */
+	public SaisieDeplacement getDeplacementB()
+	{
+		return deplacementB ;
 	}
 	
 	/**

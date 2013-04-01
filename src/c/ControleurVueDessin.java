@@ -76,7 +76,7 @@ public class ControleurVueDessin {
 		}
 		
 		// Affichage du ballon
-		jeton(this.cp.getS().getBallon(), "", "", TypeElt.BALLON);
+		jeton(this.cp.getS().getBallon().getDeplacementAuTemps(this.cp.getS().getTA()), "", "", TypeElt.BALLON);
 	}
 	
 	/**
