@@ -157,9 +157,9 @@ public class ControleurVueEdition
 			// Ballon
 			depSaisie = this.ve.getDeplacementB().getDepActuel().getText() ;
 			this.cp.getS().getBallon().majDeplacementAuTemps(_tps, new Position (depSaisie)) ;
+			
+			this.ve.majVueEdition() ;
 		}
-		
-		this.ve.majVueEdition() ;
 	}
 
 
