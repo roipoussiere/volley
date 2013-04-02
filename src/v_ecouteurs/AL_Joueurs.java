@@ -16,6 +16,7 @@ import v_vues.Vue_Joueurs;
 public class AL_Joueurs implements ActionListener
 {
 	private Vue_Joueurs vj;
+
 	
 	public AL_Joueurs(Vue_Joueurs _vj)
 	{
@@ -80,6 +81,8 @@ public class AL_Joueurs implements ActionListener
 			}
 		}
 		
+		// ---------------------------  pour meneur -------------------------------------
+		
 		if(_ae.getSource().equals(this.vj.getMeneurPresentEqu1())) // checkbox selection de l'activation du meneur
 		{
 			this.vj.getCVJ().getequipesSauvegarde1(false);
@@ -87,14 +90,17 @@ public class AL_Joueurs implements ActionListener
 			if(this.vj.getMeneurPresentEqu1().isSelected()==false)
 			{
 				// Active toutes les cases
+				this.vj.getCVJ().setDeselectionEq1(false);
 				for(int j=0; j < this.vj.getJoueur1().length;j++)
 					this.vj.getJoueur1()[j].getMeneur().setEnabled(true);
 			}
 			
 			if(this.vj.getMeneurPresentEqu1().isSelected()==true)
 			{
+				this.vj.getCVJ().setDeselectionEq1(true);
 				for(int j=0; j < this.vj.getJoueur1().length;j++)
 					this.vj.getJoueur1()[j].getMeneur().setSelected(false);
+
 	
 				// Deactive toutes les cases
 				for(int j=0; j < this.vj.getJoueur1().length;j++)
@@ -110,14 +116,17 @@ public class AL_Joueurs implements ActionListener
 			if(this.vj.getMeneurPresentEqu2().isSelected()==false)
 			{
 				// Desactive toutes les cases
+				this.vj.getCVJ().setDeselectionEq2(false);
 				for(int j=0; j < this.vj.getJoueur2().length;j++)
 					this.vj.getJoueur2()[j].getMeneur().setEnabled(true);
 			}
 			
 			if(this.vj.getMeneurPresentEqu2().isSelected()==true)
 			{
+				this.vj.getCVJ().setDeselectionEq2(true);
 				for(int j=0; j < this.vj.getJoueur2().length;j++)
 					this.vj.getJoueur2()[j].getMeneur().setSelected(false);
+
 	
 				// Reactive toutes les cases
 				for(int j=0; j < this.vj.getJoueur2().length;j++)
@@ -141,5 +150,7 @@ public class AL_Joueurs implements ActionListener
 		
 
 	}
+
+
 
 }

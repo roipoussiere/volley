@@ -187,6 +187,7 @@ public class Vue_Joueurs extends JDialog implements WindowListener
 		jtpj.addTab("Equipe 2",jp2);
 		this.add(this.jtpj);
 		
+		
 		//Abonnement a l'ecouteur
 		AL_Joueurs evj = new AL_Joueurs(this);
 		
@@ -212,6 +213,7 @@ public class Vue_Joueurs extends JDialog implements WindowListener
 		
 		this.addWindowListener(this);
 		
+
 		majVueJoueurs();
 	}
 	
