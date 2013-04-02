@@ -18,7 +18,7 @@ public class Vue_Lecture extends JPanel
 
 	// Composants de la fenêtre
 	private JTextField chrono, libelleFichier ;
-	// private ButtonGroup modeLecture;
+	private ButtonGroup modeLecture;
 	private JRadioButton automatique, manuel;
 	private SelectionTemps selecTps ;
 	private JTextArea commentaire ;
@@ -69,7 +69,7 @@ public class Vue_Lecture extends JPanel
 		this.add (this.selecTps, gbc) ;
 
 		// Choix du mode de lecture
-		// this.modeLecture = new ButtonGroup() ;
+		this.modeLecture = new ButtonGroup() ;
 		// this.automatique = new JRadioButton("Automatique", false);
 		// this.modeLecture.add(this.automatique);
 		// this.manuel = new JRadioButton("Manuel", false);
@@ -86,14 +86,16 @@ public class Vue_Lecture extends JPanel
 		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.LINE_START ;
 		gbc.insets = new Insets (0, 10, 10, 10) ;
+		this.modeLecture.add(automatique);
 		this.add(this.automatique, gbc) ;
 
 		// Manuel
-		this.manuel = new JRadioButton("Manuel", false);
+		this.manuel = new JRadioButton("Manuel", true);
 		gbc.gridx = 6 ; gbc.gridy = 1 ;
 		gbc.gridwidth = 0 ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.LINE_START ;
 		gbc.insets = new Insets (0, 10, 10, 10) ;
+		this.modeLecture.add(manuel);
 		this.add(this.manuel, gbc) ;
 
 		// Commentaires sur stratégies
