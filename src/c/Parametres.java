@@ -23,10 +23,6 @@ public class Parametres
 	private Color cJoueurE2;
 	private Color cBallon;
 	
-	// Nom des élements
-	private Joueur tabJE1[] = new Joueur[6];
-	private Joueur tabJE2[] = new Joueur[6];
-	
 	// Etat des élements
 	private boolean tabEtatE[] = new boolean[13];
 	
@@ -50,22 +46,6 @@ public class Parametres
 		this.cBallon = hexToRgb("#FFCC33");
 		this.cJoueurE1 = hexToRgb("#4b44e1");
 		this.cJoueurE2 = hexToRgb("#7b04a1");
-
-		// Joueurs équipe 1
-		this.tabJE1[0] = new Joueur("JE", "Jean", new m.Position("C5", Orientation.HAUT));
-		this.tabJE1[1] = new Joueur("MA", "Marie", new m.Position("F5", Orientation.HAUT));
-		this.tabJE1[2] = new Joueur("PH", "Philippe", new m.Position("I5", Orientation.HAUT));
-		this.tabJE1[3] = new Joueur("NA", "Nathalie", new m.Position("C2", Orientation.HAUT));
-		this.tabJE1[4] = new Joueur("MI", "Michel", new m.Position("F2", Orientation.HAUT));
-		this.tabJE1[5] = new Joueur("IS", "Isabelle", new m.Position("I2", Orientation.HAUT));
-		
-		// Joueurs équipe 2
-		this.tabJE2[0] = new Joueur("AL", "Alain", new m.Position("C14", Orientation.BAS));
-		this.tabJE2[1] = new Joueur("SY", "Sylvie", new m.Position("F14", Orientation.BAS));
-		this.tabJE2[2] = new Joueur("PA", "Patrick", new m.Position("I14", Orientation.BAS));
-		this.tabJE2[3] = new Joueur("CA", "Catherine", new m.Position("C17", Orientation.BAS));
-		this.tabJE2[4] = new Joueur("NI", "Nicolas", new m.Position("F17", Orientation.BAS));
-		this.tabJE2[5] = new Joueur("MA", "Martine", new m.Position("I17", Orientation.BAS));
 		
 		// Etat des élements
 		
@@ -98,44 +78,6 @@ public class Parametres
 		int g = Integer.valueOf( colorStr.substring(3, 5 ), 16 );
 		int b = Integer.valueOf( colorStr.substring(5, 7 ), 16 );
 	    return new Color(r, g, b);
-	}
-	
-	/**
-	 * Getter des joueurs par défaut de l'équipe 1.
-	 * @return Le joueur par défaut de l'équipe 1.
-	 */
-	public Joueur getJE1(int _idE)
-	{
-		return this.tabJE1[_idE];
-	}
-
-	/**
-	 * Setter des joueurs par défaut de l'équipe 1.
-	 * @param _j Le joueur par défaut de l'équipe 1.
-	 * @param _idE L'index d'accès au joueur.
-	 */
-	public void setJE1(Joueur _j, int _idE)
-	{
-		this.tabJE1[_idE] = _j;
-	}
-	
-	/**
-	 * Getter des joueurs par défaut de l'équipe 2.
-	 * @return Le joueur par défaut de l'équipe 2.
-	 */
-	public Joueur getJE2(int _idE)
-	{
-		return this.tabJE2[_idE];
-	}
-
-	/**
-	 * Setter des joueurs par défaut de l'équipe 2.
-	 * @param _j Le joueur par défaut de l'équipe 2.
-	 * @param _idE L'index d'accès au joueur.
-	 */
-	public void setJE2(Joueur _j, int _idE)
-	{
-		this.tabJE2[_idE] = _j;
 	}
 	
 	/**
