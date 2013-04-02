@@ -101,7 +101,7 @@ public class Vue_Joueurs extends JDialog implements WindowListener
 			this.bgMeneurEqu1.add(joueur1[i].getMeneur());
 		}
 		
-		this.meneurPresentEqu1 = new JCheckBox("Désactiver le meneur") ;
+		this.meneurPresentEqu1 = new JCheckBox("Désactiver le libero") ;
 		gbc.gridx = 1 ; gbc.gridy = i+1 ; // 
 		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.LINE_START;
@@ -162,7 +162,7 @@ public class Vue_Joueurs extends JDialog implements WindowListener
 			this.bgMeneurEqu2.add(joueur2[i].getMeneur());
 		}
 		
-		this.meneurPresentEqu2 = new JCheckBox("Désactiver le meneur") ;
+		this.meneurPresentEqu2 = new JCheckBox("Désactiver le libero") ;
 		gbc.gridx = 1 ; gbc.gridy = i+1 ; // 
 		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.LINE_START;
