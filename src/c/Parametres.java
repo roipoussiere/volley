@@ -60,12 +60,12 @@ public class Parametres
 		this.tabJE1[5] = new Joueur("A6", "Isabelle", new m.Position("I2", Orientation.HAUT));
 		
 		// Joueurs équipe 2
-		this.tabJE2[0] = new Joueur("B1", "Alain", new m.Position("C12", Orientation.BAS));
-		this.tabJE2[1] = new Joueur("B2", "Sylvie", new m.Position("F12", Orientation.BAS));
-		this.tabJE2[2] = new Joueur("B3", "Patrick", new m.Position("I12", Orientation.BAS));
-		this.tabJE2[3] = new Joueur("B4", "Catherine", new m.Position("C15", Orientation.BAS));
-		this.tabJE2[4] = new Joueur("B5", "Nicolas", new m.Position("F15", Orientation.BAS));
-		this.tabJE2[5] = new Joueur("B6", "Martine", new m.Position("I15", Orientation.BAS));
+		this.tabJE2[0] = new Joueur("B1", "Alain", new m.Position("C14", Orientation.BAS));
+		this.tabJE2[1] = new Joueur("B2", "Sylvie", new m.Position("F14", Orientation.BAS));
+		this.tabJE2[2] = new Joueur("B3", "Patrick", new m.Position("I14", Orientation.BAS));
+		this.tabJE2[3] = new Joueur("B4", "Catherine", new m.Position("C17", Orientation.BAS));
+		this.tabJE2[4] = new Joueur("B5", "Nicolas", new m.Position("F17", Orientation.BAS));
+		this.tabJE2[5] = new Joueur("B6", "Martine", new m.Position("I17", Orientation.BAS));
 		
 		// Etat des élements
 		
