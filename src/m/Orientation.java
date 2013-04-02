@@ -1,9 +1,9 @@
 package m;
 
 public enum Orientation {
-	GAUCHE,
-	HAUT,
 	DROITE,
+	HAUT,
+	GAUCHE,
 	BAS,
 	AUCUNE; // Permet de reconnaitre le ballon
 }
