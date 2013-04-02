@@ -37,6 +37,9 @@ public class AL_Lecture implements ActionListener
 			// On met à jour les deux onglets
 			this.vl.majVue() ;
 			this.vl.getC().getCP().getCVE().majVue() ;
+			
+			// On met à jour la fenêtre de dessin.
+			this.vl.getC().getCP().getCVD().majDessin();
 		}
 	}
 }

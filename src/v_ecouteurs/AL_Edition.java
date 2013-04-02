@@ -42,6 +42,9 @@ public class AL_Edition implements ActionListener
 			// On met à jour les deux onglets
 			this.ve.majVueEdition() ;
 			this.ve.getC().getCP().getCVL().majVue() ;
+			
+			// On met à jour la fenêtre de dessin.
+			this.ve.getC().getCP().getCVD().majDessin();
 		}
 
 		// Clic sur le bouton "Temps suivant"
@@ -58,6 +61,9 @@ public class AL_Edition implements ActionListener
 			// On met à jour les deux onglets
 			this.ve.majVueEdition() ;
 			this.ve.getC().getCP().getCVL().getVueLecture().majVue() ;
+			
+			// On met à jour la fenêtre de dessin.
+			this.ve.getC().getCP().getCVD().majDessin();
 		}
 
 		// Clic sur le bouton E1 ou E2
@@ -72,6 +78,9 @@ public class AL_Edition implements ActionListener
 		if (_ae.getSource().equals(this.ve.getButtonEnregistrer()))
 		{
 			this.ve.getC().enregistrerDeplacements(this.ve.getC().getStrategie().getEquipeNum(this.ve.getSelecEquipe().getNumEquipeSelec()), this.ve.getSelecTps().getTempsSelectionne()) ;
+
+			// On met à jour la fenêtre de dessin.
+			this.ve.getC().getCP().getCVD().majDessin();
 		}
 	}
 
