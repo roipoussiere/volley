@@ -36,13 +36,13 @@ public class Vue_Dessin extends JPanel
 	{
 		this.graph = (Graphics2D)_g;
 		this.graph.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		this.cvd.majDessin();
+		this.cvd.initDessin();
 	}
 	
 	public void affJeton(float _posX, float _posY, int _angle, String _nom, String _id, float _taille, Color _coul)
 	{
 		// Si c'est un joueur
-		if (_angle != 405)
+		if (_angle != -1)
 		{
 			// Dessin du jeton
 			this.graph.setColor(_coul);

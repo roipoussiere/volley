@@ -17,6 +17,8 @@ public class ControleurVueDessin {
 	ControleurVueDessin(ControleurPrincipal _cp) {
 		this.cp = _cp;
 		this.vd = new Vue_Dessin(this);
+		// this.vd.repaint();
+		// this.majDessin();
 	}
 	
 	public Vue_Dessin getVD()
@@ -25,6 +27,12 @@ public class ControleurVueDessin {
 	}
 	
 	public void majDessin()
+	{
+		initDessin();
+		this.vd.repaint();
+	}
+	
+	public void initDessin()
 	{
 		System.out.println("Maj du dessin : t=" + this.cp.getS().getTA());
 		Joueur j;
@@ -99,7 +107,8 @@ public class ControleurVueDessin {
 	{
 		Color c = Color.white;
 		float t = (float)0.75*this.tc;
-
+		int orientation = _pos.getOrt().ordinal()*90+45;
+		
 		switch(_type)
 		{
 			case JOUEUR1 :
@@ -117,13 +126,14 @@ public class ControleurVueDessin {
 			case BALLON :
 				c = this.cp.getP().getCBallon();
 				t = (float)0.5*this.tc;
+				orientation = -1;
 			break;
 			default: break;
 		}
-
+		System.out.println("<test_natha> position jeton " + _nom + " : " + _pos);
 		float posX = this.tc*_pos.getPosX() + this.tc/2 - t/2;
 		float posY = this.vd.getHeight() - (this.tc*_pos.getPosY() + this.tc/2 + t/2 + 15);
-		this.vd.affJeton(posX, posY, _pos.getOrt().ordinal()*90+45, _nom, _id, t, c);
+		this.vd.affJeton(posX, posY, orientation, _nom, _id, t, c);
 	}
 	
 	public float getTC()
