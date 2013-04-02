@@ -39,8 +39,9 @@ public class AL_Edition implements ActionListener
 			System.out.println("<test_flo> Temps en cours (précédent) : " + this.ve.getSelecTps().getTempsSelectionne()) ;
 			// On met à jour le temps actuel dans Strategie
 			this.ve.getC().getStrategie().setTA(this.ve.getSelecTps().getTempsSelectionne()) ;
-			// On met à jour l'affichage de la fenêtre
+			// On met à jour les deux onglets
 			this.ve.majVueEdition() ;
+			this.ve.getC().getCP().getCVL().majVue() ;
 		}
 
 		// Clic sur le bouton "Temps suivant"
@@ -54,8 +55,9 @@ public class AL_Edition implements ActionListener
 			// Si le temps affiché n'existe pas encotre dans la stratégie, on le crée
 			if (this.ve.getSelecTps().getTempsSelectionne() >= this.ve.getC().getStrategie().getNbTemps())
 				this.ve.getC().creerNouveauTemps() ;
-			// On met à jour l'affichage de la fenêtre
+			// On met à jour les deux onglets
 			this.ve.majVueEdition() ;
+			this.ve.getC().getCP().getCVL().getVueLecture().majVue() ;
 		}
 
 		// Clic sur le bouton E1 ou E2

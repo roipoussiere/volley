@@ -49,6 +49,11 @@ public class ControleurVueEdition
 	{
 		return this.cp.getS() ;
 	}
+	
+	public ControleurPrincipal getCP ()
+	{
+		return this.cp ;
+	}
 
 
 	// Modificateurs

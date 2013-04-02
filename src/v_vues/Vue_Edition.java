@@ -36,7 +36,7 @@ public class Vue_Edition extends JPanel
 	{
 		super () ;
 		this.c = _c ;
-		
+
 		// Déclaration du listener
 		AL_Edition led = new AL_Edition(this) ;
 
@@ -75,15 +75,15 @@ public class Vue_Edition extends JPanel
 			gbc.insets = new Insets (3, 0, 3, 0) ;
 			this.add (this.deplacementJ[i], gbc) ;
 		}
-		
+
 		// Saisie des déplacements du ballon
 		this.deplacementB = new SaisieDeplacement ("Ballon") ;
 		gbc.gridx = 0 ; gbc.gridy = 9 ;
 		gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.LINE_START ;
-		gbc.insets = new Insets (3, 49, 3, 0) ;
+		gbc.insets = new Insets (3, 38, 3, 0) ;
 		this.add (this.deplacementB, gbc) ;
-		
+
 		// Bouton enregistrer
 		this.enregistrer = new JButton ("Enregistrer") ;
 		gbc.gridx = 2 ; gbc.gridy = 10 ;
@@ -98,26 +98,35 @@ public class Vue_Edition extends JPanel
 		this.enregistrer.addActionListener(led) ;
 		this.selecEquipe.getButtonEquipe1().addActionListener(led) ;
 		this.selecEquipe.getButtonEquipe2().addActionListener(led) ;
-		
+
 		this.majVueEdition() ;
 	}
-	
-	
+
+
 	// Mise à jour de la fenêtre
-	
+
 	/**
 	 * Met à jour l'affichage de la fenêtre Vue_Edition avec les données actualisées de la stratégie.
 	 */
 	public void majVueEdition ()
 	{
 		// On récupère la valeur du temps en cours
-		int tpsEnCours = this.selecTps.getTempsSelectionne() ;
-		
+		int tpsEnCours = this.c.getStrategie().getTA() ;
+
+		// On met à jour l'affichage du temps en cours (permet de gérer le changement d'onglet)
+		this.selecTps.getTextFieldTpsEnCours().setText(Integer.toString(tpsEnCours)) ;
+
+		// Si on est au temps 0, on désactive le bouton "Temps précédent"
+		if (tpsEnCours == 0)
+			this.selecTps.getButtonTpsPrecedent().setEnabled(false) ;
+		else // Sinon, on le ré-active (si besoin)
+			this.selecTps.getButtonTpsPrecedent().setEnabled(true) ;
+
 		// Joueurs
-		
+
 		// On récupère l'équipe en cours de traitement
 		Equipe eqSelec = this.getC().getStrategie().getEquipeNum(this.selecEquipe.getNumEquipeSelec()) ;
-		
+
 		for (int i = 0 ; i < this.deplacementJ.length ; i++)
 		{	
 			// On met à jour les noms de joueurs
@@ -128,34 +137,34 @@ public class Vue_Edition extends JPanel
 				else
 					this.deplacementJ[i].getNomJ().setText(eqSelec.getJoueur(i).getNomJ()) ;
 			}
-			
+
 			// On met à jour les champs présentant les déplacements précédents
 			if (tpsEnCours == 0) // Si le temps en cours est 0, on vide les champs affichant les déplacements précédents
 				for (int j = 0 ; j < this.deplacementJ.length ; j++)
 					this.deplacementJ[i].getDepPrec().setText("") ;
 			else
 				this.deplacementJ[i].getDepPrec().setText(eqSelec.getJoueur(i).getDeplacementAuTemps(tpsEnCours - 1).toFormatSaisie()) ;
-			
+
 			// On met à jour les champs présentant les déplacements saisis pour ce temps
 			this.deplacementJ[i].getDepActuel().setText(eqSelec.getJoueur(i).getDeplacementAuTemps(tpsEnCours).toFormatSaisie()) ;
-			
+
 			// On met à jour l'orientation choisi pour chaque déplacement
 			this.deplacementJ[i].getListeOrientation().setSelectedItem(eqSelec.getJoueur(i).getDeplacementAuTemps(tpsEnCours).getOrt()) ;
 		}
-		
+
 		// Ballon
-		
+
 		// On met à jour le champ présentant le déplacement précédent
 		if (tpsEnCours == 0) // Si le temps en cours est 0, on vide le champ affichant le déplacement précédent
 			this.deplacementB.getDepPrec().setText("") ;
 		else
 			this.deplacementB.getDepPrec().setText(this.c.getStrategie().getBallon().getDeplacementAuTemps(tpsEnCours - 1).toFormatSaisie()) ;
-		
+
 		// On met à jour le champ présentant le déplacement saisi pour ce temps
 		this.deplacementB.getDepActuel().setText(this.c.getStrategie().getBallon().getDeplacementAuTemps(tpsEnCours).toFormatSaisie()) ;
 	}
-	
-	
+
+
 	// Getters
 
 	/**
@@ -193,7 +202,7 @@ public class Vue_Edition extends JPanel
 	{
 		return deplacementJ ;
 	}
-	
+
 	/**
 	 * Getter du JPanel de saisie des déplacements du ballon.
 	 * @return Le JPanel de saisie des déplacements du ballon.
@@ -202,7 +211,7 @@ public class Vue_Edition extends JPanel
 	{
 		return deplacementB ;
 	}
-	
+
 	/**
 	 * Getter du bouton enregistrer.
 	 * @return Le bouton enregistrer.
@@ -211,28 +220,28 @@ public class Vue_Edition extends JPanel
 	{
 		return enregistrer ;
 	}
-	
-	
+
+
 	// Accesseurs
-	
+
 	public SaisieDeplacementAvecOrientation getSaisieDeplacementJ (int _i)
 	{
 		return deplacementJ[_i] ;
 	}
-	
-	
+
+
 	// Utilitaires
-	
+
 	private String[] autoCompletionNomJ (Equipe _eq)
 	{
 		String[] tabNom = new String[_eq.getNbJoueur()] ;
 		int tailleNomMax = 0 ;
-		
+
 		// On récupère la taille du nom du joueur le plus long
 		for (int i = 0 ; i < _eq.getNbJoueur() ; i++)
 			if (tailleNomMax < _eq.getJoueur(i).getNomJ().length())
 				tailleNomMax = _eq.getJoueur(i).getNomJ().length() ;
-		
+
 		// On complète les noms des joueurs avec des espaces pour qu'ils aient tous la même taille
 		// (et ne créent pas de décalage à l'affichage)
 		for (int i = 0 ; i < _eq.getNbJoueur() ; i++)
@@ -241,7 +250,7 @@ public class Vue_Edition extends JPanel
 			for (int j = tabNom[i].length() ; j < tailleNomMax ; j++)
 				tabNom[i] = tabNom[i] + " " ;
 		}
-		
+
 		return tabNom ;
 	}
 }

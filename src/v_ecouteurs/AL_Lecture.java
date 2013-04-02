@@ -27,6 +27,16 @@ public class AL_Lecture implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent _ae)
 	{
-		//_ae.getSource() ...
+		// Clic sur le bouton "Temps précédent" ou "Temps suivant"
+		if (_ae.getSource().equals(this.vl.getSelectTps().getButtonTpsPrecedent()) || _ae.getSource().equals(this.vl.getSelectTps().getButtonTpsSuivant()))
+		{
+			// On appelle le listener intégré dans SelectionTemps
+			this.vl.getSelectTps().actionPerformed(_ae) ;
+			// On met à jour le temps actuel dans Strategie
+			this.vl.getC().getCP().getS().setTA(this.vl.getSelectTps().getTempsSelectionne()) ;
+			// On met à jour les deux onglets
+			this.vl.majVue() ;
+			this.vl.getC().getCP().getCVE().majVue() ;
+		}
 	}
 }

@@ -43,6 +43,7 @@ public class SelectionTemps extends JPanel implements ActionListener
 		// Affichage et saisie du temps
 		this.tpsEnCours = new JTextField (3) ;
 		this.tpsEnCours.setText ("0") ;
+		this.tpsEnCours.setEditable(false) ;
 		this.tpsEnCours.setHorizontalAlignment (JTextField.CENTER) ;
 		gbc.gridx = 1 ; gbc.gridy = 0 ;
 		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;

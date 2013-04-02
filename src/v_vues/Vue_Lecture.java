@@ -3,6 +3,8 @@ package v_vues;
 import c.ControleurVueLecture;
 import java.awt.*;
 import javax.swing.*;
+
+import v_ecouteurs.AL_Lecture;
 import v_utilitaires.SelectionTemps;
 
 /**
@@ -132,6 +134,45 @@ public class Vue_Lecture extends JPanel
 		gbc.anchor = GridBagConstraints.PAGE_END ;
 		gbc.insets = new Insets (0, 0, 0, 0) ;
 		this.add (boutons, gbc) ;
+
+		// Abonnement aux listeners
+		AL_Lecture lec = new AL_Lecture(this) ;
+		this.selecTps.getButtonTpsPrecedent().addActionListener(lec) ;
+		this.selecTps.getButtonTpsSuivant().addActionListener(lec) ;
+
+		this.majVue() ;
+	}
+
+
+	// Mise à jour de la fenêtre
+
+	public void majVue()
+	{
+		// On récupère la valeur du temps en cours
+		int tpsEnCours = this.cvl.getCP().getS().getTA() ;
+
+		// On met à jour l'affichage du temps en cours (permet de gérer le changement d'onglet)
+		this.selecTps.getTextFieldTpsEnCours().setText(Integer.toString(tpsEnCours)) ;
+		
+		// Si on est au temps 0, on désactive le bouton "Temps précédent"
+		if (tpsEnCours == 0)
+			this.selecTps.getButtonTpsPrecedent().setEnabled(false) ;
+		else // Sinon, on le ré-active (si besoin)
+			this.selecTps.getButtonTpsPrecedent().setEnabled(true) ;
+		
+		// Si le temps affiché est le dernier saisi dans la stratégie, on désactive le bouton "Temps suivant"
+		if (tpsEnCours == this.cvl.getCP().getS().getNbTemps() - 1)
+			this.selecTps.getButtonTpsSuivant().setEnabled(false) ;
+		else // Sinon, on le ré-active (si besoin)
+			this.selecTps.getButtonTpsSuivant().setEnabled(true) ;
+	}
+
+
+	// Getters
+
+	public ControleurVueLecture getC()
+	{
+		return cvl ;
 	}
 
 	public SelectionTemps getSelectTps() {
@@ -154,6 +195,9 @@ public class Vue_Lecture extends JPanel
 		return lecture;
 	}
 
+
+	// Setters
+
 	public void setLecture(JButton lecture) {
 		this.lecture = lecture;
 	}
@@ -172,9 +216,5 @@ public class Vue_Lecture extends JPanel
 
 	public void setPleinEcran(JButton pleinEcran) {
 		this.pleinEcran = pleinEcran;
-	}
-
-	public void majVue() {
-		
 	}
 }

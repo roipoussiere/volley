@@ -17,8 +17,13 @@ public class ControleurVueLecture {
 		return this.vl ;
 	}
 	
+	public ControleurPrincipal getCP ()
+	{
+		return this.cp ;
+	}
+	
 	public void majVue()
 	{
-		// à compléter
+		this.vl.majVue() ;
 	}
 }

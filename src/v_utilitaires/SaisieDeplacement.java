@@ -40,7 +40,7 @@ public class SaisieDeplacement extends JPanel
 		this.add (this.infoJ, gbc) ;
 		
 		// Label déplacement précédent
-		this.depPrec = new JTextField (3) ;
+		this.depPrec = new JTextField (4) ;
 		this.depPrec.setEditable (false) ;
 		gbc.gridx = 1 ; gbc.gridy = 0 ;
 		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
@@ -49,7 +49,7 @@ public class SaisieDeplacement extends JPanel
 		this.add (this.depPrec, gbc) ;
 		
 		// Champs de saisie du déplacement
-		this.depActuel = new JTextField (3) ;
+		this.depActuel = new JTextField (4) ;
 		gbc.gridx = 2 ; gbc.gridy = 0 ;
 		gbc.gridwidth = 1 ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.LINE_START ;
