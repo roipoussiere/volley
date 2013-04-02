@@ -26,6 +26,7 @@ public class ControleurVueDessin {
 	
 	public void majDessin()
 	{
+		System.out.println("Maj du dessin : t=" + this.cp.getS().getTA());
 		Joueur j;
 		if (this.cp.getP().isDemiT()) // demi terrain
 		{
@@ -42,6 +43,7 @@ public class ControleurVueDessin {
 					type = TypeElt.MENEUR1;
 				
 				m.Position pos = j.getDeplacementAuTemps(this.cp.getS().getTA());
+				System.out.println("<test_natha> position de " + j.getNomJ() + " : " + pos);
 				
 				jeton(pos, j.getNomJ(), j.getIdJ(), type);
 			}
@@ -62,16 +64,15 @@ public class ControleurVueDessin {
 					type = TypeElt.MENEUR1;
 				
 				m.Position pos = j.getDeplacementAuTemps(this.cp.getS().getTA());
-				System.out.println("E1 : " + pos.getPosY());
+				System.out.println("<test_natha> position de " + j.getNomJ() + " : " + pos);
 				
 				jeton(pos, j.getNomJ(), j.getIdJ(), type);
 				
 				// affichage des joueurs équipe 2
-				System.out.println("équipe 2");
 				type = TypeElt.JOUEUR2;
 				j = this.cp.getS().getJoueurEq2(i);
 				pos = j.getDeplacementAuTemps(this.cp.getS().getTA());
-				System.out.println("E1 : " + pos.getPosY());
+				System.out.println("<test_natha> position de " + j.getNomJ() + " : " + pos);
 
 				if (j.isMeneur())
 					type = TypeElt.MENEUR2;
@@ -120,9 +121,8 @@ public class ControleurVueDessin {
 			default: break;
 		}
 
-		float posX = this.tc*(_pos.getPosX() + 1) + this.tc/2 - t/2;
-		float posY = this.vd.getHeight() - (this.tc*(_pos.getPosY() + 1) + this.tc/2 + t/2 + 15);
-		System.out.println("pos : " + _pos.getPosY() + " ; hauteur : " + this.vd.getHeight() + " ; posY avant : " + (this.tc*(_pos.getPosY() + 1) + this.tc/2 - t/2) + " ; posY après : " + posY);
+		float posX = this.tc*_pos.getPosX() + this.tc/2 - t/2;
+		float posY = this.vd.getHeight() - (this.tc*_pos.getPosY() + this.tc/2 + t/2 + 15);
 		this.vd.affJeton(posX, posY, _pos.getOrt().ordinal()*90+45, _nom, _id, t, c);
 	}
 	

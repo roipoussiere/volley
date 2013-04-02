@@ -14,20 +14,7 @@ public class Position implements java.io.Serializable
 	private Orientation ort ;
 	
 	// Constructeurs
-	
-	public Position (int _pX, int _pY)
-	{
-		this.posX = _pX ;
-		this.posY = _pY ;
-		this.ort = Orientation.HAUT ;
-	}
-	
-	public Position (int _pX, int _pY, Orientation _ort)
-	{
-		this (_pX, _pY) ;
-		this.ort = _ort ;
-	}
-	
+			
 	public Position (String _coord)
 	{
 		this.posX = (int) (_coord.charAt(0) - 'A') ;

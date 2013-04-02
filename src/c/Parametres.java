@@ -52,20 +52,20 @@ public class Parametres
 		this.cJoueurE2 = hexToRgb("#7b04a1");
 
 		// Joueurs équipe 1
-		this.tabJE1[0] = new Joueur("A1", "Jean", new m.Position(1, 2, Orientation.HAUT));
-		this.tabJE1[1] = new Joueur("A2", "Marie", new m.Position(4, 2, Orientation.HAUT));
-		this.tabJE1[2] = new Joueur("A3", "Philippe", new m.Position(7, 2, Orientation.HAUT));
-		this.tabJE1[3] = new Joueur("A4", "Nathalie", new m.Position(1, 5, Orientation.HAUT));
-		this.tabJE1[4] = new Joueur("A5", "Michel", new m.Position(4, 5, Orientation.HAUT));
-		this.tabJE1[5] = new Joueur("A6", "Isabelle", new m.Position(7, 5, Orientation.HAUT));
+		this.tabJE1[0] = new Joueur("A1", "Jean", new m.Position("C5", Orientation.HAUT));
+		this.tabJE1[1] = new Joueur("A2", "Marie", new m.Position("F5", Orientation.HAUT));
+		this.tabJE1[2] = new Joueur("A3", "Philippe", new m.Position("I5", Orientation.HAUT));
+		this.tabJE1[3] = new Joueur("A4", "Nathalie", new m.Position("C2", Orientation.HAUT));
+		this.tabJE1[4] = new Joueur("A5", "Michel", new m.Position("F2", Orientation.HAUT));
+		this.tabJE1[5] = new Joueur("A6", "Isabelle", new m.Position("I2", Orientation.HAUT));
 		
 		// Joueurs équipe 2
-		this.tabJE2[0] = new Joueur("B1", "Alain", new m.Position(1, 12, Orientation.BAS));
-		this.tabJE2[1] = new Joueur("B2", "Sylvie", new m.Position(4, 12, Orientation.BAS));
-		this.tabJE2[2] = new Joueur("B3", "Patrick", new m.Position(7, 12, Orientation.BAS));
-		this.tabJE2[3] = new Joueur("B4", "Catherine", new m.Position(1, 15, Orientation.BAS));
-		this.tabJE2[4] = new Joueur("B5", "Nicolas", new m.Position(4, 15, Orientation.BAS));
-		this.tabJE2[5] = new Joueur("B6", "Martine", new m.Position(7, 15, Orientation.BAS));
+		this.tabJE2[0] = new Joueur("B1", "Alain", new m.Position("C12", Orientation.BAS));
+		this.tabJE2[1] = new Joueur("B2", "Sylvie", new m.Position("F12", Orientation.BAS));
+		this.tabJE2[2] = new Joueur("B3", "Patrick", new m.Position("I12", Orientation.BAS));
+		this.tabJE2[3] = new Joueur("B4", "Catherine", new m.Position("C15", Orientation.BAS));
+		this.tabJE2[4] = new Joueur("B5", "Nicolas", new m.Position("F15", Orientation.BAS));
+		this.tabJE2[5] = new Joueur("B6", "Martine", new m.Position("I15", Orientation.BAS));
 		
 		// Etat des élements
 		

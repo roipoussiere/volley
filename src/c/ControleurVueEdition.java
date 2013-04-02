@@ -159,6 +159,7 @@ public class ControleurVueEdition
 			this.cp.getS().getBallon().majDeplacementAuTemps(_tps, new Position (depSaisie)) ;
 		}
 		
+		this.cp.getCVD().majDessin();
 		this.ve.majVueEdition() ;
 	}
 

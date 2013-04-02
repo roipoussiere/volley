@@ -39,7 +39,7 @@ public class Strategie implements java.io.Serializable
 		
 		this.eq1 = new Equipe(e1) ;
 		this.eq2 = new Equipe(e2) ;
-		this.ballon = new Element(true, Color.YELLOW, new m.Position(4, 9, Orientation.AUCUNE));
+		this.ballon = new Element(true, Color.YELLOW, new m.Position("F6", Orientation.AUCUNE));
 		
 		this.typeS = TypeStrategie.ATTAQUE ; // Par défaut --> A CHANGER (?)
 		this.tempsActuel = 0; // Temps à 0 à la création de la stratégie
