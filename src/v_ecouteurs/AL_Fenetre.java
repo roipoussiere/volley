@@ -27,10 +27,6 @@ public class AL_Fenetre implements ActionListener
 			this.vf.getCVF().mf_nouveau();
 		}
 		
-		else if ("Enregistrer".equals(t)) {
-			this.vf.getCVF().mf_enregistrer();
-		}
-		
 		else if ("Enregistrer sous".equals(t)) {
 			this.vf.getCVF().mf_enregistrerSous();
 		}

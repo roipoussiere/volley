@@ -73,7 +73,6 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		// Création des items de Fichier
 		JMenuItem mfo = new JMenuItem("Ouvrir");
 		JMenuItem mfn = new JMenuItem("Nouveau");
-		JMenuItem mfe = new JMenuItem("Enregistrer");
 		JMenuItem mfes = new JMenuItem("Enregistrer sous");
 		JMenuItem mfq = new JMenuItem("Quitter");
 
@@ -104,7 +103,6 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		// Ajout des items dans le menu Fichier
 		this.mf.add(mfo);
 		this.mf.add(mfn);
-		this.mf.add(mfe);
 		this.mf.add(mfes);
 		this.mf.addSeparator();
 		this.mf.add(mfq);
@@ -126,7 +124,6 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		// Ajout des écouteurs du menu Fichier
 		mfo.addActionListener(new AL_Fenetre(this));
 		mfn.addActionListener(new AL_Fenetre(this));
-		mfe.addActionListener(new AL_Fenetre(this));
 		mfes.addActionListener(new AL_Fenetre(this));
 		mfq.addActionListener(new AL_Fenetre(this));
 

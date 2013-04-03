@@ -45,7 +45,7 @@ public class Parametres
 		this.cLignes = hexToRgb("#fafafa");
 		this.cBallon = hexToRgb("#FFCC33");
 		this.cJoueurE1 = hexToRgb("#4b44e1");
-		this.cJoueurE2 = hexToRgb("#7b04a1");
+		this.cJoueurE2 = hexToRgb("#AA0000");
 		
 		// Etat des élements
 		
