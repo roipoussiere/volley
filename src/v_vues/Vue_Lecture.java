@@ -17,7 +17,8 @@ public class Vue_Lecture extends JPanel
 	private ControleurVueLecture cvl;
 
 	// Composants de la fenêtre
-	private JTextField libelleFichier ;
+	private JLabel labelNomFichier ;
+	private JTextField saisieNomFichier ;
 	private SelectionTemps selecTps ;
 
 	/**
@@ -29,10 +30,14 @@ public class Vue_Lecture extends JPanel
 		super ();
 		this.cvl = _cvl;
 
-		// Nom fichier
-		this.libelleFichier = new JTextField ("..............Nom du fichier..............") ;
-		this.libelleFichier.setEnabled(false);
-		this.add (this.libelleFichier, BorderLayout.NORTH) ;
+		// Label nom fichier
+		this.labelNomFichier = new JLabel ("Nom de la stratégie : ") ;
+		this.add (this.labelNomFichier, BorderLayout.EAST) ;
+		
+		// Champs de saisie nom fichier
+		this.saisieNomFichier = new JTextField (22) ;
+		this.saisieNomFichier.setText(this.cvl.getCP().getS().getNomStrat()) ;
+		this.add (this.saisieNomFichier, BorderLayout.WEST) ;
 
 		// Sélection du temps
 		this.selecTps = new SelectionTemps ();
@@ -51,6 +56,9 @@ public class Vue_Lecture extends JPanel
 
 	public void majVue()
 	{
+		// On met à jour l'affichage du nom de la stratégie
+		this.saisieNomFichier.setText(this.cvl.getCP().getS().getNomStrat()) ;
+		
 		// On récupère la valeur du temps en cours
 		int tpsEnCours = this.cvl.getCP().getS().getTA() ;
 
@@ -87,10 +95,10 @@ public class Vue_Lecture extends JPanel
 	}
 
 	public JTextField getLibelleFichier() {
-		return libelleFichier;
+		return saisieNomFichier;
 	}
 
 	public void setLibelleFichier(JTextField libelleFichier) {
-		this.libelleFichier = libelleFichier;
+		this.saisieNomFichier = libelleFichier;
 	}
 }

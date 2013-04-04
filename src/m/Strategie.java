@@ -7,6 +7,7 @@ public class Strategie implements java.io.Serializable
 	private static final long serialVersionUID = 1L;
 
 	private Equipe eq1, eq2 ;
+	private String nomStrat ;
 	private Element ballon;
 	private TypeStrategie typeS ;
 	private int tempsActuel;
@@ -15,6 +16,9 @@ public class Strategie implements java.io.Serializable
 	
 	public Strategie ()
 	{
+		// Nom de la stratégie
+		this.nomStrat = "Nouvelle Stratégie" ;
+		
 		// Il est nécessaire de remplir les équipes au début, sinon tous les joueurs sont à NULL.
 		
 		Joueur e1[] = new Joueur[6];
@@ -64,7 +68,12 @@ public class Strategie implements java.io.Serializable
 	
 	// Getters
 	
-	public Element getBallon()
+	public String getNomStrat ()
+	{
+		return this.nomStrat ;
+	}
+	
+	public Element getBallon ()
 	{
 		return this.ballon;
 	}

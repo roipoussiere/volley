@@ -33,14 +33,14 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 	 */
 	public Vue_Fenetre(ControleurVueFenetre _cvf)
 	{
-		super ("Logiciel pour strategie de volley");
+		super ("StratElite");
 		this.cvf = _cvf;
 
 		//this.cvf.getCP(). = new Vue_Edition(cve);
 		//this.vl = new Vue_Lecture(this.cvf);
 
 		this.addWindowListener(this); // On abonne la fenêtre à elle-même.
-		this.setSize(420, 110);
+		this.setSize(420, 150);
 		this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		this.setResizable(false);
 
@@ -73,7 +73,7 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		// Création des items de Fichier
 		JMenuItem mfo = new JMenuItem("Ouvrir");
 		JMenuItem mfn = new JMenuItem("Nouveau");
-		JMenuItem mfes = new JMenuItem("Enregistrer");
+		JMenuItem mfe = new JMenuItem("Enregistrer");
 		JMenuItem mfq = new JMenuItem("Quitter");
 
 		// Création des items de Stratégie
@@ -101,9 +101,9 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		mst.add(modeTC);
 
 		// Ajout des items dans le menu Fichier
-		this.mf.add(mfo);
 		this.mf.add(mfn);
-		this.mf.add(mfes);
+		this.mf.add(mfo);
+		this.mf.add(mfe);
 		this.mf.addSeparator();
 		this.mf.add(mfq);
 
@@ -124,7 +124,7 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		// Ajout des écouteurs du menu Fichier
 		mfo.addActionListener(new AL_Fenetre(this));
 		mfn.addActionListener(new AL_Fenetre(this));
-		mfes.addActionListener(new AL_Fenetre(this));
+		mfe.addActionListener(new AL_Fenetre(this));
 		mfq.addActionListener(new AL_Fenetre(this));
 
 		// Ajout des écouteurs du menu Stratégie
