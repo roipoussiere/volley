@@ -20,7 +20,7 @@ public class ControleurVueFenetre
 	private Vue_Fenetre vf;
 	private Vue_Edition ve;
 	private Vue_Lecture vl;
-	public boolean sauvegarder;
+	public boolean sauvegarder = true;
 
 	/**
 	 * Constructeur du contrôleur qui initialise les vues et les autres arguments et lance la vue principale (Vue_Fenetre).
@@ -375,5 +375,11 @@ public class ControleurVueFenetre
 		else
 			this.cp.setS(new Strategie());
 	}
+
+	public void setSauvegarder(boolean sauvegarder) {
+		this.sauvegarder = sauvegarder;
+	}
+	
+	
 	
 }
