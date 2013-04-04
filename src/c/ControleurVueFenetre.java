@@ -79,10 +79,12 @@ public class ControleurVueFenetre
 			case 0: // Lecture
 				this.cp.getCVT().getVT().dessiner(this.cp.getP().getStyleQL());
 				this.cp.getCVL().majVue();
+				this.vf.setSize(420, 110);
 				break;
 			case 1: // Edition
 				this.cp.getCVT().getVT().dessiner(this.cp.getP().getStyleQE());
 				this.cp.getCVE().majVue();
+				this.vf.setSize(420, 385);
 				break;
 			}
 		}

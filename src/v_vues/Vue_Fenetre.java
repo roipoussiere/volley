@@ -40,7 +40,7 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		//this.vl = new Vue_Lecture(this.cvf);
 
 		this.addWindowListener(this); // On abonne la fenêtre à elle-même.
-		this.setSize(420, 385);
+		this.setSize(420, 110);
 		this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		this.setResizable(false);
 
@@ -73,13 +73,13 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		// Création des items de Fichier
 		JMenuItem mfo = new JMenuItem("Ouvrir");
 		JMenuItem mfn = new JMenuItem("Nouveau");
-		JMenuItem mfes = new JMenuItem("Enregistrer sous");
+		JMenuItem mfes = new JMenuItem("Enregistrer");
 		JMenuItem mfq = new JMenuItem("Quitter");
 
 		// Création des items de Stratégie
 		JMenuItem msj = new JMenuItem("Joueurs");
 		JMenu mst = new JMenu("Terrain");
-		JMenuItem msp = new JMenuItem("Paramètres...");
+		// JMenuItem msp = new JMenuItem("Paramètres...");
 
 		// Création des items de Aide
 		JMenuItem mab = new JMenuItem("Besoin d'aide ?");
@@ -110,7 +110,7 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 		// Ajout des items dans le menu Stratégie
 		this.ms.add(msj);
 		this.ms.add(mst);
-		this.ms.add(msp);
+		// this.ms.add(msp);
 
 		// Ajout des Items dans le menu Aide
 		this.ma.add(mab);
@@ -129,7 +129,7 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 
 		// Ajout des écouteurs du menu Stratégie
 		msj.addActionListener(new AL_Fenetre(this));
-		msp.addActionListener(new AL_Fenetre(this));
+		// msp.addActionListener(new AL_Fenetre(this));
 
 		// Ajout des écouteurs du menu Aide
 		mab.addActionListener(new AL_Fenetre(this));
