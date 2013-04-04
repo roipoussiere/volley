@@ -25,8 +25,7 @@ public class ControleurVueEdition
 
 	/**
 	 * Création du constructeur.
-	 * @param _ve La Vue_Edition liée
-	 * @param _str La Strategie liée
+	 * @param _cp Le controleur principal
 	 */
 	public ControleurVueEdition (ControleurPrincipal _cp)
 	{

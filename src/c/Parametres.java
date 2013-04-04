@@ -92,8 +92,9 @@ public class Parametres
 	
 	/**
 	 * Setter de l'état d'un élement.
-	 * @param etatE Un booléen représentant l'état d'un élement.<br/>
+	 * @param _etatE Un booléen représentant l'état d'un élement.<br/>
 	 * Avec true : l'élement est présent sur le terrain et false : l'élement n'apparait pas sur le terrain.
+	 * @param _idE L'index du tableau permetant d'accéder au joueur.
 	 */
 	public void setEtatE(boolean _etatE, int _idE)
 	{
@@ -102,7 +103,7 @@ public class Parametres
 	
 	/**
 	 * Setter de la couleur du joueur de la 1ere équipe.
-	 * @param _coulB La couleur du joueur de la 1ere équipe.
+	 * @param _cJoueurE1 La couleur du joueur de la 1ere équipe.
 	 */
 	public void setCJoueurE1(Color _cJoueurE1)
 	{
@@ -120,7 +121,7 @@ public class Parametres
 	
 	/**
 	 * Setter de la couleur du joueur de la 2eme équipe.
-	 * @param _coulB La couleur du joueur de la 2eme équipe.
+	 * @param _cJoueurE2 La couleur du joueur de la 2eme équipe.
 	 */
 	public void setCJoueurE2(Color _cJoueurE2)
 	{
@@ -138,7 +139,7 @@ public class Parametres
 
 	/**
 	 * Setter de la couleur du ballon.
-	 * @param _coulB La couleur du ballon.
+	 * @param _cBallon La couleur du ballon.
 	 */
 	public void setCBallon(Color _cBallon)
 	{
@@ -254,7 +255,7 @@ public class Parametres
 	
 	/**
 	 * Setter de la couleur des bordures du terrain.
-	 * @param _cFond La couleur des bordures du terrain.
+	 * @param _cBordures La couleur des bordures du terrain.
 	 */
 	public void setCBordures(Color _cBordures)
 	{

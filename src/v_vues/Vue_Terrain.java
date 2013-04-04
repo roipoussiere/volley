@@ -17,7 +17,8 @@ public class Vue_Terrain extends JFrame implements WindowListener
 	
 	/**
 	 * Création de la fenêtre représentant le terrain de volley.
-	 * @param _c Le contrôleur.
+	 * @param _cvt Le contrôleur de la vue Terrain
+	 * @param _cvd Le contrôleur de la vue Dessin
 	 */
 	public Vue_Terrain(ControleurVueTerrain _cvt, ControleurVueDessin _cvd)
 	{

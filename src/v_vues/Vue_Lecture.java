@@ -26,7 +26,7 @@ public class Vue_Lecture extends JPanel
 
 	/**
 	 * Création du JFrame et de tous ses composants.
-	 * @param _c Constrôleur.
+	 * @param _cvl Constrôleur de la vue Lecture.
 	 */
 	public Vue_Lecture (ControleurVueLecture _cvl)
 	{

@@ -74,10 +74,13 @@ public class Vue_Dessin extends JPanel
 	
 	/**
 	 * Dessine un demi terrain.
-	 * @param _g Le composant graphique.
 	 * @param _styleQ Style de quadrillage : 0 pour aucun, 1 pour 3 carreaux, 2 pour 9 carreaux.
+	 * @param _tc La taille d'un carreau, correspondant à une zone de 1m² sur le terrain.
+	 * @param _coulFond La couleur du fond du terrain
+	 * @param _coulBord La couleur de la bordure du terrain
+	 * @param _coulLignes La couleurs des lignes du terrain
 	 */
-	public void dessinerDT(int _styleQ, int _tc, Color _coulFond, Color _coulBord, Color _coulLigne)
+	public void dessinerDT(int _styleQ, int _tc, Color _coulFond, Color _coulBord, Color _coulLignes)
 	{
 		this.graph.setColor(_coulBord.brighter());
 		this.graph.fillRect(0, 0, this.getWidth(), this.getHeight());
@@ -102,7 +105,7 @@ public class Vue_Dessin extends JPanel
 			dessinerCoords(_tc, _coulBord.darker().darker().darker().darker(), true);
 		}
 		
-		this.graph.setColor(_coulLigne);
+		this.graph.setColor(_coulLignes);
 		
 		this.graph.drawLine(_tc, _tc*10, _tc*10, _tc*10); // ligne bas
 		this.graph.drawLine(_tc, _tc, _tc, _tc*10); // ligne gauche
@@ -113,8 +116,11 @@ public class Vue_Dessin extends JPanel
 	
 	/**
 	 * Dessine un terrain complet.
-	 * @param _g Le composant graphique.
 	 * @param _styleQ Style de quadrillage : 0 pour aucun, 1 pour 3 carreaux, 2 pour 9 carreaux.
+	 * @param _tc La taille d'un carreau, correspondant à une zone de 1m² sur le terrain.
+	 * @param _coulFond La couleur du fond du terrain
+	 * @param _coulBord La couleur de la bordure du terrain
+	 * @param _coulLignes La couleurs des lignes du terrain
 	 */
 	public void dessinerTC(int _styleQ, int _tc, Color _coulFond, Color _coulBord, Color _coulLignes)
 	{
@@ -182,9 +188,9 @@ public class Vue_Dessin extends JPanel
 	
 	/**
 	 * Dessine un quadrillage de 11*11 carreaux.
-	 * @param _g Le composant graphique.
 	 * @param _posY La position verticale du quadrillage.
 	 * @param _tc La taille d'un carreau, qui déterminera celle du quadrillage.
+	 * @param _coulQFin La couleur du quadrillage à dessiner.
 	 * @param _avecBord True pour dessiner sur les bordures, false sinon
 	 */
 	public void dessinerQFin(int _posY, int _tc, Color _coulQFin, boolean _avecBord)

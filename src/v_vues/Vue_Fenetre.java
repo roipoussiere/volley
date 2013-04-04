@@ -29,7 +29,7 @@ public class Vue_Fenetre extends JFrame implements WindowListener
 
 	/**
 	 * Création de la fenêtre et de tous ses composants.
-	 * @param _c Le contrôleur.
+	 * @param _cvf Le contrôleur de la Vue Fenetre.
 	 */
 	public Vue_Fenetre(ControleurVueFenetre _cvf)
 	{
