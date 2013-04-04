@@ -12,7 +12,7 @@ public class GestionDesSauvegardeDeStrategie {
 	 
 			Strategie strat =_strat;
 				try {
-					FileOutputStream fichier = new FileOutputStream(_path);
+					FileOutputStream fichier = new FileOutputStream(_path+".ste");
 					ObjectOutputStream oos = new ObjectOutputStream(fichier);
 					oos.writeObject(strat);
 					oos.flush();
