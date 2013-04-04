@@ -27,7 +27,7 @@ public class Vue_Aide extends JDialog
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		
-		String texte = "<html>Veuillez consulter le manuel d'utilisation. Merci</html>";
+		String texte = "<html>Veuillez consulter le manuel d'utilisation. Merci.</html>";
 		
 		this.txt = new JLabel(texte);
 		this.txt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER); // Ne marche pas.
