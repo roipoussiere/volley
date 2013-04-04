@@ -1,9 +1,12 @@
 package c;
 
 import java.awt.*;
+import java.io.File;
+
 import javax.swing.*;
 
 import m.GestionDesSauvegardeDeStrategie;
+import m.Strategie;
 import v_vues.*;
 
 /**
@@ -39,7 +42,6 @@ public class ControleurVueFenetre
 		this.vf.setVisible (true);
 		// Le terrain ne s'affiche que maintenant pour éviter de voir la fenêtre qui se déplace.
 		this.cp.getCVT().getVT().setVisible (true);
-
 	}
 
 	// *** Getters ***
@@ -94,7 +96,9 @@ public class ControleurVueFenetre
 	{
 		System.out.println("Ouverture d'un fichier de stratégie...");
 		chargerStrategie();
-
+		cp.getCVE().getVueEdition().majVueEdition();
+		cp.getCVD().majDessin();
+		cp.getCVL().majVue();
 	}
 
 	/**
@@ -103,6 +107,10 @@ public class ControleurVueFenetre
 	public void mf_nouveau()
 	{
 		System.out.println("Nouvelle stratégie...");
+		nouvelleStrategie();
+		cp.getCVE().getVueEdition().majVueEdition();
+		cp.getCVD().majDessin();
+		cp.getCVL().majVue();
 	}
 
 	/**
@@ -207,6 +215,7 @@ public class ControleurVueFenetre
 		chooser.setApproveButtonToolTipText ("Enregistrer un fichier dans l’éditeur"); 
 		chooser.setDialogTitle("Enregistrer");
 		chooser.setFileSelectionMode (JFileChooser.FILES_ONLY);
+		chooser.setSelectedFile(new File(this.cp.getS().getNomStrat()));
 
 		// Utilisation		
 		int returnVal ;
@@ -244,6 +253,7 @@ public class ControleurVueFenetre
 			case 0 : 
 			{
 				// ---- chargement avec sauvegarde -----
+				sauvegarderStrategie ();
 				// Création
 				JFileChooser chooser = new JFileChooser();  
 
@@ -269,6 +279,7 @@ public class ControleurVueFenetre
 				}
 
 			}
+			break;
 			case 1 : 
 			{
 				// ---- chargement sans sauvegarde -----
@@ -298,6 +309,7 @@ public class ControleurVueFenetre
 					else
 						JOptionPane.showMessageDialog(vf, "Format du ficher selectionné incorrect", "Erreur", JOptionPane.ERROR_MESSAGE);
 				}
+			break;
 			}
 			case 2 : {}
 			case -1 : {}
@@ -333,4 +345,35 @@ public class ControleurVueFenetre
 		}
 
 	}
+	
+	public void nouvelleStrategie  ()
+	{
+		if(!sauvegarder)
+		{
+			int i;
+			i = JOptionPane.showConfirmDialog(vf, "La stratégie n'a pas été enregistrée.\nVoulez-vous sauvegarder ?");
+			switch(i)
+			{
+			case 0 : 
+			{
+				// ---- chargement avec sauvegarde -----
+				sauvegarderStrategie ();
+				// Création
+				this.cp.setS(new Strategie());
+				
+			}
+			break;
+			case 1 : 
+			{
+				this.cp.setS(new Strategie());
+			}
+			break;
+			case 2 : {}
+			case -1 : {}
+			}
+		}
+		else
+			this.cp.setS(new Strategie());
+	}
+	
 }
