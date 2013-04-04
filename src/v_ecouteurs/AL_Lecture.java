@@ -1,13 +1,14 @@
 package v_ecouteurs;
 
 import java.awt.event.*;
+
 import v_vues.Vue_Lecture;
 
 /**
  * ActionListener des boutons de l'onglet Lecture
  * @author Nathanaël Jourdane
  */
-public class AL_Lecture implements ActionListener
+public class AL_Lecture implements ActionListener, FocusListener
 {
 	private Vue_Lecture vl;
 
@@ -41,5 +42,17 @@ public class AL_Lecture implements ActionListener
 			// On met à jour la fenêtre de dessin.
 			this.vl.getC().getCP().getCVD().majDessin();
 		}
+	}
+
+	@Override
+	public void focusGained (FocusEvent e)
+	{
+		
+	}
+
+	@Override
+	public void focusLost (FocusEvent e)
+	{
+		this.vl.getC().majNomStrategie(this.vl.getSaisieNomFichier().getText()) ;
 	}
 }

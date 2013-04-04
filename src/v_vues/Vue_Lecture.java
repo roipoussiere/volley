@@ -45,6 +45,7 @@ public class Vue_Lecture extends JPanel
 
 		// Abonnement aux listeners
 		AL_Lecture lec = new AL_Lecture(this) ;
+		this.saisieNomFichier.addFocusListener(lec) ;
 		this.selecTps.getButtonTpsPrecedent().addActionListener(lec) ;
 		this.selecTps.getButtonTpsSuivant().addActionListener(lec) ;
 
@@ -94,11 +95,11 @@ public class Vue_Lecture extends JPanel
 		this.selecTps = selecTps;
 	}
 
-	public JTextField getLibelleFichier() {
+	public JTextField getSaisieNomFichier() {
 		return saisieNomFichier;
 	}
 
-	public void setLibelleFichier(JTextField libelleFichier) {
+	public void setSaisieNomFichier(JTextField libelleFichier) {
 		this.saisieNomFichier = libelleFichier;
 	}
 }

@@ -100,6 +100,11 @@ public class Strategie implements java.io.Serializable
 	
 	// Setters
 	
+	public void setNomStrat (String _nomS)
+	{
+		this.nomStrat = _nomS ; 
+	}
+	
 	public void setEq1 (Equipe eq1)
 	{
 		this.eq1 = eq1 ;

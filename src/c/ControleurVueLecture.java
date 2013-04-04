@@ -22,6 +22,12 @@ public class ControleurVueLecture {
 		return this.cp ;
 	}
 	
+	public void majNomStrategie (String _nomS)
+	{
+		this.cp.getS().setNomStrat(_nomS) ;
+		System.out.println("<test_flo> Nom de la stratégie mis à jour...");
+	}
+	
 	public void majVue()
 	{
 		this.vl.majVue() ;
