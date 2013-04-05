@@ -34,8 +34,10 @@ public class ControleurVueDessin {
 	
 	public void initDessin()
 	{
-		System.out.println("Maj du dessin : t=" + this.cp.getS().getTA());
 		Joueur j;
+		TypeElt type;
+		m.Position pos;
+		
 		if (this.cp.getP().isDemiT()) // demi terrain
 		{
 			// Affichage du quadrillage
@@ -46,14 +48,16 @@ public class ControleurVueDessin {
 			for (int i=0 ; i<6 ; i++)
 			{
 				j = this.cp.getS().getJoueurEq1(i);
-				TypeElt type = TypeElt.JOUEUR1;
-				if (j.isMeneur())
-					type = TypeElt.MENEUR1;
-				
-				m.Position pos = j.getDeplacementAuTemps(this.cp.getS().getTA());
-				System.out.println("<test_natha> position de " + j.getNomJ() + " : " + pos);
-				
-				jeton(pos, j.getNomJ(), j.getIdJ(), type);
+				if (j.isAffiche())
+				{
+					type = TypeElt.JOUEUR1;
+					if (j.isMeneur())
+						type = TypeElt.MENEUR1;
+					
+					pos = j.getDeplacementAuTemps(this.cp.getS().getTA());
+					
+					jeton(pos, j.getNomJ(), j.getIdJ(), type);					
+				}
 			}
 		}
 		else // terrain complet
@@ -67,25 +71,29 @@ public class ControleurVueDessin {
 			{
 				// affichage des joueurs équipe 1
 				j = this.cp.getS().getJoueurEq1(i);
-				TypeElt type = TypeElt.JOUEUR1;
-				if (j.isMeneur())
-					type = TypeElt.MENEUR1;
-				
-				m.Position pos = j.getDeplacementAuTemps(this.cp.getS().getTA());
-				System.out.println("<test_natha> position de " + j.getNomJ() + " : " + pos);
-				
-				jeton(pos, j.getNomJ(), j.getIdJ(), type);
-				
-				// affichage des joueurs équipe 2
-				type = TypeElt.JOUEUR2;
-				j = this.cp.getS().getJoueurEq2(i);
-				pos = j.getDeplacementAuTemps(this.cp.getS().getTA());
-				System.out.println("<test_natha> position de " + j.getNomJ() + " : " + pos);
 
-				if (j.isMeneur())
-					type = TypeElt.MENEUR2;
-				
-				jeton(pos, j.getNomJ(), j.getIdJ(), type);
+				if (j.isAffiche())
+				{
+					type = TypeElt.JOUEUR1;
+					if (j.isMeneur())
+						type = TypeElt.MENEUR1;
+					
+					pos = j.getDeplacementAuTemps(this.cp.getS().getTA());
+					
+					jeton(pos, j.getNomJ(), j.getIdJ(), type);
+				}				
+				// affichage des joueurs équipe 2
+				j = this.cp.getS().getJoueurEq2(i);
+				if (j.isAffiche())
+				{
+					type = TypeElt.JOUEUR2;
+					pos = j.getDeplacementAuTemps(this.cp.getS().getTA());
+
+					if (j.isMeneur())
+						type = TypeElt.MENEUR2;
+					
+					jeton(pos, j.getNomJ(), j.getIdJ(), type);
+				}
 			}
 		}
 		
