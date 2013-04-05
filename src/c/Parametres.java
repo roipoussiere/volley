@@ -36,7 +36,7 @@ public class Parametres
 	public Parametres()
 	{
 		// Style de quadrillage
-		this.styleQL = 0;
+		this.styleQL = 2;
 		this.styleQE = 2;
 		
 		// Couleurs

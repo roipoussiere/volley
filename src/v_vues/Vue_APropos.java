@@ -30,10 +30,10 @@ public class Vue_APropos extends JDialog
 		String texte = "<html>Ce programme a été réalisé par des étuditans de l'IUT informatique de Blagnac, " +
 				"dans le cadre du projet tuteuré de 2ème année.<br/><br/>" +
 				"Il a été développé par :<br/><br/>" +
-				"- Nathanaël Jourdane<br/>" +
-				"- Florian Garnier<br/>" +
-				"- Xavier Chalut<br/>" +
-				"- Julien-Marc Ampouta</html>";
+				"- Nathanaël Jourdane : nathanael@jourdane.net<br/>" +
+				"- Florian Garnier : florian.garnier31@hotmail.fr<br/>" +
+				"- Xavier Chalut : xavier.chalut@gmail.com<br/>" +
+				"- Julien-Marc Ampouta : maniak.974@hotmail.fr</html>";
 		
 		this.txt = new JLabel(texte);
 		this.add(txt);

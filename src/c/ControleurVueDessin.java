@@ -17,6 +17,7 @@ public class ControleurVueDessin {
 	ControleurVueDessin(ControleurPrincipal _cp) {
 		this.cp = _cp;
 		this.vd = new Vue_Dessin(this);
+		this.styleQ = this.cp.getP().getStyleQL();
 		// this.vd.repaint();
 		// this.majDessin();
 	}

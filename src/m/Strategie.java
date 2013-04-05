@@ -25,22 +25,22 @@ public class Strategie implements java.io.Serializable
 		Joueur e2[] = new Joueur[6];
 		
 		// Joueurs équipe 1
-		e1[0] = new Joueur("JE", "Jean", new m.Position("C5", Orientation.HAUT));
+		e1[0] = new Joueur("J1", "Jean", new m.Position("C5", Orientation.HAUT));
 		e1[0].setMeneur(true);
-		e1[1] = new Joueur("MA", "Marie", new m.Position("F5", Orientation.HAUT));
-		e1[2] = new Joueur("PH", "Philippe", new m.Position("I5", Orientation.HAUT));
-		e1[3] = new Joueur("NA", "Nathalie", new m.Position("C2", Orientation.HAUT));
-		e1[4] = new Joueur("MI", "Michel", new m.Position("F2", Orientation.HAUT));
-		e1[5] = new Joueur("IS", "Isabelle", new m.Position("I2", Orientation.HAUT));
+		e1[1] = new Joueur("J2", "Marie", new m.Position("F5", Orientation.HAUT));
+		e1[2] = new Joueur("J3", "Philippe", new m.Position("I5", Orientation.HAUT));
+		e1[3] = new Joueur("J4", "Nathalie", new m.Position("C2", Orientation.HAUT));
+		e1[4] = new Joueur("J5", "Michel", new m.Position("F2", Orientation.HAUT));
+		e1[5] = new Joueur("J6", "Isabelle", new m.Position("I2", Orientation.HAUT));
 		
 		// Joueurs équipe 2
-		e2[0] = new Joueur("AL", "Alain", new m.Position("C14", Orientation.BAS));
+		e2[0] = new Joueur("J1", "Alain", new m.Position("C14", Orientation.BAS));
 		e2[0].setMeneur(true);
-		e2[1] = new Joueur("SY", "Sylvie", new m.Position("F14", Orientation.BAS));
-		e2[2] = new Joueur("PA", "Patrick", new m.Position("I14", Orientation.BAS));
-		e2[3] = new Joueur("CA", "Catherine", new m.Position("C17", Orientation.BAS));
-		e2[4] = new Joueur("NI", "Nicolas", new m.Position("F17", Orientation.BAS));
-		e2[5] = new Joueur("MA", "Martine", new m.Position("I17", Orientation.BAS));
+		e2[1] = new Joueur("J2", "Sylvie", new m.Position("F14", Orientation.BAS));
+		e2[2] = new Joueur("J3", "Patrick", new m.Position("I14", Orientation.BAS));
+		e2[3] = new Joueur("J4", "Catherine", new m.Position("C17", Orientation.BAS));
+		e2[4] = new Joueur("J5", "Nicolas", new m.Position("F17", Orientation.BAS));
+		e2[5] = new Joueur("J6", "Martine", new m.Position("I17", Orientation.BAS));
 
 		this.eq1 = new Equipe(e1) ;
 		this.eq2 = new Equipe(e2) ;
