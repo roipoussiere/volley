@@ -1,0 +1,11 @@
+Classe
+
+Une classe est la structure d'un objet, c'est-à-dire la déclaration de l'ensemble des entités qui composeront un objet.
+Un objet est donc "issu" (on dit aussi : est une instance) d'une classe : c'est comme un produit qui sort d'un moule.
+Une classe est composée de deux parties :
+- Les attributs : des données représentant l'état de l'objet
+- Les méthodes : des opérations applicables aux objets
+
+Paquet (souvent appelé Package)
+
+Un paquet est un ensemble de classes. Il permet de structurer un projet en des parties distinctes
