@@ -119,7 +119,7 @@ public class Vue_Joueurs extends JDialog implements WindowListener
 		gbc.gridx = 2 ; gbc.gridy = i+2 ; // 
 		gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.CENTER ;
-		gbc.insets = new Insets (5, 12, 5, 0) ;
+		gbc.insets = new Insets (-30, 12, 5, 0) ;
 		jp1.add (this.jbouton1,gbc) ;
 		
 		
@@ -180,7 +180,7 @@ public class Vue_Joueurs extends JDialog implements WindowListener
 		gbc.gridx = 2 ; gbc.gridy = i+2 ; 
 		gbc.gridwidth = GridBagConstraints.REMAINDER ; gbc.gridheight = 1 ;
 		gbc.anchor = GridBagConstraints.CENTER ;
-		gbc.insets = new Insets (5, 12, 5, 0) ;
+		gbc.insets = new Insets (-30, 12, 5, 0) ;
 		jp2.add (this.jbouton2,gbc) ;
 		
 		jtpj.addTab("Equipe 1",jp1);

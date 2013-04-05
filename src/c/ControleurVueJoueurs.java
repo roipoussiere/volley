@@ -49,6 +49,7 @@ public class ControleurVueJoueurs {
 		
 		//Affichage de message de confirmation
 		JOptionPane.showMessageDialog(vj,"Configuration de l'équipe 1 enregistrée");
+		this.cp.getCVF().setSauvegarder(false);
 	}
 	
 	public void EnregistreEqu2()
