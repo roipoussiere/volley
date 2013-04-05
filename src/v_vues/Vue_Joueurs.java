@@ -44,7 +44,7 @@ public class Vue_Joueurs extends JDialog implements WindowListener
 		// Définition de la fenêtre
 		super (vf, "Joueurs", true) ;
 		this.cvj = _cvj;
-		this.setSize(360, 350) ;
+		this.setSize(370, 350) ;
 		this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE) ;
 		this.setResizable(false) ;
 		this.setLocationRelativeTo(null) ;
