@@ -138,7 +138,7 @@ public class ControleurVueDessin {
 			break;
 			default: break;
 		}
-		System.out.println("<test_natha> position jeton " + _nom + " : " + _pos);
+
 		float posX = this.tc*_pos.getPosX() + this.tc/2 - t/2;
 		float posY = this.vd.getHeight() - (this.tc*_pos.getPosY() + this.tc/2 + t/2 + 15);
 		this.vd.affJeton(posX, posY, orientation, _nom, _id, t, c);
